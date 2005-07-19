@@ -131,13 +131,13 @@ void cStillImage::Action(void)
        /* Methode E ************************************************************/
          
 
-        unsigned int nFrameSize = *(m_pFramesSize + nFrame);
+        unsigned int nFrameSize = GetFrameSize(nFrame);
         if(nFrameSize) // Skip empty Frames
         {  
           BuildPesPacket(Data() + nFrameOff, nFrameSize,1);
           nFrameOff += nFrameSize;
         }
-        if(++nFrame>=m_nFrames)
+        if(++nFrame>=GetFrames())
         {
           nFrame = 0; 
           nFrameOff = 0; 

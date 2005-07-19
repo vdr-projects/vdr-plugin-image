@@ -25,68 +25,64 @@
 #ifndef _ENCODE_H
 #define _ENCODE_H
 
-extern "C"
-{
-#ifdef HAVE_FFMPEG_STATIC
-# include <libavcodec/avcodec.h>
-#else
-# include <ffmpeg/avcodec.h>
-//#include <libavcodec/avcodec.h>
-#endif
-}
+#include <ffmpeg/avcodec.h>
 
 //#define TESTCODE
 
 class cEncode
 {
-  AVCodec         *m_pavCodec;
-  unsigned int     m_nMaxMPEGSize;
-	uint8_t         *m_pImageFilled; 
-	uint8_t         *m_pImageYUV;
-protected:
-  const unsigned int m_nFrames;
-  unsigned int     m_nData;
-	uint8_t         *m_pMPEG; 
-	uint8_t         *m_pImageRGB;
-  bool            m_bUsePAL;
-  unsigned int    m_nWidth;
-  unsigned int    m_nHeight;
-  unsigned int*   m_pFramesSize;
+    AVCodec *m_pavCodec;
+    unsigned int m_nMaxMPEGSize;
+    uint8_t *m_pImageFilled; 
+    uint8_t *m_pImageYUV;
 
-#ifndef HAVE_FFMPEG_STATIC
-private:
-  static void *m_hLibAvcodec;
 protected:
-  static bool InitLibAVCodec(void);
-  static void CloseLibAVCodec(void);
-#endif
-  bool m_bLoaded;
+    const unsigned int m_nNumberOfFramesToEncode;
+    uint8_t *m_pMPEG; 
+    uint8_t *m_pImageRGB;
+    bool m_bUsePAL;
+    unsigned int m_nMPEGSize;
+    unsigned int m_nWidth;
+    unsigned int m_nHeight;
+    unsigned int *m_pFrameSizes;
+
 public:
-  cEncode();
-  virtual ~cEncode();
+    cEncode();
+    virtual ~cEncode();
 
-  /*Load Shared Library and Register Codec*/
-  static bool Register();
-  /*UnLoad Shared*/
-  static void UnRegister();
+    /*Load Shared Library and Register Codec*/
+    static bool Register();
+    /*UnLoad Shared*/
+    static void UnRegister();
 
-  bool Encode();
-  inline const uint8_t *Data() const             { return m_pMPEG; }
-  inline unsigned int Size() const               { return m_nData; }
-  inline unsigned int GetFrames() const          { return m_nFrames; } 
-  inline unsigned int GetFrameRate() const       { return m_bUsePAL?25:30; } 
+    bool Encode();
+    inline const uint8_t *Data() const       { return m_pMPEG; }
+    inline unsigned int Size() const         { return m_nMPEGSize; }
+    inline unsigned int GetFrames() const    { return m_nNumberOfFramesToEncode; } 
+    inline unsigned int GetFrameRate() const { return m_bUsePAL?25:30; } 
 
-  inline unsigned int GetHeight() const          { return m_nHeight; } 
-  inline unsigned int GetWidth() const           { return m_nWidth;  } 
-  inline unsigned int GetBorderHeight() const    { return 16; } 
-  inline unsigned int GetBorderWidth() const     { return 16; } 
+    inline unsigned int GetFrameSize(unsigned int nframeNumber) const 
+      { return *(m_pFrameSizes + nframeNumber); } 
 
-  inline  uint8_t         *GetRGBMem()           { return m_pImageRGB; }
+    inline unsigned int GetHeight() const       { return m_nHeight; } 
+    inline unsigned int GetWidth() const        { return m_nWidth;  } 
+    inline unsigned int GetBorderHeight() const { return 16; } 
+    inline unsigned int GetBorderWidth() const  { return 16; } 
+
+    inline uint8_t *GetRGBMem() { return m_pImageRGB; }
+    void  ClearRGBMem ();
+
 #ifdef TESTCODE
-  bool Load(const char* szFileName);
-  bool Save(const char* szFileName) const;
+    bool Load(const char* szFileName);
+    bool Save(const char* szFileName) const;
 #endif
-  void  ClearRGBMem ();
+
+private:
+    void AllocateBuffers();
+    void ReleaseBuffers();
+    void SetupEncodingParameters(AVCodecContext *context);
+    bool ConvertImageToFrame(AVFrame *frame);
+    bool EncodeFrames(AVCodecContext *context, AVFrame *frame);
 };
 
 #endif /* _ENCODE_H */

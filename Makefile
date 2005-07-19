@@ -41,20 +41,10 @@ PACKAGE = vdr-$(ARCHIVE)
 
 ### Includes and Defines (add further entries here):
 
-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I. 
+INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I. -I$(FFMDIR)
 DEFINES  += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 DEFINES  += -D_GNU_SOURCE
-
-
-LIBS += liboutput/liboutput.a libimage/libimage.a
-
-ifdef FFMPEG_STATIC
-	INCLUDES += -I$(FFMDIR)
-	DEFINES += -DHAVE_FFMPEG_STATIC
-	LIBS += -L$(FFMDIR)/libavcodec -lavcodec -lz
-else
-	LIBS += -ldl -rdynamic
-endif
+LIBS += liboutput/liboutput.a libimage/libimage.a -L$(FFMDIR)/libavcodec -lavcodec -lz
 
 ### The object files (add further files here):
 

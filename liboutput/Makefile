@@ -21,13 +21,6 @@ INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
 
 DEFINES  += -D_GNU_SOURCE
 
-LIBS +=
-
-ifdef FFMPEG_STATIC
-	INCLUDES += -I$(FFMDIR)
-	DEFINES += -DHAVE_FFMPEG_STATIC
-endif
-
 ### The object files (add further files here):
 
 OBJS = encode.o stillimage.o stillimage-player.o

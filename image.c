@@ -36,7 +36,7 @@
 #include "commands.h"
 #include "liboutput/encode.h"
 
-static const char *VERSION        = "0.2.3";
+static const char *VERSION        = "0.2.4";
 static const char *DESCRIPTION    = "A Image Viewer plugin";
 static const char *MAINMENUENTRY  = "Image";
 

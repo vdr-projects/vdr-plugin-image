@@ -1,9 +1,9 @@
 #!/bin/bash
 # script for vdr-imageplugin to convert the selected image to pnm-image
-# needs : netpbm-progs > anytopnm pnmscalefixed pnmfile pnmcut pnmflip
+# needs : imagemagick > identify convert
 #
 # History:
-# 2005-06-17 wrong lookup for pnmscale and really are pnmscalefixed used
+# 2005-06-17 Reimplement with imagemagick, Andreas Brachold
 # 2004-08-12 Initalrelease, Andreas Brachold <vdr04-at-deltab.de>
 #    base on prior work for convert.sh 
 #      by  Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz> 
@@ -14,8 +14,6 @@
 ################################################################################
 # if your install external software like netpbm outside /bin:/usr/bin, adjust folder
 PATH=/usr/local/bin:$PATH
-# Set to "yes" to speedup reviewed image 
-TMPCACHE=no
 # Set to "no" if this script work and your don't need success messages  
 VERBOSE=yes
 # Set to "yes" if this script don't work, only usable if your self execute the script from shell
@@ -47,7 +45,7 @@ fi
   ASPECT_RATIO="${ASPECT_RATIO:-"4:3"}"
   
   # check requirement external programs
-  REQUIREMENTS="anytopnm pnmscalefixed pnmfile pnmcut pnmflip"
+  REQUIREMENTS="identify convert"
   for i in $REQUIREMENTS
   do 
     type "$i" > /dev/null 2>&1
@@ -66,41 +64,34 @@ fi
   OUTDIR=$(dirname "$OUTFILE")
   [ ! -d "$OUTDIR" ] && mkdir -p "$OUTDIR"
   
-  TMPFILE="$OUTFILE.tmp"
   PARFILE="$OUTFILE.par"
   
   # remove precreated files if called with flip "left","right" or "original"
   [ -s "$OUTFILE" -a "$FLIPCMD" != "" ] &&  rm -f "$OUTFILE"
-  [ -s "$TMPFILE" -a "$FLIPCMD" != "" ] &&  rm -f "$TMPFILE"
 
   if [ -s "$OUTFILE" ] ; then
     [ "z$VERBOSE" = "zyes" ] && echo "Success! Convert not required, $OUTFILE exists already!" 
     exit 0
   else
 
-    # Convert Image to PNM File
-    [  ! -s "$TMPFILE" ]  && anytopnm "$INFILE" > "$TMPFILE"  
-    # if success    
-    if [ -s "$TMPFILE" ] ; then
-    
       # Get image resolution
-      RES=`echo $( pnmfile < "$TMPFILE" -)` # checked with netpbm 10.0,
-      # Parse pnmfile output "-: PPM raw, 768 by 576  maxval 255" => 768 x 576
-      X_RES=$(echo -e "$RES"| cut -d " " -f 4)
-      Y_RES=$(echo -e "$RES"| cut -d " " -f 6)
+      RES=`echo $( identify "$INFILE" | cut -d " " -f 3 )` # checked with imagemagick 6.0.6,
+      # Parse identify output image.jpg JPEG 3456x2304 DirectClass 4.7mb 3.720u 0:04
+      X_RES=$(echo -e "$RES"| cut -d "x" -f 1)
+      Y_RES=$(echo -e "$RES"| cut -d "x" -f 2)
       
       # set flip command
       case "$FLIPCMD" in
         right )
-        FLIP="pnmflip -rotate270"
+        FLIP="-rotate 270"
         SWAPRES=$X_RES;X_RES=$Y_RES;Y_RES=$SWAPRES
         ;;
         left )
-        FLIP="pnmflip -rotate90";
+        FLIP="-rotate 90";
         SWAPRES=$X_RES;X_RES=$Y_RES;Y_RES=$SWAPRES
         ;; 
         *)
-        FLIP="cat";
+        FLIP="";
         ;;
       esac
       # Save config for plugin as readable file 
@@ -121,9 +112,20 @@ fi
         ZOOM_X=$(($X_RES*$ZOOMFACTOR))
         ZOOM_Y=$(($Y_RES*$ZOOMFACTOR))
         
-        $FLIP < "$TMPFILE" | pnmscalefixed -xysize $ZOOM_X $ZOOM_Y | \
-          pnmcut -pad -left $LEFTPOS -top $TOPPOS -width $OUT_DISPLAY_X -height $OUT_DISPLAY_Y \
-          > "$OUTFILE"
+        if [ "$LEFTPOS" -ge 0 ] ; then
+                LEFTPOS=$(echo -e "+$(($LEFTPOS))")
+        fi
+        if [ "$TOPPOS" -ge 0 ] ; then
+                TOPPOS=$(echo -e "+$(($TOPPOS))")
+        fi
+
+        convert "$INFILE" \
+                -size $(($ZOOM_X))x$(($ZOOM_Y)) \
+                -crop $(($OUT_DISPLAY_X/$ZOOMFACTOR))x$(($OUT_DISPLAY_Y/$ZOOMFACTOR))$LEFTPOS$TOPPOS \
+                $FLIP \
+                -filter "Box" \
+                -resize $(($OUT_DISPLAY_X))x$(($OUT_DISPLAY_Y)) \
+                "$OUTFILE"
           
       # else scale image to TV Screensize
       else
@@ -134,15 +136,13 @@ fi
           OUT_DISPLAY_Y=$((${OUT_DISPLAY_X}000 / $X_RES * $Y_RES / 1000))
         fi
       
-         $FLIP < "$TMPFILE" | \
-          pnmscalefixed -xysize $OUT_DISPLAY_X $OUT_DISPLAY_Y \
-          > "$OUTFILE"
-
+         convert -size $(($OUT_DISPLAY_X))x$(($OUT_DISPLAY_Y)) "$INFILE" \
+                  $FLIP \
+                 -filter "Box" \
+                 -resize $(($OUT_DISPLAY_X))x$(($OUT_DISPLAY_Y)) \
+                  "$OUTFILE"
       fi
-      # if'nt tmpfile use for next view, remove tmp file
-      [ "z$TMPCACHE" = "zno" ] && rm -f "$TMPFILE"
     fi
-  fi
 
   if [ -s "$OUTFILE" ] ; then 
     [ "z$VERBOSE" = "zyes" ] && echo "Success! Stopped with created $OUTFILE"
