@@ -105,7 +105,7 @@ dist: clean
 	@find $(TMPDIR)/$(ARCHIVE) -name "*.sh" -exec chmod 755 {} \;
 	@find $(TMPDIR)/$(ARCHIVE) -type d -exec chmod 755 {} \;
 	@chown root.root -R $(TMPDIR)/$(ARCHIVE)/*
-	@tar czf $(PACKAGE).tar.gz -C $(TMPDIR) $(ARCHIVE)
+	@tar czf $(PACKAGE).tar.gz --exclude=.svn -C $(TMPDIR) $(ARCHIVE)
 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
 	@echo Distribution package created as $(PACKAGE).tar.gz
 
