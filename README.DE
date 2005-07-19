@@ -1,0 +1,152 @@
+This is a "plugin" for the Video Disk Recorder (VDR).
+
+Originaly written by:           Kai Tobias Burwieck <kai-at-burwieck.net>
+                                "Interpohl" <vdr-portal.de>
+                                Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz>
+                                Andreas Brachold <vdr04-at-deltab.de>
+
+Former project's homepage:      http://www.burwieck.net/vdr (dead?)
+                                http://vdr-image.kreuzinger.biz>
+
+Maintainer:                     Andreas Brachold <vdr04-at-deltab.de>
+
+Project homepage:               http://deltab.de/vdr/image.html
+
+
+Einige Dateien stammen vom mp3/MPlayer Plugin, der danke geht an Stefan Hülswitt
+
+
+
+Benötigt:
+-----------
+- Full-Featured DVB Karte 
+- vdr 1.2.6+ 
+- das Plugin ist abhängig vom Paket libavcodec1-dev zu übersetzen, (getestet mit ffmpeg-0.4.8)
+- und Paket netpbm sowie libavcodec1* zur Ausführung 
+- netpbm 10.0+ (prüfe ob das Tool "anytopnm" existiert)
+- nicht notwendig, aber sinnvoll utils/file (file) für bessere Bildtyperkennung, mit anytopnm
+
+*) es wird libavcodec.so nachgeladen, aber auch statisches Linken ist mit möglich mit Kompilierung per #> make plugin FFMPEG_STATIC=1
+
+WICHTIG, 
+wenn Tools von Source installiert werden, unbedingt auch dafür sorgen das 
+die Programme (anytopnm pnmscale pnmfile pnmcut pnmflip) innerhalb des Such-Pfade liegen, 
+ansonsten die Variable "PATH" innerhalb der Datei imageplugin.sh anpassen.
+
+Installation:
+------------------
+Das plugin wird wie alle plugins installiert (siehe vdr Dokumentation).
+
+Das Kompilieren ist abhängig vom Paket libavcodec1-dev, libavcodec1, aber auch bekannt als ffmpeg.
+Später zum Ausführen wird nur noch libavcodec1(libavcodec.so) und "netpbm" benötigt.
+("apt-get install libavcodec1-dev libavcodec1 netpbm" in Debian)
+
+
+Im ./examples Ordner liegt eine Beispiel imagesources.conf, dies ggf.
+anpassen und in das plugins Verzeichnis des config Ordners legen.
+
+Die Syntax der Datei ist:
+<Pfad>;<Name im vdr Menu>;<0/1>;<Suchmuster für Dateien die angezeigt werden sollen>
+
+Beispiele:
+/media/cdrom;CDROM;1;*.jpg *.jpeg *.png *.tif* *.bmp
+/archive/photos/holiday;Urlaubs Bilder;0;DSC10*.jpg
+
+0/1 ist für Quellen die gemountet werden müssen (benutzt das gleiche mount.sh wie
+das mplayer/mp3 plugin).
+gefolgt mit einer Liste des Suchmuster für Dateien welche angezeigt werden sollen,
+welche dann jeweils mit Leerzeichen getrennt werden.
+
+Die Datei imageplugin.sh sollte nach /usr/bin kopiert werden, bzw. in einen anderen 
+gemeinsamen Ordner innerhalb Such-Path kopieren werden, 
+alternativ können als Kommandozeilenoption die gewählten Pfade zu dem Skript
+beim vdr Start übergeben werden.
+[z.B.: ./vdr '-Pimage -C /pfad/imageplugin.sh -m /pfad/mount.sh' ...]
+
+
+Bedienung:
+-----------------
+Nach dem Aufrufen entweder eine Datei oder einen Ordner auswählen und mit OK wählen.
+
+At all modi
+   OK          toggle OSD informations
+   Play/Pause  Starte Diaschau/ Stoppe Diaschau
+   Stop/Blue   Stoppe Plugin
+   Red         Öffne Menu mit Bildbefehle
+ 
+Während der Bildbetrachtung:
+   Back        Stoppe Plugin
+ 
+   Left        vorheriges Bild
+   Right       nächstes Bild
+   Down        Springe drei Bilder zurück
+   Up          Springe drei Bilder vorwärts
+
+   7           Springe fünf Bilder zurück
+   9           Springe fünf Bilder vorwärts
+ 
+   0           Zeige Originalbild
+   1           Rotatiere 90 Grad gegen den Uhrzeigersinn
+   3           Rotatiere 90 Grad im Uhrzeigersinn
+ 
+   4 	         Diaschau-WeiterschaltwertinSekundenverkleinern
+   6 	         Diaschau-WeiterschaltwertinSekundenerhöhen
+
+   5           "Zoomwert erhöhen" und damit Zoom-Bedienung starten
+   8           "Zoomwert verkleinern" und damit Jump-Bedienung starten
+ 
+'Zoom-Bedienung'
+   Back        Zoomwert verkleinern 
+ 
+   Left        Bildausschnitt nach Links verschieben
+   Right       Bildausschnitt nach Rechts verschieben
+   Down        Bildausschnitt nach Unten verschieben
+   Up          Bildausschnitt nach Oben verschieben
+ 
+   0           view original image
+   5           Zoomwert erhöhen
+   8           Zoomwert verkleinern
+  
+Jump-Menu (3x3 Vorschau):
+   Back        Zeige Originalbild
+  
+   Left        vorherige Bildgruppe (9 Bilder weiter in der Vorschau)
+   Right       nächste Bildgruppe (9 Bilder vorher in der Vorschau)
+  
+   0           Zeige Originalbild
+   1 ... 9     Wählt ensprechendes Bild
+
+Bildbefehle
+------------
+Die Datei imagecmds.conf kann dazu genutzt werden, um definierbare Befehle auf 
+auf das an gezeigte Bild anzuwenden. Der Syntax ist extakt der gleiche der 
+für die Datei commands.conf unter "man 5 vdr" beschrieben wurde.
+Wenn nur ein Befehl angegeben wird, wird der Datei des Bildes angehängt an den Befehlstext,
+getrennt durch ein Leerzeichen und einschlossen in Anführungszeichen (single quotes).
+
+Format> Menutext ?: Kommando %s
+?  - Bestätigung anfordern, (optional)
+%s - Platzhalter für Dateinamen (optional)
+
+Schaue für ein Beispiel nach examples/imagecmds.conf.DE .
+
+
+Diagnose des Script
+-------------------
+Wenn der Script nicht arbeitet wie er sollten, starte den Script zum Testen von der Konsole.
+
+imageplugin.sh [infile] [outfile] [WIDTH] [HEIGHT] [ZOOMFACTOR] [LEFTPOS] [TOPPOS] {FLIPCMD}
+z.B. imageplugin.sh myimage.png outfile.pnm 720 576 0 0 0 original
+
+und bitte überprüfe die erzeugten Nachrichten im Syslog in /var/log/message bzw.
+die Ausgaben auf dem Bildschirm
+
+
+wenn das nicht hilft wiederhole die Prozedur mit > export DEBUG=yes;
+
+export DEBUG=yes;imageplugin.sh myimage.png outfile.pnm 720 576 0 0 0 original
+
+und überprüfe die Ausgabe auf dem Bildschirm.
+
+*) Wenn der Script für dich arbeitet, es können die Ausgaben im Syslog reduziert werden,
+wenn Du innerhalb von imageplugin.sh die Zeile von VERBOSE=yes zu VERBOSE=no geändert wird.
