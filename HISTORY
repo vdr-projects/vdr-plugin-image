@@ -1,6 +1,17 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-07-26
+- rotate pictures now in several 90° steps
+
+2005-07-18
+- add alternative script (scripts/maverickplugin.sh) for image converting with imagemagick
+
+2005-07-17 (provided by Tobias Grimm)
+- adjust encoding parameter for new ffmpeg-releases, downwards compatible
+- remove linking with dlfcn at runtime of libavcodec.so, now are linked at compiled time
+- some code refactoring, to enhance readability 
+
 2005-01-09  Version 0.2.3
 - Bounce to vdr-1.3.18
 - Add -fPIC to CXXFLAGS (suggest by Thomas Schmidt)

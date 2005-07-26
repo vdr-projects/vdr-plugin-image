@@ -3,7 +3,8 @@
 # needs : netpbm-progs > anytopnm pnmscalefixed pnmfile pnmcut pnmflip
 #
 # History:
-# 2005-06-17 wrong lookup for pnmscale and really are pnmscalefixed used
+# 2005-07-26 add commando for rotate 180
+# 2005-07-18 wrong lookup for pnmscale and really are pnmscalefixed used
 # 2004-08-12 Initalrelease, Andreas Brachold <vdr04-at-deltab.de>
 #    base on prior work for convert.sh 
 #      by  Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz> 
@@ -39,7 +40,7 @@ if [ $# -lt 7 ] ; then
   echo "ZOOMFACTOR - Zoomfactor                    (0....10)" 1>&2
   echo "LEFTPOS    - Offset from left on Zoommode  (0......)" 1>&2
   echo "TOPPOS     - Offset from top on Zoommode   (0......)" 1>&2
-  echo "FLIPCMD    - optional should image flip    (left,right,original)" 1>&2
+  echo "FLIPCMD    - optional should image flip    (left,right,rotated,original)" 1>&2
   exit 1
 fi 
 
@@ -98,6 +99,9 @@ fi
         left )
         FLIP="pnmflip -rotate90";
         SWAPRES=$X_RES;X_RES=$Y_RES;Y_RES=$SWAPRES
+        ;; 
+        rotated )
+        FLIP="pnmflip -rotate180";
         ;; 
         *)
         FLIP="cat";

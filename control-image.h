@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold <vdr04 -at- deltab.de>
+ * (C) 2004-2005 Andreas Brachold <vdr04 -at- deltab.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -29,6 +29,8 @@
 #if VDRVERSNUM >= 10307
 #include <vdr/osdbase.h>
 #endif
+
+#define memberof(x) (sizeof(x)/sizeof(*x))
 
 class cImagePlayer;    
 class cImageMenuCommands;
@@ -91,7 +93,11 @@ class cImageControl
   /** real image pixel height*/
   int m_nRealImageHeight;
   
-  char zoom_command[20];
+  char m_szZoomRotation[32];
+  
+  static const char* szRotation [];
+  /** rotation mode */ 
+  unsigned int m_nRotation;
 
 private:  
   void ShowOSD(void);

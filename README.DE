@@ -86,11 +86,12 @@ Während der Bildbetrachtung:
    9           Springe fünf Bilder vorwärts
  
    0           Zeige Originalbild
-   1           Rotatiere 90 Grad gegen den Uhrzeigersinn
-   3           Rotatiere 90 Grad im Uhrzeigersinn
+
+   1           Drehe 90 Grad gegen den Uhrzeigersinn
+   3           Drehe 90 Grad im Uhrzeigersinn
  
-   4 	         Diaschau-WeiterschaltwertinSekundenverkleinern
-   6 	         Diaschau-WeiterschaltwertinSekundenerhöhen
+   4 	       Diaschau-WeiterschaltwertinSekundenverkleinern
+   6 	       Diaschau-WeiterschaltwertinSekundenerhöhen
 
    5           "Zoomwert erhöhen" und damit Zoom-Bedienung starten
    8           "Zoomwert verkleinern" und damit Jump-Bedienung starten

@@ -86,8 +86,8 @@ While watching pictures
    1           Rotate 90 Grad counter clockwise
    3           Rotate 90 Grad clockwise direction
  
-   4 	         slide show - decrease the time (seconds) each picture shows
-   6 	         slide show - increase the time (seconds) each picture shows
+   4 	       slide show - decrease the time (seconds) each picture shows
+   6 	       slide show - increase the time (seconds) each picture shows
    5           Zoom inside image
    8           Zoom outside image and call Jumpmenu
  

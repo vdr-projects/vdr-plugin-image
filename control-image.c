@@ -1,7 +1,7 @@
 /*
 * Image plugin to VDR (C++)
 *
-* (C) 2004 Andreas Brachold <vdr04 -at- deltab.de>
+* (C) 2004-2005 Andreas Brachold <vdr04 -at- deltab.de>
 * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
 *
 * This code is free software; you can redistribute it and/or
@@ -872,12 +872,21 @@ bool cImageControl::CheckAccess() const
   return false;
 }
 
+const char* cImageControl::szRotation [] = 
+{
+    "rotated", //0
+    "right",   //1
+    "original",//2
+    "left",    //3
+};
+
 void cImageControl::OriginalImage(bool bCached)
 {
   m_nZoomFactor = 0;
+  m_nRotation = 2;
   m_ePlayMode = ePlayModeNormal;
   if(!CheckAccess()
-    || !player->Convert(bCached?"":"original"))
+    || !player->Convert(bCached?"":szRotation[m_nRotation]))
   {
     OSD_ErrorNumMsg(errno,tr("Operation failed"));
   }
@@ -886,8 +895,11 @@ void cImageControl::OriginalImage(bool bCached)
 void cImageControl::RFlipImage(void)
 {
   m_ePlayMode = ePlayModeNormal;
+  --m_nRotation;
+  m_nRotation %= memberof(szRotation);
+  
   if(!CheckAccess()
-    || !player->Convert("right"))
+    || !player->Convert(szRotation[m_nRotation]))
   {
       OSD_ErrorNumMsg(errno,tr("Operation failed"));
   }
@@ -896,8 +908,11 @@ void cImageControl::RFlipImage(void)
 void cImageControl::LFlipImage(void)
 {
   m_ePlayMode = ePlayModeNormal;
+  ++m_nRotation;
+  m_nRotation %= memberof(szRotation);
+
   if(!CheckAccess()
-    || !player->Convert("left"))
+    || !player->Convert(szRotation[m_nRotation]))
   {
       OSD_ErrorNumMsg(errno,tr("Operation failed"));
   }
@@ -919,7 +934,7 @@ void cImageControl::PictureZoomInitial(void)
   if(!szFileName)
     return;
 
-  strcpy(zoom_command, "original");
+  strncpy(m_szZoomRotation, szRotation[m_nRotation],sizeof(m_szZoomRotation));
 
   m_nRealImageWidth = 720;
   m_nRealImageHeight = 576;
@@ -929,7 +944,7 @@ void cImageControl::PictureZoomInitial(void)
     dsyslog("imageplugin: open file %s", szFileName);
     fgets(buf, sizeof(buf) - 1, f);
     dsyslog("imageplugin: line=%s", buf);
-    sscanf(buf, "%d %d %s", &m_nRealImageWidth,&m_nRealImageHeight,zoom_command);
+    sscanf(buf, "%d %d %s", &m_nRealImageWidth,&m_nRealImageHeight,m_szZoomRotation);
     fclose(f);
   }
   else
@@ -1011,7 +1026,7 @@ void cImageControl::ConvertZoom()
 
   // execute
   if(!CheckAccess()
-    || !player->ConvertZoom(zoom_command, m_nZoomFactor, nZoomXoff, nZoomYoff))
+    || !player->ConvertZoom(m_szZoomRotation, m_nZoomFactor, nZoomXoff, nZoomYoff))
   {
     OSD_ErrorNumMsg(errno,tr("Operation failed"));
   }
