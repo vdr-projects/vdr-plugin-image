@@ -1,8 +1,11 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-07-27
+- add option for border of underscan
+
 2005-07-26
-- rotate pictures now in several 90Â° steps
+- rotate pictures now in several 90° steps
 
 2005-07-18
 - add alternative script (scripts/maverickplugin.sh) for image converting with imagemagick
@@ -18,8 +21,8 @@ VDR Plugin 'image' Revision History
 - plugin: add reload image after commands execution, if image changed
 
 2004-12-06
-- Fix missing environ variable for examples/imagecmds.conf (Reported by Thomas GÃ¼nther)
-- Fix wrong folder flags on distribute archives (Reported by Thomas GÃ¼nther)
+- Fix missing environ variable for examples/imagecmds.conf (Reported by Thomas Günther)
+- Fix wrong folder flags on distribute archives (Reported by Thomas Günther)
 
 2004-12-05
 - Use now threadsafe functions replacement of strerror

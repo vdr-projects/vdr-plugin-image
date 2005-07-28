@@ -1,8 +1,8 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold    <vdr04-at-deltab.de>
- * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -613,6 +613,40 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Français*/
     "", // TODO /*Norsk*/
     "Tyhjennä väliaikaistiedostot", /*suomi*/
+    "", // TODO /*Polski*/
+    "", // TODO /*Español*/
+    "", // TODO /*Ellinika*/
+    "", // TODO /*Svenska*/
+    "", // TODO /*Romaneste*/
+    "", // TODO /*Magyar*/
+    "", // TODO /*Català*/
+  },
+  { "Border for Underscan (Height)",	/*English*/
+    "Rand für Underscan (Höhe)",	/*Deutsch*/
+    "", // TODO /*Slovenski*/
+    "", // TODO /*Italiano*/
+    "", // TODO /*Nederlands*
+    "", // TODO /*Português*/
+    "", // TODO /*Français*/
+    "", // TODO /*Norsk*/
+    "", // TODO /*suomi*/
+    "", // TODO /*Polski*/
+    "", // TODO /*Español*/
+    "", // TODO /*Ellinika*/
+    "", // TODO /*Svenska*/
+    "", // TODO /*Romaneste*/
+    "", // TODO /*Magyar*/
+    "", // TODO /*Català*/
+  },
+  { "Border for Underscan (Width)",	/*English*/
+    "Rand für Underscan (Breite)",	/*Deutsch*/
+    "", // TODO /*Slovenski*/
+    "", // TODO /*Italiano*/
+    "", // TODO /*Nederlands*
+    "", // TODO /*Português*/
+    "", // TODO /*Français*/
+    "", // TODO /*Norsk*/
+    "", // TODO /*suomi*/
     "", // TODO /*Polski*/
     "", // TODO /*Español*/
     "", // TODO /*Ellinika*/

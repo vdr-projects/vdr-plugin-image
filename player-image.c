@@ -1,8 +1,8 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold    <vdr04-at-deltab.de>
- *     2003 Kai Tobias Burwieck <kai@burwieck.net>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -312,7 +312,7 @@ void cImagePlayer::LoadImage(cShellWrapper* pShell)
             pnmImage.freerow((char*)pRow);
           else
           {
-            if(pShell->szNumber && ImageSetup.ShowNumbers)
+            if(pShell->szNumber && ImageSetup.m_bShowNumbers)
               cXPM::Overlay(pShell->szNumber,m_StillImage.GetRGBMem(),
                   m_StillImage.GetWidth(),m_StillImage.GetHeight(),
                   cXPM::TopRight,nOffLeft,nOffTop,pnmImage.GetWidth(),pnmImage.GetHeight());

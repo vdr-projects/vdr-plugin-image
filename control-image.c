@@ -99,7 +99,7 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
   m_eOSDStatusVisable = Setup.ShowReplayMode?eDisplayModeOnly:eDisplayNothing;
   
   m_ePlayMode = ePlayModeNormal;
-  m_bSlideShowActiv = ImageSetup.SlideShow;
+  m_bSlideShowActiv = ImageSetup.m_bSlideShow;
   m_bSlideShowBefore = false;
   
   // Support for Zoom
@@ -443,13 +443,13 @@ void cImageControl::ShowProgress(void)
           {
               int t = time(NULL) - m_tStarted + 1;
               snprintf(szSlideShowInfo, sizeof(szSlideShowInfo), " | %d/%d",
-                   t, ImageSetup.SSsec);
+                   t, ImageSetup.m_nSSsec);
           }
           snprintf(sz,nMaxCharacter, "(%3d/%3d)%s",
                ImageCurrent(), ImageTotal(), szSlideShowInfo);
           Interface->Write(0, 2, sz);
 	  
-          if(ImageSetup.ShowDate && !IsConvertRunning())
+          if(ImageSetup.m_bShowDate && !IsConvertRunning())
           {
               struct stat stFile;
               if(0 != stat(szFileName, &stFile)) {
@@ -1123,7 +1123,7 @@ void cImageControl::SlideImage()
 {
   if(m_bSlideShowActiv && !IsConvertRunning())
   {
-    if(ImageSetup.SSsec <= 
+    if(ImageSetup.m_nSSsec <= 
         (time(NULL) - m_tStarted))
     {
       NextImage(1);
@@ -1139,14 +1139,14 @@ void cImageControl::Stop(void)
 
 void cImageControl::IncSlideTime(void)
 {
-  if(ImageSetup.SSsec < cImageSetup::m_cSSMax) {
-	    ImageSetup.SSsec++;
+  if(ImageSetup.m_nSSsec < cImageSetup::m_cSSMax) {
+	    ImageSetup.m_nSSsec++;
 	}
 }
 
 void cImageControl::DecSlideTime(void)
 {
-  if(ImageSetup.SSsec > cImageSetup::m_cSSMin) {
-	    ImageSetup.SSsec--;
+  if(ImageSetup.m_nSSsec > cImageSetup::m_cSSMin) {
+	    ImageSetup.m_nSSsec--;
 	}
 }

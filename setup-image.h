@@ -1,7 +1,8 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,26 +27,49 @@ extern const char *g_szConvertScript;
 
 #include <vdr/menuitems.h>
 
+#ifndef MAX_PATH
+#define MAX_PATH 4096
+#endif
+
 class cImageSetup 
 {
 public:
-  int SlideShow;
-  int SSsec;
-  char TempDir[260];
+  /* It Slideshow activ */
+  int m_bSlideShow;
+  /* If Slideshow activ, how many seconds between slides */
+  int m_nSSsec;
+  /* Where stored temp. files */
+  char m_szTempDir[MAX_PATH];
 #if VDRVERSNUM < 10307
-  int ShowDate;
+  /* Should show file date on OSD */
+  int m_bShowDate;
 #endif
-  int AutoRepeat;
-  int ShowNumbers;
+  /* Should slideshow automated repeat */
+  int m_bAutoRepeat;
+  /* Should show overlay numbers on indexdump */
+  int m_bShowNumbers;
 #if VDRVERSNUM >= 10308
+  /* Don't mute audio, on show images */
   int m_bLiveAudio;
 #endif 
+  /* Activate own house keeping system for temp. files, avoid pregenerated images */
   int m_bHousekeeping;
 
   /** Minimum Value for Slideshow */
   static const int m_cSSMin;
   /** Maximum Value for Slideshow */
   static const int m_cSSMax;
+
+  /** Range for BorderHeight */
+  static const int m_cnMinBorderHeight;
+  static const int m_cnMaxBorderHeight;
+  int m_nBorderHeight;
+
+  /** Range for BorderWidth */
+  static const int m_cnMinBorderWidth;
+  static const int m_cnMaxBorderWidth;
+  int m_nBorderWidth;
+
 
 public:
   cImageSetup(void);

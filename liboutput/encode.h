@@ -26,7 +26,7 @@
 #define _ENCODE_H
 
 #include <ffmpeg/avcodec.h>
-
+#include "../setup-image.h"
 //#define TESTCODE
 
 class cEncode
@@ -66,8 +66,8 @@ public:
 
     inline unsigned int GetHeight() const       { return m_nHeight; } 
     inline unsigned int GetWidth() const        { return m_nWidth;  } 
-    inline unsigned int GetBorderHeight() const { return 16; } 
-    inline unsigned int GetBorderWidth() const  { return 16; } 
+    inline unsigned int GetBorderHeight() const { return ImageSetup.m_nBorderHeight; } 
+    inline unsigned int GetBorderWidth() const  { return ImageSetup.m_nBorderWidth; } 
 
     inline uint8_t *GetRGBMem() { return m_pImageRGB; }
     void  ClearRGBMem ();

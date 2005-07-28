@@ -1,7 +1,8 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
+ * (C) 2004-2005 Andreas Brachold <vdr04 -at- deltab.de>
+ * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -57,7 +58,7 @@ const char *cImage::NameIndex()
     if(ImageSetup.m_bHousekeeping)
     { 
       char sz[PATH_MAX];
-      strncpy(sz,ImageSetup.TempDir,sizeof(sz));
+      strncpy(sz,ImageSetup.m_szTempDir,sizeof(sz));
       strncat(sz,"/IXXXXXX",sizeof(sz));
       mktemp(sz);
       strncat(sz,".pnm",sizeof(sz));
@@ -66,7 +67,7 @@ const char *cImage::NameIndex()
     else
     {  
       asprintf(&m_szFileNameIndex, "%s%sI%s.pnm", 
-        ImageSetup.TempDir,
+        ImageSetup.m_szTempDir,
         *m_szFileName == '/'?"":"/",
         m_szFileName);    
     }
@@ -81,7 +82,7 @@ const char *cImage::NamePNM()
     if(ImageSetup.m_bHousekeeping)
     {  
       char sz[PATH_MAX];
-      strncpy(sz,ImageSetup.TempDir,sizeof(sz));
+      strncpy(sz,ImageSetup.m_szTempDir,sizeof(sz));
       strncat(sz,"/VXXXXXX",sizeof(sz));
       mktemp(sz);
       strncat(sz,".pnm",sizeof(sz));
@@ -90,7 +91,7 @@ const char *cImage::NamePNM()
     else
     {  
       asprintf(&m_szFileNamePNM, "%s%s%s.pnm", 
-        ImageSetup.TempDir,
+        ImageSetup.m_szTempDir,
         *m_szFileName == '/'?"":"/",
         m_szFileName);    
     }
@@ -105,7 +106,7 @@ const char *cImage::NameZoom()
     if(ImageSetup.m_bHousekeeping)
     {  
       char sz[PATH_MAX];
-      strncpy(sz,ImageSetup.TempDir,sizeof(sz));
+      strncpy(sz,ImageSetup.m_szTempDir,sizeof(sz));
       strncat(sz,"/ZXXXXXX",sizeof(sz));
       mktemp(sz);
       strncat(sz,".pnm",sizeof(sz));
@@ -114,7 +115,7 @@ const char *cImage::NameZoom()
     else
     {  
       asprintf(&m_szFileNameZoom, "%s%sZ%s.pnm", 
-        ImageSetup.TempDir,
+        ImageSetup.m_szTempDir,
         *m_szFileName == '/'?"":"/",
         m_szFileName);    
     }

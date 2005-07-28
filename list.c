@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004     A. Brachold   <vdr04-at-deltab.de>
+ * (C) 2004-2005     A. Brachold   <vdr04-at-deltab.de>
  *  
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -129,7 +129,7 @@ bool cActivSlideShow::NextImage(int nOffset)
     }
     return m_pCurImage != NULL;
   } 
-  else if(ImageSetup.AutoRepeat) {
+  else if(ImageSetup.m_bAutoRepeat) {
     cImage *pNewActiv;
     
     pNewActiv = m_pCurSlideShow->cList < cImage >::First();
@@ -155,7 +155,7 @@ bool cActivSlideShow::PrevImage(int nOffset)
     }
     return m_pCurImage != NULL;
   }
-  else if(ImageSetup.AutoRepeat) {
+  else if(ImageSetup.m_bAutoRepeat) {
     cImage *pNewActiv;
 
     pNewActiv = m_pCurSlideShow->cList < cImage >::Last();

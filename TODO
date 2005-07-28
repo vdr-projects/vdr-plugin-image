@@ -5,3 +5,5 @@ Exif automated rotation
 
 Change BLUE/EXIT > Stop to BLUE > Stop / EXIT > reshow Browser
 reload Image after commands execution, if image changed
+
+Add dejitter / horizontal 1px blur
