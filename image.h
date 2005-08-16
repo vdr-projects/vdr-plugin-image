@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,34 +23,25 @@
 #define ___IMAGE_H
 
 #include <vdr/config.h>
-#if VDRVERSNUM < 10307
-#include <vdr/osd.h>
-#else
 #include <vdr/osdbase.h>
 #include <vdr/skins.h>
-#endif
 #include <string.h>
+
+#if VDRVERSNUM < 10328
+    #error "For compiled are at the least VDR 1.3.28 required"
+#endif
+
 
 inline void OSD_InfoMsg(const char* sz) 
 {	
-#if VDRVERSNUM < 10307
-  Interface->Info(sz); 
-  Interface->Flush(); 
-#else
   Skins.Message(mtInfo,sz);
   Skins.Flush();
-#endif
 }
 
 inline void OSD_ErrorMsg(const char* sz) 
 {	
-#if VDRVERSNUM < 10307
-	Interface->Error(sz); 
-	Interface->Flush(); 
-#else
   Skins.Message(mtError,sz);
   Skins.Flush();
-#endif
 }
 
 inline void OSD_ErrorNumMsg(int err, const char* szDef) 

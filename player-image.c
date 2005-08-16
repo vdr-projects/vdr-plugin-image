@@ -50,11 +50,7 @@ const char *g_szConvertScript = "imageplugin.sh";
 
 cImagePlayer::cImagePlayer(cSlideShow *pCurSlideShow)
 : cStillImagePlayer(
-#if VDRVERSNUM >= 10308
- (ImageSetup.m_bLiveAudio != 0)?pmVideoOnly:
-#endif
- pmAudioVideo
- )
+ (ImageSetup.m_bLiveAudio != 0)?pmVideoOnly:pmAudioVideo)
 , m_bConvertRunning(false)
 , m_szError(NULL)
 {

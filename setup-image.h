@@ -40,18 +40,12 @@ public:
   int m_nSSsec;
   /* Where stored temp. files */
   char m_szTempDir[MAX_PATH];
-#if VDRVERSNUM < 10307
-  /* Should show file date on OSD */
-  int m_bShowDate;
-#endif
   /* Should slideshow automated repeat */
   int m_bAutoRepeat;
   /* Should show overlay numbers on indexdump */
   int m_bShowNumbers;
-#if VDRVERSNUM >= 10308
   /* Don't mute audio, on show images */
   int m_bLiveAudio;
-#endif 
   /* Activate own house keeping system for temp. files, avoid pregenerated images */
   int m_bHousekeeping;
 

@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -115,16 +115,12 @@ cImageMenuResult::cImageMenuResult(const char *szTitle, const char *szText, eDvb
 : cOsdMenu(szTitle)
 , m_szText(szText)
 {
-#if VDRVERSNUM < 10307
-  Add(new cMenuTextItem(szText, 1, 2, Setup.OSDwidth - 2, MAXOSDITEMS, clrWhite, clrBackground, Font));
-#endif
   SetHelp(NULL, NULL, NULL, tr("Back"));
 }
 
 
 eOSState cImageMenuResult::ProcessKey(eKeys nKey)
 {
-#if VDRVERSNUM >= 10307
   switch (nKey) {
     case kUp|k_Repeat:
     case kUp:
@@ -138,7 +134,6 @@ eOSState cImageMenuResult::ProcessKey(eKeys nKey)
                   return osContinue;
     default: break;
     }
-#endif
 
   eOSState nState = cOsdMenu::ProcessKey(nKey);
   if (nState == osUnknown) {
@@ -154,10 +149,8 @@ eOSState cImageMenuResult::ProcessKey(eKeys nKey)
   return nState;
 }
 
-#if VDRVERSNUM >= 10307
 void cImageMenuResult::Display(void)
 {
   cOsdMenu::Display();
   DisplayMenu()->SetText(m_szText, true);
 }
-#endif

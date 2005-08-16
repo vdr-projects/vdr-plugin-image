@@ -32,7 +32,6 @@
 class cStillImagePlayer
   : public cPlayer {
   friend class cStillImage;
-  bool m_bActive;
 protected:  
   cStillImage m_StillImage;
 public:

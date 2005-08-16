@@ -35,7 +35,6 @@ class cStillImage
 , public cEncode {
 
   cStillImagePlayer *player;
-  volatile bool m_bThreadRun;
   volatile bool m_bEncodeRequired;
 protected:
   virtual void Action(void);
@@ -45,7 +44,6 @@ public:
   cStillImage(cStillImagePlayer *);
   virtual ~cStillImage();
   
-  bool Init();
   void Stop();
   bool EncodeRequired() const {return m_bEncodeRequired;}
   void EncodeRequired(bool b) {m_bEncodeRequired = b;}

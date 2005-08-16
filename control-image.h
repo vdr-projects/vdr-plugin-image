@@ -26,9 +26,7 @@
 #define ___DVB_IMAGE_CONTROL_H
 
 #include <vdr/player.h>
-#if VDRVERSNUM >= 10307
 #include <vdr/osdbase.h>
-#endif
 
 #define memberof(x) (sizeof(x)/sizeof(*x))
 
@@ -65,12 +63,10 @@ class cImageControl
   time_t                  m_tStarted;
   /** Last Message for Statusmonitor */
   static char*            m_szLastShowStatusMsg;
-#if VDRVERSNUM >= 10307
   /** Display replayprogress*/
   cSkinDisplayReplay *m_pDisplayReplay;
   /** Faked Marks for Images*/
   cMarks m_Marks;
-#endif
 
   /** zoom factor on zoom mode */ 
   int                     m_nZoomFactor;
@@ -103,9 +99,6 @@ private:
   void ShowOSD(void);
   void HideOSD(void);
   void ShowMode(void);
-#if VDRVERSNUM < 10307
-  void DisplayAtBottom(const char *s);
-#endif
   void ShowProgress(void);
   /** Send Message if changed to any statusmonitor */
   void ShowStatusMsg();

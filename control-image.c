@@ -35,35 +35,6 @@
 #include <vdr/plugin.h>
 
 
-#if VDRVERSNUM < 10307
-// --- cProgressBar ------------------------------------------------------------
-class cProgressBar:public cBitmap {
-  public:
-    cProgressBar(int nWidth, int nHeight, int nProgressBegin, int nProgressEnd, int nProgressRange)
-		:cBitmap(nWidth, nHeight,2)
-		{
-		  if(nProgressRange > 0)
-		  {
-			if(nProgressBegin>0)
-			{
-			  int b = nProgressBegin * width / nProgressRange;
-			  int p = nProgressEnd * width / nProgressRange;
-			  Fill(0, 0, b, nHeight - 1, clrWhite);
-			  Fill(b + 1, 0, p, nHeight - 1, clrGreen);
-			  Fill(p + 1, 0, nHeight - 1, nHeight - 1, clrWhite);
-			}
-			else
-			{
-			  int p = nProgressEnd * width / nProgressRange;
-			  Fill(0, 0, p, nHeight - 1, clrGreen);
-			  Fill(p + 1, 0, nWidth - 1, nHeight - 1, clrWhite);
-			}
-		  }
-		}
-};
-#endif
-
-
 // --- cImageControl ---------------------------------------------------------
 
 char* cImageControl::m_szLastShowStatusMsg = 0;
@@ -85,9 +56,7 @@ void cImageControl::SetSlideShow(cSlideShow * pNewSlideShow)
 cImageControl::cImageControl(cSlideShow * pNewSlideShow)
  : cControl(player = new cImagePlayer(pNewSlideShow))
  , m_pImageMenu(NULL)
-#if VDRVERSNUM >= 10307
  , m_pDisplayReplay(NULL)
-#endif
 {
   // Notity all cStatusMonitor
   cStatus::MsgReplaying(this, "[image]");
@@ -121,12 +90,10 @@ cImageControl::~cImageControl()
   cStatus::MsgReplaying(this, NULL);
   // Hide OSD
   HideOSD();
-#if VDRVERSNUM >= 10307
   if(m_pDisplayReplay) {
     delete m_pDisplayReplay;
     m_pDisplayReplay = NULL;
   }
-#endif
   // Stop Playback
   Stop();
   if(player)
@@ -165,14 +132,10 @@ void cImageControl::ShowOSD()
 void cImageControl::HideOSD(void)
 {
   if(eDisplayNothing != m_eOSDStatusIsOpen) {
-#if VDRVERSNUM < 10307
-    Interface->Close();
-#else
     if(m_pDisplayReplay) {
 		delete m_pDisplayReplay;
 		m_pDisplayReplay = NULL;
     }
-#endif
     m_eOSDStatusIsOpen = eDisplayNothing;
   }
 
@@ -219,21 +182,11 @@ void cImageControl::ShowMode(void)
 {
   if(eDisplayModeOnly != m_eOSDStatusIsOpen)
   {
-#if VDRVERSNUM < 10307
-    Interface->Open(0, -1);
-#else
 	m_pDisplayReplay = Skins.Current()->DisplayReplay(m_eOSDStatusVisable==eDisplayModeOnly);  
-#endif
     m_eOSDStatusIsOpen = eDisplayModeOnly;
   }
 
-#if VDRVERSNUM < 10307
-  bool bFixFont = false;
-  int nMaxCharacter = Interface->Width();	//Get OSD-Display width 
-#else
   int nMaxCharacter = m_pDisplayReplay->EditableWidth();	//FIXME Get OSD-Display width 
-#endif
-
   char *sz = MALLOC(char, nMaxCharacter + 1);
   
   if(IsConvertRunning())  // Display that convert is running
@@ -248,19 +201,12 @@ void cImageControl::ShowMode(void)
     default:
       case ePlayModeNormal:
       {
-#if VDRVERSNUM < 10307
-      if(m_bSlideShowActiv)
-        {	strn0cpy(sz, " > ", nMaxCharacter);	 bFixFont = true;   } 
-      else
-        {	strn0cpy(sz, " || ", nMaxCharacter); bFixFont = true;   }
-#else	
 		// Get the current activ filename
 		const char* szFileName = FileName();
 		if(!szFileName)
 			return;
 		snprintf(sz, nMaxCharacter, "%s", szFileName);	
-#endif	
-      break;
+        break;
       }
       // Display jumpmode playstatus
       case ePlayModeJump:
@@ -276,38 +222,11 @@ void cImageControl::ShowMode(void)
     }
   }
   
-#if VDRVERSNUM < 10307
-  if(bFixFont) {
-    eDvbFont OldFont;
-    OldFont = Interface->SetFont(fontFix);
-    DisplayAtBottom(sz);
-    Interface->SetFont(OldFont);
-  }
-  else {
-    DisplayAtBottom(sz);
-  }
-#else
   m_pDisplayReplay->SetMode(m_ePlayMode == ePlayModeNormal && m_bSlideShowActiv, true, 1);
   if(m_eOSDStatusVisable!=eDisplayModeOnly)  
 	  m_pDisplayReplay->SetTitle(sz);
-#endif
   free(sz);
 }
-
-#if VDRVERSNUM < 10307
-void cImageControl::DisplayAtBottom(const char *s)
-{
-  const int p = (eDisplayModeOnly == m_eOSDStatusVisable) ? 0 : 2;// ???? Unused
-  if(s) {
-    const int d = std::max(Width() - cOsd::WidthInCells(s), 0) / 2;
-    if(eDisplayModeOnly == m_eOSDStatusVisable)
-      Interface->Fill(0, p, Interface->Width(), 1, clrTransparent);
-    Interface->Write(d, p, s);
-  } 
-  else
-    Interface->Fill(12, p, Width() - 22, 1, clrBackground);
-}
-#endif
 
 void cImageControl::ShowProgress(void)
 {
@@ -318,21 +237,12 @@ void cImageControl::ShowProgress(void)
 
   if(eDisplayProgress != m_eOSDStatusIsOpen) {
     HideOSD();
-#if VDRVERSNUM < 10307
-    Interface->Open(Setup.OSDwidth, -3);
-#else
     m_pDisplayReplay = Skins.Current()->DisplayReplay(m_eOSDStatusVisable==eDisplayModeOnly);
     m_pDisplayReplay->SetMarks(&m_Marks);
-#endif  
     m_eOSDStatusIsOpen = eDisplayProgress;
   }
 
-#if VDRVERSNUM < 10307
-  Interface->Clear();
-  int nMaxCharacter = Interface->Width();	//Get OSD-Display width 
-#else
   int nMaxCharacter = m_pDisplayReplay->EditableWidth();	//FIXME Get OSD-Display width 
-#endif
   //********************************************************************
   // build first Line
   char *sz = MALLOC(char, nMaxCharacter + 1);
@@ -343,17 +253,6 @@ void cImageControl::ShowProgress(void)
   } 
   else
   {
-#if VDRVERSNUM < 10307
-    int n = strlen(szFileName);
-    if(n > nMaxCharacter) {  //Clip long filenames
-        n = n - Width() + 4;
-        if(n < 0)   n = 0;
-        snprintf(sz, nMaxCharacter, "... %s", szFileName + n);
-    } 
-    else {
-        snprintf(sz, nMaxCharacter, "%s", szFileName);
-    }  
-#else
     switch(m_ePlayMode) {
       case ePlayModeJump:
         snprintf(sz, nMaxCharacter, "%s",
@@ -369,34 +268,12 @@ void cImageControl::ShowProgress(void)
         snprintf(sz, nMaxCharacter, "%s", szFileName);
         break;
     }
-#endif
   }
 
-#if VDRVERSNUM < 10307
-    Interface->Write(0, 0, sz);
-#else
     m_pDisplayReplay->SetTitle(sz);
-#endif
 
   //********************************************************************
   // show on second line the progressbar
-#if VDRVERSNUM < 10307
-  {
-      int nProgressBegin = 0;
-      int nProgressEnd = ImageCurrent();
-      int nProgressRange = ImageTotal();
-      
-      if(ePlayModeJump == m_ePlayMode) // Show on Jump mode only the selected Range
-      {
-          nProgressBegin = std::max(0, nProgressEnd - 1);
-          nProgressEnd = std::min(nProgressBegin + 9,nProgressRange);
-      }
-      
-      cProgressBar ProgressBar(Width() * cOsd::CellWidth(),
-                   cOsd::LineHeight(), nProgressBegin, nProgressEnd, nProgressRange);
-      Interface->SetBitmap(0, cOsd::LineHeight(), ProgressBar);
-  }
-#else
   m_pDisplayReplay->SetProgress(ImageCurrent(), ImageTotal());
   
   snprintf(sz, nMaxCharacter, "%3d", ImageCurrent());
@@ -406,96 +283,8 @@ void cImageControl::ShowProgress(void)
       std::min(ImageCurrent()+9,ImageTotal())
       :ImageTotal());
   m_pDisplayReplay->SetTotal(sz);
-  // Remember to me : SetTotal/SetCurrent need clean Screen if changed stringformat
-#endif
 
-#if VDRVERSNUM < 10307
-  //********************************************************************
-  // show on third line a more information
-  switch(m_ePlayMode)
-  {
-      case ePlayModeJump:
-      {
-          snprintf(sz, nMaxCharacter, "%s",
-               tr("Select picture via key 1..9!"));
-          // center the Message
-  	      const int d = std::max(Width() - cOsd::WidthInCells(sz),0) / 2;
-          Interface->Write(d, 2,sz);
-          break;
-      }
-      case ePlayModeZoom:
-      {
-          snprintf(sz, nMaxCharacter, "%s: %dx (%dx%d)",tr("Zoom"),
-                      m_nZoomFactor,
-                      m_nRealImageWidth * m_nZoomFactor, 
-                      m_nRealImageHeight * m_nZoomFactor);
-          // center the Message
-   	      const int d = std::max(Width() - cOsd::WidthInCells(sz),0) / 2;
-          Interface->Write(d, 2,sz);
-      	  break;
-      }
-      case ePlayModeNormal:
-      {
-          char szSlideShowInfo[32];
-          szSlideShowInfo[0] = '\0';
-          
-          if(m_bSlideShowActiv && !IsConvertRunning())
-          {
-              int t = time(NULL) - m_tStarted + 1;
-              snprintf(szSlideShowInfo, sizeof(szSlideShowInfo), " | %d/%d",
-                   t, ImageSetup.m_nSSsec);
-          }
-          snprintf(sz,nMaxCharacter, "(%3d/%3d)%s",
-               ImageCurrent(), ImageTotal(), szSlideShowInfo);
-          Interface->Write(0, 2, sz);
-	  
-          if(ImageSetup.m_bShowDate && !IsConvertRunning())
-          {
-              struct stat stFile;
-              if(0 != stat(szFileName, &stFile)) {
-                char szErr[128];
-                int nErr = errno;
-                szErr[sizeof(szErr)-1] = '\0';
-                if(0 != strerror_r(nErr,szErr,sizeof(szErr)-1)) {
-                    szErr[0] = '\0';
-                } 
-                esyslog("imageplugin: can't get filestate %s (%d)%s.\n",szFileName,nErr,szErr);
-              }
-              else
-              {
-                  struct tm *timestr;
-                  if((timestr = localtime(&(stFile.st_mtime))))
-                  {
-                      snprintf(sz,nMaxCharacter,
-                           "(%2.2d.%2.2d.%2.2d-%2.2d:%2.2d)",
-                           (int)timestr->tm_mday,
-                           (int)timestr->tm_mon +  1,
-                           (int)timestr->tm_year % 100,
-                           (int)timestr->tm_hour,
-                           (int)timestr->tm_min);
-                      
-                      Interface->Write(nMaxCharacter - strlen(sz), 2, sz);
-                  }
-                  else {
-                    char szErr[128];
-                    int nErr = errno;
-                    szErr[sizeof(szErr)-1] = '\0';
-                    if(0 != strerror_r(nErr,szErr,sizeof(szErr)-1)) {
-                        szErr[0] = '\0';
-                    } 
-                    esyslog("imageplugin: can't get mtime from %s (%d)%s.\n",szFileName,nErr,szErr);
-                  }
-              }
-          }
-      }
-  }
-#endif				  
-
-#if VDRVERSNUM < 10307
-  Interface->Flush();
-#else
   m_pDisplayReplay->Flush();
-#endif				  
   free(sz);
 }
 

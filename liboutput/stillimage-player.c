@@ -1,6 +1,6 @@
 /***************************************************************************
  * stillimage-player.c
- * (C) Copyright  2004 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) Copyright  2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
  *  Created: Thu Aug  5 2004
  * 
  ****************************************************************************/
@@ -26,7 +26,6 @@
 
 cStillImagePlayer::cStillImagePlayer(ePlayMode PlayMode)
  : cPlayer(PlayMode)
- , m_bActive(false)
  , m_StillImage(this) 
 {
 }
@@ -36,23 +35,16 @@ cStillImagePlayer::~cStillImagePlayer()
    Detach();
 }
 
-void cStillImagePlayer::Activate(bool On) {
-   if (On) {
-      m_bActive=m_StillImage.Init();
+void cStillImagePlayer::Activate(bool bOn) {
+   if (bOn) {
+      m_StillImage.Start();
    } else {
-      if (m_bActive) {
-         m_StillImage.Stop();
-         m_bActive=false;
-      }
+      m_StillImage.Stop();
    }
 }
 
 void cStillImagePlayer::Play(const uchar *Data, int Length) {
-#if VDRVERSNUM < 10318
-   PlayVideo(Data, Length);
-#else
    PlayPes(Data, Length,true);
-#endif
 }
 
 bool cStillImagePlayer::Wait() {

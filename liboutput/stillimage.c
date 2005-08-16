@@ -34,7 +34,6 @@
 
 cStillImage::cStillImage(cStillImagePlayer *pl) 
 {
-   m_bThreadRun=false;
    m_bEncodeRequired = false;
    player=pl;
 }
@@ -44,30 +43,20 @@ cStillImage::~cStillImage()
 
 }
 
-bool cStillImage::Init()
-{
-   return Start();
-}
-
 void cStillImage::Stop()
 {
-   if (!m_bThreadRun)
-      return; 
-   m_bThreadRun=false;
-   
    Cancel(3);
 }
 
 void cStillImage::Action(void) 
 {
-  m_bThreadRun=true;
   bool bMPEGValid = false;
   bool bQueueEmpty = false;
   bool bFreeze = true;
   
   unsigned int nFrame = 0,nFrameOff=0;
   int nMircoSekWait;
-  while (m_bThreadRun) {      
+  while (Running()) {      
       
       nMircoSekWait = 10000;
       bQueueEmpty = player->Worker(false);
@@ -89,7 +78,7 @@ void cStillImage::Action(void)
         bMPEGValid = Encode();
         Unlock();
       
-        if (!m_bThreadRun)
+        if (!Running())
            break;
         m_bEncodeRequired = false;
         nFrame = 0;
@@ -145,13 +134,12 @@ void cStillImage::Action(void)
       
         nMircoSekWait = (1000000/(GetFrameRate()*4)); // Wait duration off 1/4 frame
         
-        if (!m_bThreadRun)
+        if (!Running())
            break;
       }
       //Reduce CPU load!!!
       usleep(max(10000,nMircoSekWait));
    }
-   m_bThreadRun=false;
 }
 
 

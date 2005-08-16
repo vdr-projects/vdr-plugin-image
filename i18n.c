@@ -483,7 +483,6 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
   },
-#if VDRVERSNUM >= 10308
   { "Live Audio from primary Device",
     "Live Audio vom primären Gerät",
     "", // TODO
@@ -501,7 +500,6 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
   },
-#endif
   { "Convert...",
     "Wandle...",
     "", // TODO

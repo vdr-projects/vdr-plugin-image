@@ -1,6 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
  * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
  *
  * based on MP3/MPlayer plugin to VDR (C++)
@@ -215,18 +216,12 @@ bool cScanDir::ScanDir(cFileSource * src, const char *subdir, eScanType type,
              QuoteString(dir), tc, s?s:"", e?e:"", recursiv?"":"-maxdepth 1");
 #endif
   //fprintf(stderr,"%s\n",cmd);
-#if VDRVERSNUM >= 10318
   cReadLine l;
-#endif
   FILE *p = popen(cmd, "r");
   if(p) {
     int len = strlen(dir);
     char *s;
-#if VDRVERSNUM >= 10318
     while((s = l.Read(p)) != 0) {
-#else
-    while((s = readline(p)) != 0) {
-#endif
       char *ss = strstr(s, dir);
       if(ss) {
         s = ss + len;

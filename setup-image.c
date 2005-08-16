@@ -52,14 +52,9 @@ cImageSetup::cImageSetup(void)
   m_bSlideShow = 0;
   m_nSSsec = 10;
   strncpy(m_szTempDir, "/tmp/image", sizeof(m_szTempDir));
-#if VDRVERSNUM < 10307
-  m_bShowDate = 1;
-#endif
   m_bAutoRepeat = 0;
   m_bShowNumbers = 1;
-#if VDRVERSNUM >= 10308
   m_bLiveAudio = 0;
-#endif 
   m_bHousekeeping = 1;
 
   m_nBorderHeight = 16;
@@ -81,14 +76,9 @@ bool cImageSetup::SetupParse(const char *szName, const char *szValue)
   else ParseInteger("SSsec",         m_nSSsec,m_cSSMin,m_cSSMax)
   else ParseInteger("BorderHeight",  m_nBorderHeight,m_cnMinBorderHeight,m_cnMaxBorderHeight)
   else ParseInteger("BorderWidth",   m_nBorderWidth,m_cnMinBorderWidth,m_cnMaxBorderWidth)
-#if VDRVERSNUM < 10307
-  else ParseInteger("ShowDate",      m_bShowDate,0,1)
-#endif    
   else ParseInteger("AutoRepeat",    m_bAutoRepeat,0,1)
   else ParseInteger("ShowNumbers",   m_bShowNumbers,0,1)
-#if VDRVERSNUM >= 10308
   else ParseInteger("LiveAudio",     m_bLiveAudio,0,1)
-#endif   
   else ParseInteger("Housekeeping",  m_bHousekeeping,0,1)
   else if(!strcasecmp(szName, "TempDir")) {
         strn0cpy(m_szTempDir,szValue,sizeof(m_szTempDir));
@@ -104,14 +94,9 @@ void cMenuSetupImage::Store(void)
   SetupStore("SlideShow",               ImageSetup.m_bSlideShow);
   SetupStore("SSsec",                   ImageSetup.m_nSSsec);
   SetupStore("TempDir",                 ImageSetup.m_szTempDir);
-#if VDRVERSNUM < 10307
-  SetupStore("ShowDate",                ImageSetup.m_bShowDate);
-#endif
   SetupStore("AutoRepeat",              ImageSetup.m_bAutoRepeat);
   SetupStore("ShowNumbers",             ImageSetup.m_bShowNumbers);
-#if VDRVERSNUM >= 10308
   SetupStore("LiveAudio",               ImageSetup.m_bLiveAudio);
-#endif   
   SetupStore("Housekeeping",            ImageSetup.m_bHousekeeping);
   SetupStore("BorderHeight",            ImageSetup.m_nBorderHeight);
   SetupStore("BorderWidth",             ImageSetup.m_nBorderWidth);
@@ -134,21 +119,13 @@ cMenuSetupImage::cMenuSetupImage(void)
         &m_tmpSetup.m_bAutoRepeat,   
         tr("no"), tr("yes")));
 
-#if VDRVERSNUM < 10307
-  Add(new cMenuEditBoolItem(tr("Show Filedate on OSD"),           
-        &m_tmpSetup.m_bShowDate,     
-        tr("no"), tr("yes")));
-#endif
-
   Add(new cMenuEditBoolItem(tr("Show Numbers on index image"),    
         &m_tmpSetup.m_bShowNumbers,
         tr("no"), tr("yes")));
 
-#if VDRVERSNUM >= 10308
   Add(new cMenuEditBoolItem(tr("Live Audio from primary Device"), 
         &m_tmpSetup.m_bLiveAudio,
         tr("no"), tr("yes")));
-#endif   
 
   Add(new cMenuEditStrItem (tr("Directory with temporary files"), 
         m_tmpSetup.m_szTempDir,sizeof(m_tmpSetup.m_szTempDir), 

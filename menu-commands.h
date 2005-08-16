@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -48,9 +48,7 @@ class cImageMenuResult : public cOsdMenu
 {
 	const char *m_szText;
 protected:
-#if VDRVERSNUM >= 10307
 	virtual void Display(void);
-#endif
 public:
     cImageMenuResult(const char *Title, const char *Text, eDvbFont Font = fontOsd);
     virtual eOSState ProcessKey(eKeys Key);
