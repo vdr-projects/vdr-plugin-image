@@ -76,7 +76,7 @@ fi
   else
 
       # Get image resolution
-      RES=`echo $( identify "$INFILE" | cut -d " " -f 3 )` # checked with imagemagick 6.0.6,
+      RES=`echo $( identify -format "%wx%h" "$INFILE" )` # checked with imagemagick 6.0.6 ...
       # Parse identify output image.jpg JPEG 3456x2304 DirectClass 4.7mb 3.720u 0:04
       X_RES=$(echo -e "$RES"| cut -d "x" -f 1)
       Y_RES=$(echo -e "$RES"| cut -d "x" -f 2)
