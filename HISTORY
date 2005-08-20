@@ -1,8 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
-2005-08-19
-- fix scripts/maverickplugin.sh: better resolution retrieval (provided by kc_captain-at-vdr-portal de)
+2005-08-20
+- rename maverickplugin.sh to magickplugin.sh
+- fix scripts/magickplugin.sh: better resolution retrieval (provided by kc_captain-at-vdr-portal de)
 
 2005-08-16
 - remove redundant code
@@ -15,7 +16,7 @@ VDR Plugin 'image' Revision History
 - rotate pictures now in several 90° steps
 
 2005-07-18
-- add alternative script (scripts/maverickplugin.sh) for image converting with imagemagick
+- add alternative script (scripts/magickplugin.sh) for image converting with imagemagick
 
 2005-07-17 (provided by Tobias Grimm)
 - adjust encoding parameter for new ffmpeg-releases, downwards compatible
