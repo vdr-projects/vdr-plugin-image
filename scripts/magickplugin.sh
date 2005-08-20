@@ -3,6 +3,7 @@
 # needs : imagemagick > identify convert
 #
 # History:
+# 2005-08-19 better resolution retrieval (provided by kc_captain-at-vdr-portal de)
 # 2005-07-26 add commando for rotate 180
 # 2005-07-18 Reimplement with imagemagick
 # 2004-08-12 Initalrelease, Andreas Brachold <vdr04-at-deltab.de>
