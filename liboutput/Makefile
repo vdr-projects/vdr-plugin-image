@@ -5,7 +5,7 @@
 
 VDRDIR = ../../../..
 DVBDIR = ../../../../../DVB
-FFMDIR = ../../../../../ffmpeg
+#FFMDIR = ../../../../../ffmpeg
 
 ### The C++ compiler and options:
 
@@ -17,8 +17,16 @@ CXXFLAGS ?= -O0 -g -Wall -Woverloaded-virtual
 ### The directory environment:
 
 
-INCLUDES += -I$(VDRDIR)/include -I. -I$(FFMDIR)
+INCLUDES += -I$(VDRDIR)/include -I.
+ifdef FFMDIR
+INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
+endif
+
 DEFINES  += -D_GNU_SOURCE
+
+ifdef FFMDIR
+DEFINES += -DFFMDIR
+endif
 
 ### The object files (add further files here):
 

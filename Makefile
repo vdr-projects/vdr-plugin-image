@@ -24,7 +24,7 @@ DVBDIR = ../../../../DVB
 VDRDIR = ../../..
 LIBDIR = ../../lib
 TMPDIR = /tmp
-FFMDIR = ../../../../ffmpeg
+#FFMDIR = ../../../../ffmpeg
 
 ### Allow user defined options to overwrite defaults:
 
@@ -41,10 +41,25 @@ PACKAGE = vdr-$(ARCHIVE)
 
 ### Includes and Defines (add further entries here):
 
-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I. -I$(FFMDIR)
+INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I.
+ifdef FFMDIR
+INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
+endif
+
 DEFINES  += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 DEFINES  += -D_GNU_SOURCE
 LIBS += liboutput/liboutput.a libimage/libimage.a -L$(FFMDIR)/libavcodec -lavcodec -lz
+
+ifdef FFMDIR
+DEFINES += -DFFMDIR
+endif
+
+ifdef FFMDIR
+LIBS += -L$(FFMDIR)/libavcodec
+endif
+
+LIBS += -lavcodec -lz
+
 
 ### The object files (add further files here):
 
