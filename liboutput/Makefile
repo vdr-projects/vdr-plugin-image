@@ -17,8 +17,7 @@ CXXFLAGS ?= -O0 -g -Wall -Woverloaded-virtual
 ### The directory environment:
 
 
-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
-
+INCLUDES += -I$(VDRDIR)/include -I. -I$(FFMDIR)
 DEFINES  += -D_GNU_SOURCE
 
 ### The object files (add further files here):

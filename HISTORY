@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-10-22
+- add FFMDIR to liboutput/Makefile, for build again ffmpeg directory
+
 2005-08-20
 - rename maverickplugin.sh to magickplugin.sh
 - fix scripts/magickplugin.sh: better resolution retrieval (provided by kc_captain-at-vdr-portal de)
