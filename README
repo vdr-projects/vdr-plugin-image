@@ -10,7 +10,7 @@ Former project's homepage:      http://www.burwieck.net/vdr (dead?)
 
 Maintainer:                     Andreas Brachold <vdr04-at-deltab.de>
 
-Project homepage:               http://deltab.de/vdr/image.html
+Project homepage:               http://vdr-image.berlios.de/
 
 Some files are from the mp3/MPlayer Plugin.	Thanks to Stefan Hülswitt
 
@@ -19,12 +19,10 @@ Required:
 -----------
 - fullfeatured dvb card
 - vdr 1.2.6+, series vdr 1.3.0 work too
-- to compile plugin depends package libavcodec1-dev (tested with ffmpeg-0.4.8)
-- to run your will need package netpbm and libavcodec1*
+- to compile plugin depends package libavcodec1-dev (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
+- to run your will need package netpbm and libavcodec1
 - netpbm 10.0+ (check for "anytopnm", if  it does not exist upgrade/install netpbm)
 - not necessary but useful utils/file (file) for better imagetyp detection, used by anytopnm
-
-*) it's use libavcodec.so, also static linking possible with compile #> make plugin FFMPEG_STATIC=1
 
 Important Note:
 if tools are installed by source absolutely also for it provide that the 
@@ -35,9 +33,25 @@ Install:
 ------------
 Install the plugin part as usual (see vdr docs if you not know already).
 
+    cd $VDRSOURCE/PLUGINS/src
+    tar -xzvf vdr-image-x.x.x.tgz
+    ln -s image-x.x.x image
+
 Compile  depends package libavcodec1-dev, libavcodec1 or also know ffmpeg.
 later for run your will only need libavcodec1(libavcodec.so) and netpbm.
 ("apt-get install libavcodec1-dev libavcodec1 netpbm" on Debian)
+
+ to compile 
+
+    cd $VDRSOURCE
+
+    make plugins
+    make plugins-install
+
+ or if you need, defined a ffmpeg source folder
+
+    make plugins FFMDIR=/usr/src/ffmpeg-cvs
+    make plugins-install
 
 In the ./examples directory you can find a sample file for
 imagesources.conf, change this file if needed and place it in

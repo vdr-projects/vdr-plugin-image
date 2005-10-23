@@ -10,23 +10,19 @@ Former project's homepage:      http://www.burwieck.net/vdr (dead?)
 
 Maintainer:                     Andreas Brachold <vdr04-at-deltab.de>
 
-Project homepage:               http://deltab.de/vdr/image.html
-
+Project homepage:               http://vdr-image.berlios.de/
 
 Einige Dateien stammen vom mp3/MPlayer Plugin, der danke geht an Stefan Hülswitt
-
 
 
 Benötigt:
 -----------
 - Full-Featured DVB Karte 
 - vdr 1.2.6+ 
-- das Plugin ist abhängig vom Paket libavcodec1-dev zu übersetzen, (getestet mit ffmpeg-0.4.8)
-- und Paket netpbm sowie libavcodec1* zur Ausführung 
+- das Plugin ist abhängig vom Paket libavcodec1-dev zu übersetzen, (getestet mit ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
+- und Paket netpbm sowie libavcodec1 zur Ausführung 
 - netpbm 10.0+ (prüfe ob das Tool "anytopnm" existiert)
 - nicht notwendig, aber sinnvoll utils/file (file) für bessere Bildtyperkennung, mit anytopnm
-
-*) es wird libavcodec.so nachgeladen, aber auch statisches Linken ist mit möglich mit Kompilierung per #> make plugin FFMPEG_STATIC=1
 
 WICHTIG, 
 wenn Tools von Source installiert werden, unbedingt auch dafür sorgen das 
@@ -35,11 +31,28 @@ ansonsten die Variable "PATH" innerhalb der Datei imageplugin.sh anpassen.
 
 Installation:
 ------------------
-Das plugin wird wie alle plugins installiert (siehe vdr Dokumentation).
+Das Plugin wird wie alle Plugins installiert (siehe im Zweifel in vdr Dokumentation nach).
+
+    cd $VDRSOURCE/PLUGINS/src
+    tar -xzvf vdr-image-x.x.x.tgz
+    ln -s image-x.x.x image
 
 Das Kompilieren ist abhängig vom Paket libavcodec1-dev, libavcodec1, aber auch bekannt als ffmpeg.
 Später zum Ausführen wird nur noch libavcodec1(libavcodec.so) und "netpbm" benötigt.
 ("apt-get install libavcodec1-dev libavcodec1 netpbm" in Debian)
+
+ zum Übersetzen
+
+    cd $VDRSOURCE
+
+    make plugins
+    make plugins-install
+
+ oder wenn benötigt, definiere das ffmpeg source Verzeichnis
+
+    make plugins FFMDIR=/usr/src/ffmpeg-cvs
+    make plugins-install
+
 
 
 Im ./examples Ordner liegt eine Beispiel imagesources.conf, dies ggf.

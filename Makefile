@@ -39,6 +39,22 @@ VDRVERSION = $(shell grep 'define VDRVERSION ' $(VDRDIR)/config.h | awk '{ print
 ARCHIVE = $(PLUGIN)-$(VERSION)
 PACKAGE = vdr-$(ARCHIVE)
 
+### The version number of VDR (taken from VDR's "config.h"):
+
+ifdef FFMDIR
+FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " $(FFMDIR)/libavcodec/avcodec.h | \
+                    cut -d "x" -f 2 )
+else
+ifeq (,$(findstring 000,$(FFMVERSION)))
+FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " /usr/include/ffmpeg/avcodec.h 2>/dev/null | \
+                    cut -d "x" -f 2 )
+endif
+ifeq (,$(findstring 000,$(FFMVERSION)))
+FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " /usr/local/include/ffmpeg/avcodec.h 2>/dev/null | \
+                    cut -d "x" -f 2 )
+endif
+endif
+
 ### Includes and Defines (add further entries here):
 
 INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I.
@@ -48,18 +64,26 @@ endif
 
 DEFINES  += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 DEFINES  += -D_GNU_SOURCE
-LIBS += liboutput/liboutput.a libimage/libimage.a -L$(FFMDIR)/libavcodec -lavcodec -lz
+LIBS += liboutput/liboutput.a libimage/libimage.a
+
+
+ifdef FFMDIR
+LIBS += -L$(FFMDIR)/libavcodec
+ifneq ($(FFMVERSION),000408)
+LIBS += -L$(FFMDIR)/libavformat -L$(FFMDIR)/libavutil
+endif
+endif
+
+LIBS += -lavcodec
+ifneq ($(FFMVERSION),000408)
+LIBS += -lavformat -lavutil
+endif
+
+LIBS += -lz
 
 ifdef FFMDIR
 DEFINES += -DFFMDIR
 endif
-
-ifdef FFMDIR
-LIBS += -L$(FFMDIR)/libavcodec
-endif
-
-LIBS += -lavcodec -lz
-
 
 ### The object files (add further files here):
 
