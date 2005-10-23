@@ -39,7 +39,7 @@ VDRVERSION = $(shell grep 'define VDRVERSION ' $(VDRDIR)/config.h | awk '{ print
 ARCHIVE = $(PLUGIN)-$(VERSION)
 PACKAGE = vdr-$(ARCHIVE)
 
-### The version number of VDR (taken from VDR's "config.h"):
+### The version number of ffmpeg (taken from "libavcodec/avcodec.h" or "ffmpeg/avcodec.h" ):
 
 ifdef FFMDIR
 FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " $(FFMDIR)/libavcodec/avcodec.h | \
