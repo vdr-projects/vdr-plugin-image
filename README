@@ -71,8 +71,18 @@ as mplayer/mp3 plugin).
 The file ./scripts/imageplugin.sh could go to /usr/bin, or any other folder in your path.
 You can also use the plugin options (vdr -help after installing the plugin) to specify
 the path's to the files, if you don't want to those files in you system.
-[ e.g.: ./vdr '-Pimage -C /path/imageplugin.sh -m /path/mount.sh' ...]
-The install.sh in the examples folder will try a automatic install, give it a try if it fails else.
+[ e.g.: ./vdr '-Pimage -C /usr/local/bin/imageplugin.sh -m /usr/local/bin/mount.sh' ...]
+
+All plugin options :
+
+  -m CMD,   --mount=CMD    use CMD to mount/unmount/eject image sources
+                           (default: "mount.sh")
+  -C CMD,   --convert=CMD  use CMD when converting images
+                           (default: "imageplugin.sh")
+  -c PATH,  --config=PATH  to specify directory of configuration data
+                           relative to VDR Plugin configuration directory
+                           (default: "" )
+
 
 Manual:
 ------------

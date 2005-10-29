@@ -33,7 +33,7 @@
 #include <vdr/status.h>
 #include <vdr/tools.h>
 #include <vdr/plugin.h>
-
+#include <vdr/eitscan.h>
 
 // --- cImageControl ---------------------------------------------------------
 
@@ -301,6 +301,10 @@ eOSState cImageControl::ProcessKey(eKeys nKey)
 {
   // Check for next image
   SlideImage();
+
+  // Deny EITScanner on Live Audio
+  if(ImageSetup.m_bLiveAudio)
+     EITScanner.Activity();
 
   eOSState eOSRet = osContinue;
   
@@ -618,7 +622,7 @@ eOSState cImageControl::ProcessKeyCommands(eKeys nKey)
       return osContinue;
       
     // Load additional Commands
-    pCmd->Load(AddDirectory(cPlugin::ConfigDirectory(), "imagecmds.conf"));
+    pCmd->Load(AddDirectory(cPlugin::ConfigDirectory(g_szConfigDirectory), "imagecmds.conf"));
   
     if(pCmd->Count() <= 0)  {
       delete pCmd;

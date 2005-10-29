@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-10-29
+- Deny VDR-EITScanner on active Live Audio
+- Add plugin options to specify directory of configuration data (wished by Ronny Kornexl)
+
 2005-10-22
 - add FFMDIR to liboutput/Makefile, for build again ffmpeg directory
 

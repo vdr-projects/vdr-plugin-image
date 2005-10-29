@@ -55,8 +55,8 @@ Später zum Ausführen wird nur noch libavcodec1(libavcodec.so) und "netpbm" benöt
 
 
 
-Im ./examples Ordner liegt eine Beispiel imagesources.conf, dies ggf.
-anpassen und in das plugins Verzeichnis des config Ordners legen.
+Im ./examples Ordner liegt eine Beispieldatei imagesources.conf, dies ggf.
+anpassen und in das Verzeichnis plugins Verzeichnis des config Ordners legen.
 
 Die Syntax der Datei ist:
 <Pfad>;<Name im vdr Menu>;<0/1>;<Suchmuster für Dateien die angezeigt werden sollen>
@@ -74,8 +74,17 @@ Die Datei imageplugin.sh sollte nach /usr/bin kopiert werden, bzw. in einen ande
 gemeinsamen Ordner innerhalb Such-Path kopieren werden, 
 alternativ können als Kommandozeilenoption die gewählten Pfade zu dem Skript
 beim vdr Start übergeben werden.
-[z.B.: ./vdr '-Pimage -C /pfad/imageplugin.sh -m /pfad/mount.sh' ...]
+[z.B.: ./vdr '-Pimage -C /usr/local/bin/imageplugin.sh -m /usr/local/bin/mount.sh' ...]
 
+Alle Plugin Optionen :
+
+  -m CMD,   --mount=CMD    verwendetes CMD für mount/unmount/eject der Bildquellen
+                           (default: "mount.sh")
+  -C CMD,   --convert=CMD  verwendetes CMD fpr die Konvertieren der Bilder
+                           (default: "imageplugin.sh")
+  -c PATH,  --config=PATH  zum spezifizieren des Verzeichnisses der Konfigurationsdateien
+                           relativ zum VDR Plugin Konfiguration-Verzeichnis
+                           (default: "" )
 
 Bedienung:
 -----------------

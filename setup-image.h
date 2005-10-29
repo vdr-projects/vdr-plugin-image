@@ -24,6 +24,7 @@
 #define ___SETUP_IMAGE_H
 
 extern const char *g_szConvertScript;
+extern const char *g_szConfigDirectory;
 
 #include <vdr/menuitems.h>
 
