@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-11-17  
+- Release Version 0.2.4
+
 2005-10-29
 - Deny VDR-EITScanner on active Live Audio
 - Add plugin options to specify directory of configuration data (wished by Ronny Kornexl)
