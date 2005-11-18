@@ -491,7 +491,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "Live-ääni päävastaanottimelta",
+    "Live-ääni ensisijaiselta sovittimelta",
     "", // TODO
     "", // TODO
     "", // TODO
@@ -627,7 +627,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Português*/
     "", // TODO /*Français*/
     "", // TODO /*Norsk*/
-    "", // TODO /*suomi*/
+    "Reunuksen korkeus keskitykselle", /*suomi*/
     "", // TODO /*Polski*/
     "", // TODO /*Español*/
     "", // TODO /*Ellinika*/
@@ -644,7 +644,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Português*/
     "", // TODO /*Français*/
     "", // TODO /*Norsk*/
-    "", // TODO /*suomi*/
+    "Reunuksen leveys keskitykselle", /*suomi*/
     "", // TODO /*Polski*/
     "", // TODO /*Español*/
     "", // TODO /*Ellinika*/
