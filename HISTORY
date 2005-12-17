@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-11-17
+- now only necessarily ffmpeg codec loaded, before all available ffmpeg codec was loaded.
+
 2005-11-18
 - Updated finnish translations. (Thanks to Rolf Ahrenberg)
 
