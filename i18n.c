@@ -30,7 +30,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Images", // Français
     "", // TODO /*Norsk*/
     "Kuvat",    /*suomi*/
     "", // TODO /*Polski*/
@@ -51,7 +51,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Visualisateur d'images", // Français
     "", // TODO /*Norsk*/
     "Katso valokuvia ruudullasi",  /*suomi*/
     "", // TODO /*Polski*/
@@ -72,7 +72,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "Navigateur Images",
+    "Navigateur images",
     "", // TODO
     "Kuvat - selain",
     "", // TODO
@@ -93,7 +93,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "Source Images",
+    "Source images",
     "", // TODO
     "Kuvat - lähteet",
     "", // TODO
@@ -366,7 +366,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Selectionner l'image (touches 1..9)!", 
     "", // TODO
     "Valitse kuva näppäimillä 1..9!",
     "", // TODO
@@ -387,7 +387,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Contruction du SlideShow...",
     "", // TODO
     "Laaditaan diaesitystä..",
     "", // TODO
@@ -408,7 +408,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "Scanne le repertoire...",
+    "Scannage du répertoire...",
     "", // TODO
     "Selataan hakemistoa...",
     "", // TODO
@@ -429,7 +429,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Pas de fichiers !",
     "", // TODO
     "Ei tiedostoja!",
     "", // TODO
@@ -450,7 +450,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Erreur de construction du SlideShow !",
     "", // TODO
     "Diaesityksen laatiminen epäonnistui!",
     "", // TODO
@@ -471,7 +471,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "SlideShow ?",
     "", // TODO
     "Käytä diaesitystä",
     "", // TODO
@@ -492,7 +492,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Durée entre les images (Sec)",
     "", // TODO
     "Dian esitysaika (s)",
     "", // TODO
@@ -513,7 +513,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Répertoire temporaire",
     "", // TODO
     "Väliaikaistiedostot",
     "", // TODO
@@ -534,7 +534,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Afficher la date des fichiers en OSD",
     "", // TODO
     "Näytä päivämäärä näytöllä",
     "", // TODO
@@ -555,7 +555,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Répéter le SlideShow",
     "", // TODO
     "Diaesityksen uudelleentoisto",
     "", // TODO
@@ -576,7 +576,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Afficher nombre sur la page d'index",
     "", // TODO
     "Näytä numerot indeksikuvassa",
     "", // TODO
@@ -597,7 +597,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Audio en direct",
     "", // TODO
     "Live-ääni ensisijaiselta sovittimelta",
     "", // TODO
@@ -618,7 +618,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Convertion...",
     "", // TODO
     "Konvertoi...",
     "", // TODO
@@ -639,7 +639,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Zoom",
     "", // TODO
     "Suurenna",
     "", // TODO
@@ -660,7 +660,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
-    "", // TODO
+    "Executer",
     "", // TODO
     "Suorita",
     "", // TODO
@@ -681,7 +681,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Opération non réussie", // Français
     "", // TODO /*Norsk*/
     "Toiminto epäonnistui", /*suomi*/
     "", // TODO /*Polski*/
@@ -702,7 +702,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Impossible de charger l'image", // Français
     "", // TODO /*Norsk*/
     "Kuvan lukeminen epäonnistui", /*suomi*/
     "", // TODO /*Polski*/
@@ -723,7 +723,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Impossible d'exécuter le script", // Français
     "", // TODO /*Norsk*/
     "Skriptin suoritus epäonnistui", /*suomi*/
     "", // TODO /*Polski*/
@@ -744,7 +744,7 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Italiano*/
     "", // TODO /*Nederlands*
     "", // TODO /*Português*/
-    "", // TODO /*Français*/
+    "Effacer les fichiers temporaires", // Français
     "", // TODO /*Norsk*/
     "Tyhjennä väliaikaistiedostot", /*suomi*/
     "", // TODO /*Polski*/
