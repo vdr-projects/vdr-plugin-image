@@ -1,7 +1,11 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
-2005-11-17
+2005-12-19
+- add russian translation from http://deela.cc.fh-lippe.de/files/internationalization/russian/
+- prepare for Hrvatski/Eesti/Dansk translation
+
+2005-12-17
 - now only necessarily ffmpeg codec loaded, before all available ffmpeg codec was loaded.
 
 2005-11-18

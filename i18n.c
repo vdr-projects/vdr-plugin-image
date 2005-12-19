@@ -40,6 +40,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "Изображения",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "A Image Viewer plugin",	/*English*/
     "Ein Bildbetrachter Plugin",	/*Deutsch*/
@@ -57,6 +61,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "Плагин для просмотра изображений",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Image browser",
     "Bilder Verzeichnisanzeige",
@@ -74,6 +82,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Показать папку с изображениями",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Image source",
     "Bilder-Datentrфger",
@@ -91,6 +103,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Носитель(source)",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Parent",
     "Zurќck",
@@ -108,6 +124,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Anterior",
+    "Назад",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Select",
     "Auswфhlen",
@@ -125,6 +145,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Escollir",
+    "Выбрать",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Error scanning directory!",
     "Fehler beim Lesen des Verzeichnisses!",
@@ -142,6 +166,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Error al llegir una carpeta!",
+    "Ошибка чтения выбранной директории!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Source",
     "Datentrфger",
@@ -159,6 +187,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Orэgen",
+    "Носитель",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Mount",
     "Einbinden",
@@ -176,6 +208,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Mount",
+    "Подключить",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Unmount",
     "Aushфngen",
@@ -193,6 +229,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Unmount",
+    "Отключть",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Selected source is not mounted!",
     "Ausgewфhlter Datentrфger ist nicht eingebunden!",
@@ -210,6 +250,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "l'Origen sel.leccionat no estр muntat!",
+    "Выбранный носитель не подключен!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Mount succeeded",
     "Einbinden erfolgreich",
@@ -227,6 +271,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "mount correcte",
+    "Подключение прошло успешно",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Mount failed!",
     "Einbinden fehlgeschlagen!",
@@ -244,6 +292,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "No he pogut muntar!",
+    "Ошибка подключения!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Unmount succeeded",
     "Aushфngen erfolgreich",
@@ -261,6 +313,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "unmount amb шxit",
+    "Отключение прошло успешно",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Unmount failed!",
     "Aushфngen fehlgeschlagen!",
@@ -278,6 +334,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "No puc desmontar!",
+    "Ошибка отключения!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Eject failed!",
     "Auswerfen fehlgeschlagen!",
@@ -295,6 +355,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "No puc expulsar!",
+    "Ошибка выброса диска!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Select picture via key 1..9!",
     "Bildauswahl ќber Taste 1..9!",
@@ -312,6 +376,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Выбор изображенний при помощи кнопок 1..9!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Building SlideShow...",
     "Erzeuge Diavorfќhrung...",
@@ -329,6 +397,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Саздание Диафильма",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Scanning directory...",
     "Durchsuche Verzeichnis...",
@@ -346,6 +418,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "Revisant les carpetes..",
+    "Просмтр директории",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "No Files!",
     "Keine Dateien!",
@@ -363,6 +439,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Ничего не найдено!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Error building SlideShow!",
     "Fehler beim Erzeugen der Diavorfќhrung!",
@@ -380,6 +460,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Ошибка создания диафильма!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "SlideShow ?",
     "Diavorfќhrung ?",
@@ -397,6 +481,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Диафильм?",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Slide duration (sec)",
     "Anzeigedauer (Sek)",
@@ -414,6 +502,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Время отображения (сек)",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Directory with temporary files",
     "Verzeichnis mit temporфren Dateien",
@@ -431,6 +523,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "ТМР директория",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Show Filedate on OSD",
     "Zeige Dateidatum im OSD",
@@ -448,6 +544,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Показать информацию о фыйлах через OSD",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Repeat SlideShow",
     "Wiederholung der Diavorfќhrung",
@@ -465,6 +565,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Повтор диафильма",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Show Numbers on index image",
     "Zeige Zahlen im Indexbild",
@@ -482,6 +586,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Показать номера в индексе",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Live Audio from primary Device",
     "Live Audio vom primфren Gerфt",
@@ -499,6 +607,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Использовать активное(Live) звуковое сопровождение",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Convert...",
     "Wandle...",
@@ -516,6 +628,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "конвертация",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },  
   { "Zoom",
     "Vergrіпere",
@@ -533,6 +649,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Приблизить(Zoom)",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },  
   { "Execute",
     "Ausfќhren",
@@ -550,6 +670,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO
     "", // TODO
     "", // TODO
+    "Выполнить",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },  
   { "Operation failed",	/*English*/
     "Vorgang fehlgeschlagen",	/*Deutsch*/
@@ -567,6 +691,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "Операция остановлена",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Image couldn't load",	/*English*/
     "Konnte Bild nicht lesen",	/*Deutsch*/
@@ -584,6 +712,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "Ошибка чтения файла",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Script execution failed",	/*English*/
     "Scriptausfќhrung fehlgeschlagen",	/*Deutsch*/
@@ -601,6 +733,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "Ошибка выполнения скрипта!",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Remove temporary files",	/*English*/
     "Lіsche temporфre Dateien",	/*Deutsch*/
@@ -618,6 +754,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "стирание tmp файлов",	// Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Border for Underscan (Height)",	/*English*/
     "Rand fќr Underscan (Hіhe)",	/*Deutsch*/
@@ -635,6 +775,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "", // TODO Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { "Border for Underscan (Width)",	/*English*/
     "Rand fќr Underscan (Breite)",	/*Deutsch*/
@@ -652,6 +796,10 @@ const tI18nPhrase Phrases[] = {
     "", // TODO /*Romaneste*/
     "", // TODO /*Magyar*/
     "", // TODO /*Catalр*/
+    "", // TODO Russian
+    "", // TODO Hrvatski
+    "", // TODO Eesti
+    "", // TODO Dansk
   },
   { NULL }
 };
