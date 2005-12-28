@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2005-12-28
+- realised that least VDR 1.3.29 required, and update entrys at documentation
+
 2005-12-19
 - add russian translation
 - add french translation

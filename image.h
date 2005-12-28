@@ -27,8 +27,8 @@
 #include <vdr/skins.h>
 #include <string.h>
 
-#if VDRVERSNUM < 10328
-    #error "For compiled are at the least VDR 1.3.28 required"
+#if VDRVERSNUM < 10329
+    #error "For compiled are at the least VDR 1.3.29 required"
 #endif
 
 
