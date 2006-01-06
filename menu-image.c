@@ -1,7 +1,8 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
+ * (C) 2004-2006 Andreas Brachold    <vdr04-at-deltab.de>
+ * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -50,7 +51,7 @@ cMenuImageBrowse::cMenuImageBrowse(void)
 
 void cMenuImageBrowse::SetButtons(void)
 {
-  SetHelp(tr("Play"), 0, tr("Source"), currentdir ? tr("Parent") : 0);
+  SetHelp(tr("Play"), 0, tr("Data medium"), currentdir ? tr("Parent") : 0);
   Display();
 }
 
@@ -91,7 +92,7 @@ eOSState cMenuImageBrowse::ProcessKey(eKeys Key)
     if(item) {
     
       //FIXME use a nonblocking way
-      //OSD_InfoMsg(tr("Building SlideShow..."));
+      //OSD_InfoMsg(tr("Building slide show..."));
     
       cSlideShow *newss = new cSlideShow(item);
       if(newss->Load() && newss->Count()) {

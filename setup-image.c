@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2006 Andreas Brachold    <vdr04-at-deltab.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * based on MP3/MPlayer plugin to VDR (C++)
@@ -107,7 +107,7 @@ cMenuSetupImage::cMenuSetupImage(void)
 {
   SetSection(tr("Image"));
 
-  Add(new cMenuEditBoolItem(tr("SlideShow ?"),                    
+  Add(new cMenuEditBoolItem(tr("Slide show"),                    
         &m_tmpSetup.m_bSlideShow,    
         tr("no"), tr("yes")));
 
@@ -115,11 +115,11 @@ cMenuSetupImage::cMenuSetupImage(void)
         &m_tmpSetup.m_nSSsec,        
         cImageSetup::m_cSSMin, cImageSetup::m_cSSMax));
 
-  Add(new cMenuEditBoolItem(tr("Repeat SlideShow"),               
+  Add(new cMenuEditBoolItem(tr("Repeat slide show"),               
         &m_tmpSetup.m_bAutoRepeat,   
         tr("no"), tr("yes")));
 
-  Add(new cMenuEditBoolItem(tr("Show Numbers on index image"),    
+  Add(new cMenuEditBoolItem(tr("Show numbers on index image"),    
         &m_tmpSetup.m_bShowNumbers,
         tr("no"), tr("yes")));
 

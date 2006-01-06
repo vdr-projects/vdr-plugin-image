@@ -1,11 +1,11 @@
 /*
  * image plugin to VDR (C++)
  *
- * (C) 2004	"Interpohl"  <interpohl@vdr-portal.de> 
- * (C) 2004	A.Brachold   <vdr04-at-deltab.de>
- * (C) 2004	O.Kreuzinger <Onno@Kreuzinger.biz>
- * (C) 2003     Kai Tobias Burwieck <kai@burwieck.net>
- * (C) 2001,2002 Stefan Huelswitt <huels@iname.com>
+ * (C) 2004	"Interpohl"  <interpohl-at-vdr-portal.de> 
+ * (C) 2004-2006 A.Brachold   <vdr04-at-deltab.de>
+ * (C) 2004	O.Kreuzinger <Onno-at-Kreuzinger.biz>
+ * (C) 2003     Kai Tobias Burwieck <kai-at-burwieck.net>
+ * (C) 2001,2002 Stefan Huelswitt <huels-at-iname.com>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -295,7 +295,7 @@ bool cMenuSource::CheckMount(void)
 {
   cFileSource *src = selected ? selected : current;
   if(src->NeedsMount() && !src->Status()) {
-    OSD_ErrorMsg(tr("Selected source is not mounted!"));
+    OSD_ErrorMsg(tr("Selected data medium is not mounted!"));
     return false;
   }
   return true;
@@ -348,7 +348,7 @@ eOSState cMenuSource::Unmount(void)
     RefreshCurrent();
     DisplayCurrent(true);
     if(res)
-      OSD_InfoMsg(tr("Unmount succeeded"));
+      OSD_InfoMsg(tr("Unmount succeeded!"));
     else
       OSD_ErrorMsg(tr("Unmount failed!"));
   }

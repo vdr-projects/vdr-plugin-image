@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2006 Andreas Brachold    <vdr04-at-deltab.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -24,782 +24,740 @@
 #include "i18n.h"
 
 const tI18nPhrase Phrases[] = {
-  { "Image",	/*English*/
-    "Bilder",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "Images", // FranÁais
-    "", // TODO /*Norsk*/
-    "Kuvat",    /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "∏◊ﬁ—‡–÷’›ÿÔ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Image", // English
+    "Bilder", // German
+    "", // Slovenian
+    "Immagine", // Italian
+    "Beelden", // Dutch
+    "Imagens", // Portuguese
+    "Images", // French
+    "", // Norwegian
+    "Kuvat",    // Finnish
+    "", // Polish
+    "Im·genes",  // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "∏◊ﬁ—‡–÷’›ÿÔ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "A Image Viewer plugin",	/*English*/
-    "Ein Bildbetrachter Plugin",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "Visualisateur d'images", // FranÁais
-    "", // TODO /*Norsk*/
-    "Katso valokuvia ruudullasi",  /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "ø€–”ÿ› ‘€Ô ﬂ‡ﬁ·‹ﬁ‚‡– ÿ◊ﬁ—‡–÷’›ÿŸ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "A Image Viewer plugin", // English
+    "Ein Bildbetrachter Plugin", // German
+    "", // Slovenian
+    "Un visore di immagine plugin", // Italian
+    "Een Kijker van het Beeld plugin", // Dutch
+    "Um visor da imagem plugin", // Portuguese
+    "Visualisateur d'images", // French
+    "", // Norwegian
+    "Katso valokuvia ruudullasi",  // Finnish
+    "", // Polish
+    "Un espectador de la imagen plugin", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "ø€–”ÿ› ‘€Ô ﬂ‡ﬁ·‹ﬁ‚‡– ÿ◊ﬁ—‡–÷’›ÿŸ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Image browser",
-    "Bilder Verzeichnisanzeige",
-    "Image navigator",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Navigateur images",
-    "", // TODO
-    "Kuvat - selain",
-    "", // TODO
-    "", // TODO
-    "Image endiksi fakelon",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "øﬁ⁄–◊–‚Ï ﬂ–ﬂ⁄„ · ÿ◊ﬁ—‡–÷’›ÿÔ‹ÿ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Image browser", // English
+    "Bilder Verzeichnisanzeige", // German
+    "Image navigator", // Slovenian
+    "Browser di immagine", // Italian
+    "Browser van het beeld", // Dutch
+    "Browser da imagem", // Portuguese
+    "Navigateur images", // French
+    "", // Norwegian
+    "Kuvat - selain", // Finnish
+    "", // Polish
+    "Browser de la imagen", // Spanish
+    "Image endiksi fakelon", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "øﬁ⁄–◊–‚Ï ﬂ–ﬂ⁄„ · ÿ◊ﬁ—‡–÷’›ÿÔ‹ÿ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Image source",
-    "Bilder-Datentr‰ger",
-    "Image izvor",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Source images",
-    "", // TODO
-    "Kuvat - l‰hteet",
-    "", // TODO
-    "", // TODO
-    "Pigi Image",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Ωﬁ·ÿ‚’€Ï(source)",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Image source", // English
+    "Bilder-Datentr‰ger", // German
+    "Image izvor", // Slovenian
+    "Fonte di immagine", // Italian
+    "De bron van het beeld", // Dutch
+    "Fonte da imagem", // Portuguese
+    "Source images", // French
+    "", // Norwegian
+    "Kuvat - l‰hteet", // Finnish
+    "", // Polish
+    "Fuente de la imagen", // Spanish
+    "Pigi Image", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "Ωﬁ·ÿ‚’€Ï(source)", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Parent",
-    "Zur¸ck",
-    "Nazaj",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Parent",
-    "", // TODO
-    "Takaisin",
-    "", // TODO
-    "Predecesor", 
-    "Piso",
-    "Tillbaka",
-    "", // TODO
-    "", // TODO
-    "Anterior",
-    "Ω–◊–‘",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Parent", // English
+    "Zur¸ck", // German
+    "Nazaj", // Slovenian
+    "precursore", // Italian
+    "voorloper", // Dutch
+    "precursor", // Portuguese
+    "Parent", // French
+    "", // Norwegian
+    "Takaisin", // Finnish
+    "", // Polish
+    "Predecesor", // Spanish
+    "Piso", // Greek
+    "Tillbaka", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "Anterior", // Catalan
+    "Ω–◊–‘", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Select",
-    "Ausw‰hlen",
-    "Izberi",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "SÈlectionner",
-    "", // TODO
-    "Valitse",
-    "", // TODO
-    "Seleccionar", 
-    "Epilogi",
-    "V‰lj",
-    "", // TODO
-    "", // TODO
-    "Escollir",
-    "≤Î—‡–‚Ï",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Select", // English
+    "Ausw‰hlen", // German
+    "Izberi", // Slovenian
+    "Prescelto", // Italian
+    "Selecteer", // Dutch
+    "Seleto", // Portuguese
+    "SÈlectionner", // French
+    "", // Norwegian
+    "Valitse", // Finnish
+    "", // Polish
+    "Seleccionar", // Spanish
+    "Epilogi", // Greek
+    "V‰lj", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "Escollir", // Catalan
+    "≤Î—‡–‚Ï", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Error scanning directory!",
-    "Fehler beim Lesen des Verzeichnisses!",
-    "Napaka pri pregledovanju direktorija!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Erreur de parcours du rÈpertoire!",
-    "", // TODO
-    "Hakemiston selaus ep‰onnistui!",
-    "", // TODO
-    "°Error al leer una carpeta!", 
-    "Lathos stin sarosi tou fakelou!",
-    "Kunde inte l‰sa katalogen!",
-    "", // TODO
-    "", // TODO
-    "Error al llegir una carpeta!",
-    "æËÿ—⁄– Á‚’›ÿÔ “Î—‡–››ﬁŸ ‘ÿ‡’⁄‚ﬁ‡ÿÿ!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Error scanning directory!", // English
+    "Fehler beim Lesen des Verzeichnisses!", // German
+    "Napaka pri pregledovanju direktorija!", // Slovenian
+    "Indice di esame di errori!", // Italian
+    "Het aftastenfolder van de fout!", // Dutch
+    "DiretÛrio da exploraÁ„o do erro!", // Portuguese
+    "Erreur de parcours du rÈpertoire!", // French
+    "", // Norwegian
+    "Hakemiston selaus ep‰onnistui!", // Finnish
+    "", // Polish
+    "°Error al leer una carpeta!", // Spanish
+    "Lathos stin sarosi tou fakelou!", // Greek
+    "Kunde inte l‰sa katalogen!", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "Error al llegir una carpeta!", // Catalan
+    "æËÿ—⁄– Á‚’›ÿÔ “Î—‡–››ﬁŸ ‘ÿ‡’⁄‚ﬁ‡ÿÿ!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Source",
-    "Datentr‰ger",
-    "Izvor",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Source",
-    "", // TODO
-    "L‰hde",
-    "", // TODO
-    "Origen", 
-    "Pigi",
-    "K‰lla",
-    "", // TODO
-    "", // TODO
-    "OrÌgen",
-    "Ωﬁ·ÿ‚’€Ï",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Data medium", // English
+    "Datentr‰ger", // German
+    "Izvor", // Slovenian
+    "Mezzo di dati", // Italian
+    "Het middel van gegevens", // Dutch
+    "Meio de dados", // Portuguese
+    "Source", // French
+    "", // Norwegian
+    "L‰hde", // Finnish
+    "", // Polish
+    "Medio de datos", // Spanish
+    "Pigi", // Greek
+    "K‰lla", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "OrÌgen", // Catalan
+    "Ωﬁ·ÿ‚’€Ï", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Mount",
-    "Einbinden",
-    "Priklopi",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Monter",
-    "", // TODO
-    "Kiinnit‰",
-    "", // TODO
-    "Mount", 
-    "Sindesi",
-    "Montera",
-    "", // TODO
-    "", // TODO
-    "Mount",
-    "øﬁ‘⁄€ÓÁÿ‚Ï",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Mount", // English
+    "Einbinden", // German
+    "Priklopi", // Slovenian
+    "supporto", // Italian
+    "Zet op", // Dutch
+    "Montagem", // Portuguese
+    "Monter", // French
+    "", // Norwegian
+    "Kiinnit‰", // Finnish
+    "", // Polish
+    "Montaje", // Spanish
+    "Sindesi", // Greek
+    "Montera", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "øﬁ‘⁄€ÓÁÿ‚Ï", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Unmount",
-    "Aush‰ngen",
-    "Izklopi",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "DÈmonter",
-    "", // TODO
-    "Irrota",
-    "", // TODO
-    "Unmount",
-    "Aposindesi",
-    "Avmontera",
-    "", // TODO
-    "", // TODO
-    "Unmount",
-    "æ‚⁄€ÓÁ‚Ï",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Unmount", // English
+    "Aush‰ngen", // German
+    "Izklopi", // Slovenian
+    "smonti", // Italian
+    "unmount", // Dutch
+    "unmount", // Portuguese
+    "DÈmonter", // French
+    "", // Norwegian
+    "Irrota", // Finnish
+    "", // Polish
+    "Unmount", // Spanish
+    "Aposindesi", // Greek
+    "Avmontera", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "æ‚⁄€ÓÁ‚Ï", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Selected source is not mounted!",
-    "Ausgew‰hlter Datentr‰ger ist nicht eingebunden!",
-    "Izbran izvor ni prikljucen!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Source sÈlectionnÈe non montÈe!",
-    "", // TODO
-    "Valittua l‰hdett‰ ei ole kiinnitetty!",
-    "", // TODO
-    "°El origen deseado no est‡ montado!", 
-    "Epilegmeni Pigi den ine sindemeni!",
-    "Den valda k‰llan ‰r inte monterad!",
-    "", // TODO
-    "", // TODO
-    "l'Origen sel.leccionat no est‡ muntat!",
-    "≤Î—‡–››ÎŸ ›ﬁ·ÿ‚’€Ï ›’ ﬂﬁ‘⁄€ÓÁ’›!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Selected data medium is not mounted!", // English
+    "Ausgew‰hlter Datentr‰ger ist nicht eingebunden!", // German
+    "Izbran izvor ni prikljucen!", // Slovenian
+    "Il mezzo di dati selezionato non Ë montato!", // Italian
+    "Het geselecteerde gegevensmiddel wordt niet opgezet!", // Dutch
+    "O meio de dados selecionado n„o È montado!", // Portuguese
+    "Source sÈlectionnÈe non montÈe!", // French
+    "", // Norwegian
+    "Valittua l‰hdett‰ ei ole kiinnitetty!", // Finnish
+    "", // Polish
+    "°El origen deseado no est‡ montado!", // Spanish
+    "Epilegmeni Pigi den ine sindemeni!", // Greek
+    "Den valda k‰llan ‰r inte monterad!", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "l'Origen sel.leccionat no est‡ muntat!", // Catalan
+    "≤Î—‡–››ÎŸ ›ﬁ·ÿ‚’€Ï ›’ ﬂﬁ‘⁄€ÓÁ’›!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Mount succeeded",
-    "Einbinden erfolgreich",
-    "Priklop izveden",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Montage rÈussi",
-    "", // TODO
-    "Kiinnitt‰minen onnistui",
-    "", // TODO
-    "mount correcto", 
-    "I sindesi petixe",
-    "Monteringen lyckades",
-    "", // TODO
-    "", // TODO
-    "mount correcte",
-    "øﬁ‘⁄€ÓÁ’›ÿ’ ﬂ‡ﬁË€ﬁ „·ﬂ’Ë›ﬁ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Mount succeeded", // English
+    "Einbinden erfolgreich", // German
+    "Priklop izveden", // Slovenian
+    "Il supporto Ë riuscito", // Italian
+    "Zet volgend op", // Dutch
+    "Montagem sucedida", // Portuguese
+    "Montage rÈussi", // French
+    "", // Norwegian
+    "Kiinnitt‰minen onnistui", // Finnish
+    "", // Polish
+    "mount correcto", // Spanish
+    "I sindesi petixe", // Greek
+    "Monteringen lyckades", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "mount correcte", // Catalan
+    "øﬁ‘⁄€ÓÁ’›ÿ’ ﬂ‡ﬁË€ﬁ „·ﬂ’Ë›ﬁ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Mount failed!",
-    "Einbinden fehlgeschlagen!",
-    "Napaka pri priklopu!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Echec du montage!",
-    "", // TODO
-    "Kiinnitt‰minen ep‰onnistui!",
-    "", // TODO
-    "°No he podido montar!", 
-    "I sindesi apetixe!",
-    "Monteringen misslyckades!",
-    "", // TODO
-    "", // TODO
-    "No he pogut muntar!",
-    "æËÿ—⁄– ﬂﬁ‘⁄€ÓÁ’›ÿÔ!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Mount failed!", // English
+    "Einbinden fehlgeschlagen!", // German
+    "Napaka pri priklopu!", // Slovenian
+    "Il supporto si guasta!", // Italian
+    "Zet ontbroken op!", // Dutch
+    "A montagem falha!", // Portuguese
+    "Echec du montage!", // French
+    "", // Norwegian
+    "Kiinnitt‰minen ep‰onnistui!", // Finnish
+    "", // Polish
+    "°No he podido montar!", // Spanish
+    "I sindesi apetixe!", // Greek
+    "Monteringen misslyckades!", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "No he pogut muntar!", // Catalan
+    "æËÿ—⁄– ﬂﬁ‘⁄€ÓÁ’›ÿÔ!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Unmount succeeded",
-    "Aush‰ngen erfolgreich",
-    "Izklop izveden",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "DÈmontage rÈussi",
-    "", // TODO
-    "Irrottaminen onnistui",
-    "", // TODO
-    "…xito al unmount", 
-    "I aposindesi itan epitixisi",
-    "Avmonteringen lyckades",
-    "", // TODO
-    "", // TODO
-    "unmount amb Ëxit",
-    "æ‚⁄€ÓÁ’›ÿ’ ﬂ‡ﬁË€ﬁ „·ﬂ’Ë›ﬁ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Unmount succeeded!", // English
+    "Aush‰ngen erfolgreich!", // German
+    "Izklop izveden!", // Slovenian
+    "Smonti riuscito!", // Italian
+    "Volgende Unmount!", // Dutch
+    "Unmount sucedido!", // Portuguese
+    "DÈmontage rÈussi!", // French
+    "", // Norwegian
+    "Irrottaminen onnistui!", // Finnish
+    "", // Polish
+    "…xito al unmount", // Spanish
+    "I aposindesi itan epitixisi!", // Greek
+    "Avmonteringen lyckades!", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "unmount amb Ëxit!", // Catalan
+    "æ‚⁄€ÓÁ’›ÿ’ ﬂ‡ﬁË€ﬁ „·ﬂ’Ë›ﬁ!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Unmount failed!",
-    "Aush‰ngen fehlgeschlagen!",
-    "Napaka pri izklopu!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Echec du dÈmontage!",
-    "", // TODO
-    "Irrottaminen ep‰onnistui!",
-    "", // TODO
-    "°No puedo desmontar!", 
-    "I aposindesi den itan epitixis!",
-    "Avmonteringen misslyckades!",
-    "", // TODO
-    "", // TODO
+  { "Unmount failed!", // English
+    "Aush‰ngen fehlgeschlagen!", // German
+    "Napaka pri izklopu!", // Slovenian
+    "Smonti venuto a mancare!", // Italian
+    "Ontbroken Unmount!", // Dutch
+    "Unmount falhado!", // Portuguese
+    "Echec du dÈmontage!", // French
+    "", // Norwegian
+    "Irrottaminen ep‰onnistui!", // Finnish
+    "", // Polish
+    "°No puedo desmontar!", // Spanish
+    "I aposindesi den itan epitixis!", // Greek
+    "Avmonteringen misslyckades!", // Swedish
+    "", // Romanian
+    "", // Hugarian
     "No puc desmontar!",
-    "æËÿ—⁄– ﬁ‚⁄€ÓÁ’›ÿÔ!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+    "æËÿ—⁄– ﬁ‚⁄€ÓÁ’›ÿÔ!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Eject failed!",
-    "Auswerfen fehlgeschlagen!",
-    "Napaka pri izmetu!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Echec de l'Èjection!",
-    "", // TODO
-    "Avaaminen ep‰onnistui!",
-    "", // TODO
-    "°No puedo expulsar!", 
-    "I apovoli apetixe!",
-    "Mata ut!",
-    "", // TODO
-    "", // TODO
-    "No puc expulsar!",
-    "æËÿ—⁄– “Î—‡ﬁ·– ‘ÿ·⁄–!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Eject failed!", // English
+    "Auswerfen fehlgeschlagen!", // German
+    "Napaka pri izmetu!", // Slovenian
+    "Espella venuto a mancare!", // Italian
+    "Werp ontbroken uit!", // Dutch
+    "Ejete falhado!", // Portuguese
+    "Echec de l'Èjection!", // French
+    "", // Norwegian
+    "Avaaminen ep‰onnistui!", // Finnish
+    "", // Polish
+    "°No puedo expulsar!", // Spanish
+    "I apovoli apetixe!", // Greek
+    "Mata ut!", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "No puc expulsar!", // Catalan
+    "æËÿ—⁄– “Î—‡ﬁ·– ‘ÿ·⁄–!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Select picture via key 1..9!",
-    "Bildauswahl ¸ber Taste 1..9!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Selectionner l'image (touches 1..9)!", 
-    "", // TODO
-    "Valitse kuva n‰pp‰imill‰ 1..9!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "≤Î—ﬁ‡ ÿ◊ﬁ—‡–÷’››ÿŸ ﬂ‡ÿ ﬂﬁ‹ﬁÈÿ ⁄›ﬁﬂﬁ⁄ 1..9!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Select picture via key 1..9!", // English
+    "Bildauswahl ¸ber Taste 1..9!", // German
+    "", // Slovenian
+    "Selezioni l'immagine via il tasto 1..9!", // Italian
+    "Selecteer beeld via knoop 1..9!", // Dutch
+    "Selecione o retrato atravÈs da tecla 1..9!", // Portuguese
+    "Selectionner l'image (touches 1..9)!", // French
+    "", // Norwegian
+    "Valitse kuva n‰pp‰imill‰ 1..9!", // Finnish
+    "", // Polish
+    "°Seleccione el cuadro vÌa el botÛn 1..9!", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "≤Î—ﬁ‡ ÿ◊ﬁ—‡–÷’››ÿŸ ﬂ‡ÿ ﬂﬁ‹ﬁÈÿ ⁄›ﬁﬂﬁ⁄ 1..9!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Building SlideShow...",
-    "Erzeuge Diavorf¸hrung...",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Contruction du SlideShow...",
-    "", // TODO
-    "Laaditaan diaesityst‰..",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "¡–◊‘–›ÿ’ ¥ÿ–‰ÿ€Ï‹–",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Building slide show...", // English
+    "Erzeuge Diavorf¸hrung...", // German
+    "", // Slovenian
+    "Proiezione di diapositive Della Costruzione...", // Italian
+    "De Show van de Dia van de bouw...", // Dutch
+    "Mostra De CorrediÁa Do EdifÌcio...", // Portuguese
+    "Contruction du SlideShow...", // French
+    "", // Norwegian
+    "Laaditaan diaesityst‰..", // Finnish
+    "", // Polish
+    "DemostraciÛn De Diapositiva Del Edificio...", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "¡–◊‘–›ÿ’ ¥ÿ–‰ÿ€Ï‹–", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Scanning directory...",
-    "Durchsuche Verzeichnis...",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Scannage du rÈpertoire...",
-    "", // TODO
-    "Selataan hakemistoa...",
-    "", // TODO
-    "Leyendo las carpetas..",
-    "", // TODO
-    "Sˆker igenom katalog...",
-    "", // TODO
-    "", // TODO
-    "Revisant les carpetes..",
-    "ø‡ﬁ·‹‚‡ ‘ÿ‡’⁄‚ﬁ‡ÿÿ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Scanning directory...", // English
+    "Durchsuche Verzeichnis...", // German
+    "", // Slovenian
+    "Indice di esame...", // Italian
+    "De folder van het aftasten...", // Dutch
+    "DiretÛrio da exploraÁ„o...", // Portuguese
+    "Scannage du rÈpertoire...", // French
+    "", // Norwegian
+    "Selataan hakemistoa...", // Finnish
+    "", // Polish
+    "Leyendo las carpetas..", // Spanish
+    "", // Greek
+    "Sˆker igenom katalog...", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "Revisant les carpetes..", // Catalan
+    "ø‡ﬁ·‹‚‡ ‘ÿ‡’⁄‚ﬁ‡ÿÿ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "No Files!",
-    "Keine Dateien!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Pas de fichiers !",
-    "", // TODO
-    "Ei tiedostoja!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "ΩÿÁ’”ﬁ ›’ ›–Ÿ‘’›ﬁ!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "No Files!", // English
+    "Keine Dateien!", // German
+    "", // Slovenian
+    "Nessun lime!", // Italian
+    "Geen dossiers!", // Dutch
+    "Nenhumas Limas!", // Portuguese
+    "Pas de fichiers !", // French
+    "", // Norwegian
+    "Ei tiedostoja!", // Finnish
+    "", // Polish
+    "°Ningunos Archivos!", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "ΩÿÁ’”ﬁ ›’ ›–Ÿ‘’›ﬁ!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Error building SlideShow!",
-    "Fehler beim Erzeugen der Diavorf¸hrung!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Erreur de construction du SlideShow !",
-    "", // TODO
-    "Diaesityksen laatiminen ep‰onnistui!",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "æËÿ—⁄– ·ﬁ◊‘–›ÿÔ ‘ÿ–‰ÿ€Ï‹–!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Slide show", // English
+    "Diavorf¸hrung", // German
+    "", // Slovenian
+    "Proiezione di diapositive", // Italian
+    "De show van de dia", // Dutch
+    "Mostra de corrediÁa", // Portuguese
+    "Projection de diapositives", // French
+    "", // Norwegian
+    "K‰yt‰ diaesityst‰", // Finnish
+    "", // Polish
+    "DemostraciÛn de diapositiva", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "¥ÿ–‰ÿ€Ï‹?", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "SlideShow ?",
-    "Diavorf¸hrung ?",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "SlideShow ?",
-    "", // TODO
-    "K‰yt‰ diaesityst‰",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "¥ÿ–‰ÿ€Ï‹?",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Slide duration (sec)", // English
+    "Anzeigedauer (Sek)", // German
+    "", // Slovenian
+    "Faccia scorrere la durata (sec)", // Italian
+    "De duur van de dia (seconde)", // Dutch
+    "Deslize a duraÁ„o (segundo)", // Portuguese
+    "DurÈe entre les images (Sec)", // French
+    "", // Norwegian
+    "Dian esitysaika (s)", // Finnish
+    "", // Polish
+    "Resbale la duraciÛn (sec)", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "≤‡’‹Ô ﬁ‚ﬁ—‡–÷’›ÿÔ (·’⁄)", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Slide duration (sec)",
-    "Anzeigedauer (Sek)",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "DurÈe entre les images (Sec)",
-    "", // TODO
-    "Dian esitysaika (s)",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "≤‡’‹Ô ﬁ‚ﬁ—‡–÷’›ÿÔ (·’⁄)",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Directory with temporary files", // English
+    "Verzeichnis mit tempor‰ren Dateien", // German
+    "", // Slovenian
+    "Indice con le lime provvisorie", // Italian
+    "Folder met tijdelijke dossiers", // Dutch
+    "DiretÛrio com limas provisÛrias", // Portuguese
+    "RÈpertoire temporaire", // French
+    "", // Norwegian
+    "V‰liaikaistiedostot", // Finnish
+    "", // Polish
+    "Directorio con los ficheros temporales", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "¬º¿ ‘ÿ‡’⁄‚ﬁ‡ÿÔ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Directory with temporary files",
-    "Verzeichnis mit tempor‰ren Dateien",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "RÈpertoire temporaire",
-    "", // TODO
-    "V‰liaikaistiedostot",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "¬º¿ ‘ÿ‡’⁄‚ﬁ‡ÿÔ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Repeat slide show", // English
+    "Wiederholung der Diavorf¸hrung", // German
+    "", // Slovenian
+    "Ripeti la proiezione di diapositive", // Italian
+    "Herhaal diashow", // Dutch
+    "Repita a mostra de corrediÁa", // Portuguese
+    "RÈpÈter le SlideShow", // French
+    "", // Norwegian
+    "Diaesityksen uudelleentoisto", // Finnish
+    "", // Polish
+    "Repita la demostraciÛn de diapositiva", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "øﬁ“‚ﬁ‡ ‘ÿ–‰ÿ€Ï‹–", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Show Filedate on OSD",
-    "Zeige Dateidatum im OSD",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Afficher la date des fichiers en OSD",
-    "", // TODO
-    "N‰yt‰ p‰iv‰m‰‰r‰ n‰ytˆll‰",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "øﬁ⁄–◊–‚Ï ÿ›‰ﬁ‡‹–ÊÿÓ ﬁ ‰ÎŸ€–Â Á’‡’◊ OSD",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Show numbers on index image", // English
+    "Zeige Zahlen im Indexbild", // German
+    "", // Slovenian
+    "Mostri i numeri sull'immagine di indice", // Italian
+    "Toon aantallen op indexbeeld", // Dutch
+    "Mostre n˙meros na imagem do Ìndice", // Portuguese
+    "Afficher nombre sur la page d'index", // French
+    "", // Norwegian
+    "N‰yt‰ numerot indeksikuvassa", // Finnish
+    "", // Polish
+    "Demuestre los n˙meros en imagen del Ìndice", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "øﬁ⁄–◊–‚Ï ›ﬁ‹’‡– “ ÿ›‘’⁄·’", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Repeat SlideShow",
-    "Wiederholung der Diavorf¸hrung",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "RÈpÈter le SlideShow",
-    "", // TODO
-    "Diaesityksen uudelleentoisto",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "øﬁ“‚ﬁ‡ ‘ÿ–‰ÿ€Ï‹–",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Live Audio from primary Device", // English
+    "Live Audio vom prim‰ren Ger‰t", // German
+    "", // Slovenian
+    "Audio in tensione dal dispositivo primario", // Italian
+    "Leef Audio van primair Apparaat", // Dutch
+    "¡udio vivo do dispositivo preliminar", // Portuguese
+    "Audio en direct", // French
+    "", // Norwegian
+    "Live-‰‰ni ensisijaiselta sovittimelta", // Finnish
+    "", // Polish
+    "Audio vivo del dispositivo primario", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "∏·ﬂﬁ€Ï◊ﬁ“–‚Ï –⁄‚ÿ“›ﬁ’(Live) ◊“„⁄ﬁ“ﬁ’ ·ﬁﬂ‡ﬁ“ﬁ÷‘’›ÿ’", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Show Numbers on index image",
-    "Zeige Zahlen im Indexbild",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Afficher nombre sur la page d'index",
-    "", // TODO
-    "N‰yt‰ numerot indeksikuvassa",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "øﬁ⁄–◊–‚Ï ›ﬁ‹’‡– “ ÿ›‘’⁄·’",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
-  },
-  { "Live Audio from primary Device",
-    "Live Audio vom prim‰ren Ger‰t",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Audio en direct",
-    "", // TODO
-    "Live-‰‰ni ensisijaiselta sovittimelta",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "∏·ﬂﬁ€Ï◊ﬁ“–‚Ï –⁄‚ÿ“›ﬁ’(Live) ◊“„⁄ﬁ“ﬁ’ ·ﬁﬂ‡ﬁ“ﬁ÷‘’›ÿ’",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
-  },
-  { "Convert...",
-    "Wandle...",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Convertion...",
-    "", // TODO
-    "Konvertoi...",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "⁄ﬁ›“’‡‚–ÊÿÔ",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Convert...", // English
+    "Wandle...", // German
+    "", // Slovenian
+    "Convertito...", // Italian
+    "Zet om...", // Dutch
+    "Converso...", // Portuguese
+    "Convertion...", // French
+    "", // Norwegian
+    "Konvertoi...", // Finnish
+    "", // Polish
+    "Convertido...", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "⁄ﬁ›“’‡‚–ÊÿÔ", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },  
-  { "Zoom",
-    "Vergrˆﬂere",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Zoom",
-    "", // TODO
-    "Suurenna",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "ø‡ÿ—€ÿ◊ÿ‚Ï(Zoom)",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Zoom", // English
+    "Vergrˆﬂere", // German
+    "", // Slovenian
+    "Zoom", // Italian
+    "Gezoem", // Dutch
+    "Zumbido", // Portuguese
+    "Zoom", // French
+    "", // Norwegian
+    "Suurenna", // Finnish
+    "", // Polish
+    "Zumbido", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "ø‡ÿ—€ÿ◊ÿ‚Ï(Zoom)", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },  
-  { "Execute",
-    "Ausf¸hren",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "Executer",
-    "", // TODO
-    "Suorita",
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "", // TODO
-    "≤Îﬂﬁ€›ÿ‚Ï",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Execute", // English
+    "Ausf¸hren", // German
+    "", // Slovenian
+    "Esegua", // Italian
+    "Voer uit", // Dutch
+    "Execute", // Portuguese
+    "Executer", // French
+    "", // Norwegian
+    "Suorita", // Finnish
+    "", // Polish
+    "Ejec˙tese", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "≤Îﬂﬁ€›ÿ‚Ï", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },  
-  { "Operation failed",	/*English*/
-    "Vorgang fehlgeschlagen",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "OpÈration non rÈussie", // FranÁais
-    "", // TODO /*Norsk*/
-    "Toiminto ep‰onnistui", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "æﬂ’‡–ÊÿÔ ﬁ·‚–›ﬁ“€’›–",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Operation failed", // English
+    "Vorgang fehlgeschlagen", // German
+    "", // Slovenian
+    "Il funzionamento viene a mancare", // Italian
+    "Ontbroken verrichting", // Dutch
+    "A operaÁ„o falhou", // Portuguese
+    "OpÈration non rÈussie", // French
+    "", // Norwegian
+    "Toiminto ep‰onnistui", // Finnish
+    "", // Polish
+    "La operaciÛn fallÛ", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "æﬂ’‡–ÊÿÔ ﬁ·‚–›ﬁ“€’›–", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Image couldn't load",	/*English*/
-    "Konnte Bild nicht lesen",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "Impossible de charger l'image", // FranÁais
-    "", // TODO /*Norsk*/
-    "Kuvan lukeminen ep‰onnistui", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "æËÿ—⁄– Á‚’›ÿÔ ‰–Ÿ€–",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Image couldn't load", // English
+    "Konnte Bild nicht lesen", // German
+    "", // Slovenian
+    "L'immagine non ha potuto caricare", // Italian
+    "Het beeld kon niet laden", // Dutch
+    "A imagem n„o podia carregar", // Portuguese
+    "Impossible de charger l'image", // French
+    "", // Norwegian
+    "Kuvan lukeminen ep‰onnistui", // Finnish
+    "", // Polish
+    "La imagen no podÌa cargar", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "æËÿ—⁄– Á‚’›ÿÔ ‰–Ÿ€–", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Script execution failed",	/*English*/
-    "Scriptausf¸hrung fehlgeschlagen",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "Impossible d'exÈcuter le script", // FranÁais
-    "", // TODO /*Norsk*/
-    "Skriptin suoritus ep‰onnistui", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "æËÿ—⁄– “Îﬂﬁ€›’›ÿÔ ·⁄‡ÿﬂ‚–!",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Script execution failed", // English
+    "Scriptausf¸hrung fehlgeschlagen", // German
+    "", // Slovenian
+    "L'esecuzione dello scritto Ë venuto a mancare", // Italian
+    "Ontbroken de uitvoering van het manuscript", // Dutch
+    "A execuÁ„o do certificado falhou", // Portuguese
+    "Impossible d'exÈcuter le script", // French
+    "", // Norwegian
+    "Skriptin suoritus ep‰onnistui", // Finnish
+    "", // Polish
+    "La ejecuciÛn de la escritura fallÛ", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "æËÿ—⁄– “Îﬂﬁ€›’›ÿÔ ·⁄‡ÿﬂ‚–!", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Remove temporary files",	/*English*/
-    "Lˆsche tempor‰re Dateien",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "Effacer les fichiers temporaires", // FranÁais
-    "", // TODO /*Norsk*/
-    "Tyhjenn‰ v‰liaikaistiedostot", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "·‚ÿ‡–›ÿ’ tmp ‰–Ÿ€ﬁ“",	// Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Remove temporary files", // English
+    "Lˆsche tempor‰re Dateien", // German
+    "", // Slovenian
+    "Rimuova le lime provvisorie", // Italian
+    "Verwijder tijdelijke dossiers", // Dutch
+    "Remova as limas provisÛrias", // Portuguese
+    "Effacer les fichiers temporaires", // French
+    "", // Norwegian
+    "Tyhjenn‰ v‰liaikaistiedostot", // Finnish
+    "", // Polish
+    "Quite los ficheros temporales", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "·‚ÿ‡–›ÿ’ tmp ‰–Ÿ€ﬁ“", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Border for Underscan (Height)",	/*English*/
-    "Rand f¸r Underscan (Hˆhe)",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "", // TODO /*FranÁais*/
-    "", // TODO /*Norsk*/
-    "Reunuksen korkeus keskitykselle", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "", // TODO Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Border for Underscan (Height)", // English
+    "Rand f¸r Underscan (Hˆhe)", // German
+    "", // Slovenian
+    "Bordo per Underscan (altezza)", // Italian
+    "Grens voor Underscan (Hoogte)", // Dutch
+    "Beira para Underscan (altura)", // Portuguese
+    "FrontiËre pour Underscan (taille)", // French
+    "", // Norwegian
+    "Reunuksen korkeus keskitykselle", // Finnish
+    "", // Polish
+    "Frontera para Underscan (altura)", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
-  { "Border for Underscan (Width)",	/*English*/
-    "Rand f¸r Underscan (Breite)",	/*Deutsch*/
-    "", // TODO /*Slovenski*/
-    "", // TODO /*Italiano*/
-    "", // TODO /*Nederlands*
-    "", // TODO /*PortuguÍs*/
-    "", // TODO /*FranÁais*/
-    "", // TODO /*Norsk*/
-    "Reunuksen leveys keskitykselle", /*suomi*/
-    "", // TODO /*Polski*/
-    "", // TODO /*EspaÒol*/
-    "", // TODO /*Ellinika*/
-    "", // TODO /*Svenska*/
-    "", // TODO /*Romaneste*/
-    "", // TODO /*Magyar*/
-    "", // TODO /*Catal‡*/
-    "", // TODO Russian
-    "", // TODO Hrvatski
-    "", // TODO Eesti
-    "", // TODO Dansk
+  { "Border for Underscan (Width)", // English
+    "Rand f¸r Underscan (Breite)", // German
+    "", // Slovenian
+    "Bordo per Underscan (larghezza)", // Italian
+    "Grens voor Underscan (Breedte)", // Dutch
+    "Beira para Underscan (largura)", // Portuguese
+    "FrontiËre pour Underscan (largeur)", // French
+    "", // Norwegian
+    "Reunuksen leveys keskitykselle", // Finnish
+    "", // Polish
+    "Frontera para Underscan (anchura)", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
   },
   { NULL }
 };
