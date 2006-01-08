@@ -59,7 +59,7 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
  , m_pDisplayReplay(NULL)
 {
   // Notity all cStatusMonitor
-  cStatus::MsgReplaying(this, "[image]");
+  cStatus::MsgReplaying(this, "image", NULL, true );
   
   m_tStarted = time(NULL);
   
@@ -87,7 +87,7 @@ cImageControl::~cImageControl()
     delete m_pImageMenu;
   m_pImageMenu = NULL;
   // Notity cleanup all cStatusMonitor
-  cStatus::MsgReplaying(this, NULL);
+  cStatus::MsgReplaying(this, "image", NULL, false);
   // Hide OSD
   HideOSD();
   if(m_pDisplayReplay) {
@@ -152,15 +152,15 @@ void cImageControl::ShowStatusMsg()
   char* sz = 0;
   if(IsConvertRunning())  // Display that convert is running
   {
-    asprintf(&sz,"[image] %s",tr("Convert..."));
+    asprintf(&sz,"%s",tr("Convert..."));
   }
   else 
   {
     switch(m_ePlayMode)
     {
-      case ePlayModeNormal: asprintf(&sz,"[image] %s",FileName());break;
-      case ePlayModeJump:   asprintf(&sz,"[image] %s",tr("Select picture via key 1..9!"));break;
-      case ePlayModeZoom:   asprintf(&sz,"[image] %s %dx",tr("Zoom"),m_nZoomFactor);break;
+      case ePlayModeNormal: asprintf(&sz,"%s",FileName());break;
+      case ePlayModeJump:   asprintf(&sz,"%s",tr("Select picture via key 1..9!"));break;
+      case ePlayModeZoom:   asprintf(&sz,"%s %dx",tr("Zoom"),m_nZoomFactor);break;
     }
   }
   if(sz)
@@ -171,7 +171,7 @@ void cImageControl::ShowStatusMsg()
       if(m_szLastShowStatusMsg)
         free(m_szLastShowStatusMsg);
       m_szLastShowStatusMsg = sz;
-      cStatus::MsgReplaying(this, m_szLastShowStatusMsg);
+      cStatus::MsgReplaying(this, "image" , m_szLastShowStatusMsg, true );
     }
     else 
       free(sz);
