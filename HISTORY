@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-11
+- fix wrong register_avcodec (Thanks to Peter Holik)
+
 2006-01-08
 - Bounce to vdr-1.3.38 (Required)
 

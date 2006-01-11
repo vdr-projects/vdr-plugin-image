@@ -62,7 +62,7 @@ cEncode::cEncode()
 bool cEncode::Register()
 {
     avcodec_init();
-    register_avcodec(&mpeg2video_decoder);
+    register_avcodec(&mpeg2video_encoder);
     return true;
 }
 
