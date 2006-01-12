@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

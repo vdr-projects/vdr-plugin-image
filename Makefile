@@ -1,7 +1,55 @@
 #
-# Makefile for a Video Disk Recorder plugin
+# Makefile for Image plugin to VDR
 #
-# $Id$
+# (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+#
+# This code is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This code is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# Or, point your browser to http://www.gnu.org/copyleft/gpl.html
+
+# You can change the compile options here or create a Make.config
+# in the VDR directory an set them there.
+
+### uncomment the following line, if you don't have libexif installed
+#WITHOUT_LIBEXIF=1
+
+#FFMDIR = ../../../../ffmpeg
+
+
+### The C++ compiler and options:
+
+CXX      ?= g++
+CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
+
+###############################################
+###############################################
+#
+# no user configurable options below this point
+#
+###############################################
+###############################################
+
+### The directory environment:
+
+DVBDIR = ../../../../DVB
+VDRDIR = ../../..
+LIBDIR = ../../lib
+TMPDIR = /tmp
+
+### Allow user defined options to overwrite defaults:
+
+-include $(VDRDIR)/Make.config
 
 # The official name of this plugin.
 # This name will be used in the '-P...' option of VDR to load the plugin.
@@ -13,26 +61,11 @@ PLUGIN = image
 
 VERSION = $(shell grep 'static const char \*VERSION *=' $(PLUGIN).c | awk '{ print $$6 }' | sed -e 's/[";]//g')
 
-### The C++ compiler and options:
-
-CXX      ?= g++
-CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
-
-### The directory environment:
-
-DVBDIR = ../../../../DVB
-VDRDIR = ../../..
-LIBDIR = ../../lib
-TMPDIR = /tmp
-#FFMDIR = ../../../../ffmpeg
-
-### Allow user defined options to overwrite defaults:
-
--include $(VDRDIR)/Make.config
-
 ### The version number of VDR (taken from VDR's "config.h"):
 
 VDRVERSION = $(shell grep 'define VDRVERSION ' $(VDRDIR)/config.h | awk '{ print $$3 }' | sed -e 's/"//g')
+
+
 
 ### The name of the distribution archive:
 
@@ -44,15 +77,6 @@ PACKAGE = vdr-$(ARCHIVE)
 ifdef FFMDIR
 FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " $(FFMDIR)/libavcodec/avcodec.h | \
                     cut -d "x" -f 2 )
-else
-ifeq (,$(findstring 000,$(FFMVERSION)))
-FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " /usr/include/ffmpeg/avcodec.h 2>/dev/null | \
-                    cut -d "x" -f 2 )
-endif
-ifeq (,$(findstring 000,$(FFMVERSION)))
-FFMVERSION = $(shell grep "\#define FFMPEG_VERSION_INT " /usr/local/include/ffmpeg/avcodec.h 2>/dev/null | \
-                    cut -d "x" -f 2 )
-endif
 endif
 
 ### Includes and Defines (add further entries here):
@@ -75,30 +99,27 @@ endif
 endif
 
 LIBS += -lavcodec
-ifneq ($(FFMVERSION),000408)
-LIBS += -lavformat -lavutil
-endif
-
 LIBS += -lz
 
 ifdef FFMDIR
 DEFINES += -DFFMDIR
 endif
 
+ifndef WITHOUT_LIBEXIF
+  LIBS    += -lexif
+  DEFINES += -DHAVE_LIBEXIF
+endif
+
 ### The object files (add further files here):
 
-OBJS = ${PLUGIN}.o 
-OBJS += i18n.o
-OBJS += data.o
-OBJS += menu.o
-OBJS += data-image.o
-OBJS += menu-image.o
-OBJS += setup-image.o
-OBJS += player-image.o
-OBJS += control-image.o
-OBJS += commands.o
-OBJS += menu-commands.o
-OBJS += list.o
+OBJS = ${PLUGIN}.o i18n.o data.o menu.o data-image.o menu-image.o \
+ setup-image.o player-image.o control-image.o commands.o menu-commands.o \
+ list.o
+
+
+ifndef WITHOUT_LIBEXIF
+  OBJS    += exif.o
+endif
 
 ### The subdirectories:
 

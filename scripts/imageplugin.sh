@@ -5,7 +5,7 @@
 # History:
 # 2005-07-26 add commando for rotate 180
 # 2005-07-18 wrong lookup for pnmscale and really are pnmscalefixed used
-# 2004-08-12 Initalrelease, Andreas Brachold <vdr04-at-deltab.de>
+# 2004-08-12 Initalrelease, Andreas Brachold <anbr at users.berlios.de>
 #    base on prior work for convert.sh 
 #      by  Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz> 
 #          Andreas Holzhammer and <Interpohl-at-vdr-portal.de>

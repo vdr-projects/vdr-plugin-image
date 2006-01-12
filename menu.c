@@ -2,7 +2,7 @@
  * image plugin to VDR (C++)
  *
  * (C) 2004	"Interpohl"  <interpohl-at-vdr-portal.de> 
- * (C) 2004-2006 A.Brachold   <vdr04-at-deltab.de>
+ * (C) 2004-2006 A.Brachold   <anbr at users.berlios.de>
  * (C) 2004	O.Kreuzinger <Onno-at-Kreuzinger.biz>
  * (C) 2003     Kai Tobias Burwieck <kai-at-burwieck.net>
  * (C) 2001,2002 Stefan Huelswitt <huels-at-iname.com>

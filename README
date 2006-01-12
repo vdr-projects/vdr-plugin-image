@@ -3,12 +3,12 @@ This is a "plugin" for the Video Disk Recorder (VDR).
 Originaly written by:           Kai Tobias Burwieck <kai-at-burwieck.net>
                                 "Interpohl" <interpohl-at-vdr-portal.de>
                                 Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz>
-                                Andreas Brachold <vdr04-at-deltab.de>
+                                Andreas Brachold <anbr at users.berlios.de>
 
 Former project's homepage:      http://www.burwieck.net/vdr (dead?)
                                 http://vdr-image.kreuzinger.biz>
 
-Maintainer:                     Andreas Brachold <vdr04-at-deltab.de>
+Maintainer:                     Andreas Brachold <anbr at users.berlios.de>
 
 Project homepage:               http://vdr-image.berlios.de/
 
@@ -19,10 +19,17 @@ Required:
 -----------
 - fullfeatured dvb card
 - vdr 1.3.38+
-- to compile plugin depends package libavcodec1-dev (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
-- to run your will need package netpbm and libavcodec1
-- netpbm 10.0+ (check for "anytopnm", if  it does not exist upgrade/install netpbm)
-- not necessary but useful utils/file (file) for better imagetyp detection, used by anytopnm
+- plugin depends follow packages
+    + ffmpeg (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
+        http://ffmpeg.sourceforge.net
+    + libexif
+        http://libexif.sourceforge.net/
+    + for running your will need also package netpbm
+        http://netpbm.sourceforge.net/
+        netpbm 10.0+ (check for "anytopnm", if  it does not exist upgrade/install netpbm)
+    + not necessary but useful utils/file (file) for better imagetyp detection, 
+        this tools is used by script anytopnm
+        ftp://ftp.astron.com/pub/file
 
 Important Note:
 if tools are installed by source absolutely also for it provide that the 
@@ -32,26 +39,44 @@ otherwise adapt the variable "PATH"  within the file imageplugin.sh.
 Install:
 ------------
 Install the plugin part as usual (see vdr docs if you not know already).
+You will need a full source tree from vdr, to build this plugins.
+copy source to below defined folder.
 
     cd $VDRSOURCE/PLUGINS/src
     tar -xzvf vdr-image-x.x.x.tgz
     ln -s image-x.x.x image
 
-Compile  depends package libavcodec1-dev, libavcodec1 or also know ffmpeg.
-later for run your will only need libavcodec1(libavcodec.so) and netpbm.
-("apt-get install libavcodec1-dev libavcodec1 netpbm" on Debian)
+Compile depends package ffmpeg, libexif. later for running your 
+need netpbm for image conversion.
 
- to compile 
+ build ffmpeg
+    $ configure --enable-shared && make && make install
 
-    cd $VDRSOURCE
+ build libexif 
+    $ configure && make && make install
 
-    make plugins
-    make plugins-install
+ now compile plugin
 
- or if you need, defined a ffmpeg source folder
+    $ cd $VDRSOURCE
+    $ make plugins
 
-    make plugins FFMDIR=/usr/src/ffmpeg-cvs
-    make plugins-install
+ or if you need, defined a ffmpeg source folder ¹) 
+ this essential if build ffmpeg without "--enable-shared"
+
+    $ make plugins FFMDIR=/usr/src/ffmpeg-cvs
+
+ compile without libexif ¹)
+    
+    $ make plugins WITHOUT_LIBEXIF=1
+
+ to install plugin
+
+    $ make plugins-install
+
+
+¹) Build options can also defined inside $VDRSOURCE/Make.config
+
+
 
 In the ./examples directory you can find a sample file for
 imagesources.conf, change this file if needed and place it in
@@ -93,10 +118,11 @@ At all modi
    OK          toggle OSD informations
    Play/Pause  begin/halt slide
    Stop/Blue   stop plugin
-   Red         open menu with imagecommands
  
 While watching pictures
    Back        stop plugin
+   Red         open menu with imagecommands
+   Info        show exif informations 
  
    Left        previous picture
    Right       next picture
@@ -117,6 +143,8 @@ While watching pictures
  
 'Zoom menu'
    Back        Zoom outside image 
+   Red         open menu with imagecommands
+   Info        show exif informations 
  
    Left        scroll zoomedframe inside picture to left
    Right       scroll zoomedframe inside picture to right

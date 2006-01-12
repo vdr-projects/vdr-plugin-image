@@ -3,12 +3,12 @@ This is a "plugin" for the Video Disk Recorder (VDR).
 Originaly written by:           Kai Tobias Burwieck <kai-at-burwieck.net>
                                 "Interpohl" <vdr-portal.de>
                                 Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz>
-                                Andreas Brachold <vdr04-at-deltab.de>
+                                Andreas Brachold <anbr at users.berlios.de>
 
 Former project's homepage:      http://www.burwieck.net/vdr (dead?)
                                 http://vdr-image.kreuzinger.biz>
 
-Maintainer:                     Andreas Brachold <vdr04-at-deltab.de>
+Maintainer:                     Andreas Brachold <anbr at users.berlios.de>
 
 Project homepage:               http://vdr-image.berlios.de/
 
@@ -19,10 +19,17 @@ Benötigt:
 -----------
 - Full-Featured DVB Karte 
 - vdr 1.3.38+ 
-- das Plugin ist abhängig vom Paket libavcodec1-dev zu übersetzen, (getestet mit ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
-- und Paket netpbm sowie libavcodec1 zur Ausführung 
-- netpbm 10.0+ (prüfe ob das Tool "anytopnm" existiert)
-- nicht notwendig, aber sinnvoll utils/file (file) für bessere Bildtyperkennung, mit anytopnm
+- das Plugin ist abhängig vom folgenden Paketen
+    + ffmpeg (getestet mit ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
+        http://ffmpeg.sourceforge.net
+    + libexif
+        http://libexif.sourceforge.net/
+    + zur Ausführung wird auch das Paket netpbm benötigt
+        http://netpbm.sourceforge.net/
+        netpbm 10.0+ (prüfe ob das Tool "anytopnm" existiert)
+    + nicht notwendig, aber sinnvoll utils/file (file) für bessere Bildtyperkennung
+        dieses Tool wird vom Skript anytopnm genutzt
+        ftp://ftp.astron.com/pub/file
 
 WICHTIG, 
 wenn Tools von Source installiert werden, unbedingt auch dafür sorgen das 
@@ -32,26 +39,43 @@ ansonsten die Variable "PATH" innerhalb der Datei imageplugin.sh anpassen.
 Installation:
 ------------------
 Das Plugin wird wie alle Plugins installiert (siehe im Zweifel in vdr Dokumentation nach).
+Es wird ein voll Quellcodebaum des vdr benötigt, um diese Plugin zu kompilieren.
+Kopiere die Quellen in das vorgegebene Verzeichnis, wie unten aufgeführt..
 
     cd $VDRSOURCE/PLUGINS/src
     tar -xzvf vdr-image-x.x.x.tgz
     ln -s image-x.x.x image
 
-Das Kompilieren ist abhängig vom Paket libavcodec1-dev, libavcodec1, aber auch bekannt als ffmpeg.
-Später zum Ausführen wird nur noch libavcodec1(libavcodec.so) und "netpbm" benötigt.
-("apt-get install libavcodec1-dev libavcodec1 netpbm" in Debian)
+Das Kompilieren ist abhängig vom Paket ffmpeg, libexif, und später zum Ausführen 
+wird noch das Paket "netpbm" benötigt.
 
- zum Übersetzen
+ ffmpeg übersetzen
+    $ configure --enable-shared && make && make install
 
-    cd $VDRSOURCE
+ libexif übersetzen
+    $ configure && make && make install
 
-    make plugins
-    make plugins-install
+ Übersetzen des Plugin
 
- oder wenn benötigt, definiere das ffmpeg source Verzeichnis
+    $ cd $VDRSOURCE
+    $ make plugins
 
-    make plugins FFMDIR=/usr/src/ffmpeg-cvs
-    make plugins-install
+ oder wenn benötigt, definiere das ffmpeg source Verzeichnis ¹)
+ das ist notwendig, wenn ffmpeg ohne "--enable-shared" übersetzt wurde.
+
+    $ make plugins FFMDIR=/usr/src/ffmpeg-cvs
+
+ Kompilieren ohne libexif ¹)
+    
+    $ make plugins WITHOUT_LIBEXIF=1
+
+ Installieren des Plugins
+
+    $ make plugins-install
+
+
+¹) Übersetzungsoptionen können auch innerhalb $VDRSOURCE/Make.config definiert 
+   werden
 
 
 
@@ -94,10 +118,11 @@ At all modi
    OK          toggle OSD informations
    Play/Pause  Starte Diaschau/ Stoppe Diaschau
    Stop/Blue   Stoppe Plugin
-   Red         Öffne Menu mit Bildbefehle
  
 Während der Bildbetrachtung:
    Back        Stoppe Plugin
+   Red         Öffne Menu mit Bildbefehle
+   Info        Zeige Exif-Informationen
  
    Left        vorheriges Bild
    Right       nächstes Bild
@@ -120,6 +145,8 @@ Während der Bildbetrachtung:
  
 'Zoom-Bedienung'
    Back        Zoomwert verkleinern 
+   Red         Öffne Menu mit Bildbefehle
+   Info        Zeige Exif-Informationen
  
    Left        Bildausschnitt nach Links verschieben
    Right       Bildausschnitt nach Rechts verschieben

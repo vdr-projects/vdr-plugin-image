@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2006 Andreas Brachold    <anbr at users.berlios.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,40 +19,24 @@
  * Or, point your browser to http://www.gnu.org/copyleft/gpl.html
  */
 
-#ifndef __MENU_COMMANDS_H
-#define __MENU_COMMANDS_H
+#ifndef __MENU_EXIF_H
+#define __MENU_EXIF_H
 
 #include "image.h"
-#include "commands.h"
 #include <vdr/menuitems.h>
 #include <vdr/interface.h>
+#include <string>
 
-class cImageMenuCommands
-: public cOsdMenu 
-{
-  cImageCommands *m_pCmds;
-  char *m_szFileName;
-  bool m_bImageChanged;
-  char *m_szTitle;
-protected:
-  eOSState Execute(void);
-public:
-  cImageMenuCommands(const char *szTitle, cImageCommands *Cmds, const char *szFileName);
-  virtual ~cImageMenuCommands();
-  virtual eOSState ProcessKey(eKeys Key);
-  bool HasImageChanged() const { return m_bImageChanged; } 
-};
-  
 
-class cImageMenuResult : public cOsdMenu 
+class cImageMenuExif : public cOsdMenu 
 {
-	const char *m_szText;
+	std::string m_strText;
 protected:
 	virtual void Display(void);
 public:
-    cImageMenuResult(const char *Title, const char *Text);
+    cImageMenuExif(const char *szFileName);
     virtual eOSState ProcessKey(eKeys Key);
 };
 
 
-#endif //__MENU_COMMANDS_H
+#endif //__MENU_EXIF_H

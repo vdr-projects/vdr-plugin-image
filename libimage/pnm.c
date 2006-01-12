@@ -1,6 +1,6 @@
 /***************************************************************************
  * pnm.c
- * (C) Copyright  2004 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) Copyright  2004 Andreas Brachold    <anbr at users.berlios.de>
  *     based on works from Fabian E. Bustamante <fabianb-at-cs.umd.edu>
  *  Created: Thu Aug  7 2004
  ****************************************************************************/

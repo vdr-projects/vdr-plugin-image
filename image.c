@@ -1,13 +1,13 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
- * (C) 2004     "Interpohl"  <interpohl@vdr-portal.de> 
- * (C) 2004     A. Brachold   <vdr04-at-deltab.de>
- * (C) 2004     O. Kreuzinger <Onno@Kreuzinger.biz>
+ * (C) 2003 Kai Tobias Burwieck <kai at burwieck.net>
+ * (C) 2004     "Interpohl"  <interpohl at vdr-portal.de> 
+ * (C) 2004     A. Brachold   <anbr at users.berlios.de>
+ * (C) 2004     O. Kreuzinger <Onno at Kreuzinger.biz>
  * (C) 2004     A. Holzhammer for the massive script updates
  *  
- *  based on mp3/mplayer plguin by Stefan Hülswitt <huels@iname.com>
+ *  based on mp3/mplayer plguin by Stefan Hülswitt <huels at iname.com>
  *   
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

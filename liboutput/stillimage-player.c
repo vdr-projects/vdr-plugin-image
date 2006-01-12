@@ -1,6 +1,6 @@
 /***************************************************************************
  * stillimage-player.c
- * (C) Copyright  2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) Copyright  2004-2005 Andreas Brachold    <anbr at users.berlios.de>
  *  Created: Thu Aug  5 2004
  * 
  ****************************************************************************/

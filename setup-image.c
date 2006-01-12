@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2006 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * based on MP3/MPlayer plugin to VDR (C++)

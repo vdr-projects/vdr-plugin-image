@@ -1,6 +1,6 @@
 /***************************************************************************
  * stillimage.c
- * (C) Copyright  2004 <vdr04-at-deltab.de>
+ * (C) Copyright  2004 <anbr at users.berlios.de>
  *  Created: Thu Aug  5 2004
  *
  *  parts of the code (c) Peter Seyringer 

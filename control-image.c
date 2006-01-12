@@ -1,7 +1,7 @@
 /*
 * Image plugin to VDR (C++)
 *
-* (C) 2004-2005 Andreas Brachold <vdr04 -at- deltab.de>
+* (C) 2004-2005 Andreas Brachold <anbr at users.berlios.de>
 * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
 *
 * This code is free software; you can redistribute it and/or
@@ -30,6 +30,10 @@
 #include "menu-commands.h"
 #include "list.h"
 
+#ifdef HAVE_LIBEXIF
+#include "exif.h"
+#endif
+
 #include <vdr/status.h>
 #include <vdr/tools.h>
 #include <vdr/plugin.h>
@@ -55,7 +59,10 @@ void cImageControl::SetSlideShow(cSlideShow * pNewSlideShow)
 */
 cImageControl::cImageControl(cSlideShow * pNewSlideShow)
  : cControl(player = new cImagePlayer(pNewSlideShow))
- , m_pImageMenu(NULL)
+ , m_pCmdMenu(NULL)
+#ifdef HAVE_LIBEXIF
+ , m_pExifMenu(NULL)
+#endif
  , m_pDisplayReplay(NULL)
 {
   // Notity all cStatusMonitor
@@ -83,9 +90,18 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
 */
 cImageControl::~cImageControl()
 {
-  if(m_pImageMenu)
-    delete m_pImageMenu;
-  m_pImageMenu = NULL;
+  if(m_pCmdMenu) {
+    delete m_pCmdMenu;
+    m_pCmdMenu = NULL; 
+  }
+
+#ifdef HAVE_LIBEXIF
+  if(m_pExifMenu) {
+    delete m_pExifMenu;
+    m_pExifMenu = NULL;
+  }
+#endif
+
   // Notity cleanup all cStatusMonitor
   cStatus::MsgReplaying(this, "image", NULL, false);
   // Hide OSD
@@ -139,10 +155,18 @@ void cImageControl::HideOSD(void)
     m_eOSDStatusIsOpen = eDisplayNothing;
   }
 
-  if (m_pImageMenu) {
-    delete m_pImageMenu;
-    m_pImageMenu = NULL;
-  }    
+  if (m_pCmdMenu) {
+    delete m_pCmdMenu;
+    m_pCmdMenu = NULL;
+  }
+
+#ifdef HAVE_LIBEXIF
+  if(m_pExifMenu) {
+    delete m_pExifMenu;
+    m_pExifMenu = NULL;
+  }
+#endif
+
 }
 //////////////////////////////////////////////////////////////////////////
 /** Send Message if changed to any statusmonitor 
@@ -308,11 +332,18 @@ eOSState cImageControl::ProcessKey(eKeys nKey)
 
   eOSState eOSRet = osContinue;
   
-  if(m_pImageMenu 
+  if(m_pCmdMenu 
     || (m_ePlayMode != ePlayModeJump && (nKey == kRed)))
   {
     return ProcessKeyCommands(nKey);
   }
+#ifdef HAVE_LIBEXIF
+  else if(m_pExifMenu
+    || (m_ePlayMode != ePlayModeJump && (nKey == kInfo)))
+  {
+    return ProcessKeyExif(nKey);
+  }
+#endif
   else
   {
     switch(nKey) 
@@ -594,17 +625,17 @@ void cImageControl::ToogleSlideShowActiv(void)
 */
 eOSState cImageControl::ProcessKeyCommands(eKeys nKey)
 {
-  if(m_pImageMenu)
+  if(m_pCmdMenu)
   {
-    eOSState eOSRet = m_pImageMenu->ProcessKey(nKey);
+    eOSState eOSRet = m_pCmdMenu->ProcessKey(nKey);
     switch(eOSRet)
     {
       case osEnd:
       case osBack:
-        if(m_pImageMenu->HasImageChanged())
+        if(m_pCmdMenu->HasImageChanged())
           OriginalImage(false); 
-        delete m_pImageMenu;
-        m_pImageMenu = NULL;
+        delete m_pCmdMenu;
+        m_pCmdMenu = NULL;
         return osContinue;
       default:
         return eOSRet;
@@ -634,12 +665,13 @@ eOSState cImageControl::ProcessKeyCommands(eKeys nKey)
     const char* szFileName = FileName(); 
     char* szTitle; 
     asprintf(&szTitle,"%s (%s)",tr("Commands"),basename(szFileName));
-    m_pImageMenu = new cImageMenuCommands(szTitle,pCmd,szFileName);
+    m_pCmdMenu = new cImageMenuCommands(szTitle,pCmd,szFileName);
     free(szTitle);
   
     return osContinue;
   }
 }
+
 
 //////////////////////////////////////////////////////////////////////////////
 /** Check to get access for to viewed file

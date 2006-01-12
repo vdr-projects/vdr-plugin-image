@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold <vdr04 -at- deltab.de>
+ * (C) 2004-2005 Andreas Brachold <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -33,6 +33,10 @@
 class cImagePlayer;    
 class cImageMenuCommands;
 
+#ifdef HAVE_LIBEXIF
+class cImageMenuExif;
+#endif
+
 class cImageControl
  : public cControl 
 {
@@ -48,7 +52,11 @@ class cImageControl
   /** Our one and only Imageplayer, don't rename it see cControl  */
   cImagePlayer            *player;
   /** Interface to Menu with Usercommands*/
-  cImageMenuCommands      *m_pImageMenu;
+  cImageMenuCommands      *m_pCmdMenu;
+#ifdef HAVE_LIBEXIF
+  /** Interface to Menu to show exif infomations*/
+  cImageMenuExif          *m_pExifMenu;
+#endif
   /** Current playing mode (Jump <-> Normal <-> Zoom) */
   ePlayMode               m_ePlayMode;
   /** Remember the active Slideshow mode before Jump or Zoom used */
@@ -135,6 +143,9 @@ private:
   eOSState ProcessKeyJumpMode(eKeys nKey);
   eOSState ProcessKeyZoomMode(eKeys nKey);
   eOSState ProcessKeyCommands(eKeys nKey);
+#ifdef HAVE_LIBEXIF
+  eOSState ProcessKeyExif(eKeys nKey);
+#endif
   
   void NextImage(int Step);
   void PrevImage(int Step);

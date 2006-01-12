@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2006 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -114,7 +114,7 @@ const tI18nPhrase Phrases[] = {
     "precursore", // Italian
     "voorloper", // Dutch
     "precursor", // Portuguese
-    "Parent", // French
+    "", // French
     "", // Norwegian
     "Takaisin", // Finnish
     "", // Polish
@@ -149,6 +149,48 @@ const tI18nPhrase Phrases[] = {
     "", // Hrvatski
     "", // Eesti
     "", // Dansk
+  },
+  { "Play",
+    "Wiedergabe",
+    "Predvajaj",
+    "Riproduci",
+    "Weergeven",
+    "",// TODO
+    "Lecture",
+    "",// TODO
+    "Toista",
+    "Odtworzenie",
+    "Reproducir",
+    "ÁíáðáñáãùãÞ",
+    "Spela upp",
+    "Redare",
+    "Lejátszás",
+    "Reproduir",
+    "²ÞáßàÞØ×ÒÕÔÕÝØÕ",
+    "Start",
+    "Start",
+    "Afspil",
+  },
+  { "Back",
+    "Zurück",
+    "Nazaj",
+    "Indietro",
+    "Terug",
+    "Voltar",
+    "Retour",
+    "Tilbake",
+    "Takaisin",
+    "Wstecz",
+    "Retornar",
+    "Ðßóù",
+    "Tillbaka",
+    "Înapoi",
+    "Vissza",
+    "Retornar",
+    "½Ð×ÐÔ",
+    "Nazad",
+    "Tagasi",
+    "Tilbage",
   },
   { "Error scanning directory!", // English
     "Fehler beim Lesen des Verzeichnisses!", // German
@@ -749,6 +791,69 @@ const tI18nPhrase Phrases[] = {
     "Reunuksen leveys keskitykselle", // Finnish
     "", // Polish
     "Frontera para Underscan (anchura)", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
+  { "Show exif informations from image", // English
+    "Zeigt Exif Informationen zum Bild", // German
+    "", // Slovenian
+    "Mostri le informazioni del exif dall'immagine", // Italian
+    "Toon exif informatie van beeld", // Dutch
+    "Mostre a informação do exif da imagem", // Portuguese
+    "Montrez l'information d'exif de l'image", // French
+    "", // Norwegian
+    "", // Finnish
+    "", // Polish
+    "Demuestre la información del exif de la imagen", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
+  { "Could not parse exif maker note!", // English
+    "Konnte Exif Erstellungsanmerkung nicht analysieren!", // German
+    "", // Slovenian
+    "Non ha potuto analizzare la nota del creatore del exif!", // Italian
+    "Kon exif maker geen nota ontleden!", // Dutch
+    "Não podia analisar gramaticalmente a nota do fabricante do exif!", // Portuguese
+    "N'a pas pu analyser la note de fabricant d'exif !", // French
+    "", // Norwegian
+    "", // Finnish
+    "", // Polish
+    "¡No podía analizar la nota del fabricante del exif!", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
+  { "Could not load exif data from image!", // English
+    "Konnte Exif Daten nicht vom Bild laden!", // German
+    "", // Slovenian
+    "Non ha potuto caricare i dati del exif dall'immagine!", // Italian
+    "Kon exif geen gegevens van beeld laden!", // Dutch
+    "Não podia carregar dados do exif da imagem!", // Portuguese
+    "N'a pas pu charger des données d'exif de l'image !", // French
+    "", // Norwegian
+    "", // Finnish
+    "", // Polish
+    "¡No podía cargar datos del exif de imagen!", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian

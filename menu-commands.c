@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <vdr04-at-deltab.de>
+ * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 #include "menu-commands.h"
 #include "i18n.h"
 
-cImageMenuCommands::cImageMenuCommands(const char *szTitle, cImageCommands *pCmds, const char *szFileName /*= NULL*/)
+cImageMenuCommands::cImageMenuCommands(const char *szTitle, cImageCommands *pCmds, const char *szFileName)
 : cOsdMenu(m_szTitle = strdup(szTitle))
 , m_pCmds( pCmds )
 , m_szFileName(NULL)
@@ -79,7 +79,7 @@ eOSState cImageMenuCommands::Execute(void)
           m_bImageChanged = stFile.st_mtime != stChanged.st_mtime;
         }
         if (szResult)
-           return AddSubMenu(new cImageMenuResult(p->Title(), szResult, fontFix));
+           return AddSubMenu(new cImageMenuResult(p->Title(), szResult));
         return osEnd;
     }
     return osContinue;
@@ -111,7 +111,7 @@ eOSState cImageMenuCommands::ProcessKey(eKeys nKey)
 
 
 
-cImageMenuResult::cImageMenuResult(const char *szTitle, const char *szText, eDvbFont Font)
+cImageMenuResult::cImageMenuResult(const char *szTitle, const char *szText)
 : cOsdMenu(szTitle)
 , m_szText(szText)
 {
