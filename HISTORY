@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-13
+- revert changes from 2005-12-17, throw is failed with other plugins thats use ffmpeg
+
 2006-01-12
 - fix build failed without defined FFMDIR 
 - add exif support (required libexif)

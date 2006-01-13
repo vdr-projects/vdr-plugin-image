@@ -62,7 +62,13 @@ cEncode::cEncode()
 bool cEncode::Register()
 {
     avcodec_init();
+#if 0 
+    // XXX to resolv: dosen't work with osdpip
     register_avcodec(&mpeg2video_encoder);
+#else
+    avcodec_register_all();
+#endif
+
     return true;
 }
 
