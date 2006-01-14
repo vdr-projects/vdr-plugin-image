@@ -29,6 +29,10 @@
 #include "data.h"
 #include "setup-image.h"
 
+#ifdef HAVE_LIBEXIF
+#include "exif.h"
+#endif
+
 cFileSources ImageSources;
 
 // --- cImage -------------------------------------------------------------
@@ -40,9 +44,17 @@ cImage::cImage(const char *szName, cFileSource * pSource)
 , m_szFileNameIndex(NULL)
 , m_szFileNameZoom(NULL)
 {
-  if(szName)
+  if(szName) {
     m_szFileName = m_pSource->BuildName(szName);
+#ifdef HAVE_LIBEXIF
+    ImageMirror mirror = NONE;
+    GetRotationFromExifData (m_szFileName, m_nDefaultRotate, mirror);
+    if(mirror != NONE)
+        isyslog("imageplugin: automated rotation from exif data with mirroring (%d) is'nt supported, found at file '%s' \n", mirror, m_szFileName);
+#endif
+  }
   m_pSource->Block();
+
 }
 
 cImage::~cImage()

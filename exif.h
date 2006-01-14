@@ -38,5 +38,24 @@ public:
     virtual eOSState ProcessKey(eKeys Key);
 };
 
+enum ImageExifOrientation { 
+	IMAGE_EXIF_ORIENTATION_NONE = 0,
+	IMAGE_EXIF_ORIENTATION_TOP_LEFT,
+	IMAGE_EXIF_ORIENTATION_TOP_RIGHT,
+	IMAGE_EXIF_ORIENTATION_BOTTOM_RIGHT,
+	IMAGE_EXIF_ORIENTATION_BOTTOM_LEFT,
+	IMAGE_EXIF_ORIENTATION_LEFT_TOP,
+	IMAGE_EXIF_ORIENTATION_RIGHT_TOP,
+	IMAGE_EXIF_ORIENTATION_RIGHT_BOTTOM,
+	IMAGE_EXIF_ORIENTATION_LEFT_BOTTOM
+};
+
+enum ImageMirror { 
+	NONE = 0,
+	MIRROR,
+	FLIP
+};
+
+ImageExifOrientation GetRotationFromExifData (const char *filename, int& rotate, ImageMirror& mirror);
 
 #endif //__MENU_EXIF_H

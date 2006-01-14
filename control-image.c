@@ -77,7 +77,7 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
   m_ePlayMode = ePlayModeNormal;
   m_bSlideShowActiv = ImageSetup.m_bSlideShow;
   m_bSlideShowBefore = false;
-  
+
   // Support for Zoom
   m_nZoomFactor = 0;
   m_nRealImageWidth = 0;
@@ -90,35 +90,15 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
 */
 cImageControl::~cImageControl()
 {
-  if(m_pCmdMenu) {
-    delete m_pCmdMenu;
-    m_pCmdMenu = NULL; 
-  }
-
-#ifdef HAVE_LIBEXIF
-  if(m_pExifMenu) {
-    delete m_pExifMenu;
-    m_pExifMenu = NULL;
-  }
-#endif
-
   // Notity cleanup all cStatusMonitor
   cStatus::MsgReplaying(this, "image", NULL, false);
-  // Hide OSD
-  HideOSD();
-  if(m_pDisplayReplay) {
-    delete m_pDisplayReplay;
-    m_pDisplayReplay = NULL;
-  }
+  // Free OSD Data
+  Hide();
   // Stop Playback
   Stop();
   if(player)
 	  delete player;
   player = NULL;
-  
-  if(m_szLastShowStatusMsg)
-    free(m_szLastShowStatusMsg);    
-  m_szLastShowStatusMsg = 0;
 }
 
 void cImageControl::Show(void)
@@ -128,7 +108,6 @@ void cImageControl::Show(void)
 
 void cImageControl::Hide(void)
 {
-  m_eOSDStatusVisable = eDisplayNothing;
   HideOSD();
     
   if(m_szLastShowStatusMsg)
@@ -709,9 +688,33 @@ void cImageControl::OriginalImage(bool bCached)
 {
   m_nZoomFactor = 0;
   m_nRotation = 2;
+#ifdef HAVE_LIBEXIF
+    cImage* pImage = theSlideShow.GetImage();
+    if(pImage)
+    {
+        int nRot = pImage->DefaultRotate();
+        switch(nRot)
+        {
+        default:
+        case 0:
+          m_nRotation = 2;
+          break;
+        case 90:
+          m_nRotation = 1;
+          break;
+        case 180:
+          m_nRotation = 0;
+          break;
+        case 270:
+          m_nRotation = 3;
+          break;
+        }
+        //fprintf(stderr,"imageplugin: Use '%s' : Rotated %d(%d)\n", pImage->Name(), nRot, m_nRotation);
+    }
+#endif
   m_ePlayMode = ePlayModeNormal;
   if(!CheckAccess()
-    || !player->Convert(bCached?"":szRotation[m_nRotation]))
+    || !player->Convert((bCached && m_nRotation == 2)?"":szRotation[m_nRotation]))
   {
     OSD_ErrorNumMsg(errno,tr("Operation failed"));
   }

@@ -23,7 +23,6 @@
 #define ___DATA_IMAGE_H
 
 #include "data.h"
-
 #include <vdr/tools.h>
 
 // ----------------------------------------------------------------
@@ -43,7 +42,9 @@ class cImage
   char        *m_szFileNamePNM;
   char        *m_szFileNameIndex;
   char        *m_szFileNameZoom;
-
+#ifdef HAVE_LIBEXIF
+  int          m_nDefaultRotate;
+#endif
 protected:
   void Unlink(const char *szName);
   void Clear(void);
@@ -60,6 +61,9 @@ public:
   const char *NamePNM();
   const char *NameIndex();
 
+#ifdef HAVE_LIBEXIF
+  int DefaultRotate() const { return m_nDefaultRotate; }
+#endif
 };
 
 // ----------------------------------------------------------------

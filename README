@@ -22,7 +22,7 @@ Required:
 - plugin depends follow packages
     + ffmpeg (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
         http://ffmpeg.sourceforge.net
-    + libexif
+    + libexif-0.6.13 (see below for build without this)
         http://libexif.sourceforge.net/
     + for running your will need also package netpbm
         http://netpbm.sourceforge.net/

@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-14
+- now inital rotation depends founded exif data
+
 2006-01-13
 - revert changes from 2005-12-17, throw is failed with other plugins thats use ffmpeg
 

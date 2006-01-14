@@ -181,3 +181,95 @@ eOSState cImageControl::ProcessKeyExif(eKeys nKey)
     return osContinue;
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////
+/** get value from exif tag
+@return ExifShort - requestet value or 0 if failed
+@param const char *filename - used file name 
+@param ExifTag etag - wanted exif Tag, see exif-tag.h*/
+static ExifShort GetExifTag (const char *filename, ExifTag etag)
+{
+	ExifData     *edata;
+	unsigned int  i, j;
+
+	edata = exif_data_new_from_file (filename);
+
+	if (edata == NULL) 
+		return 0;
+
+	for (i = 0; i < EXIF_IFD_COUNT; i++) {
+		ExifContent *content = edata->ifd[i];
+
+		if (! edata->ifd[i] || ! edata->ifd[i]->count) 
+			continue;
+
+		for (j = 0; j < content->count; j++) {
+			ExifEntry *e = content->entries[j];
+
+			if (! content->entries[j]) 
+				continue;
+
+			if (e->tag == etag) {
+				ExifByteOrder o = exif_data_get_byte_order (e->parent->parent);
+				ExifShort retval = exif_get_short (e->data, o);
+				exif_data_unref (edata);
+				return retval;
+			}
+		}
+	}
+
+	exif_data_unref (edata);
+
+	return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+/** get rotation from exif data
+@return ImageExifOrientation - requestet value or 0 if failed
+@param int& rotate - reference for rotation
+@param  ImageMirror& mirror  - reference for mirroring image */
+ImageExifOrientation GetRotationFromExifData (const char *filename, int& rotate, ImageMirror& mirror)
+{
+    ImageExifOrientation ieo =  (ImageExifOrientation)GetExifTag (filename, EXIF_TAG_ORIENTATION);
+
+	switch (ieo) {
+	case IMAGE_EXIF_ORIENTATION_TOP_RIGHT:
+		rotate = 0;
+		mirror = MIRROR;
+		break;
+	case IMAGE_EXIF_ORIENTATION_BOTTOM_LEFT:
+		rotate = 180;
+		mirror = MIRROR;
+		break;
+	case IMAGE_EXIF_ORIENTATION_LEFT_TOP:
+		rotate = 90;
+		mirror = MIRROR;
+		break;
+	case IMAGE_EXIF_ORIENTATION_RIGHT_BOTTOM:
+		rotate = 90;
+		mirror = FLIP;
+		break;
+	case IMAGE_EXIF_ORIENTATION_TOP_LEFT:
+		rotate = 0;
+		mirror = NONE;
+		break;
+	case IMAGE_EXIF_ORIENTATION_RIGHT_TOP:
+		rotate = 90;
+		mirror = NONE;
+		break;
+	case IMAGE_EXIF_ORIENTATION_BOTTOM_RIGHT:
+		rotate = 180;
+		mirror = NONE;
+		break;
+	case IMAGE_EXIF_ORIENTATION_LEFT_BOTTOM:
+		rotate = 270;
+		mirror = NONE;
+		break;
+	default:
+		rotate = 0;
+		mirror = NONE;
+		break;
+	}
+    return ieo;
+}
+
