@@ -105,10 +105,10 @@ cImageMenuExif::cImageMenuExif(const char *szFileName)
   }
 
   m_strText = o.str();
+
   SetHelp(NULL, NULL, NULL, tr("Back"));
   Display();
 }
-
 
 eOSState cImageMenuExif::ProcessKey(eKeys nKey)
 {
@@ -146,40 +146,13 @@ void cImageMenuExif::Display(void)
   DisplayMenu()->SetText(m_strText.c_str(),true);
 }
 
-//////////////////////////////////////////////////////////////////////////////
-/** Handle a Key stroke on exifmenu
-@return eOSState
-@param eKeys Key - the processed Keycode
-*/
-eOSState cImageControl::ProcessKeyExif(eKeys nKey)
+
+cOsdObject *cImageControl::GetInfo(void)
 {
-  if(m_pExifMenu)
-  {
-    eOSState eOSRet = m_pExifMenu->ProcessKey(nKey);
-    switch(eOSRet)
-    {
-      case osEnd:
-      case osBack:
-        delete m_pExifMenu;
-        m_pExifMenu = NULL;
-        return osContinue;
-      default:
-        return eOSRet;
-    }
-  }
-  else
-  {
-    if(!CheckAccess()) {
-      OSD_ErrorNumMsg(errno,tr("Operation failed"));
-      return osContinue;
-    }
-  
-    Hide();
-    
-    m_pExifMenu = new cImageMenuExif(FileName());
-  
-    return osContinue;
-  }
+  const char* szFile = FileName();
+  if(szFile)
+    return new cImageMenuExif(szFile);
+  return NULL;
 }
 
 //////////////////////////////////////////////////////////////////////////////

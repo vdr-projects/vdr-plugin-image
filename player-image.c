@@ -80,7 +80,6 @@ void cImagePlayer::Activate(bool bOn)
     if(theSlideShow.GetImage())
     {
       cStillImagePlayer::Activate(bOn);
-      Convert("");
     }
   }
   else

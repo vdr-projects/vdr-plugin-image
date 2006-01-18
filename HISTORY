@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-18
+- fix first image was'nt rotation depends founded exif data
+- fix show vdr info screen via official vdr way
+
 2006-01-14
 - now inital rotation depends founded exif data
 
@@ -9,7 +13,7 @@ VDR Plugin 'image' Revision History
 
 2006-01-12
 - fix build failed without defined FFMDIR 
-- add exif support (required libexif)
+- add exif support, show vdr info screen (required libexif)
 
 2006-01-11
 - fix wrong register_avcodec (Thanks to Peter Holik)

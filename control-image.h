@@ -33,10 +33,6 @@
 class cImagePlayer;    
 class cImageMenuCommands;
 
-#ifdef HAVE_LIBEXIF
-class cImageMenuExif;
-#endif
-
 class cImageControl
  : public cControl 
 {
@@ -53,10 +49,7 @@ class cImageControl
   cImagePlayer            *player;
   /** Interface to Menu with Usercommands*/
   cImageMenuCommands      *m_pCmdMenu;
-#ifdef HAVE_LIBEXIF
-  /** Interface to Menu to show exif infomations*/
-  cImageMenuExif          *m_pExifMenu;
-#endif
+
   /** Current playing mode (Jump <-> Normal <-> Zoom) */
   ePlayMode               m_ePlayMode;
   /** Remember the active Slideshow mode before Jump or Zoom used */
@@ -144,7 +137,7 @@ private:
   eOSState ProcessKeyZoomMode(eKeys nKey);
   eOSState ProcessKeyCommands(eKeys nKey);
 #ifdef HAVE_LIBEXIF
-  eOSState ProcessKeyExif(eKeys nKey);
+  virtual cOsdObject *GetInfo(void);
 #endif
   
   void NextImage(int Step);

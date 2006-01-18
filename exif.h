@@ -34,8 +34,8 @@ class cImageMenuExif : public cOsdMenu
 protected:
 	virtual void Display(void);
 public:
-    cImageMenuExif(const char *szFileName);
-    virtual eOSState ProcessKey(eKeys Key);
+  cImageMenuExif(const char *szFileName);
+  virtual eOSState ProcessKey(eKeys Key);
 };
 
 enum ImageExifOrientation { 

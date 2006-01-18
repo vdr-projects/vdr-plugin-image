@@ -60,9 +60,6 @@ void cImageControl::SetSlideShow(cSlideShow * pNewSlideShow)
 cImageControl::cImageControl(cSlideShow * pNewSlideShow)
  : cControl(player = new cImagePlayer(pNewSlideShow))
  , m_pCmdMenu(NULL)
-#ifdef HAVE_LIBEXIF
- , m_pExifMenu(NULL)
-#endif
  , m_pDisplayReplay(NULL)
 {
   // Notity all cStatusMonitor
@@ -82,6 +79,8 @@ cImageControl::cImageControl(cSlideShow * pNewSlideShow)
   m_nZoomFactor = 0;
   m_nRealImageWidth = 0;
   m_nRealImageHeight = 0;
+
+  OriginalImage(false);
 }
 
 
@@ -138,13 +137,6 @@ void cImageControl::HideOSD(void)
     delete m_pCmdMenu;
     m_pCmdMenu = NULL;
   }
-
-#ifdef HAVE_LIBEXIF
-  if(m_pExifMenu) {
-    delete m_pExifMenu;
-    m_pExifMenu = NULL;
-  }
-#endif
 
 }
 //////////////////////////////////////////////////////////////////////////
@@ -316,13 +308,6 @@ eOSState cImageControl::ProcessKey(eKeys nKey)
   {
     return ProcessKeyCommands(nKey);
   }
-#ifdef HAVE_LIBEXIF
-  else if(m_pExifMenu
-    || (m_ePlayMode != ePlayModeJump && (nKey == kInfo)))
-  {
-    return ProcessKeyExif(nKey);
-  }
-#endif
   else
   {
     switch(nKey) 
