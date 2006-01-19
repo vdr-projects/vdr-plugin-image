@@ -86,9 +86,9 @@ class cImageControl
   /** How may pixel are outside screen after zoom, on height */
   int m_nZoomYMax;
   /** real image pixel width*/
-  int m_nRealImageWidth;
+  unsigned int m_nRealImageWidth;
   /** real image pixel height*/
-  int m_nRealImageHeight;
+  unsigned int m_nRealImageHeight;
   
   char m_szZoomRotation[32];
   

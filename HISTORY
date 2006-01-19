@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-19
+- fix wrong limits on NTSC zoom mode 
+- fix consider the border values at zoom mode
+
 2006-01-18
 - fix first image was'nt rotation depends founded exif data
 - fix show vdr info screen via official vdr way

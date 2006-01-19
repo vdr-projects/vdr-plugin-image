@@ -741,6 +741,9 @@ void cImageControl::PictureZoomInitial(void)
   cImage* pImage = theSlideShow.GetImage();
   if(!pImage)
     return;
+
+  unsigned int nMaxWidth = player->UseWidth();
+  unsigned int nMaxHeight = player->UseHeight();
   
   asprintf(&szFileName, "%s.par", pImage->NamePNM());
   
@@ -749,8 +752,8 @@ void cImageControl::PictureZoomInitial(void)
 
   strncpy(m_szZoomRotation, szRotation[m_nRotation],sizeof(m_szZoomRotation));
 
-  m_nRealImageWidth = 720;
-  m_nRealImageHeight = 576;
+  m_nRealImageWidth = nMaxWidth;
+  m_nRealImageHeight = nMaxHeight;
   
   if((f = fopen(szFileName, "rt")))
   {
@@ -767,13 +770,12 @@ void cImageControl::PictureZoomInitial(void)
   
   free(szFileName);
 
-  if(m_nRealImageWidth <= 0 
-    || m_nRealImageWidth > 720 
-    || m_nRealImageHeight > 576 )
+  if(m_nRealImageWidth > nMaxWidth 
+    || m_nRealImageHeight > nMaxHeight )
     m_nZoomMin = 1;
   else
   {  
-    m_nZoomMin = 800/m_nRealImageWidth;
+    m_nZoomMin = ((nMaxWidth / 100) + 1) /m_nRealImageWidth;
   }
   if (m_nZoomMin < 0)
       m_nZoomMin = 1;
@@ -792,16 +794,19 @@ void cImageControl::ConvertZoom()
   if(!player)
     return;
   
+  unsigned int nMaxWidth = player->UseWidth();
+  unsigned int nMaxHeight = player->UseHeight();
+
   m_ePlayMode = ePlayModeZoom;
 
   // How may pixel are outside screen after zoom
-  m_nZoomXMax = ((m_nRealImageWidth  * m_nZoomFactor) - player->UseWidth());
-  m_nZoomYMax = ((m_nRealImageHeight * m_nZoomFactor) - player->UseHeight());
+  m_nZoomXMax = ((m_nRealImageWidth  * m_nZoomFactor) - nMaxWidth);
+  m_nZoomYMax = ((m_nRealImageHeight * m_nZoomFactor) - nMaxHeight);
 
   // If image bigger than screen, how many step can i'm move in zoomed image
   if(m_nZoomXMax > 0)
   {  
-    m_nMaxStepX = (m_nRealImageWidth  * m_nZoomFactor) /  player->UseWidth() * 2;
+    m_nMaxStepX = (m_nRealImageWidth  * m_nZoomFactor) /  nMaxWidth * 2;
     if(m_nMoveStepX >= m_nMaxStepX)
       m_nMoveStepX = m_nMaxStepX;
     if(m_nMoveStepX <= -m_nMaxStepX)
@@ -815,7 +820,7 @@ void cImageControl::ConvertZoom()
 
   if(m_nZoomYMax > 0)
   {
-    m_nMaxStepY = (m_nRealImageHeight * m_nZoomFactor) /  player->UseHeight() * 2;
+    m_nMaxStepY = (m_nRealImageHeight * m_nZoomFactor) /  nMaxHeight * 2;
     if(m_nMoveStepY >= m_nMaxStepY)
       m_nMoveStepY = m_nMaxStepY-1;
     if(m_nMoveStepY <= -m_nMaxStepY)

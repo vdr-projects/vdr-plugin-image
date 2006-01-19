@@ -3,6 +3,5 @@ TODO
 Proper Scale on 16:9
 
 Change BLUE/EXIT > Stop to BLUE > Stop / EXIT > reshow Browser
-reload Image after commands execution, if image changed
 
 Add dejitter / horizontal 1px blur
