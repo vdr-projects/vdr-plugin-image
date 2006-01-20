@@ -30,7 +30,9 @@
 
 class cImageMenuExif : public cOsdMenu 
 {
-	std::string m_strText;
+  bool        m_bDisplayTags; 
+  std::string m_strTextTag;
+  std::string m_strTextMarker;
 protected:
 	virtual void Display(void);
 public:

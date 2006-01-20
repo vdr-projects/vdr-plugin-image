@@ -30,20 +30,26 @@
 #include "exif.h"
 #include "i18n.h"
 
+
+// for backward compatible to libexif-0.6.12
+#ifndef exif_entry_get_ifd
+#define exif_entry_get_ifd(e) exif_content_get(e)
+#define exif_tag_get_title_in_ifd(a,b) exif_tag_get_title(a)
+#endif
+
 static void callbackShowEntry (ExifEntry *e, void *pData)
 {
-	if (!pData)
-		return;
+  if (!pData)
+    return;
+  char v[128];
 
-    std::ostream* po = (std::ostream*)pData;
-
-	char v[128];
-	ExifIfd ifd = exif_entry_get_ifd (e);
-
-    (*po) <<  exif_tag_get_title_in_ifd (e->tag, ifd);
+  std::ostream* po = (std::ostream*)pData;
+  if(exif_entry_get_value (e, v, 59)) {
+    (*po) <<  exif_tag_get_title_in_ifd (e->tag, exif_entry_get_ifd (e));
     (*po) << ":\t";
-    (*po) << exif_entry_get_value (e, v, 59);
+    (*po) << v;
     (*po) << std::endl;
+  }
 }
 
 static void callbackShowIFD (ExifContent *content, void *pData)
@@ -59,31 +65,29 @@ void TagList (std::ostream& o, ExifData *ed)
 	exif_data_foreach_content (ed, callbackShowIFD, &o);
 }
 
-static bool MarkerNodes (std::ostream& o, ExifData *d)
+static bool MarkerNodes (std::string& s, ExifData *d)
 {
-	unsigned int i, c;
-	char v[1024], *p;
-	ExifMnoteData *md;
+  unsigned int i, c;
+  char v[1024], *p;
+  ExifMnoteData *md;
 
-	md = exif_data_get_mnote_data (d);
-	if (!md) {
-		o << tr("Could not parse exif maker note!") << std::endl;
-		exif_data_unref (d);
-		return false;
-	}
+  md = exif_data_get_mnote_data (d);
+  if (!md) {
+    return false;
+  }
 
-	c = exif_mnote_data_count (md);
-	for (i = 0; i < c; i++) {
-		p = exif_mnote_data_get_value (md, i, v, sizeof (v));
-		if (p) 
-        { 
-    		o << exif_mnote_data_get_title (md, i);
-            o << ":\t";
-            o << v << std::endl;
-        }
-	}
-
-	return true;
+  c = exif_mnote_data_count (md);
+  for (i = 0; i < c; i++) {
+    p = exif_mnote_data_get_value (md, i, v, sizeof (v));
+    if (p && v && strlen(v)) { 
+      const char * t = exif_mnote_data_get_title (md, i);
+      s += t ? t : "";
+      s += ":\t";
+      s +=  v;
+      s += "\n";
+    }
+  }
+  return true;
 }
 
 cImageMenuExif::cImageMenuExif(const char *szFileName)
@@ -94,19 +98,15 @@ cImageMenuExif::cImageMenuExif(const char *szFileName)
 
   d = exif_data_new_from_file (szFileName);
   if (d) {
-      TagList(o, d);
-      o << std::endl;
+      MarkerNodes (m_strTextMarker, d);
 
-      MarkerNodes (o, d);
+      TagList(o, d);
       exif_data_unref (d);
-  } else
-  {
+  } else  {
     o << tr("Could not load exif data from image!") << std::endl;
   }
-
-  m_strText = o.str();
-
-  SetHelp(NULL, NULL, NULL, tr("Back"));
+  m_strTextTag = o.str();
+  m_bDisplayTags = true;
   Display();
 }
 
@@ -134,6 +134,9 @@ eOSState cImageMenuExif::ProcessKey(eKeys nKey)
        case kBack:
        case kBlue:
                  return osBack;
+       case kRed:
+          m_bDisplayTags = !m_bDisplayTags;
+          Display();
        default:  nState = osContinue;
        }
      }
@@ -142,8 +145,20 @@ eOSState cImageMenuExif::ProcessKey(eKeys nKey)
 
 void cImageMenuExif::Display(void)
 {
+  const char* szButton = NULL;
+  if(m_bDisplayTags) {
+      if(m_strTextMarker.length())
+        szButton = tr("Marker");
+  } else {
+      if(m_strTextTag.length())
+        szButton = tr("Tags");
+  }
+  SetHelp(szButton, NULL, NULL, tr("Back"));
+
   cOsdMenu::Display();
-  DisplayMenu()->SetText(m_strText.c_str(),true);
+  DisplayMenu()->SetText(m_bDisplayTags 
+                        ? m_strTextTag.c_str()
+                        : m_strTextMarker.c_str(),true);
 }
 
 

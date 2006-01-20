@@ -864,5 +864,47 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
+  { "Marker", // English
+    "Merkzeichen", // German
+    "", // Slovenian
+    "", // Italian
+    "", // Dutch
+    "", // Portuguese
+    "", // French
+    "", // Norwegian
+    "", // Finnish
+    "", // Polish
+    "", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
+  { "Tags", // English
+    "Bezeichnung", // German
+    "", // Slovenian
+    "", // Italian
+    "", // Dutch
+    "", // Portuguese
+    "", // French
+    "", // Norwegian
+    "", // Finnish
+    "", // Polish
+    "", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
   { NULL }
 };

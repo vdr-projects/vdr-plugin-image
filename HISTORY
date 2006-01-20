@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-20
+- split exif page to two page for tags and marker nodes
+
 2006-01-19
 - fix wrong limits on NTSC zoom mode 
 - fix consider the border values at zoom mode
