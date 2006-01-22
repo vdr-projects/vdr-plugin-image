@@ -55,7 +55,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Katso valokuvia ruudullasi",  // Finnish
     "", // Polish
-    "Un espectador de la imagen plugin", // Spanish
+    "Un plugin para visualizar imágenes", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -76,7 +76,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kuvat - selain", // Finnish
     "", // Polish
-    "Browser de la imagen", // Spanish
+    "Examinador de imágenes", // Spanish
     "Image endiksi fakelon", // Greek
     "", // Swedish
     "", // Romanian
@@ -97,7 +97,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kuvat - lähteet", // Finnish
     "", // Polish
-    "Fuente de la imagen", // Spanish
+    "Fuente de imágenes", // Spanish
     "Pigi Image", // Greek
     "", // Swedish
     "", // Romanian
@@ -118,7 +118,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Takaisin", // Finnish
     "", // Polish
-    "Predecesor", // Spanish
+    "Superior", // Spanish
     "Piso", // Greek
     "Tillbaka", // Swedish
     "", // Romanian
@@ -160,7 +160,7 @@ const tI18nPhrase Phrases[] = {
     "",// TODO
     "Toista",
     "Odtworzenie",
-    "Reproducir",
+    "Presentación",
     "ÁíáðáñáãùãÞ",
     "Spela upp",
     "Redare",
@@ -181,7 +181,7 @@ const tI18nPhrase Phrases[] = {
     "Tilbake",
     "Takaisin",
     "Wstecz",
-    "Retornar",
+    "Atrás",
     "Ðßóù",
     "Tillbaka",
     "Înapoi",
@@ -202,7 +202,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Hakemiston selaus epäonnistui!", // Finnish
     "", // Polish
-    "¡Error al leer una carpeta!", // Spanish
+    "¡Error al leer la carpeta!", // Spanish
     "Lathos stin sarosi tou fakelou!", // Greek
     "Kunde inte läsa katalogen!", // Swedish
     "", // Romanian
@@ -244,7 +244,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kiinnitä", // Finnish
     "", // Polish
-    "Montaje", // Spanish
+    "Montar", // Spanish
     "Sindesi", // Greek
     "Montera", // Swedish
     "", // Romanian
@@ -265,7 +265,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Irrota", // Finnish
     "", // Polish
-    "Unmount", // Spanish
+    "Desmontar", // Spanish
     "Aposindesi", // Greek
     "Avmontera", // Swedish
     "", // Romanian
@@ -286,7 +286,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Valittua lähdettä ei ole kiinnitetty!", // Finnish
     "", // Polish
-    "¡El origen deseado no està montado!", // Spanish
+    "¡El medio de datos no está montado!", // Spanish
     "Epilegmeni Pigi den ine sindemeni!", // Greek
     "Den valda källan är inte monterad!", // Swedish
     "", // Romanian
@@ -307,7 +307,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kiinnittäminen onnistui", // Finnish
     "", // Polish
-    "mount correcto", // Spanish
+    "Montaje correcto", // Spanish
     "I sindesi petixe", // Greek
     "Monteringen lyckades", // Swedish
     "", // Romanian
@@ -328,7 +328,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kiinnittäminen epäonnistui!", // Finnish
     "", // Polish
-    "¡No he podido montar!", // Spanish
+    "¡Fallo al montar!", // Spanish
     "I sindesi apetixe!", // Greek
     "Monteringen misslyckades!", // Swedish
     "", // Romanian
@@ -349,7 +349,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Irrottaminen onnistui!", // Finnish
     "", // Polish
-    "Éxito al unmount", // Spanish
+    "¡Desmontaje correcto!", // Spanish
     "I aposindesi itan epitixisi!", // Greek
     "Avmonteringen lyckades!", // Swedish
     "", // Romanian
@@ -370,7 +370,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Irrottaminen epäonnistui!", // Finnish
     "", // Polish
-    "¡No puedo desmontar!", // Spanish
+    "¡Fallo al desmontar!", // Spanish
     "I aposindesi den itan epitixis!", // Greek
     "Avmonteringen misslyckades!", // Swedish
     "", // Romanian
@@ -391,7 +391,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Avaaminen epäonnistui!", // Finnish
     "", // Polish
-    "¡No puedo expulsar!", // Spanish
+    "¡No se puede expulsar!", // Spanish
     "I apovoli apetixe!", // Greek
     "Mata ut!", // Swedish
     "", // Romanian
@@ -412,7 +412,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Valitse kuva näppäimillä 1..9!", // Finnish
     "", // Polish
-    "¡Seleccione el cuadro vía el botón 1..9!", // Spanish
+    "¡Seleccione la imagen con los botones 1..9!", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -433,7 +433,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Laaditaan diaesitystä..", // Finnish
     "", // Polish
-    "Demostración De Diapositiva Del Edificio...", // Spanish
+    "Creando la presentación...", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -454,7 +454,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Selataan hakemistoa...", // Finnish
     "", // Polish
-    "Leyendo las carpetas..", // Spanish
+    "Explorando la carpeta...", // Spanish
     "", // Greek
     "Söker igenom katalog...", // Swedish
     "", // Romanian
@@ -475,7 +475,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Ei tiedostoja!", // Finnish
     "", // Polish
-    "¡Ningunos Archivos!", // Spanish
+    "¡No hay ficheros!", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -496,7 +496,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Käytä diaesitystä", // Finnish
     "", // Polish
-    "Demostración de diapositiva", // Spanish
+    "Presentación de imágenes", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -517,7 +517,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Dian esitysaika (s)", // Finnish
     "", // Polish
-    "Resbale la duración (sec)", // Spanish
+    "Duración de cada imagen (sg)", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -538,7 +538,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Väliaikaistiedostot", // Finnish
     "", // Polish
-    "Directorio con los ficheros temporales", // Spanish
+    "Directorio para ficheros temporales", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -559,7 +559,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Diaesityksen uudelleentoisto", // Finnish
     "", // Polish
-    "Repita la demostración de diapositiva", // Spanish
+    "Repetir la presentación", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -580,7 +580,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Näytä numerot indeksikuvassa", // Finnish
     "", // Polish
-    "Demuestre los números en imagen del índice", // Spanish
+    "Mostrar números en la imagen índice", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -601,7 +601,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Live-ääni ensisijaiselta sovittimelta", // Finnish
     "", // Polish
-    "Audio vivo del dispositivo primario", // Spanish
+    "Usar audio del dispositivo primario", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -622,7 +622,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Konvertoi...", // Finnish
     "", // Polish
-    "Convertido...", // Spanish
+    "Convertir...", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -643,7 +643,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Suurenna", // Finnish
     "", // Polish
-    "Zumbido", // Spanish
+    "Ampliación", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -664,7 +664,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Suorita", // Finnish
     "", // Polish
-    "Ejecútese", // Spanish
+    "Ejecutar", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -685,7 +685,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Toiminto epäonnistui", // Finnish
     "", // Polish
-    "La operación falló", // Spanish
+    "Operación fallida", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -706,7 +706,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Kuvan lukeminen epäonnistui", // Finnish
     "", // Polish
-    "La imagen no podía cargar", // Spanish
+    "No se pudo cargar la imagen", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -727,7 +727,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Skriptin suoritus epäonnistui", // Finnish
     "", // Polish
-    "La ejecución de la escritura falló", // Spanish
+    "Fallo al ejecutar el script", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -748,7 +748,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Tyhjennä väliaikaistiedostot", // Finnish
     "", // Polish
-    "Quite los ficheros temporales", // Spanish
+    "Borrar los ficheros temporales", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -769,7 +769,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Reunuksen korkeus keskitykselle", // Finnish
     "", // Polish
-    "Frontera para Underscan (altura)", // Spanish
+    "Margen para underscan (altura)", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -790,7 +790,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "Reunuksen leveys keskitykselle", // Finnish
     "", // Polish
-    "Frontera para Underscan (anchura)", // Spanish
+    "Margen para underscan (anchura)", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -811,7 +811,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "", // Finnish
     "", // Polish
-    "Demuestre la información del exif de la imagen", // Spanish
+    "Mostrar información exif de la imagen", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -832,7 +832,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "", // Finnish
     "", // Polish
-    "¡No podía analizar la nota del fabricante del exif!", // Spanish
+    "¡No se pudo analizar la información exif!", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -853,7 +853,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "", // Finnish
     "", // Polish
-    "¡No podía cargar datos del exif de imagen!", // Spanish
+    "¡No se pudo cargar los datos exif de la imagen!", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -874,7 +874,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "", // Finnish
     "", // Polish
-    "", // Spanish
+    "Marca", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
@@ -895,7 +895,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norwegian
     "", // Finnish
     "", // Polish
-    "", // Spanish
+    "Etiquetas", // Spanish
     "", // Greek
     "", // Swedish
     "", // Romanian
