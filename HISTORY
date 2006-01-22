@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-22  
+- Release Version 0.2.5
+
 2006-01-20
 - split exif page to two page for tags and marker nodes
 
