@@ -4,8 +4,6 @@
 # $Id$
 
 VDRDIR = ../../../..
-DVBDIR = ../../../../../DVB
-#FFMDIR = ../../../../../ffmpeg
 
 ### The C++ compiler and options:
 

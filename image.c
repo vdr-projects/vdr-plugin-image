@@ -32,6 +32,7 @@
 #include "setup-image.h"
 #include "data-image.h"
 #include "menu-image.h"
+#include "control-image.h"
 #include "i18n.h"
 #include "commands.h"
 #include "liboutput/encode.h"
@@ -41,7 +42,11 @@ static const char *DESCRIPTION    = "A Image Viewer plugin";
 static const char *MAINMENUENTRY  = "Image";
 
 class cPluginImage : public cPlugin {
+    cDirItem*      m_pServiceDirItem;
+    cFileSource*   m_pServiceFileSource;
+
 public:
+  cPluginImage();
   virtual ~cPluginImage();
   virtual const char *Version(void) { return VERSION; }
   virtual const char *Description(void) { return tr(DESCRIPTION); }
@@ -52,7 +57,10 @@ public:
   virtual cOsdMenu *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
   virtual bool SetupParse(const char *Name, const char *Value);
-  };
+  virtual bool Service(const char *Id, void *Data);
+private:
+  void RemoveServiceSource();
+};
 
 bool cPluginImage::SetupParse(const char *szName, const char *szValue)
 {
@@ -117,11 +125,30 @@ bool cPluginImage::Start(void)
   return true;
 }
 
+cPluginImage::cPluginImage()
+{
+    m_pServiceDirItem = NULL;
+    m_pServiceFileSource = NULL;
+}
+
 cPluginImage::~cPluginImage()
 {
   cEncode::UnRegister();
+  RemoveServiceSource();
 }
 
+void cPluginImage::RemoveServiceSource()
+{
+  if(m_pServiceDirItem) {
+      delete m_pServiceDirItem;
+      m_pServiceDirItem = NULL;
+  }
+  if(m_pServiceFileSource)
+  {
+      delete m_pServiceFileSource;
+      m_pServiceFileSource = NULL;
+  }
+}
 
 cOsdMenu *cPluginImage::MainMenuAction(void)
 {
@@ -131,6 +158,31 @@ cOsdMenu *cPluginImage::MainMenuAction(void)
 cMenuSetupPage *cPluginImage::SetupMenu(void)
 {
   return new cMenuSetupImage;
+}
+
+bool cPluginImage::Service(const char *Id, void *Data = NULL)
+{
+  if (Id && strcmp(Id, "Image-ShowImage-v1.0") == 0) {
+    if (Data == NULL)
+      return true;
+    char* Basedir=strdup((char*)Data);
+    char* Name=strrchr(Basedir, '/');
+    if(Name==NULL)
+      return false;
+    *Name++='\0';
+    RemoveServiceSource();
+    m_pServiceFileSource=new cFileSource(Basedir, "called via Service()", false);
+    m_pServiceDirItem=new cDirItem(m_pServiceFileSource, NULL, Name, itFile);
+    cSlideShow *newss = new cSlideShow(m_pServiceDirItem);
+    free(Basedir);
+    if(newss->Load() && newss->Count()) {
+      cImageControl::SetSlideShow(newss);
+      return true;
+      }
+    delete newss;
+    RemoveServiceSource();
+    }
+  return false;
 }
 
 

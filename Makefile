@@ -42,7 +42,6 @@ CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
 
 ### The directory environment:
 
-DVBDIR = ../../../../DVB
 VDRDIR = ../../..
 LIBDIR = ../../lib
 TMPDIR = /tmp
@@ -86,7 +85,7 @@ DEFINES  += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
 DEFINES  += -D_GNU_SOURCE
 LIBS += liboutput/liboutput.a libimage/libimage.a
 
-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include -I.
+INCLUDES += -I$(VDRDIR)/include -I.
 
 ifdef FFMDIR
 INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil

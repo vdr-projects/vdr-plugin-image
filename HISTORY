@@ -1,6 +1,13 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-01-29  
+- Remove unnecessary DVBDIR from Makefile
+- Rename README.de to LIESMICH
+
+2006-01-27  
+- Add service wrapper. (provided by Holger Brunn)
+
 2006-01-22  
 - Updated Spanish translations. (Thanks to Jesús Bravo Álvarez)
 
