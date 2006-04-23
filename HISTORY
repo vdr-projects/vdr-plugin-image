@@ -2,6 +2,10 @@ VDR Plugin 'image' Revision History
 -----------------------------------
 
 2006-04-23
+- Updated finnish translations. (Thanks to Rolf Ahrenberg)
+- Warn if wrong APIVERSION used
+
+2006-04-23
 - Release Version 0.2.6
 
 2006-04-18

@@ -27,8 +27,8 @@
 #include <vdr/skins.h>
 #include <string.h>
 
-#if VDRVERSNUM < 10329
-    #error "For compiled are at the least VDR 1.3.29 required"
+#if APIVERSNUM < 10347
+    #error "For compiled are at the least VDR Plugin-API 1.3.47 required"
 #endif
 
 

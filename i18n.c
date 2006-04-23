@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004 - 2006 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -809,7 +809,7 @@ const tI18nPhrase Phrases[] = {
     "Mostre a informação do exif da imagem", // Portuguese
     "Montrez l'information d'exif de l'image", // French
     "", // Norwegian
-    "", // Finnish
+    "Näytä kuvien Exif-tiedot", // Finnish
     "", // Polish
     "Mostrar información exif de la imagen", // Spanish
     "", // Greek
@@ -830,7 +830,7 @@ const tI18nPhrase Phrases[] = {
     "Não podia analisar gramaticalmente a nota do fabricante do exif!", // Portuguese
     "N'a pas pu analyser la note de fabricant d'exif !", // French
     "", // Norwegian
-    "", // Finnish
+    "Exif-tiedon analysointi epäonnistui!", // Finnish
     "", // Polish
     "¡No se pudo analizar la información exif!", // Spanish
     "", // Greek
@@ -851,7 +851,7 @@ const tI18nPhrase Phrases[] = {
     "Não podia carregar dados do exif da imagem!", // Portuguese
     "N'a pas pu charger des données d'exif de l'image !", // French
     "", // Norwegian
-    "", // Finnish
+    "Exif-tiedon lukeminen epäonnistui!", // Finnish
     "", // Polish
     "¡No se pudo cargar los datos exif de la imagen!", // Spanish
     "", // Greek
@@ -872,7 +872,7 @@ const tI18nPhrase Phrases[] = {
     "", // Portuguese
     "", // French
     "", // Norwegian
-    "", // Finnish
+    "Markkerit", // Finnish
     "", // Polish
     "Marca", // Spanish
     "", // Greek
@@ -893,7 +893,7 @@ const tI18nPhrase Phrases[] = {
     "", // Portuguese
     "", // French
     "", // Norwegian
-    "", // Finnish
+    "Tagit", // Finnish
     "", // Polish
     "Etiquetas", // Spanish
     "", // Greek
