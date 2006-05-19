@@ -114,7 +114,7 @@ const tI18nPhrase Phrases[] = {
     "precursore", // Italian
     "voorloper", // Dutch
     "precursor", // Portuguese
-    "", // French
+    "Parent", // French
     "", // Norwegian
     "Takaisin", // Finnish
     "", // Polish
@@ -429,7 +429,7 @@ const tI18nPhrase Phrases[] = {
     "Proiezione di diapositive Della Costruzione...", // Italian
     "De Show van de Dia van de bouw...", // Dutch
     "Mostra De Corrediça Do Edifício...", // Portuguese
-    "Contruction du SlideShow...", // French
+    "Contruction du diaporama...", // French
     "", // Norwegian
     "Laaditaan diaesitystä..", // Finnish
     "", // Polish
@@ -450,7 +450,7 @@ const tI18nPhrase Phrases[] = {
     "Indice di esame...", // Italian
     "De folder van het aftasten...", // Dutch
     "Diretório da exploração...", // Portuguese
-    "Scannage du répertoire...", // French
+    "Scanne du répertoire...", // French
     "", // Norwegian
     "Selataan hakemistoa...", // Finnish
     "", // Polish
@@ -555,7 +555,7 @@ const tI18nPhrase Phrases[] = {
     "Ripeti la proiezione di diapositive", // Italian
     "Herhaal diashow", // Dutch
     "Repita a mostra de corrediça", // Portuguese
-    "Répéter le SlideShow", // French
+    "Répéter le diaporama", // French
     "", // Norwegian
     "Diaesityksen uudelleentoisto", // Finnish
     "", // Polish
@@ -618,7 +618,7 @@ const tI18nPhrase Phrases[] = {
     "Convertito...", // Italian
     "Zet om...", // Dutch
     "Converso...", // Portuguese
-    "Convertion...", // French
+    "Conversion...", // French
     "", // Norwegian
     "Konvertoi...", // Finnish
     "", // Polish
@@ -870,7 +870,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italian
     "", // Dutch
     "", // Portuguese
-    "", // French
+    "Marquer", // French
     "", // Norwegian
     "Markkerit", // Finnish
     "", // Polish
@@ -891,7 +891,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italian
     "", // Dutch
     "", // Portuguese
-    "", // French
+    "Désignation", // French
     "", // Norwegian
     "Tagit", // Finnish
     "", // Polish

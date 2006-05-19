@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-05-18
+- Updated French translations. (Thanks to NIVAL Michaël)
+
 2006-04-23
 - Updated finnish translations. (Thanks to Rolf Ahrenberg)
 - Warn if wrong APIVERSION used
