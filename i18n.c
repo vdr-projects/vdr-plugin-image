@@ -108,7 +108,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Parent", // English
+  { "Button$Parent", // English
     "Zurück", // German
     "Nazaj", // Slovenian
     "precursore", // Italian
@@ -129,7 +129,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Select", // English
+  { "Button$Select", // English
     "Auswählen", // German
     "Izberi", // Slovenian
     "Prescelto", // Italian
@@ -150,7 +150,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Play",
+  { "Button$Play",
     "Wiedergabe",
     "Predvajaj",
     "Riproduci",
@@ -171,7 +171,7 @@ const tI18nPhrase Phrases[] = {
     "Start",
     "Afspil",
   },
-  { "Back",
+  { "Button$Back",
     "Zurück",
     "Nazaj",
     "Indietro",
@@ -213,7 +213,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Data medium", // English
+  { "Button$Data medium", // English
     "Datenträger", // German
     "Izvor", // Slovenian
     "Mezzo di dati", // Italian
@@ -234,7 +234,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Mount", // English
+  { "Button$Mount", // English
     "Einbinden", // German
     "Priklopi", // Slovenian
     "supporto", // Italian
@@ -255,7 +255,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Unmount", // English
+  { "Button$Unmount", // English
     "Aushängen", // German
     "Izklopi", // Slovenian
     "smonti", // Italian
@@ -272,6 +272,27 @@ const tI18nPhrase Phrases[] = {
     "", // Hugarian
     "", // Catalan
     "¾âÚÛîçâì", // Russian
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+  },
+  { "Button$Eject", // English
+    "Auswerfen", // German
+    "", // Slovenian
+    "", // Italian
+    "", // Dutch
+    "", // Portuguese
+    "", // French
+    "", // Norwegian
+    "Avaa", // Finnish
+    "", // Polish
+    "", // Spanish
+    "", // Greek
+    "", // Swedish
+    "", // Romanian
+    "", // Hugarian
+    "", // Catalan
+    "", // Russian
     "", // Hrvatski
     "", // Eesti
     "", // Dansk
@@ -465,7 +486,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "No Files!", // English
+  { "No files!", // English
     "Keine Dateien!", // German
     "", // Slovenian
     "Nessun lime!", // Italian
@@ -864,7 +885,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Marker", // English
+  { "Button$Marker", // English
     "Merkzeichen", // German
     "", // Slovenian
     "", // Italian
@@ -885,7 +906,7 @@ const tI18nPhrase Phrases[] = {
     "", // Eesti
     "", // Dansk
   },
-  { "Tags", // English
+  { "Button$Tags", // English
     "Bezeichnung", // German
     "", // Slovenian
     "", // Italian

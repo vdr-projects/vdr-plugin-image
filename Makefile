@@ -141,6 +141,7 @@ all: subdirs libvdr-$(PLUGIN).so
 
 libvdr-$(PLUGIN).so: $(OBJS)
 	$(CXX) $(CXXFLAGS) -shared -export-dynamic $(OBJS) $(LIBS) -o $@
+	@mkdir -p $(LIBDIR)
 	@cp $@ $(LIBDIR)/$@.$(APIVERSION)
 
 

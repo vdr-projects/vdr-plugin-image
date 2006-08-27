@@ -51,7 +51,7 @@ cMenuImageBrowse::cMenuImageBrowse(void)
 
 void cMenuImageBrowse::SetButtons(void)
 {
-  SetHelp(tr("Play"), 0, tr("Data medium"), currentdir ? tr("Parent") : 0);
+  SetHelp(tr("Button$Play"), 0, tr("Button$Data medium"), currentdir ? tr("Button$Parent") : 0);
   Display();
 }
 
@@ -101,7 +101,7 @@ eOSState cMenuImageBrowse::ProcessKey(eKeys Key)
         state = osEnd;
       } 
 			else {
-				OSD_ErrorMsg(tr("No Files!"));
+				OSD_ErrorMsg(tr("No files!"));
 				delete newss;
 				state = osContinue;
 			}

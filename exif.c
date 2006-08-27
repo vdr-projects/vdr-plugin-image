@@ -148,12 +148,12 @@ void cImageMenuExif::Display(void)
   const char* szButton = NULL;
   if(m_bDisplayTags) {
       if(m_strTextMarker.length())
-        szButton = tr("Marker");
+        szButton = tr("Button$Marker");
   } else {
       if(m_strTextTag.length())
-        szButton = tr("Tags");
+        szButton = tr("Button$Tags");
   }
-  SetHelp(szButton, NULL, NULL, tr("Back"));
+  SetHelp(szButton, NULL, NULL, tr("Button$Back"));
 
   cOsdMenu::Display();
   DisplayMenu()->SetText(m_bDisplayTags 

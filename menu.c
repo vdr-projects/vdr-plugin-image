@@ -94,7 +94,7 @@ cDirItem *cMenuBrowse::CurrentItem(void)
 
 void cMenuBrowse::SetButtons(void)
 {
-  SetHelp(tr("Select"), 0, 0, currentdir ? tr("Parent") : 0);
+  SetHelp(tr("Button$Select"), 0, 0, currentdir ? tr("Button$Parent") : 0);
   Display();
 }
 
@@ -279,7 +279,7 @@ cMenuSource::cMenuSource(cFileSources * Sources,
     source = Sources->Next(source);
   }
   
-  SetHelp(tr("Select"), tr("Mount"), tr("Unmount"), tr("Eject"));
+  SetHelp(tr("Button$Select"), tr("Button$Mount"), tr("Button$Unmount"), tr("Button$Eject"));
   Display();
 }
 

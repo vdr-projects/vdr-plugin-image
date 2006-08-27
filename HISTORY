@@ -1,6 +1,12 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-08-27 
+- Create LIBDIR if'nt exist
+
+2006-05-30
+- Updated some i18n text
+
 2006-05-18
 - Updated French translations. (Thanks to NIVAL Michaël)
 
