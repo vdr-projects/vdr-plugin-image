@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2006-12-24
+- Add checks for sanity of memory buffers.
+
 2006-08-27 
 - Create LIBDIR if'nt exist
 

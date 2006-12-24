@@ -45,18 +45,18 @@ cEncode::cEncode()
     m_nWidth  = 720;
     m_nHeight = m_bUsePAL ? 576 : 480;
 
+    m_pavCodec = avcodec_find_encoder(CODEC_ID_MPEG2VIDEO);
+    if (!m_pavCodec) {
+        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.");
+	      return;
+    }
+
     m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode]; 
 
     // Just a wild guess: 3 x output image size should be enough for the MPEG
     m_nMaxMPEGSize = m_nWidth * m_nHeight * 3; 
 
     AllocateBuffers();
-
-    m_pavCodec = avcodec_find_encoder(CODEC_ID_MPEG2VIDEO);
-    if (!m_pavCodec) {
-        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.");
-	return;
-    }
 }
 
 bool cEncode::Register()
@@ -88,7 +88,10 @@ void cEncode::ClearRGBMem()
 cEncode::~cEncode(void)
 {
     ReleaseBuffers();
-    delete m_pFrameSizes;
+    if(m_pFrameSizes) {
+      delete m_pFrameSizes;
+      m_pFrameSizes = NULL;
+    }
 }
 
 /*******************************************************************************
@@ -96,6 +99,9 @@ cEncode::~cEncode(void)
 */
 bool cEncode::Encode()
 {
+    if(!m_pavCodec)
+      return false;
+
     bool bSuccess = false;
 
     AVCodecContext  *pAVCC = NULL;
@@ -159,6 +165,12 @@ void cEncode::SetupEncodingParameters(AVCodecContext *context)
 
 bool cEncode::ConvertImageToFrame(AVFrame *frame)
 {
+    if(!m_pImageYUV || !m_pImageFilled || !m_pImageRGB || !m_pMPEG) 
+    {
+        esyslog("imageplugin: Failed to convert MPEG sequence, insufficient memory.");
+        return false;
+    }
+
     int nSize = m_nWidth*m_nHeight;
 
     frame->data[0]=m_pImageYUV;
@@ -191,6 +203,12 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 
 bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
 {
+    if(!m_pFrameSizes)
+    { 
+        esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.");
+        return false;
+    }
+
     unsigned int i;
     
     m_nMPEGSize = 0;
@@ -247,17 +265,27 @@ void cEncode::AllocateBuffers()
 
 void cEncode::ReleaseBuffers()
 {
-    if(m_pImageYUV)
+    if(m_pImageYUV) 
+    {
         free(m_pImageYUV);
+        m_pImageYUV = NULL;
+    }
   
-    if(m_pImageFilled)
+    if(m_pImageFilled) 
+    {
         free(m_pImageFilled);
-  
+        m_pImageFilled = NULL;  
+    } 
     if(m_pImageRGB)
+    {
         free(m_pImageRGB);
-
+        m_pImageRGB = NULL;
+    }
     if(m_pMPEG)
+    {
         free(m_pMPEG);
+        m_pMPEG = NULL;
+    }
 }
 
 
