@@ -20,16 +20,26 @@ INCLUDES += -I$(VDRDIR)/include -I.
 ifdef FFMDIR
 INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
 DEFINES += -DFFMDIR
+ifndef WITHOUT_SWSCALER
+  DEFINES += -DHAVE_SWSCALER
+  INCLUDES += -I$(FFMDIR)/libswscale
+endif
 else
-  INCLUDES += $(shell $(PKG-CONFIG) --cflags libavcodec)
+
+ifndef WITHOUT_SWSCALER
+  DEFINES += -DHAVE_SWSCALER
+  PKG-INCLUDES += libswscale
+endif
+
+  PKG-INCLUDES += libavcodec
 endif
 
 DEFINES  += -D_GNU_SOURCE
 
-ifndef WITHOUT_SWSCALER
-  DEFINES += -DHAVE_SWSCALER
-  INCLUDES += $(shell $(PKG-CONFIG) --cflags libswscale)
+ifdef PKG-INCLUDES
+INCLUDES += $(shell $(PKG-CONFIG) --cflags $(PKG-INCLUDES))
 endif
+
 
 ### The object files (add further files here):
 

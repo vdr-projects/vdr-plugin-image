@@ -1,7 +1,7 @@
 #
 # Makefile for Image plugin to VDR
 #
-# (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+# (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
 #
 # This code is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -93,18 +93,30 @@ ifeq ($(LIBAVCODECVERSION),51)
 LIBS += -L$(FFMDIR)/libavformat -L$(FFMDIR)/libavutil
 LIBS += -lavformat -lavutil
 endif
+ifndef WITHOUT_SWSCALER
+  DEFINES += -DHAVE_SWSCALER
+  LIBS += -L$(FFMDIR)/libswscale -lswscale
+endif
 else
-  LIBS    += $(shell $(PKG-CONFIG) --libs libavcodec)
+  PKG-LIBS += libavcodec
+ifndef WITHOUT_SWSCALER
+  PKG-LIBS += libswscale
+endif
 endif
 
 ifndef WITHOUT_LIBEXIF
-  INCLUDES += $(shell $(PKG-CONFIG) --cflags libexif)
-  LIBS    += $(shell $(PKG-CONFIG) --libs libexif)
+  PKG-INCLUDES += libexif
+  PKG-LIBS += libexif
   DEFINES += -DHAVE_LIBEXIF
 endif
 
-ifndef WITHOUT_SWSCALER
-  LIBS += $(shell $(PKG-CONFIG) --libs libswscale)
+
+ifdef PKG-INCLUDES
+INCLUDES += $(shell $(PKG-CONFIG) --cflags $(PKG-INCLUDES))
+endif
+
+ifdef PKG-LIBS
+LIBS    += $(shell $(PKG-CONFIG) --libs $(PKG-LIBS))
 endif
 
 ### The object files (add further files here):
@@ -167,8 +179,7 @@ dist: clean
 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
 	@echo Distribution package created as $(PACKAGE).tar.gz
 
-clean:
-	@-rm -f $(OBJS) $(DEPFILE) *.so *.tar.gz core* *~ contrib/*~  examples/*~ scripts/*~
+subdirs-clean:
 	@for i in $(SUBDIRS) ;\
 	do \
 	    ( cd $$i;\
@@ -176,3 +187,6 @@ clean:
        ) \
 	|| exit 1;\
 	done
+
+clean: subdirs-clean
+	@-rm -f $(OBJS) $(DEPFILE) *.so *.tar.gz core* *~ contrib/*~  examples/*~ scripts/*~
