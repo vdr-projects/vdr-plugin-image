@@ -22,7 +22,9 @@ Required:
 - plugin depends follow packages
     + ffmpeg (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
         http://ffmpeg.sourceforge.net
-    + libexif-0.6.13 (see below for build without this)
+    + for build you need 'pkg-config'
+        http://pkgconfig.freedesktop.org/
+    + libexif-0.6.13 ... 0.6.15 (see below for build without this)
         http://libexif.sourceforge.net/
     + for running your will need also package netpbm
         http://netpbm.sourceforge.net/
@@ -64,6 +66,11 @@ need netpbm for image conversion.
  this essential if build ffmpeg without "--enable-shared"
 
     $ make plugins FFMDIR=/usr/src/ffmpeg-cvs
+
+ compile without swscaler to convert images via ffmpeg
+   (WITHOUT_SWSCALER=1 use img_convert, needed for older versions from ffmpeg)
+    
+    $ make plugins WITHOUT_SWSCALER=1
 
  compile without libexif ¹)
     

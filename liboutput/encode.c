@@ -1,7 +1,7 @@
 /***************************************************************************
  * encode.c
  *
- * (C) Copyright  2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) Copyright  2004-2007 Andreas Brachold    <anbr at users.berlios.de>
  *  Created: Thu Aug  5 2004
  * 
  ****************************************************************************/
@@ -25,6 +25,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+extern "C" {
+#ifdef HAVE_SWSCALER
+#ifdef FFMDIR
+#include <swscale.h>
+#else
+#include <ffmpeg/swscale.h>
+#endif
+#endif
+}
 
 #include "encode.h"
 #include <vdr/device.h>
@@ -190,11 +200,29 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
     }
     else
     {
-        if(img_convert((AVPicture*)frame->data, PIX_FMT_YUV420P, 
+        int result;
+#ifndef HAVE_SWSCALER
+        result=img_convert((AVPicture*)frame->data, PIX_FMT_YUV420P, 
                        (AVPicture*)m_pImageFilled, PIX_FMT_RGB24, 
-                        m_nWidth, m_nHeight))  
+                       m_nWidth, m_nHeight);
+#else
+        SwsContext* convert_ctx = sws_getContext(m_nWidth, m_nHeight, 
+                        PIX_FMT_RGB24, m_nWidth, m_nHeight, 
+                        PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+
+	    if(!convert_ctx) {
+            esyslog("imageplugin: failed to initialize swscaler context");
+            return false;
+    	}
+
+	    result=sws_scale(convert_ctx, ((AVPicture*)m_pImageFilled)->data, 
+                                      ((AVPicture*)m_pImageFilled)->linesize, 
+                         0, m_nHeight, frame->data, frame->linesize);
+	    sws_freeContext(convert_ctx);
+#endif
+        if(result < 0)
         {
-            esyslog("imageplugin: failed convert RGB to YUV");
+            esyslog("imageplugin: failed convert RGB to YUV: %X", result);
             return false;
         }
     }

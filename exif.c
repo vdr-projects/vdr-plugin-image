@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2006 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2006-2007 Andreas Brachold    <anbr at users.berlios.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,9 +19,11 @@
  * Or, point your browser to http://www.gnu.org/copyleft/gpl.html
  */
 
+extern "C" {
 #include <libexif/exif-data.h>
 #include <libexif/exif-ifd.h>
 #include <libexif/exif-loader.h>
+}
 
 #include <sstream>
 

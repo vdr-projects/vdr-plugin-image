@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2007-06-10
+- for build now 'pkg-config' needed
+- Use swscale to converting image (Thanks to Holger Brunn, for summit a patch)
+
 2007-01-02
 - Release Version 0.2.7
 

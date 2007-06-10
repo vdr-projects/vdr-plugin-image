@@ -31,6 +31,7 @@
 
 CXX      ?= g++
 CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
+PKG-CONFIG ?= pkg-config
 
 ###############################################
 ###############################################
@@ -86,24 +87,24 @@ LIBS += liboutput/liboutput.a libimage/libimage.a
 INCLUDES += -I$(VDRDIR)/include -I.
 
 ifdef FFMDIR
-INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
-LIBS += -L$(FFMDIR)/libavcodec
+DEFINES += -DFFMDIR
+LIBS += -L$(FFMDIR)/libavcodec -lavcodec -lz
 ifeq ($(LIBAVCODECVERSION),51)
 LIBS += -L$(FFMDIR)/libavformat -L$(FFMDIR)/libavutil
 LIBS += -lavformat -lavutil
 endif
-endif
-
-LIBS += -lavcodec
-LIBS += -lz
-
-ifdef FFMDIR
-DEFINES += -DFFMDIR
+else
+  LIBS    += $(shell $(PKG-CONFIG) --libs libavcodec)
 endif
 
 ifndef WITHOUT_LIBEXIF
-  LIBS    += -lexif
+  INCLUDES += $(shell $(PKG-CONFIG) --cflags libexif)
+  LIBS    += $(shell $(PKG-CONFIG) --libs libexif)
   DEFINES += -DHAVE_LIBEXIF
+endif
+
+ifndef WITHOUT_SWSCALER
+  LIBS += $(shell $(PKG-CONFIG) --libs libswscale)
 endif
 
 ### The object files (add further files here):

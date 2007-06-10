@@ -9,6 +9,7 @@ VDRDIR = ../../../..
 
 CXX      ?= g++
 CXXFLAGS ?= -O0 -g -Wall -Woverloaded-virtual
+PKG-CONFIG ?= pkg-config
 
 -include $(VDRDIR)/Make.config
 
@@ -18,12 +19,16 @@ CXXFLAGS ?= -O0 -g -Wall -Woverloaded-virtual
 INCLUDES += -I$(VDRDIR)/include -I.
 ifdef FFMDIR
 INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
+DEFINES += -DFFMDIR
+else
+  INCLUDES += $(shell $(PKG-CONFIG) --cflags libavcodec)
 endif
 
 DEFINES  += -D_GNU_SOURCE
 
-ifdef FFMDIR
-DEFINES += -DFFMDIR
+ifndef WITHOUT_SWSCALER
+  DEFINES += -DHAVE_SWSCALER
+  INCLUDES += $(shell $(PKG-CONFIG) --cflags libswscale)
 endif
 
 ### The object files (add further files here):

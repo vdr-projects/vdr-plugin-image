@@ -22,7 +22,9 @@ Benötigt:
 - das Plugin ist abhängig vom folgenden Paketen
     + ffmpeg (getestet mit ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
         http://ffmpeg.sourceforge.net
-    + libexif-0.6.13 (siehe unten, für Kompilieren ohne diese)
+    + Zum Kompilieren wird 'pkg-config' benötigt
+        http://pkgconfig.freedesktop.org/
+    + libexif-0.6.13 ... 0.6.15 (siehe unten, für Kompilieren ohne diese)
         http://libexif.sourceforge.net/
     + zur Ausführung wird auch das Paket netpbm benötigt
         http://netpbm.sourceforge.net/
@@ -64,6 +66,11 @@ wird noch das Paket "netpbm" benötigt.
  das ist notwendig, wenn ffmpeg ohne "--enable-shared" übersetzt wurde.
 
     $ make plugins FFMDIR=/usr/src/ffmpeg-cvs
+
+ Kompilieren ohne swscaler zur Bildconvertierung mittels ffmpeg
+   (WITHOUT_SWSCALER=1 verwendet img_convert, notwendig für ältere Versionen von ffmpeg)
+    
+    $ make plugins WITHOUT_SWSCALER=1
 
  Kompilieren ohne libexif ¹)
     

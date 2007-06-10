@@ -42,6 +42,7 @@ extern char *AddPath(const char *dir, const char *filename);
 class cScanDir {
   char *QuoteString(const char *str);
 protected:
+  virtual ~cScanDir() {};
   enum eScanType { stFile, stDir };
   virtual void DoItem(cFileSource *src, const char *subdir, const char *name)=0;
 public:
