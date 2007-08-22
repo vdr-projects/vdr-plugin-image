@@ -5,7 +5,7 @@
  * (C) 2004     "Interpohl"  <interpohl at vdr-portal.de> 
  * (C) 2004     O. Kreuzinger <Onno at Kreuzinger.biz>
  * (C) 2004     A. Holzhammer for the massive script updates
- * (C) 2004 - 2006 A. Brachold   <anbr at users.berlios.de>
+ * (C) 2004 - 2007 A. Brachold   <anbr at users.berlios.de>
  *  
  *  based on mp3/mplayer plguin by Stefan Hülswitt <huels at iname.com>
  *   
@@ -33,13 +33,11 @@
 #include "data-image.h"
 #include "menu-image.h"
 #include "control-image.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 #include "commands.h"
 #include "liboutput/encode.h"
 
-static const char *VERSION        = "0.2.7";
-static const char *DESCRIPTION    = "A Image Viewer plugin";
-static const char *MAINMENUENTRY  = "Image";
+static const char *VERSION        = "0.3.0";
 
 class cPluginImage : public cPlugin {
     cDirItem*      m_pServiceDirItem;
@@ -49,11 +47,11 @@ public:
   cPluginImage();
   virtual ~cPluginImage();
   virtual const char *Version(void) { return VERSION; }
-  virtual const char *Description(void) { return tr(DESCRIPTION); }
+  virtual const char *Description(void) { return tr("A Image Viewer plugin"); }
   virtual const char *CommandLineHelp(void);
   virtual bool ProcessArgs(int argc, char *argv[]);
   virtual bool Start(void);
-  virtual const char *MainMenuEntry(void) { return tr(MAINMENUENTRY); }
+  virtual const char *MainMenuEntry(void) { return tr("Image"); }
   virtual cOsdMenu *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
   virtual bool SetupParse(const char *Name, const char *Value);
@@ -114,14 +112,16 @@ bool cPluginImage::Start(void)
   if(!cEncode::Register()) {   
     return false;
   }
-
-  ImageSources.Load(AddDirectory(ConfigDirectory(g_szConfigDirectory),  "imagesources.conf"));
+  
+  cString szConfSource = AddDirectory(ConfigDirectory(g_szConfigDirectory),  "imagesources.conf");
+  ImageSources.Load(szConfSource);
   if(ImageSources.Count()<1) {
-    esyslog("imageplugin: you must have defined at least one source in imagesources.conf");
+    const char* sz = szConfSource;
+    esyslog("imageplugin: you must have defined at least one source in %s",sz);
     return false;
     }
   
-  RegisterI18n(Phrases);
+  I18nRegister("image");
   return true;
 }
 

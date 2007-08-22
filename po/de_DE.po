@@ -1,0 +1,192 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Klaus Schmidinger <kls@cadsoft.de>, 2000
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vdr-image 0.3.0\n"
+"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
+"POT-Creation-Date: 2007-08-18 13:02+0200\n"
+"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"Last-Translator: Klaus Schmidinger <kls@cadsoft.de>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: control-image.c:150 control-image.c:189 control-image.c:247
+msgid "Convert..."
+msgstr "Wandle..."
+
+#: control-image.c:157 control-image.c:209 control-image.c:254
+msgid "Select picture via key 1..9!"
+msgstr "Bildauswahl über Taste 1..9!"
+
+#: control-image.c:158 control-image.c:215 control-image.c:257
+msgid "Zoom"
+msgstr "Vergrößere"
+
+#: control-image.c:611 control-image.c:704 control-image.c:717
+#: control-image.c:730 control-image.c:849 control-image.c:859
+#: menu-commands.c:87
+msgid "Operation failed"
+msgstr "Vorgang fehlgeschlagen"
+
+#: control-image.c:631
+msgid "Commands"
+msgstr "Befehle"
+
+#: exif.c:96
+msgid "Show exif informations from image"
+msgstr "Zeigt Exif Informationen zum Bild"
+
+#: exif.c:108
+msgid "Could not load exif data from image!"
+msgstr "Konnte Exif Daten nicht vom Bild laden!"
+
+#: exif.c:153
+msgid "Marker"
+msgstr "Merkzeichen"
+
+#: exif.c:156
+msgid "Tags"
+msgstr "Bezeichnung"
+
+#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+msgid "Back"
+msgstr "Zurück"
+
+#: image.c:50
+msgid "A Image Viewer plugin"
+msgstr "Ein Bildbetrachter Plugin"
+
+#: image.c:54 setup-image.c:108
+msgid "Image"
+msgstr "Bilder"
+
+#: menu-commands.c:42
+msgid "Execute"
+msgstr "Ausführen"
+
+#: menu-image.c:46
+msgid "Image browser"
+msgstr "Bilder Verzeichnisanzeige"
+
+#: menu-image.c:54
+msgid "Data medium"
+msgstr "Datenträger"
+
+#: menu-image.c:54 menu.c:97
+msgid "Parent"
+msgstr "Zurück"
+
+#: menu-image.c:54
+msgid "Play"
+msgstr "Wiedergabe"
+
+#: menu-image.c:66
+msgid "Image source"
+msgstr "Bilder-Datenträger"
+
+#: menu-image.c:104
+msgid "No files!"
+msgstr "Keine Dateien!"
+
+#: menu.c:97 menu.c:282
+msgid "Select"
+msgstr "Auswählen"
+
+#: menu.c:145
+msgid "Error scanning directory!"
+msgstr "Fehler beim Lesen des Verzeichnisses!"
+
+#: menu.c:282
+msgid "Eject"
+msgstr "Auswerfen"
+
+#: menu.c:282
+msgid "Mount"
+msgstr "Einbinden"
+
+#: menu.c:282
+msgid "Unmount"
+msgstr "Aushängen"
+
+#: menu.c:298
+msgid "Selected data medium is not mounted!"
+msgstr "Ausgewählter Datenträger ist nicht eingebunden!"
+
+#: menu.c:313 menu.c:334
+msgid "Mount failed!"
+msgstr "Einbinden fehlgeschlagen!"
+
+#: menu.c:332
+msgid "Mount succeeded"
+msgstr "Einbinden erfolgreich"
+
+#: menu.c:351
+msgid "Unmount succeeded!"
+msgstr "Aushängen erfolgreich!"
+
+#: menu.c:353
+msgid "Unmount failed!"
+msgstr "Aushängen fehlgeschlagen!"
+
+#: menu.c:370
+msgid "Eject failed!"
+msgstr "Auswerfen fehlgeschlagen!"
+
+#: player-image.c:358 player-image.c:360
+msgid "Image couldn't load"
+msgstr "Konnte Bild nicht lesen"
+
+#: player-image.c:466
+msgid "Script execution failed"
+msgstr "Scriptausführung fehlgeschlagen"
+
+#: setup-image.c:110
+msgid "Slide show"
+msgstr "Diavorführung"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "no"
+msgstr "nein"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "yes"
+msgstr "ja"
+
+#: setup-image.c:114
+msgid "Slide duration (sec)"
+msgstr "Anzeigedauer (Sek)"
+
+#: setup-image.c:118
+msgid "Repeat slide show"
+msgstr "Wiederholung der Diavorführung"
+
+#: setup-image.c:122
+msgid "Show numbers on index image"
+msgstr "Zeige Zahlen im Indexbild"
+
+#: setup-image.c:126
+msgid "Live Audio from primary Device"
+msgstr "Live Audio vom primären Gerät"
+
+#: setup-image.c:130
+msgid "Directory with temporary files"
+msgstr "Verzeichnis mit temporären Dateien"
+
+#: setup-image.c:134
+msgid "Remove temporary files"
+msgstr "Lösche temporäre Dateien"
+
+#: setup-image.c:138
+msgid "Border for Underscan (Height)"
+msgstr "Rand für Underscan (Höhe)"
+
+#: setup-image.c:142
+msgid "Border for Underscan (Width)"
+msgstr "Rand für Underscan (Breite)"

@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2007-08-22
+- begin developer series 0.3.x
+- Use now gettext for i18n texts, introduced with vdr-1.5.8 (Required)
+
 2007-06-10
 - for build now 'pkg-config' needed
 - Use swscale to converting image (Thanks to Holger Brunn, for summit a patch)

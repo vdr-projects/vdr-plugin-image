@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -35,7 +35,7 @@
 #include "data-image.h"
 #include "menu-image.h"
 #include "control-image.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 #include <vdr/status.h>
 
@@ -51,7 +51,7 @@ cMenuImageBrowse::cMenuImageBrowse(void)
 
 void cMenuImageBrowse::SetButtons(void)
 {
-  SetHelp(tr("Button$Play"), 0, tr("Button$Data medium"), currentdir ? tr("Button$Parent") : 0);
+  SetHelp(tr("Play"), 0, tr("Data medium"), currentdir ? tr("Parent") : 0);
   Display();
 }
 

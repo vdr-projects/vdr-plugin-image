@@ -1,0 +1,195 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Hannu Savolainen <hannu@opensound.com>, 2002
+# Jaakko Hyv‰tti <jaakko@hyvatti.iki.fi>, 2002
+# Niko Tarnanen <niko.tarnanen@hut.fi>, 2003
+# Rolf Ahrenberg <rahrenbe@cc.hut.fi>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VDR 1.5.7\n"
+"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
+"POT-Creation-Date: 2007-08-18 13:02+0200\n"
+"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"Last-Translator: Rolf Ahrenberg <rahrenbe@cc.hut.fi>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: control-image.c:150 control-image.c:189 control-image.c:247
+msgid "Convert..."
+msgstr "Konvertoi..."
+
+#: control-image.c:157 control-image.c:209 control-image.c:254
+msgid "Select picture via key 1..9!"
+msgstr "Valitse kuva n‰pp‰imill‰ 1..9!"
+
+#: control-image.c:158 control-image.c:215 control-image.c:257
+msgid "Zoom"
+msgstr "Suurenna"
+
+#: control-image.c:611 control-image.c:704 control-image.c:717
+#: control-image.c:730 control-image.c:849 control-image.c:859
+#: menu-commands.c:87
+msgid "Operation failed"
+msgstr "Toiminto ep‰onnistui"
+
+#: control-image.c:631
+msgid "Commands"
+msgstr "Komennot"
+
+#: exif.c:96
+msgid "Show exif informations from image"
+msgstr "N‰yt‰ kuvien Exif-tiedot"
+
+#: exif.c:108
+msgid "Could not load exif data from image!"
+msgstr "Exif-tiedon lukeminen ep‰onnistui!"
+
+#: exif.c:153
+msgid "Marker"
+msgstr "Markkerit"
+
+#: exif.c:156
+msgid "Tags"
+msgstr "Tagit"
+
+#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+msgid "Back"
+msgstr "Takaisin"
+
+#: image.c:50
+msgid "A Image Viewer plugin"
+msgstr "Katso valokuvia ruudullasi"
+
+#: image.c:54 setup-image.c:108
+msgid "Image"
+msgstr "Kuvat"
+
+#: menu-commands.c:42
+msgid "Execute"
+msgstr "Suorita"
+
+#: menu-image.c:46
+msgid "Image browser"
+msgstr "Kuvat - selain"
+
+#: menu-image.c:54
+msgid "Data medium"
+msgstr "L‰hde"
+
+#: menu-image.c:54 menu.c:97
+msgid "Parent"
+msgstr "Takaisin"
+
+#: menu-image.c:54
+msgid "Play"
+msgstr "Toista"
+
+#: menu-image.c:66
+msgid "Image source"
+msgstr "Kuvat - l‰hteet"
+
+#: menu-image.c:104
+msgid "No files!"
+msgstr "Ei tiedostoja!"
+
+#: menu.c:97 menu.c:282
+msgid "Select"
+msgstr "Valitse"
+
+#: menu.c:145
+msgid "Error scanning directory!"
+msgstr "Hakemiston selaus ep‰onnistui!"
+
+#: menu.c:282
+msgid "Eject"
+msgstr "Avaa"
+
+#: menu.c:282
+msgid "Mount"
+msgstr "Kiinnit‰"
+
+#: menu.c:282
+msgid "Unmount"
+msgstr "Irrota"
+
+#: menu.c:298
+msgid "Selected data medium is not mounted!"
+msgstr "Valittua l‰hdett‰ ei ole kiinnitetty!"
+
+#: menu.c:313 menu.c:334
+msgid "Mount failed!"
+msgstr "Kiinnitt‰minen ep‰onnistui!"
+
+#: menu.c:332
+msgid "Mount succeeded"
+msgstr "Kiinnitt‰minen onnistui"
+
+#: menu.c:351
+msgid "Unmount succeeded!"
+msgstr "Irrottaminen onnistui!"
+
+#: menu.c:353
+msgid "Unmount failed!"
+msgstr "Irrottaminen ep‰onnistui!"
+
+#: menu.c:370
+msgid "Eject failed!"
+msgstr "Avaaminen ep‰onnistui!"
+
+#: player-image.c:358 player-image.c:360
+msgid "Image couldn't load"
+msgstr "Kuvan lukeminen ep‰onnistui"
+
+#: player-image.c:466
+msgid "Script execution failed"
+msgstr "Skriptin suoritus ep‰onnistui"
+
+#: setup-image.c:110
+msgid "Slide show"
+msgstr "K‰yt‰ diaesityst‰"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "no"
+msgstr "ei"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "yes"
+msgstr "kyll‰"
+
+#: setup-image.c:114
+msgid "Slide duration (sec)"
+msgstr "Dian esitysaika (s)"
+
+#: setup-image.c:118
+msgid "Repeat slide show"
+msgstr "Diaesityksen uudelleentoisto"
+
+#: setup-image.c:122
+msgid "Show numbers on index image"
+msgstr "N‰yt‰ numerot indeksikuvassa"
+
+#: setup-image.c:126
+msgid "Live Audio from primary Device"
+msgstr "Live-‰‰ni ensisijaiselta sovittimelta"
+
+#: setup-image.c:130
+msgid "Directory with temporary files"
+msgstr "V‰liaikaistiedostot"
+
+#: setup-image.c:134
+msgid "Remove temporary files"
+msgstr "Tyhjenn‰ v‰liaikaistiedostot"
+
+#: setup-image.c:138
+msgid "Border for Underscan (Height)"
+msgstr "Reunuksen korkeus keskitykselle"
+
+#: setup-image.c:142
+msgid "Border for Underscan (Width)"
+msgstr "Reunuksen leveys keskitykselle"

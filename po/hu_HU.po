@@ -1,0 +1,196 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Istvan Koenigsberger <istvnko@hotmail.com>, 2002
+# Guido Josten <guido.josten@t-online.de>, 2002
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VDR 1.5.7\n"
+"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
+"POT-Creation-Date: 2007-08-22 11:27+0200\n"
+"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"Last-Translator: Istvan Koenigsberger <istvnko@hotmail.com>, Guido Josten <guido.josten@t-online.de>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: control-image.c:150 control-image.c:189 control-image.c:247
+msgid "Convert..."
+msgstr ""
+
+#: control-image.c:157 control-image.c:209 control-image.c:254
+msgid "Select picture via key 1..9!"
+msgstr ""
+
+#: control-image.c:158 control-image.c:215 control-image.c:257
+msgid "Zoom"
+msgstr ""
+
+#: control-image.c:611 control-image.c:704 control-image.c:717
+#: control-image.c:730 control-image.c:849 control-image.c:859
+#: menu-commands.c:87
+msgid "Operation failed"
+msgstr ""
+
+#: control-image.c:631
+msgid "Commands"
+msgstr "Parancsok"
+
+#: exif.c:96
+msgid "Show exif informations from image"
+msgstr ""
+
+#: exif.c:108
+msgid "Could not load exif data from image!"
+msgstr ""
+
+#: exif.c:153
+msgid "Marker"
+msgstr ""
+
+#: exif.c:156
+msgid "Tags"
+msgstr ""
+
+#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+msgid "Back"
+msgstr "Vissza"
+
+#: image.c:50
+msgid "A Image Viewer plugin"
+msgstr ""
+
+#: image.c:54 setup-image.c:108
+msgid "Image"
+msgstr ""
+
+#: menu-commands.c:42
+msgid "Execute"
+msgstr ""
+
+#: menu-image.c:46
+msgid "Image browser"
+msgstr ""
+
+#: menu-image.c:54
+msgid "Data medium"
+msgstr ""
+
+#: menu-image.c:54 menu.c:97
+msgid "Parent"
+msgstr ""
+
+#: menu-image.c:54
+msgid "Play"
+msgstr ""
+
+#: menu-image.c:66
+msgid "Image source"
+msgstr ""
+
+#: menu-image.c:104
+msgid "No files!"
+msgstr ""
+
+#: menu.c:97 menu.c:282
+msgid "Select"
+msgstr ""
+
+#: menu.c:145
+msgid "Error scanning directory!"
+msgstr ""
+
+#: menu.c:282
+msgid "Eject"
+msgstr ""
+
+#: menu.c:282
+msgid "Mount"
+msgstr ""
+
+#: menu.c:282
+msgid "Unmount"
+msgstr ""
+
+#: menu.c:298
+msgid "Selected data medium is not mounted!"
+msgstr ""
+
+#: menu.c:313 menu.c:334
+msgid "Mount failed!"
+msgstr ""
+
+#: menu.c:332
+msgid "Mount succeeded"
+msgstr ""
+
+#: menu.c:351
+msgid "Unmount succeeded!"
+msgstr ""
+
+#: menu.c:353
+msgid "Unmount failed!"
+msgstr ""
+
+#: menu.c:370
+msgid "Eject failed!"
+msgstr ""
+
+#: player-image.c:358 player-image.c:360
+msgid "Image couldn't load"
+msgstr ""
+
+#: player-image.c:466
+msgid "Script execution failed"
+msgstr ""
+
+#: setup-image.c:110
+msgid "Slide show"
+msgstr ""
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "no"
+msgstr "nem"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "yes"
+msgstr "igen"
+
+#: setup-image.c:114
+msgid "Slide duration (sec)"
+msgstr ""
+
+#: setup-image.c:118
+msgid "Repeat slide show"
+msgstr ""
+
+#: setup-image.c:122
+msgid "Show numbers on index image"
+msgstr ""
+
+#: setup-image.c:126
+msgid "Live Audio from primary Device"
+msgstr ""
+
+#: setup-image.c:130
+msgid "Directory with temporary files"
+msgstr ""
+
+#: setup-image.c:134
+msgid "Remove temporary files"
+msgstr ""
+
+#: setup-image.c:138
+msgid "Border for Underscan (Height)"
+msgstr ""
+
+#: setup-image.c:142
+msgid "Border for Underscan (Width)"
+msgstr ""
+
+#~ msgid "Button$Play"
+#~ msgstr "Lejátszani"

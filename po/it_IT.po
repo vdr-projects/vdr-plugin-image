@@ -1,0 +1,194 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Alberto Carraro <bertocar@tin.it>, 2001
+# Antonio Ospite <ospite@studenti.unina.it>, 2003
+# Sean Carlos <seanc@libero.it>, 2005
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VDR 1.5.7\n"
+"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
+"POT-Creation-Date: 2007-08-18 13:02+0200\n"
+"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"Last-Translator: Sean Carlos <seanc@libero.it>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: control-image.c:150 control-image.c:189 control-image.c:247
+msgid "Convert..."
+msgstr "Convertito..."
+
+#: control-image.c:157 control-image.c:209 control-image.c:254
+msgid "Select picture via key 1..9!"
+msgstr "Selezioni l'immagine via il tasto 1..9!"
+
+#: control-image.c:158 control-image.c:215 control-image.c:257
+msgid "Zoom"
+msgstr "Zoom"
+
+#: control-image.c:611 control-image.c:704 control-image.c:717
+#: control-image.c:730 control-image.c:849 control-image.c:859
+#: menu-commands.c:87
+msgid "Operation failed"
+msgstr "Il funzionamento viene a mancare"
+
+#: control-image.c:631
+msgid "Commands"
+msgstr "Comandi"
+
+#: exif.c:96
+msgid "Show exif informations from image"
+msgstr "Mostri le informazioni del exif dall'immagine"
+
+#: exif.c:108
+msgid "Could not load exif data from image!"
+msgstr "Non ha potuto caricare i dati del exif dall'immagine!"
+
+#: exif.c:153
+msgid "Marker"
+msgstr ""
+
+#: exif.c:156
+msgid "Tags"
+msgstr ""
+
+#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+msgid "Back"
+msgstr "Indietro"
+
+#: image.c:50
+msgid "A Image Viewer plugin"
+msgstr "Un visore di immagine plugin"
+
+#: image.c:54 setup-image.c:108
+msgid "Image"
+msgstr "Immagine"
+
+#: menu-commands.c:42
+msgid "Execute"
+msgstr "Esegua"
+
+#: menu-image.c:46
+msgid "Image browser"
+msgstr "Browser di immagine"
+
+#: menu-image.c:54
+msgid "Data medium"
+msgstr "Mezzo di dati"
+
+#: menu-image.c:54 menu.c:97
+msgid "Parent"
+msgstr "precursore"
+
+#: menu-image.c:54
+msgid "Play"
+msgstr "Riproduci"
+
+#: menu-image.c:66
+msgid "Image source"
+msgstr "Fonte di immagine"
+
+#: menu-image.c:104
+msgid "No files!"
+msgstr "Nessun lime!"
+
+#: menu.c:97 menu.c:282
+msgid "Select"
+msgstr "Prescelto"
+
+#: menu.c:145
+msgid "Error scanning directory!"
+msgstr "Indice di esame di errori!"
+
+#: menu.c:282
+msgid "Eject"
+msgstr ""
+
+#: menu.c:282
+msgid "Mount"
+msgstr "supporto"
+
+#: menu.c:282
+msgid "Unmount"
+msgstr "smonti"
+
+#: menu.c:298
+msgid "Selected data medium is not mounted!"
+msgstr "Il mezzo di dati selezionato non è montato!"
+
+#: menu.c:313 menu.c:334
+msgid "Mount failed!"
+msgstr "Il supporto si guasta!"
+
+#: menu.c:332
+msgid "Mount succeeded"
+msgstr "Il supporto è riuscito"
+
+#: menu.c:351
+msgid "Unmount succeeded!"
+msgstr "Smonti riuscito!"
+
+#: menu.c:353
+msgid "Unmount failed!"
+msgstr "Smonti venuto a mancare!"
+
+#: menu.c:370
+msgid "Eject failed!"
+msgstr "Espella venuto a mancare!"
+
+#: player-image.c:358 player-image.c:360
+msgid "Image couldn't load"
+msgstr "L'immagine non ha potuto caricare"
+
+#: player-image.c:466
+msgid "Script execution failed"
+msgstr "L'esecuzione dello scritto è venuto a mancare"
+
+#: setup-image.c:110
+msgid "Slide show"
+msgstr "Proiezione di diapositive"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "no"
+msgstr "no"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "yes"
+msgstr "si"
+
+#: setup-image.c:114
+msgid "Slide duration (sec)"
+msgstr "Faccia scorrere la durata (sec)"
+
+#: setup-image.c:118
+msgid "Repeat slide show"
+msgstr "Ripeti la proiezione di diapositive"
+
+#: setup-image.c:122
+msgid "Show numbers on index image"
+msgstr "Mostri i numeri sull'immagine di indice"
+
+#: setup-image.c:126
+msgid "Live Audio from primary Device"
+msgstr "Audio in tensione dal dispositivo primario"
+
+#: setup-image.c:130
+msgid "Directory with temporary files"
+msgstr "Indice con le lime provvisorie"
+
+#: setup-image.c:134
+msgid "Remove temporary files"
+msgstr "Rimuova le lime provvisorie"
+
+#: setup-image.c:138
+msgid "Border for Underscan (Height)"
+msgstr "Bordo per Underscan (altezza)"
+
+#: setup-image.c:142
+msgid "Border for Underscan (Width)"
+msgstr "Bordo per Underscan (larghezza)"

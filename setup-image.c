@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2006 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * based on MP3/MPlayer plugin to VDR (C++)
@@ -30,7 +30,7 @@
 #include <vdr/tools.h>
 #include <vdr/config.h>
 #include "setup-image.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 cImageSetup ImageSetup;
 

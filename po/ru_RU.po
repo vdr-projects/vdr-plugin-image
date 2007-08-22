@@ -1,0 +1,192 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Vyacheslav Dikonov <sdiconov@mail.ru>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VDR 1.5.7\n"
+"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
+"POT-Creation-Date: 2007-08-18 13:02+0200\n"
+"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"Last-Translator: Vyacheslav Dikonov <sdiconov@mail.ru>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-5\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: control-image.c:150 control-image.c:189 control-image.c:247
+msgid "Convert..."
+msgstr "конвертация"
+
+#: control-image.c:157 control-image.c:209 control-image.c:254
+msgid "Select picture via key 1..9!"
+msgstr "Выбор изображенний при помощи кнопок 1..9!"
+
+#: control-image.c:158 control-image.c:215 control-image.c:257
+msgid "Zoom"
+msgstr "Приблизить(Zoom)"
+
+#: control-image.c:611 control-image.c:704 control-image.c:717
+#: control-image.c:730 control-image.c:849 control-image.c:859
+#: menu-commands.c:87
+msgid "Operation failed"
+msgstr "Операция остановлена"
+
+#: control-image.c:631
+msgid "Commands"
+msgstr "Команды"
+
+#: exif.c:96
+msgid "Show exif informations from image"
+msgstr ""
+
+#: exif.c:108
+msgid "Could not load exif data from image!"
+msgstr ""
+
+#: exif.c:153
+msgid "Marker"
+msgstr ""
+
+#: exif.c:156
+msgid "Tags"
+msgstr ""
+
+#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+msgid "Back"
+msgstr "Назад"
+
+#: image.c:50
+msgid "A Image Viewer plugin"
+msgstr "Плагин для просмотра изображений"
+
+#: image.c:54 setup-image.c:108
+msgid "Image"
+msgstr "Изображения"
+
+#: menu-commands.c:42
+msgid "Execute"
+msgstr "Выполнить"
+
+#: menu-image.c:46
+msgid "Image browser"
+msgstr "Показать папку с изображениями"
+
+#: menu-image.c:54
+msgid "Data medium"
+msgstr "Носитель"
+
+#: menu-image.c:54 menu.c:97
+msgid "Parent"
+msgstr "Назад"
+
+#: menu-image.c:54
+msgid "Play"
+msgstr "Воспроизвести"
+
+#: menu-image.c:66
+msgid "Image source"
+msgstr "Носитель(source)"
+
+#: menu-image.c:104
+msgid "No files!"
+msgstr "Ничего не найдено!"
+
+#: menu.c:97 menu.c:282
+msgid "Select"
+msgstr "Выбрать"
+
+#: menu.c:145
+msgid "Error scanning directory!"
+msgstr "Ошибка чтения выбранной директории!"
+
+#: menu.c:282
+msgid "Eject"
+msgstr ""
+
+#: menu.c:282
+msgid "Mount"
+msgstr "Подключить"
+
+#: menu.c:282
+msgid "Unmount"
+msgstr "Отключть"
+
+#: menu.c:298
+msgid "Selected data medium is not mounted!"
+msgstr "Выбранный носитель не подключен!"
+
+#: menu.c:313 menu.c:334
+msgid "Mount failed!"
+msgstr "Ошибка подключения!"
+
+#: menu.c:332
+msgid "Mount succeeded"
+msgstr "Подключение прошло успешно"
+
+#: menu.c:351
+msgid "Unmount succeeded!"
+msgstr "Отключение прошло успешно!"
+
+#: menu.c:353
+msgid "Unmount failed!"
+msgstr "Ошибка отключения!"
+
+#: menu.c:370
+msgid "Eject failed!"
+msgstr "Ошибка выброса диска!"
+
+#: player-image.c:358 player-image.c:360
+msgid "Image couldn't load"
+msgstr "Ошибка чтения файла"
+
+#: player-image.c:466
+msgid "Script execution failed"
+msgstr "Ошибка выполнения скрипта!"
+
+#: setup-image.c:110
+msgid "Slide show"
+msgstr "Диафильм?"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "no"
+msgstr "нет"
+
+#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
+#: setup-image.c:136
+msgid "yes"
+msgstr "да"
+
+#: setup-image.c:114
+msgid "Slide duration (sec)"
+msgstr "Время отображения (сек)"
+
+#: setup-image.c:118
+msgid "Repeat slide show"
+msgstr "Повтор диафильма"
+
+#: setup-image.c:122
+msgid "Show numbers on index image"
+msgstr "Показать номера в индексе"
+
+#: setup-image.c:126
+msgid "Live Audio from primary Device"
+msgstr "Использовать активное(Live) звуковое сопровождение"
+
+#: setup-image.c:130
+msgid "Directory with temporary files"
+msgstr "ТМР директория"
+
+#: setup-image.c:134
+msgid "Remove temporary files"
+msgstr "стирание tmp файлов"
+
+#: setup-image.c:138
+msgid "Border for Underscan (Height)"
+msgstr ""
+
+#: setup-image.c:142
+msgid "Border for Underscan (Width)"
+msgstr ""

@@ -30,7 +30,7 @@ extern "C" {
 #include "player-image.h"
 #include "control-image.h"
 #include "exif.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 
 // for backward compatible to libexif-0.6.12
@@ -150,12 +150,12 @@ void cImageMenuExif::Display(void)
   const char* szButton = NULL;
   if(m_bDisplayTags) {
       if(m_strTextMarker.length())
-        szButton = tr("Button$Marker");
+        szButton = tr("Marker");
   } else {
       if(m_strTextTag.length())
-        szButton = tr("Button$Tags");
+        szButton = tr("Tags");
   }
-  SetHelp(szButton, NULL, NULL, tr("Button$Back"));
+  SetHelp(szButton, NULL, NULL, tr("Back"));
 
   cOsdMenu::Display();
   DisplayMenu()->SetText(m_bDisplayTags 

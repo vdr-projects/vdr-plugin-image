@@ -2,7 +2,7 @@
  * image plugin to VDR (C++)
  *
  * (C) 2004	"Interpohl"  <interpohl-at-vdr-portal.de> 
- * (C) 2004-2006 A.Brachold   <anbr at users.berlios.de>
+ * (C) 2004-2007 A.Brachold   <anbr at users.berlios.de>
  * (C) 2004	O.Kreuzinger <Onno-at-Kreuzinger.biz>
  * (C) 2003     Kai Tobias Burwieck <kai-at-burwieck.net>
  * (C) 2001,2002 Stefan Huelswitt <huels-at-iname.com>
@@ -34,7 +34,7 @@
 #include <unistd.h>
 
 #include "menu.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 // --- cMenuBrowseItem ----------------------------------------------------------
 
@@ -94,7 +94,7 @@ cDirItem *cMenuBrowse::CurrentItem(void)
 
 void cMenuBrowse::SetButtons(void)
 {
-  SetHelp(tr("Button$Select"), 0, 0, currentdir ? tr("Button$Parent") : 0);
+  SetHelp(tr("Select"), 0, 0, currentdir ? tr("Parent") : 0);
   Display();
 }
 
@@ -279,7 +279,7 @@ cMenuSource::cMenuSource(cFileSources * Sources,
     source = Sources->Next(source);
   }
   
-  SetHelp(tr("Button$Select"), tr("Button$Mount"), tr("Button$Unmount"), tr("Button$Eject"));
+  SetHelp(tr("Select"), tr("Mount"), tr("Unmount"), tr("Eject"));
   Display();
 }
 

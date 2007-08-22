@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -34,7 +34,7 @@
 #include "data-image.h"
 #include "image.h"
 #include "list.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 #include "libimage/pnm.h"
 #include "libimage/xpm.h"

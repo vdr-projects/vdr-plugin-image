@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
  *
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,7 +21,7 @@
 
 #include <errno.h>
 #include "menu-commands.h"
-#include "i18n.h"
+#include <vdr/i18n.h>
 
 cImageMenuCommands::cImageMenuCommands(const char *szTitle, cImageCommands *pCmds, const char *szFileName)
 : cOsdMenu(m_szTitle = strdup(szTitle))
