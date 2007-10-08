@@ -38,7 +38,7 @@ extern "C" {
 
 class cEncode
 {
-    AVCodec *m_pavCodec;
+    static AVCodec *m_pavCodec;
     unsigned int m_nMaxMPEGSize;
     uint8_t *m_pImageFilled; 
     uint8_t *m_pImageYUV;

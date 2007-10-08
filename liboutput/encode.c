@@ -40,12 +40,13 @@ extern "C" {
 #include <vdr/device.h>
 #include <vdr/tools.h>
 
+AVCodec *cEncode::m_pavCodec = NULL;
+
 /*******************************************************************************
 
 */
 cEncode::cEncode()
-: m_pavCodec(NULL)
-, m_pImageFilled(NULL)
+: m_pImageFilled(NULL)
 , m_pImageYUV(NULL)
 , m_nNumberOfFramesToEncode(4)
 , m_pMPEG(NULL)
@@ -54,12 +55,6 @@ cEncode::cEncode()
     m_bUsePAL = (cDevice::PrimaryDevice()->GetVideoSystem() == vsPAL);
     m_nWidth  = 720;
     m_nHeight = m_bUsePAL ? 576 : 480;
-
-    m_pavCodec = avcodec_find_encoder(CODEC_ID_MPEG2VIDEO);
-    if (!m_pavCodec) {
-        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.");
-	      return;
-    }
 
     m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode]; 
 
@@ -79,6 +74,11 @@ bool cEncode::Register()
     avcodec_register_all();
 #endif
 
+    m_pavCodec = avcodec_find_encoder(CODEC_ID_MPEG2VIDEO);
+    if (!m_pavCodec) {
+        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.");
+	      return false;
+    }
     return true;
 }
 
