@@ -55,10 +55,10 @@ cXPM gOverlay_Image_9(img9_xpm);
 cXPM gOverlay_Error(error_xpm);
 cXPM gOverlay_ErrorSmall(error_small_xpm);
 
-cXPM::cXPM(char* pXPM[])
+cXPM::cXPM(const char* pXPM[])
 :m_Colors(NULL)
 {
-  char **p = pXPM;
+  const char **p = pXPM;
   int c;
   if (4 != sscanf(*p, "%d %d %d %d", &m_nWidth, &m_nHeight, &m_nColors, &c)
       || c != 1 ) 
@@ -117,7 +117,7 @@ bool cXPM::Overlay(unsigned char* pRGBMem,unsigned int nMemWidth,unsigned int nM
   if(!m_Colors || !pRGBMem || !m_pXPM)
     return false;
   
-  char **p = m_pXPM; 
+  const char **p = m_pXPM; 
 
   for(unsigned int h = 0;
     h < m_nHeight 

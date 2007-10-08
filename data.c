@@ -430,7 +430,7 @@ bool cFileSource::Parse(char *s)
 
 bool cFileSource::Action(eAction act)
 {
-  static char *str[] = { "mount", "unmount", "eject", "status" };
+  static const char *str[] = { "mount", "unmount", "eject", "status" };
 
   char *cmd = 0;
   asprintf(&cmd, "%s %s %s", g_szMountScript, str[act], basedir);

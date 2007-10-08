@@ -331,7 +331,8 @@ void cImagePlayer::LoadImage(cShellWrapper* pShell)
     
     // Build Error, depends PNM Errormsg or system messages
     char szErr[128];
-    
+    szErr[0] = '\0';
+
     if(pnmImage.GetError())
       strncpy(szErr,pnmImage.GetError(),sizeof(szErr));
     else if(errno) {  
@@ -343,18 +344,18 @@ void cImagePlayer::LoadImage(cShellWrapper* pShell)
     }
 
     // Make Syslog entry
-    if(pShell && pShell->szPNM && szErr) 
+    if(pShell && pShell->szPNM && szErr[0] != '\0') 
       esyslog("imageplugin: Error until read %s : '%s'", pShell->szPNM, szErr);
     else if(pShell && pShell->szPNM) 
       esyslog("imageplugin: Error until read %s", pShell->szPNM);
     else  
-      esyslog("imageplugin: Error until read image %s",szErr?szErr:"");
+      esyslog("imageplugin: Error until read image %s",(szErr[0] != '\0')?szErr:"");
     
     { // Copy Errormessage forward to OSD Thread
       cMutexLock lock(&m_MutexErr);
         if(m_szError)
           free(m_szError);
-        if(szErr)
+        if(szErr[0] != '\0')
           asprintf(&m_szError, "%s : %s", tr("Image couldn't load"),szErr);
         else
           m_szError = strdup(tr("Image couldn't load"));

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
-"POT-Creation-Date: 2007-08-22 11:27+0200\n"
+"Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
+"POT-Creation-Date: 2007-10-08 18:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "A Image Viewer plugin"
 msgstr ""
 
-#: image.c:54 setup-image.c:108
+#: image.c:54 setup-image.c:112
 msgid "Image"
 msgstr ""
 
@@ -138,56 +138,60 @@ msgstr ""
 msgid "Eject failed!"
 msgstr ""
 
-#: player-image.c:358 player-image.c:360
+#: player-image.c:359 player-image.c:361
 msgid "Image couldn't load"
 msgstr ""
 
-#: player-image.c:466
+#: player-image.c:467
 msgid "Script execution failed"
 msgstr ""
 
-#: setup-image.c:110
-msgid "Slide show"
+#: setup-image.c:114
+msgid "Hide main menu entry"
 msgstr ""
 
-#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
-#: setup-image.c:136
+#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
+#: setup-image.c:136 setup-image.c:144
 msgid "no"
 msgstr ""
 
-#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
-#: setup-image.c:136
+#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
+#: setup-image.c:136 setup-image.c:144
 msgid "yes"
 msgstr ""
 
-#: setup-image.c:114
-msgid "Slide duration (sec)"
-msgstr ""
-
 #: setup-image.c:118
-msgid "Repeat slide show"
+msgid "Slide show"
 msgstr ""
 
 #: setup-image.c:122
-msgid "Show numbers on index image"
+msgid "Slide duration (sec)"
 msgstr ""
 
 #: setup-image.c:126
-msgid "Live Audio from primary Device"
+msgid "Repeat slide show"
 msgstr ""
 
 #: setup-image.c:130
-msgid "Directory with temporary files"
+msgid "Show numbers on index image"
 msgstr ""
 
 #: setup-image.c:134
-msgid "Remove temporary files"
+msgid "Live Audio from primary Device"
 msgstr ""
 
 #: setup-image.c:138
-msgid "Border for Underscan (Height)"
+msgid "Directory with temporary files"
 msgstr ""
 
 #: setup-image.c:142
+msgid "Remove temporary files"
+msgstr ""
+
+#: setup-image.c:146
+msgid "Border for Underscan (Height)"
+msgstr ""
+
+#: setup-image.c:150
 msgid "Border for Underscan (Width)"
 msgstr ""

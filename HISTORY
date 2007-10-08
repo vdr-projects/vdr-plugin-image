@@ -1,6 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2007-10-08
+- Check for codec only at startup
+- Add setup option to hide main menu entry (Thanks to Alf Fahland, for summit a patch)
+
 2007-08-22
 - begin developer series 0.3.x
 - Use now gettext for i18n texts, introduced with vdr-1.5.8 (Required)

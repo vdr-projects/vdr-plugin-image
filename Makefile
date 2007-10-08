@@ -161,7 +161,7 @@ I18Npot   = $(PODIR)/$(PLUGIN).pot
 	msgfmt -c -o $@ $<
 
 $(I18Npot): $(wildcard *.c)
-	xgettext -C -cTRANSLATORS --no-wrap -F -k -ktr -ktrNOOP --msgid-bugs-address='<anbr@user.berlios.de>' -o $@ $(wildcard *.c)
+	xgettext -C -cTRANSLATORS --no-wrap -F -k -ktr -ktrNOOP --msgid-bugs-address='Andreas Brachold <anbr at user.berlios.de>' -o $@ $(wildcard *.c)
 
 $(I18Npo): $(I18Npot)
 	msgmerge -U --no-wrap -F --backup=none -q $@ $<

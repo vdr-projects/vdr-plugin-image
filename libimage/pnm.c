@@ -33,7 +33,7 @@
 Print error message and get out
 @param variable list of arguments explaining error
 @return - none*/
-void cPNM::error(char* format, ... )
+void cPNM::error(const char* format, ... )
 {
   if(m_szError)
     free(m_szError);

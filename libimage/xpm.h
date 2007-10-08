@@ -29,7 +29,7 @@
 class cXPM 
 {
 
-  char **m_pXPM;
+  const char **m_pXPM;
   unsigned int m_nWidth;
   unsigned int m_nHeight;
   unsigned int m_nColors;
@@ -42,7 +42,7 @@ class cXPM
 protected:
   bool GetColor(unsigned int color,unsigned int& rgb) const;
 public:
-  cXPM(char* pXPM[]);
+  cXPM(const char* pXPM[]);
   virtual ~cXPM();
 
   enum ePlacement

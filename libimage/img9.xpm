@@ -1,5 +1,5 @@
 /* XPM */
-static char * img9_xpm[] = {
+static const char * img9_xpm[] = {
 "39 50 3 1",
 " 	c None",
 ".	c #000000",

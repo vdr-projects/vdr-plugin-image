@@ -64,6 +64,9 @@ public:
   static const int m_cnMinBorderWidth;
   static const int m_cnMaxBorderWidth;
   int m_nBorderWidth;
+  
+  /** Show entry in Main menu */
+  int m_bHideMenu;
 
 
 public:

@@ -139,7 +139,7 @@ protected:
   Print error message and get out
   @param variable list of arguments explaining error
   @return - none*/
-  void error (char* format, ... );
+  void error (const char* format, ... );
 
   /*****************************************************************************
   Get pnm magic number (P1, P2, ...)

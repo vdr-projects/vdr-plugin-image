@@ -59,6 +59,8 @@ cImageSetup::cImageSetup(void)
 
   m_nBorderHeight = 16;
   m_nBorderWidth = 16;
+  
+  m_bHideMenu = false;
 }
 
 #define ParseInteger(szTitle,nValue,nMin,nMax) \
@@ -80,6 +82,7 @@ bool cImageSetup::SetupParse(const char *szName, const char *szValue)
   else ParseInteger("ShowNumbers",   m_bShowNumbers,0,1)
   else ParseInteger("LiveAudio",     m_bLiveAudio,0,1)
   else ParseInteger("Housekeeping",  m_bHousekeeping,0,1)
+  else ParseInteger("HideMainMenu",  m_bHideMenu,0,1)
   else if(!strcasecmp(szName, "TempDir")) {
         strn0cpy(m_szTempDir,szValue,sizeof(m_szTempDir));
   }
@@ -100,12 +103,17 @@ void cMenuSetupImage::Store(void)
   SetupStore("Housekeeping",            ImageSetup.m_bHousekeeping);
   SetupStore("BorderHeight",            ImageSetup.m_nBorderHeight);
   SetupStore("BorderWidth",             ImageSetup.m_nBorderWidth);
+  SetupStore("HideMainMenu",            ImageSetup.m_bHideMenu);
 }
 
 cMenuSetupImage::cMenuSetupImage(void)
 : m_tmpSetup(ImageSetup)
 {
   SetSection(tr("Image"));
+
+  Add(new cMenuEditBoolItem(tr("Hide main menu entry"),                    
+          &m_tmpSetup.m_bHideMenu,    
+          tr("no"), tr("yes")));
 
   Add(new cMenuEditBoolItem(tr("Slide show"),                    
         &m_tmpSetup.m_bSlideShow,    

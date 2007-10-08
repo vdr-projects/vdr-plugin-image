@@ -81,7 +81,7 @@ static bool MarkerNodes (std::string& s, ExifData *d)
   c = exif_mnote_data_count (md);
   for (i = 0; i < c; i++) {
     p = exif_mnote_data_get_value (md, i, v, sizeof (v));
-    if (p && v && strlen(v)) { 
+    if (p && strlen(v)) { 
       const char * t = exif_mnote_data_get_title (md, i);
       s += t ? t : "";
       s += ":\t";

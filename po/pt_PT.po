@@ -1,16 +1,32 @@
-# VDR plugin language source file.
-# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
-# This file is distributed under the same license as the VDR package.
-# Paulo Lopes <pmml@netvita.pt>, 2001
-#
+# *
+# * Image plugin to VDR (C++)
+# *
+# * (C) 2004 - 2007 Andreas Brachold    <anbr at users.berlios.de>
+# * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
+# *
+# * This code is free software; you can redistribute it and/or
+# * modify it under the terms of the GNU General Public License
+# * as published by the Free Software Foundation; either version 2
+# * of the License, or (at your option) any later version.
+# *
+# * This code is distributed in the hope that it will be useful,
+# * but WITHOUT ANY WARRANTY; without even the implied warranty of
+# * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# * GNU General Public License for more details.
+# *
+# * You should have received a copy of the GNU General Public License
+# * along with this program; if not, write to the Free Software
+# * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# * Or, point your browser to http://www.gnu.org/copyleft/gpl.html
+# *
 msgid ""
 msgstr ""
 "Project-Id-Version: VDR 1.5.7\n"
-"Report-Msgid-Bugs-To: <anbr@user.berlios.de>\n"
-"POT-Creation-Date: 2007-08-18 13:02+0200\n"
+"Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
+"POT-Creation-Date: 2007-10-08 18:53+0200\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
-"Last-Translator: Paulo Lopes <pmml@netvita.pt>\n"
-"Language-Team: <vdr@linuxtv.org>\n"
+"Last-Translator: FULL NAME <EMAIL at ADDRESS>\n"
+"Language-Team: <vdr at linuxtv.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +77,7 @@ msgstr "Voltar"
 msgid "A Image Viewer plugin"
 msgstr "Um visor da imagem plugin"
 
-#: image.c:54 setup-image.c:108
+#: image.c:54 setup-image.c:112
 msgid "Image"
 msgstr "Imagens"
 
@@ -137,56 +153,60 @@ msgstr "Unmount falhado!"
 msgid "Eject failed!"
 msgstr "Ejete falhado!"
 
-#: player-image.c:358 player-image.c:360
+#: player-image.c:359 player-image.c:361
 msgid "Image couldn't load"
 msgstr "A imagem não podia carregar"
 
-#: player-image.c:466
+#: player-image.c:467
 msgid "Script execution failed"
 msgstr "A execução do certificado falhou"
 
-#: setup-image.c:110
-msgid "Slide show"
-msgstr "Mostra de corrediça"
+#: setup-image.c:114
+msgid "Hide main menu entry"
+msgstr ""
 
-#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
-#: setup-image.c:136
+#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
+#: setup-image.c:136 setup-image.c:144
 msgid "no"
 msgstr "não"
 
-#: setup-image.c:112 setup-image.c:120 setup-image.c:124 setup-image.c:128
-#: setup-image.c:136
+#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
+#: setup-image.c:136 setup-image.c:144
 msgid "yes"
 msgstr "sim"
 
-#: setup-image.c:114
+#: setup-image.c:118
+msgid "Slide show"
+msgstr "Mostra de corrediça"
+
+#: setup-image.c:122
 msgid "Slide duration (sec)"
 msgstr "Deslize a duração (segundo)"
 
-#: setup-image.c:118
+#: setup-image.c:126
 msgid "Repeat slide show"
 msgstr "Repita a mostra de corrediça"
 
-#: setup-image.c:122
+#: setup-image.c:130
 msgid "Show numbers on index image"
 msgstr "Mostre números na imagem do índice"
 
-#: setup-image.c:126
+#: setup-image.c:134
 msgid "Live Audio from primary Device"
 msgstr "Áudio vivo do dispositivo preliminar"
 
-#: setup-image.c:130
+#: setup-image.c:138
 msgid "Directory with temporary files"
 msgstr "Diretório com limas provisórias"
 
-#: setup-image.c:134
+#: setup-image.c:142
 msgid "Remove temporary files"
 msgstr "Remova as limas provisórias"
 
-#: setup-image.c:138
+#: setup-image.c:146
 msgid "Border for Underscan (Height)"
 msgstr "Beira para Underscan (altura)"
 
-#: setup-image.c:142
+#: setup-image.c:150
 msgid "Border for Underscan (Width)"
 msgstr "Beira para Underscan (largura)"

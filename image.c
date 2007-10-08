@@ -51,7 +51,7 @@ public:
   virtual const char *CommandLineHelp(void);
   virtual bool ProcessArgs(int argc, char *argv[]);
   virtual bool Start(void);
-  virtual const char *MainMenuEntry(void) { return tr("Image"); }
+  virtual const char *MainMenuEntry(void) { return (ImageSetup.m_bHideMenu ? NULL : tr("Image")); }
   virtual cOsdMenu *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
   virtual bool SetupParse(const char *Name, const char *Value);
