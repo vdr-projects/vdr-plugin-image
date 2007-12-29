@@ -21,30 +21,40 @@
 # *
 msgid ""
 msgstr ""
-"Project-Id-Version: VDR 1.5.7\n"
+"Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
 "POT-Creation-Date: 2007-10-08 18:53+0200\n"
-"PO-Revision-Date: 2007-08-18 08:13+0200\n"
-"Last-Translator: FULL NAME <EMAIL at ADDRESS>\n"
-"Language-Team: <vdr at linuxtv.org>\n"
+"PO-Revision-Date: 2007-12-28 20:25+0100\n"
+"Last-Translator: Gringo <vdr-italian@tiscali.it>\n"
+"Language-Team:  <vdr at linuxtv.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: control-image.c:150 control-image.c:189 control-image.c:247
+#: control-image.c:150
+#: control-image.c:189
+#: control-image.c:247
 msgid "Convert..."
 msgstr "Converti..."
 
-#: control-image.c:157 control-image.c:209 control-image.c:254
+#: control-image.c:157
+#: control-image.c:209
+#: control-image.c:254
 msgid "Select picture via key 1..9!"
 msgstr "Seleziona immagine con i tasti 1..9!"
 
-#: control-image.c:158 control-image.c:215 control-image.c:257
+#: control-image.c:158
+#: control-image.c:215
+#: control-image.c:257
 msgid "Zoom"
 msgstr "Ingrandisci"
 
-#: control-image.c:611 control-image.c:704 control-image.c:717
-#: control-image.c:730 control-image.c:849 control-image.c:859
+#: control-image.c:611
+#: control-image.c:704
+#: control-image.c:717
+#: control-image.c:730
+#: control-image.c:849
+#: control-image.c:859
 #: menu-commands.c:87
 msgid "Operation failed"
 msgstr "Operazione fallita"
@@ -69,7 +79,9 @@ msgstr "Produttore"
 msgid "Tags"
 msgstr "Etichette"
 
-#: exif.c:158 menu-commands.c:42 menu-commands.c:118
+#: exif.c:158
+#: menu-commands.c:42
+#: menu-commands.c:118
 msgid "Back"
 msgstr "Indietro"
 
@@ -77,7 +89,8 @@ msgstr "Indietro"
 msgid "A Image Viewer plugin"
 msgstr "Plugin per visualizzare immagini"
 
-#: image.c:54 setup-image.c:112
+#: image.c:54
+#: setup-image.c:112
 msgid "Image"
 msgstr "Immagine"
 
@@ -93,7 +106,8 @@ msgstr "Sfoglia immagine"
 msgid "Data medium"
 msgstr "Tipo di dati"
 
-#: menu-image.c:54 menu.c:97
+#: menu-image.c:54
+#: menu.c:97
 msgid "Parent"
 msgstr "Precedente"
 
@@ -109,7 +123,8 @@ msgstr "Fonte immagine"
 msgid "No files!"
 msgstr "Nessun file!"
 
-#: menu.c:97 menu.c:282
+#: menu.c:97
+#: menu.c:282
 msgid "Select"
 msgstr "Seleziona"
 
@@ -133,7 +148,8 @@ msgstr "Smonta"
 msgid "Selected data medium is not mounted!"
 msgstr "Il tipo di dati selezionato non è montato!"
 
-#: menu.c:313 menu.c:334
+#: menu.c:313
+#: menu.c:334
 msgid "Mount failed!"
 msgstr "Montaggio fallito!"
 
@@ -153,7 +169,8 @@ msgstr "Smontaggio fallito!"
 msgid "Eject failed!"
 msgstr "Espulsione fallita!"
 
-#: player-image.c:359 player-image.c:361
+#: player-image.c:359
+#: player-image.c:361
 msgid "Image couldn't load"
 msgstr "Impossibile caricare l'immagine"
 
@@ -163,17 +180,25 @@ msgstr "Esecuzione script fallita"
 
 #: setup-image.c:114
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Nascondi voce nel menu principale"
 
-#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
-#: setup-image.c:136 setup-image.c:144
+#: setup-image.c:116
+#: setup-image.c:120
+#: setup-image.c:128
+#: setup-image.c:132
+#: setup-image.c:136
+#: setup-image.c:144
 msgid "no"
 msgstr "no"
 
-#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
-#: setup-image.c:136 setup-image.c:144
+#: setup-image.c:116
+#: setup-image.c:120
+#: setup-image.c:128
+#: setup-image.c:132
+#: setup-image.c:136
+#: setup-image.c:144
 msgid "yes"
-msgstr "si"
+msgstr "sì"
 
 #: setup-image.c:118
 msgid "Slide show"
@@ -210,3 +235,4 @@ msgstr "Bordo per Underscan (altezza)"
 #: setup-image.c:150
 msgid "Border for Underscan (Width)"
 msgstr "Bordo per Underscan (larghezza)"
+
