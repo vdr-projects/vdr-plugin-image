@@ -32,7 +32,7 @@ extern "C" {
 }
 
 #include "../setup-image.h"
-#define TESTCODE
+//#define TESTCODE
 
 class cEncode
 {
