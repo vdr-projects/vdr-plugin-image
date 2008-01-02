@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * based on MP3/MPlayer plugin to VDR (C++)
@@ -56,6 +56,7 @@ cImageSetup::cImageSetup(void)
   m_bShowNumbers = 1;
   m_bLiveAudio = 0;
   m_bHousekeeping = 1;
+  m_bUseDeviceStillPicture = 1;
 
   m_nBorderHeight = 16;
   m_nBorderWidth = 16;
@@ -83,6 +84,7 @@ bool cImageSetup::SetupParse(const char *szName, const char *szValue)
   else ParseInteger("LiveAudio",     m_bLiveAudio,0,1)
   else ParseInteger("Housekeeping",  m_bHousekeeping,0,1)
   else ParseInteger("HideMainMenu",  m_bHideMenu,0,1)
+  else ParseInteger("UseDeviceStillPicture",  m_bUseDeviceStillPicture,0,1)
   else if(!strcasecmp(szName, "TempDir")) {
         strn0cpy(m_szTempDir,szValue,sizeof(m_szTempDir));
   }
@@ -104,16 +106,13 @@ void cMenuSetupImage::Store(void)
   SetupStore("BorderHeight",            ImageSetup.m_nBorderHeight);
   SetupStore("BorderWidth",             ImageSetup.m_nBorderWidth);
   SetupStore("HideMainMenu",            ImageSetup.m_bHideMenu);
+  SetupStore("UseDeviceStillPicture",   ImageSetup.m_bUseDeviceStillPicture);
 }
 
 cMenuSetupImage::cMenuSetupImage(void)
 : m_tmpSetup(ImageSetup)
 {
-  SetSection(tr("Image"));
-
-  Add(new cMenuEditBoolItem(tr("Hide main menu entry"),                    
-          &m_tmpSetup.m_bHideMenu,    
-          tr("no"), tr("yes")));
+  SetSection(tr("Images"));
 
   Add(new cMenuEditBoolItem(tr("Slide show"),                    
         &m_tmpSetup.m_bSlideShow,    
@@ -130,6 +129,14 @@ cMenuSetupImage::cMenuSetupImage(void)
   Add(new cMenuEditBoolItem(tr("Show numbers on index image"),    
         &m_tmpSetup.m_bShowNumbers,
         tr("no"), tr("yes")));
+
+  Add(new cMenuEditBoolItem(tr("Hide main menu entry"),                    
+          &m_tmpSetup.m_bHideMenu,    
+          tr("no"), tr("yes")));
+
+  Add(new cMenuEditBoolItem(tr("Send encoded frame several times"),                    
+          &m_tmpSetup.m_bUseDeviceStillPicture,    
+          tr("yes"), tr("no")));
 
   Add(new cMenuEditBoolItem(tr("Live Audio from primary Device"), 
         &m_tmpSetup.m_bLiveAudio,

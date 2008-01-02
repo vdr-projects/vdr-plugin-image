@@ -1,28 +1,27 @@
-/***************************************************************************
- * stillimage.c
- * (C) Copyright  2004 <anbr at users.berlios.de>
+/*
+ * Image plugin to VDR (C++)
+ *
+ * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
  *  Created: Thu Aug  5 2004
  *
  *  parts of the code (c) Peter Seyringer 
  *                    (c) Marcel Wiesweg
- ****************************************************************************/
-
-/*
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
+ * This code is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Or, point your browser to http://www.gnu.org/copyleft/gpl.html
  */
- 
 
 #include <string.h>
 #include <unistd.h>
@@ -32,10 +31,13 @@
 
 
 
-cStillImage::cStillImage(cStillImagePlayer *pl) 
+cStillImage::cStillImage(cStillImagePlayer *pl,bool bUseDeviceStillPicture) 
+: cEncode(bUseDeviceStillPicture ? 2 : 4)
+, player(pl)
+, m_bEncodeRequired(false)
+, m_bUseDeviceStillPicture(bUseDeviceStillPicture)
 {
-   m_bEncodeRequired = false;
-   player=pl;
+
 }
 
 cStillImage::~cStillImage() 
@@ -53,7 +55,6 @@ void cStillImage::Action(void)
   bool bMPEGValid = false;
   bool bQueueEmpty = false;
   bool bFreeze = true;
-  
   unsigned int nFrame = 0,nFrameOff=0;
   int nMircoSekWait;
   while (Running()) {      
@@ -114,23 +115,28 @@ void cStillImage::Action(void)
         /* Methode C ************************************************************/
         //BuildPesPacket(Data(), Size(),1);
         
-        /* Methode D ************************************************************/
-        //player->DeviceStillPicture(Data(), Size());
-  
-       /* Methode E ************************************************************/
-         
+        if(m_bUseDeviceStillPicture) {  
+            player->DeviceStillPicture(Data(), Size());
+            if(!bFreeze)
+            {  
+              player->DeviceFreeze();
+              bFreeze = true;
+            }
+            bMPEGValid = false;
+        } else {  
 
-        unsigned int nFrameSize = GetFrameSize(nFrame);
-        if(nFrameSize) // Skip empty Frames
-        {  
-          BuildPesPacket(Data() + nFrameOff, nFrameSize,1);
-          nFrameOff += nFrameSize;
+          unsigned int nFrameSize = GetFrameSize(nFrame);
+          if(nFrameSize) // Skip empty Frames
+          {  
+            BuildPesPacket(Data() + nFrameOff, nFrameSize,1);
+            nFrameOff += nFrameSize;
+          }
+          if(++nFrame>=GetFrames())
+          {
+            nFrame = 0; 
+            nFrameOff = 0; 
+          }      
         }
-        if(++nFrame>=GetFrames())
-        {
-          nFrame = 0; 
-          nFrameOff = 0; 
-        }      
       
         nMircoSekWait = (1000000/(GetFrameRate()*4)); // Wait duration off 1/4 frame
         

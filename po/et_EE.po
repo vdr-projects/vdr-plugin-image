@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
-"POT-Creation-Date: 2007-10-08 18:53+0200\n"
+"POT-Creation-Date: 2008-01-02 11:05+0100\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
 "Last-Translator: FULL NAME <EMAIL at ADDRESS>\n"
 "Language-Team: <vdr at linuxtv.org>\n"
@@ -77,8 +77,8 @@ msgstr "Tagasi"
 msgid "A Image Viewer plugin"
 msgstr ""
 
-#: image.c:54 setup-image.c:112
-msgid "Image"
+#: image.c:54 setup-image.c:115
+msgid "Images"
 msgstr ""
 
 #: menu-commands.c:42
@@ -153,60 +153,64 @@ msgstr ""
 msgid "Eject failed!"
 msgstr ""
 
-#: player-image.c:359 player-image.c:361
+#: player-image.c:361 player-image.c:363
 msgid "Image couldn't load"
 msgstr ""
 
-#: player-image.c:467
+#: player-image.c:469
 msgid "Script execution failed"
 msgstr ""
 
-#: setup-image.c:114
-msgid "Hide main menu entry"
-msgstr ""
-
-#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
-#: setup-image.c:136 setup-image.c:144
-msgid "no"
-msgstr "ei"
-
-#: setup-image.c:116 setup-image.c:120 setup-image.c:128 setup-image.c:132
-#: setup-image.c:136 setup-image.c:144
-msgid "yes"
-msgstr "jah"
-
-#: setup-image.c:118
+#: setup-image.c:117
 msgid "Slide show"
 msgstr ""
 
-#: setup-image.c:122
+#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
+#: setup-image.c:139 setup-image.c:143 setup-image.c:151
+msgid "no"
+msgstr "ei"
+
+#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
+#: setup-image.c:139 setup-image.c:143 setup-image.c:151
+msgid "yes"
+msgstr "jah"
+
+#: setup-image.c:121
 msgid "Slide duration (sec)"
 msgstr ""
 
-#: setup-image.c:126
+#: setup-image.c:125
 msgid "Repeat slide show"
 msgstr ""
 
-#: setup-image.c:130
+#: setup-image.c:129
 msgid "Show numbers on index image"
 msgstr ""
 
-#: setup-image.c:134
+#: setup-image.c:133
+msgid "Hide main menu entry"
+msgstr ""
+
+#: setup-image.c:137
+msgid "Send encoded frame several times"
+msgstr ""
+
+#: setup-image.c:141
 msgid "Live Audio from primary Device"
 msgstr ""
 
-#: setup-image.c:138
+#: setup-image.c:145
 msgid "Directory with temporary files"
 msgstr ""
 
-#: setup-image.c:142
+#: setup-image.c:149
 msgid "Remove temporary files"
 msgstr ""
 
-#: setup-image.c:146
+#: setup-image.c:153
 msgid "Border for Underscan (Height)"
 msgstr ""
 
-#: setup-image.c:150
+#: setup-image.c:157
 msgid "Border for Underscan (Width)"
 msgstr ""

@@ -5,9 +5,9 @@
  * (C) 2004     "Interpohl"  <interpohl at vdr-portal.de> 
  * (C) 2004     O. Kreuzinger <Onno at Kreuzinger.biz>
  * (C) 2004     A. Holzhammer for the massive script updates
- * (C) 2004 - 2007 A. Brachold   <anbr at users.berlios.de>
+ * (C) 2004 - 2008 A. Brachold   <anbr at users.berlios.de>
  *  
- *  based on mp3/mplayer plguin by Stefan Hülswitt <huels at iname.com>
+ *  based on mp3/mplayer plugin by Stefan Hülswitt <huels at iname.com>
  *   
  * This code is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -51,7 +51,7 @@ public:
   virtual const char *CommandLineHelp(void);
   virtual bool ProcessArgs(int argc, char *argv[]);
   virtual bool Start(void);
-  virtual const char *MainMenuEntry(void) { return (ImageSetup.m_bHideMenu ? NULL : tr("Image")); }
+  virtual const char *MainMenuEntry(void) { return (ImageSetup.m_bHideMenu ? NULL : tr("Images")); }
   virtual cOsdMenu *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
   virtual bool SetupParse(const char *Name, const char *Value);
@@ -121,7 +121,9 @@ bool cPluginImage::Start(void)
     return false;
     }
   
+#if APIVERSNUM >= 10508
   I18nRegister("image");
+#endif
   return true;
 }
 

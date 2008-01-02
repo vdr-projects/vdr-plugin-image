@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2005 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck      <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -49,6 +49,9 @@ public:
   int m_bLiveAudio;
   /* Activate own house keeping system for temp. files, avoid pregenerated images */
   int m_bHousekeeping;
+
+  /* Use as output DeviceStillPicture */
+  int m_bUseDeviceStillPicture;
 
   /** Minimum Value for Slideshow */
   static const int m_cSSMin;

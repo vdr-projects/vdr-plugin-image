@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is free software; you can redistribute it and/or
@@ -50,7 +50,9 @@ const char *g_szConvertScript = "imageplugin.sh";
 
 cImagePlayer::cImagePlayer(cSlideShow *pCurSlideShow)
 : cStillImagePlayer(
- (ImageSetup.m_bLiveAudio != 0)?pmVideoOnly:pmAudioVideo)
+ ((ImageSetup.m_bLiveAudio != 0)?pmAudioVideo:pmVideoOnly)
+,((ImageSetup.m_bUseDeviceStillPicture != 0)?true:false)
+)
 , m_bConvertRunning(false)
 , m_szError(NULL)
 {

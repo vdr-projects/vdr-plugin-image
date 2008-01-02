@@ -1,6 +1,13 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2008-01-02
+- Reimplement "Playback mode via 'DeviceStillPicture'" 
+   active if 'Send encoded frame several times' set to 'no'
+
+2007-12-30
+- Updated italian translations.
+
 2007-10-08
 - Check for codec only at startup
 - Add setup option to hide main menu entry (Thanks to Alf Fahland, for summit a patch)

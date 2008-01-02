@@ -18,7 +18,7 @@ Einige Dateien stammen vom mp3/MPlayer Plugin, der danke geht an Stefan Hülswitt
 Benötigt:
 -----------
 - Full-Featured DVB Karte 
-- vdr 1.3.38+ 
+- vdr 1.5.8+ 
 - das Plugin ist abhängig vom folgenden Paketen
     + ffmpeg (getestet mit ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
         http://ffmpeg.sourceforge.net

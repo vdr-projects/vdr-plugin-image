@@ -18,7 +18,7 @@ Some files are from the mp3/MPlayer Plugin.	Thanks to Stefan Hülswitt
 Required:
 -----------
 - fullfeatured dvb card
-- vdr 1.3.38+
+- vdr 1.5.8+
 - plugin depends follow packages
     + ffmpeg (tested with ffmpeg-0.4.8/ffmpeg-0.4.9pre1/ffmpeg-cvs)
         http://ffmpeg.sourceforge.net
