@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2008-01-04
+- Clear device buffer, before start playback (need by PVR350) (suggest by Martin Dauskardt)
+
 2008-01-02
 - Reimplement "Playback mode via 'DeviceStillPicture'" 
    active if 'Send encoded frame several times' set to 'no'

@@ -86,6 +86,7 @@ void cStillImage::Action(void)
         nFrameOff=0;
         if(bFreeze)
         {  
+          player->DeviceClear();
           player->DevicePlay();
           bFreeze = false;
         }
