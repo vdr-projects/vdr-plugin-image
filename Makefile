@@ -1,7 +1,7 @@
 #
 # Makefile for Image plugin to VDR
 #
-# (C) 2004-2007 Andreas Brachold    <anbr at users.berlios.de>
+# (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
 #
 # This code is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,6 +20,10 @@
 
 # You can change the compile options here or create a Make.config
 # in the VDR directory an set them there.
+#
+# $Id$
+#
+
 
 ### uncomment the following line, if you don't have libexif installed
 #WITHOUT_LIBEXIF=1
@@ -98,8 +102,10 @@ ifndef WITHOUT_SWSCALER
   LIBS += -L$(FFMDIR)/libswscale -lswscale
 endif
 else
-  PKG-LIBS += libavcodec
+  PKG-LIBS += libavcodec 
+  PKG-INCLUDES += libavcodec
 ifndef WITHOUT_SWSCALER
+  PKG-INCLUDES += libswscale
   PKG-LIBS += libswscale
 endif
 endif

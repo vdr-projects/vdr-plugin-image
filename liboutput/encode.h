@@ -24,11 +24,7 @@
 #define _ENCODE_H
 
 extern "C" {
-#ifdef FFMDIR
 #include <avcodec.h>
-#else
-#include <ffmpeg/avcodec.h>
-#endif 
 }
 
 #include "../setup-image.h"

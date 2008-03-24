@@ -24,15 +24,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-extern "C" {
 #ifdef HAVE_SWSCALER
-#ifdef FFMDIR
+extern "C" {
 #include <swscale.h>
-#else
-#include <ffmpeg/swscale.h>
-#endif
-#endif
 }
+#endif
 
 #include "encode.h"
 #include <vdr/device.h>

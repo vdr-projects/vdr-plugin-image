@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# $Id$
+#
 #set -xv
 pushd $(dirname $0) &>/dev/null
 

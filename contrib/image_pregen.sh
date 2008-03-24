@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# $Id$
+#
 # image_pregen.sh
 #
 # call with file or dir to pregenerate the file or dir

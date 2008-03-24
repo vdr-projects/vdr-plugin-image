@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# $Id$
+#
 # script for vdr-imageplugin to convert the selected image to pnm-image
 # needs : imagemagick > identify convert
 #
