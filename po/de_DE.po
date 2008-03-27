@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
-"POT-Creation-Date: 2008-01-02 11:05+0100\n"
+"POT-Creation-Date: 2008-03-27 20:59+0100\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
 "Last-Translator: Andreas Brachold <anbr at users.berlios.de>\n"
 "Language-Team: <vdr at linuxtv.org>\n"
@@ -31,186 +31,137 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: control-image.c:150 control-image.c:189 control-image.c:247
 msgid "Convert..."
 msgstr "Wandle..."
 
-#: control-image.c:157 control-image.c:209 control-image.c:254
 msgid "Select picture via key 1..9!"
 msgstr "Bildauswahl über Taste 1..9!"
 
-#: control-image.c:158 control-image.c:215 control-image.c:257
 msgid "Zoom"
 msgstr "Vergrößere"
 
-#: control-image.c:611 control-image.c:704 control-image.c:717
-#: control-image.c:730 control-image.c:849 control-image.c:859
-#: menu-commands.c:87
 msgid "Operation failed"
 msgstr "Vorgang fehlgeschlagen"
 
-#: control-image.c:631
 msgid "Commands"
 msgstr "Befehle"
 
-#: exif.c:96
 msgid "Show exif informations from image"
 msgstr "Zeigt Exif Informationen zum Bild"
 
-#: exif.c:108
 msgid "Could not load exif data from image!"
 msgstr "Konnte Exif Daten nicht vom Bild laden!"
 
-#: exif.c:153
 msgid "Marker"
 msgstr "Merkzeichen"
 
-#: exif.c:156
 msgid "Tags"
 msgstr "Bezeichnung"
 
-#: exif.c:158 menu-commands.c:42 menu-commands.c:118
 msgid "Back"
 msgstr "Zurück"
 
-#: image.c:50
 msgid "A Image Viewer plugin"
 msgstr "Ein Bildbetrachter Plugin"
 
-#: image.c:54 setup-image.c:115
 msgid "Images"
 msgstr "Bilder"
 
-#: menu-commands.c:42
-msgid "Execute"
-msgstr "Ausführen"
-
-#: menu-image.c:46
-msgid "Image browser"
-msgstr "Bilder Verzeichnisanzeige"
-
-#: menu-image.c:54
-msgid "Data medium"
-msgstr "Datenträger"
-
-#: menu-image.c:54 menu.c:97
-msgid "Parent"
-msgstr "Zurück"
-
-#: menu-image.c:54
-msgid "Play"
-msgstr "Wiedergabe"
-
-#: menu-image.c:66
-msgid "Image source"
-msgstr "Bilder-Datenträger"
-
-#: menu-image.c:104
-msgid "No files!"
-msgstr "Keine Dateien!"
-
-#: menu.c:97 menu.c:282
 msgid "Select"
 msgstr "Auswählen"
 
-#: menu.c:145
+msgid "Parent"
+msgstr "Zurück"
+
 msgid "Error scanning directory!"
 msgstr "Fehler beim Lesen des Verzeichnisses!"
 
-#: menu.c:282
-msgid "Eject"
-msgstr "Auswerfen"
-
-#: menu.c:282
 msgid "Mount"
 msgstr "Einbinden"
 
-#: menu.c:282
 msgid "Unmount"
 msgstr "Aushängen"
 
-#: menu.c:298
+msgid "Eject"
+msgstr "Auswerfen"
+
 msgid "Selected data medium is not mounted!"
 msgstr "Ausgewählter Datenträger ist nicht eingebunden!"
 
-#: menu.c:313 menu.c:334
 msgid "Mount failed!"
 msgstr "Einbinden fehlgeschlagen!"
 
-#: menu.c:332
 msgid "Mount succeeded"
 msgstr "Einbinden erfolgreich"
 
-#: menu.c:351
 msgid "Unmount succeeded!"
 msgstr "Aushängen erfolgreich!"
 
-#: menu.c:353
 msgid "Unmount failed!"
 msgstr "Aushängen fehlgeschlagen!"
 
-#: menu.c:370
 msgid "Eject failed!"
 msgstr "Auswerfen fehlgeschlagen!"
 
-#: player-image.c:361 player-image.c:363
+msgid "Execute"
+msgstr "Ausführen"
+
+msgid "Image browser"
+msgstr "Bilder Verzeichnisanzeige"
+
+msgid "Play"
+msgstr "Wiedergabe"
+
+msgid "Data medium"
+msgstr "Datenträger"
+
+msgid "Image source"
+msgstr "Bilder-Datenträger"
+
+msgid "No files!"
+msgstr "Keine Dateien!"
+
 msgid "Image couldn't load"
 msgstr "Konnte Bild nicht lesen"
 
-#: player-image.c:469
 msgid "Script execution failed"
 msgstr "Scriptausführung fehlgeschlagen"
 
-#: setup-image.c:117
 msgid "Slide show"
 msgstr "Diavorführung"
 
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "no"
-msgstr "nein"
-
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "yes"
-msgstr "ja"
-
-#: setup-image.c:121
 msgid "Slide duration (sec)"
 msgstr "Anzeigedauer (Sek)"
 
-#: setup-image.c:125
 msgid "Repeat slide show"
 msgstr "Wiederholung der Diavorführung"
 
-#: setup-image.c:129
 msgid "Show numbers on index image"
 msgstr "Zeige Zahlen im Indexbild"
 
-#: setup-image.c:133
 msgid "Hide main menu entry"
 msgstr "Hauptmenueintrag verstecken"
 
-#: setup-image.c:137
 msgid "Send encoded frame several times"
 msgstr "Sende enkodierte Bilddaten mehrfach"
 
-#: setup-image.c:141
 msgid "Live Audio from primary Device"
 msgstr "Live Audio vom primären Gerät"
 
-#: setup-image.c:145
 msgid "Directory with temporary files"
 msgstr "Verzeichnis mit temporären Dateien"
 
-#: setup-image.c:149
 msgid "Remove temporary files"
 msgstr "Lösche temporäre Dateien"
 
-#: setup-image.c:153
 msgid "Border for Underscan (Height)"
 msgstr "Rand für Underscan (Höhe)"
 
-#: setup-image.c:157
 msgid "Border for Underscan (Width)"
 msgstr "Rand für Underscan (Breite)"
+
+#~ msgid "no"
+#~ msgstr "nein"
+
+#~ msgid "yes"
+#~ msgstr "ja"

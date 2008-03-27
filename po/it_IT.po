@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
-"POT-Creation-Date: 2008-01-02 11:05+0100\n"
+"POT-Creation-Date: 2008-03-27 20:59+0100\n"
 "PO-Revision-Date: 2007-12-28 20:25+0100\n"
 "Last-Translator: Gringo <vdr-italian@tiscali.it>\n"
 "Language-Team:  <vdr at linuxtv.org>\n"
@@ -31,186 +31,137 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: control-image.c:150 control-image.c:189 control-image.c:247
 msgid "Convert..."
 msgstr "Converti..."
 
-#: control-image.c:157 control-image.c:209 control-image.c:254
 msgid "Select picture via key 1..9!"
 msgstr "Seleziona immagine con i tasti 1..9!"
 
-#: control-image.c:158 control-image.c:215 control-image.c:257
 msgid "Zoom"
 msgstr "Ingrandisci"
 
-#: control-image.c:611 control-image.c:704 control-image.c:717
-#: control-image.c:730 control-image.c:849 control-image.c:859
-#: menu-commands.c:87
 msgid "Operation failed"
 msgstr "Operazione fallita"
 
-#: control-image.c:631
 msgid "Commands"
 msgstr "Comandi"
 
-#: exif.c:96
 msgid "Show exif informations from image"
 msgstr "Mostra informazioni exif dell'immagine"
 
-#: exif.c:108
 msgid "Could not load exif data from image!"
 msgstr "Impossibile caricare i dati exif dell'immagine!"
 
-#: exif.c:153
 msgid "Marker"
 msgstr "Produttore"
 
-#: exif.c:156
 msgid "Tags"
 msgstr "Etichette"
 
-#: exif.c:158 menu-commands.c:42 menu-commands.c:118
 msgid "Back"
 msgstr "Indietro"
 
-#: image.c:50
 msgid "A Image Viewer plugin"
 msgstr "Plugin per visualizzare immagini"
 
-#: image.c:54 setup-image.c:115
 msgid "Images"
 msgstr "Immagine"
 
-#: menu-commands.c:42
-msgid "Execute"
-msgstr "Esegui"
-
-#: menu-image.c:46
-msgid "Image browser"
-msgstr "Sfoglia immagine"
-
-#: menu-image.c:54
-msgid "Data medium"
-msgstr "Tipo di dati"
-
-#: menu-image.c:54 menu.c:97
-msgid "Parent"
-msgstr "Precedente"
-
-#: menu-image.c:54
-msgid "Play"
-msgstr "Riproduci"
-
-#: menu-image.c:66
-msgid "Image source"
-msgstr "Fonte immagine"
-
-#: menu-image.c:104
-msgid "No files!"
-msgstr "Nessun file!"
-
-#: menu.c:97 menu.c:282
 msgid "Select"
 msgstr "Seleziona"
 
-#: menu.c:145
+msgid "Parent"
+msgstr "Precedente"
+
 msgid "Error scanning directory!"
 msgstr "Errore durante scansione directory!"
 
-#: menu.c:282
-msgid "Eject"
-msgstr "Espelli"
-
-#: menu.c:282
 msgid "Mount"
 msgstr "Monta"
 
-#: menu.c:282
 msgid "Unmount"
 msgstr "Smonta"
 
-#: menu.c:298
+msgid "Eject"
+msgstr "Espelli"
+
 msgid "Selected data medium is not mounted!"
 msgstr "Il tipo di dati selezionato non è montato!"
 
-#: menu.c:313 menu.c:334
 msgid "Mount failed!"
 msgstr "Montaggio fallito!"
 
-#: menu.c:332
 msgid "Mount succeeded"
 msgstr "Montaggio riuscito"
 
-#: menu.c:351
 msgid "Unmount succeeded!"
 msgstr "Smonti riuscito!"
 
-#: menu.c:353
 msgid "Unmount failed!"
 msgstr "Smontaggio fallito!"
 
-#: menu.c:370
 msgid "Eject failed!"
 msgstr "Espulsione fallita!"
 
-#: player-image.c:361 player-image.c:363
+msgid "Execute"
+msgstr "Esegui"
+
+msgid "Image browser"
+msgstr "Sfoglia immagine"
+
+msgid "Play"
+msgstr "Riproduci"
+
+msgid "Data medium"
+msgstr "Tipo di dati"
+
+msgid "Image source"
+msgstr "Fonte immagine"
+
+msgid "No files!"
+msgstr "Nessun file!"
+
 msgid "Image couldn't load"
 msgstr "Impossibile caricare l'immagine"
 
-#: player-image.c:469
 msgid "Script execution failed"
 msgstr "Esecuzione script fallita"
 
-#: setup-image.c:117
 msgid "Slide show"
 msgstr "Proiezione di diapositive"
 
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "no"
-msgstr "no"
-
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "yes"
-msgstr "sì"
-
-#: setup-image.c:121
 msgid "Slide duration (sec)"
 msgstr "Durata sequenza (sec)"
 
-#: setup-image.c:125
 msgid "Repeat slide show"
 msgstr "Ripeti la proiezione di diapositive"
 
-#: setup-image.c:129
 msgid "Show numbers on index image"
 msgstr "Mostra i numeri dell'immagine indice"
 
-#: setup-image.c:133
 msgid "Hide main menu entry"
 msgstr "Nascondi voce nel menu principale"
 
-#: setup-image.c:137
 msgid "Send encoded frame several times"
 msgstr ""
 
-#: setup-image.c:141
 msgid "Live Audio from primary Device"
 msgstr "Audio dal vivo dalla scheda primaria"
 
-#: setup-image.c:145
 msgid "Directory with temporary files"
 msgstr "Directory con file temporanei"
 
-#: setup-image.c:149
 msgid "Remove temporary files"
 msgstr "Rimuovi file temporanei"
 
-#: setup-image.c:153
 msgid "Border for Underscan (Height)"
 msgstr "Bordo per Underscan (altezza)"
 
-#: setup-image.c:157
 msgid "Border for Underscan (Width)"
 msgstr "Bordo per Underscan (larghezza)"
+
+#~ msgid "no"
+#~ msgstr "no"
+
+#~ msgid "yes"
+#~ msgstr "sì"

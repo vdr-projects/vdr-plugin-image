@@ -116,7 +116,7 @@ cMenuSetupImage::cMenuSetupImage(void)
 
   Add(new cMenuEditBoolItem(tr("Slide show"),                    
         &m_tmpSetup.m_bSlideShow,    
-        tr("no"), tr("yes")));
+        trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditIntItem (tr("Slide duration (sec)"),           
         &m_tmpSetup.m_nSSsec,        
@@ -124,23 +124,23 @@ cMenuSetupImage::cMenuSetupImage(void)
 
   Add(new cMenuEditBoolItem(tr("Repeat slide show"),               
         &m_tmpSetup.m_bAutoRepeat,   
-        tr("no"), tr("yes")));
+        trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditBoolItem(tr("Show numbers on index image"),    
         &m_tmpSetup.m_bShowNumbers,
-        tr("no"), tr("yes")));
+        trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditBoolItem(tr("Hide main menu entry"),                    
           &m_tmpSetup.m_bHideMenu,    
-          tr("no"), tr("yes")));
+          trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditBoolItem(tr("Send encoded frame several times"),                    
           &m_tmpSetup.m_bUseDeviceStillPicture,    
-          tr("yes"), tr("no")));
+          trVDR("yes"), trVDR("no")));
 
   Add(new cMenuEditBoolItem(tr("Live Audio from primary Device"), 
         &m_tmpSetup.m_bLiveAudio,
-        tr("no"), tr("yes")));
+        trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditStrItem (tr("Directory with temporary files"), 
         m_tmpSetup.m_szTempDir,sizeof(m_tmpSetup.m_szTempDir), 
@@ -148,7 +148,7 @@ cMenuSetupImage::cMenuSetupImage(void)
 
   Add(new cMenuEditBoolItem(tr("Remove temporary files"),
         &m_tmpSetup.m_bHousekeeping,  
-        tr("no"), tr("yes")));
+        trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditIntItem (tr("Border for Underscan (Height)"),
         &m_tmpSetup.m_nBorderHeight,

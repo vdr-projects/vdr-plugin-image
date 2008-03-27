@@ -121,9 +121,6 @@ bool cPluginImage::Start(void)
     return false;
     }
   
-#if APIVERSNUM >= 10508
-  I18nRegister("image");
-#endif
   return true;
 }
 

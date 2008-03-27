@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
-"POT-Creation-Date: 2008-01-02 11:05+0100\n"
+"POT-Creation-Date: 2008-03-27 20:59+0100\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
 "Last-Translator: FULL NAME <EMAIL at ADDRESS>\n"
 "Language-Team: <vdr at linuxtv.org>\n"
@@ -31,186 +31,137 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: control-image.c:150 control-image.c:189 control-image.c:247
 msgid "Convert..."
 msgstr "Zet om..."
 
-#: control-image.c:157 control-image.c:209 control-image.c:254
 msgid "Select picture via key 1..9!"
 msgstr "Selecteer beeld via knoop 1..9!"
 
-#: control-image.c:158 control-image.c:215 control-image.c:257
 msgid "Zoom"
 msgstr "Gezoem"
 
-#: control-image.c:611 control-image.c:704 control-image.c:717
-#: control-image.c:730 control-image.c:849 control-image.c:859
-#: menu-commands.c:87
 msgid "Operation failed"
 msgstr "Ontbroken verrichting"
 
-#: control-image.c:631
 msgid "Commands"
 msgstr "Commando's"
 
-#: exif.c:96
 msgid "Show exif informations from image"
 msgstr "Toon exif informatie van beeld"
 
-#: exif.c:108
 msgid "Could not load exif data from image!"
 msgstr "Kon exif geen gegevens van beeld laden!"
 
-#: exif.c:153
 msgid "Marker"
 msgstr ""
 
-#: exif.c:156
 msgid "Tags"
 msgstr ""
 
-#: exif.c:158 menu-commands.c:42 menu-commands.c:118
 msgid "Back"
 msgstr "Terug"
 
-#: image.c:50
 msgid "A Image Viewer plugin"
 msgstr "Een Kijker van het Beeld plugin"
 
-#: image.c:54 setup-image.c:115
 msgid "Images"
 msgstr "Beelden"
 
-#: menu-commands.c:42
-msgid "Execute"
-msgstr "Voer uit"
-
-#: menu-image.c:46
-msgid "Image browser"
-msgstr "Browser van het beeld"
-
-#: menu-image.c:54
-msgid "Data medium"
-msgstr "Het middel van gegevens"
-
-#: menu-image.c:54 menu.c:97
-msgid "Parent"
-msgstr "voorloper"
-
-#: menu-image.c:54
-msgid "Play"
-msgstr "Afspelen"
-
-#: menu-image.c:66
-msgid "Image source"
-msgstr "De bron van het beeld"
-
-#: menu-image.c:104
-msgid "No files!"
-msgstr "Geen dossiers!"
-
-#: menu.c:97 menu.c:282
 msgid "Select"
 msgstr "Selecteer"
 
-#: menu.c:145
+msgid "Parent"
+msgstr "voorloper"
+
 msgid "Error scanning directory!"
 msgstr "Het aftastenfolder van de fout!"
 
-#: menu.c:282
-msgid "Eject"
-msgstr ""
-
-#: menu.c:282
 msgid "Mount"
 msgstr "Zet op"
 
-#: menu.c:282
 msgid "Unmount"
 msgstr "unmount"
 
-#: menu.c:298
+msgid "Eject"
+msgstr ""
+
 msgid "Selected data medium is not mounted!"
 msgstr "Het geselecteerde gegevensmiddel wordt niet opgezet!"
 
-#: menu.c:313 menu.c:334
 msgid "Mount failed!"
 msgstr "Zet ontbroken op!"
 
-#: menu.c:332
 msgid "Mount succeeded"
 msgstr "Zet volgend op"
 
-#: menu.c:351
 msgid "Unmount succeeded!"
 msgstr "Volgende Unmount!"
 
-#: menu.c:353
 msgid "Unmount failed!"
 msgstr "Ontbroken Unmount!"
 
-#: menu.c:370
 msgid "Eject failed!"
 msgstr "Werp ontbroken uit!"
 
-#: player-image.c:361 player-image.c:363
+msgid "Execute"
+msgstr "Voer uit"
+
+msgid "Image browser"
+msgstr "Browser van het beeld"
+
+msgid "Play"
+msgstr "Afspelen"
+
+msgid "Data medium"
+msgstr "Het middel van gegevens"
+
+msgid "Image source"
+msgstr "De bron van het beeld"
+
+msgid "No files!"
+msgstr "Geen dossiers!"
+
 msgid "Image couldn't load"
 msgstr "Het beeld kon niet laden"
 
-#: player-image.c:469
 msgid "Script execution failed"
 msgstr "Ontbroken de uitvoering van het manuscript"
 
-#: setup-image.c:117
 msgid "Slide show"
 msgstr "De show van de dia"
 
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "no"
-msgstr "nee"
-
-#: setup-image.c:119 setup-image.c:127 setup-image.c:131 setup-image.c:135
-#: setup-image.c:139 setup-image.c:143 setup-image.c:151
-msgid "yes"
-msgstr "ja"
-
-#: setup-image.c:121
 msgid "Slide duration (sec)"
 msgstr "De duur van de dia (seconde)"
 
-#: setup-image.c:125
 msgid "Repeat slide show"
 msgstr "Herhaal diashow"
 
-#: setup-image.c:129
 msgid "Show numbers on index image"
 msgstr "Toon aantallen op indexbeeld"
 
-#: setup-image.c:133
 msgid "Hide main menu entry"
 msgstr ""
 
-#: setup-image.c:137
 msgid "Send encoded frame several times"
 msgstr ""
 
-#: setup-image.c:141
 msgid "Live Audio from primary Device"
 msgstr "Leef Audio van primair Apparaat"
 
-#: setup-image.c:145
 msgid "Directory with temporary files"
 msgstr "Folder met tijdelijke dossiers"
 
-#: setup-image.c:149
 msgid "Remove temporary files"
 msgstr "Verwijder tijdelijke dossiers"
 
-#: setup-image.c:153
 msgid "Border for Underscan (Height)"
 msgstr "Grens voor Underscan (Hoogte)"
 
-#: setup-image.c:157
 msgid "Border for Underscan (Width)"
 msgstr "Grens voor Underscan (Breedte)"
+
+#~ msgid "no"
+#~ msgstr "nee"
+
+#~ msgid "yes"
+#~ msgstr "ja"
