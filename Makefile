@@ -203,7 +203,7 @@ dist: clean
 	@mkdir $(TMPDIR)/$(ARCHIVE)
 	@cp -a * $(TMPDIR)/$(ARCHIVE)
 	@chmod 644 -R $(TMPDIR)/$(ARCHIVE)/*
-	@find $(TMPDIR)/$(ARCHIVE) -name "*.sh" -exec chmod 755 {} \;
+	@find $(TMPDIR)/$(ARCHIVE) -name "*.sh" -exec chmod a+x {} \;
 	@find $(TMPDIR)/$(ARCHIVE) -type d -exec chmod 755 {} \;
 	@chown root.root -R $(TMPDIR)/$(ARCHIVE)/*
 	@tar czf $(PACKAGE).tar.gz --exclude=.svn -C $(TMPDIR) $(ARCHIVE)
