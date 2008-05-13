@@ -25,137 +25,137 @@ msgstr ""
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
 "POT-Creation-Date: 2008-03-27 20:59+0100\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
-"Last-Translator: FULL NAME <EMAIL at ADDRESS>\n"
+"Last-Translator: Oktay Yolgeçen <oktay_73 at yahoo.de>\n"
 "Language-Team: <vdr at linuxtv.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Convert..."
-msgstr ""
+msgstr "Çevir..."
 
 msgid "Select picture via key 1..9!"
-msgstr ""
+msgstr "1..9 tuþu ile resim seç!"
 
 msgid "Zoom"
-msgstr ""
+msgstr "Yaklaþtýr"
 
 msgid "Operation failed"
-msgstr ""
+msgstr "Ýþletme baþarýsýz"
 
 msgid "Commands"
-msgstr ""
+msgstr "Komutlar"
 
 msgid "Show exif informations from image"
-msgstr ""
+msgstr "Resimden exif bilgisini göster"
 
 msgid "Could not load exif data from image!"
-msgstr ""
+msgstr "Resimden exif bilgisi okunamadý!"
 
 msgid "Marker"
-msgstr ""
+msgstr "Ýþaret"
 
 msgid "Tags"
-msgstr ""
+msgstr "Etikeler"
 
 msgid "Back"
-msgstr ""
+msgstr "Geri"
 
 msgid "A Image Viewer plugin"
-msgstr ""
+msgstr "Resim gösterme eklentisi"
 
 msgid "Images"
-msgstr ""
+msgstr "Resimler"
 
 msgid "Select"
-msgstr ""
+msgstr "Seç"
 
 msgid "Parent"
-msgstr ""
+msgstr "Üste"
 
 msgid "Error scanning directory!"
-msgstr ""
+msgstr "Klasör tarama hatasý!"
 
 msgid "Mount"
-msgstr ""
+msgstr "Baðlantýyý kur"
 
 msgid "Unmount"
-msgstr ""
+msgstr "Baðlantýyý kaldýr"
 
 msgid "Eject"
-msgstr ""
+msgstr "Dýþarý at"
 
 msgid "Selected data medium is not mounted!"
-msgstr ""
+msgstr "Seçilen data medyumu baðlý deðil!"
 
 msgid "Mount failed!"
-msgstr ""
+msgstr "Baðlantý kurma hatasý"
 
 msgid "Mount succeeded"
-msgstr ""
+msgstr "Baðlantý kuruldu"
 
 msgid "Unmount succeeded!"
-msgstr ""
+msgstr "Baðlantý kaldýrýldý!"
 
 msgid "Unmount failed!"
-msgstr ""
+msgstr "Baðlantý kaldýrma hatasý!"
 
 msgid "Eject failed!"
-msgstr ""
+msgstr "Çýkartma hatasý!"
 
 msgid "Execute"
-msgstr ""
+msgstr "Çalýþtýr"
 
 msgid "Image browser"
-msgstr ""
+msgstr "Resim browseri"
 
 msgid "Play"
-msgstr ""
+msgstr "Göster"
 
 msgid "Data medium"
-msgstr ""
+msgstr "Data medyum"
 
 msgid "Image source"
-msgstr ""
+msgstr "Resim kaynaðý"
 
 msgid "No files!"
-msgstr ""
+msgstr "Dosya yok!"
 
 msgid "Image couldn't load"
-msgstr ""
+msgstr "Resim yüklenemedi"
 
 msgid "Script execution failed"
-msgstr ""
+msgstr "Not uygulama hatasý"
 
 msgid "Slide show"
-msgstr ""
+msgstr "Slideshow"
 
 msgid "Slide duration (sec)"
-msgstr ""
+msgstr "Slide süresi (sn)"
 
 msgid "Repeat slide show"
-msgstr ""
+msgstr "Slideshow'u tekrarla"
 
 msgid "Show numbers on index image"
-msgstr ""
+msgstr "Ýndeks resimlerde numara göster"
 
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Ana menüde sakla"
 
 msgid "Send encoded frame several times"
-msgstr ""
+msgstr "Kodlanmýþ frame'i birkaç defa gönder"
 
 msgid "Live Audio from primary Device"
-msgstr ""
+msgstr "Primer aygýtdan naklen audio"
 
 msgid "Directory with temporary files"
-msgstr ""
+msgstr "Geçici dosyalý klasör"
 
 msgid "Remove temporary files"
-msgstr ""
+msgstr "Geçici dosyalarý sil"
 
 msgid "Border for Underscan (Height)"
-msgstr ""
+msgstr "Alt tarama sýnýrý (Yükseklik)"
 
 msgid "Border for Underscan (Width)"
-msgstr ""
+msgstr "Alt tarama sýnýrý (Geniþlik)"

@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2007-12-30
+- Add turkish translation (Thanks to Oktay Yolge√ßen)
+
 2008-01-04
 - Clear device buffer, before start playback (need by PVR350) (suggest by Martin Dauskardt)
 
@@ -36,7 +39,7 @@ VDR Plugin 'image' Revision History
 - Updated some i18n text
 
 2006-05-18
-- Updated French translations. (Thanks to NIVAL MichaÎl)
+- Updated French translations. (Thanks to NIVAL Micha√´l)
 
 2006-04-23
 - Updated finnish translations. (Thanks to Rolf Ahrenberg)
@@ -56,7 +59,7 @@ VDR Plugin 'image' Revision History
 - Add service wrapper. (provided by Holger Brunn)
 
 2006-01-22  
-- Updated Spanish translations. (Thanks to Jes˙s Bravo ¡lvarez)
+- Updated Spanish translations. (Thanks to Jes√∫s Bravo √Ålvarez)
 
 2006-01-22  
 - Release Version 0.2.5
@@ -130,7 +133,7 @@ VDR Plugin 'image' Revision History
 - add option for border of underscan
 
 2005-07-26
-- rotate pictures now in several 90∞ steps
+- rotate pictures now in several 90¬∞ steps
 
 2005-07-18
 - add alternative script (scripts/magickplugin.sh) for image converting with imagemagick
@@ -146,8 +149,8 @@ VDR Plugin 'image' Revision History
 - plugin: add reload image after commands execution, if image changed
 
 2004-12-06
-- Fix missing environ variable for examples/imagecmds.conf (Reported by Thomas G¸nther)
-- Fix wrong folder flags on distribute archives (Reported by Thomas G¸nther)
+- Fix missing environ variable for examples/imagecmds.conf (Reported by Thomas G√ºnther)
+- Fix wrong folder flags on distribute archives (Reported by Thomas G√ºnther)
 
 2004-12-05
 - Use now threadsafe functions replacement of strerror
