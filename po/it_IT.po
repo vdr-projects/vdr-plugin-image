@@ -23,16 +23,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vdr-image 0.3.0\n"
 "Report-Msgid-Bugs-To: Andreas Brachold <anbr at user.berlios.de>\n"
-"POT-Creation-Date: 2008-03-27 20:59+0100\n"
-"PO-Revision-Date: 2007-12-28 20:25+0100\n"
-"Last-Translator: Gringo <vdr-italian@tiscali.it>\n"
+"POT-Creation-Date: 2008-06-25 06:16+0200\n"
+"PO-Revision-Date: 2008-06-24 01:50+0100\n"
+"Last-Translator: Diego Pierotto <vdr-italian@tiscali.it>\n"
 "Language-Team:  <vdr at linuxtv.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Convert..."
-msgstr "Converti..."
+msgstr "Conversione..."
 
 msgid "Select picture via key 1..9!"
 msgstr "Seleziona immagine con i tasti 1..9!"
@@ -65,16 +65,16 @@ msgid "A Image Viewer plugin"
 msgstr "Plugin per visualizzare immagini"
 
 msgid "Images"
-msgstr "Immagine"
+msgstr "Immagini"
 
 msgid "Select"
 msgstr "Seleziona"
 
 msgid "Parent"
-msgstr "Precedente"
+msgstr "Principale"
 
 msgid "Error scanning directory!"
-msgstr "Errore durante scansione directory!"
+msgstr "Errore scansione directory!"
 
 msgid "Mount"
 msgstr "Monta"
@@ -95,7 +95,7 @@ msgid "Mount succeeded"
 msgstr "Montaggio riuscito"
 
 msgid "Unmount succeeded!"
-msgstr "Smonti riuscito!"
+msgstr "Smontaggio riuscito!"
 
 msgid "Unmount failed!"
 msgstr "Smontaggio fallito!"
@@ -107,7 +107,7 @@ msgid "Execute"
 msgstr "Esegui"
 
 msgid "Image browser"
-msgstr "Sfoglia immagine"
+msgstr "Sfoglia immagini"
 
 msgid "Play"
 msgstr "Riproduci"
@@ -134,22 +134,22 @@ msgid "Slide duration (sec)"
 msgstr "Durata sequenza (sec)"
 
 msgid "Repeat slide show"
-msgstr "Ripeti la proiezione di diapositive"
+msgstr "Ripeti proiezione diapositive"
 
 msgid "Show numbers on index image"
-msgstr "Mostra i numeri dell'immagine indice"
+msgstr "Mostra n° immagine indice"
 
 msgid "Hide main menu entry"
-msgstr "Nascondi voce nel menu principale"
+msgstr "Nascondi voce menu principale"
 
 msgid "Send encoded frame several times"
-msgstr ""
+msgstr "Invia frame codificati più volte"
 
 msgid "Live Audio from primary Device"
-msgstr "Audio dal vivo dalla scheda primaria"
+msgstr "Audio dal vivo scheda primaria"
 
 msgid "Directory with temporary files"
-msgstr "Directory con file temporanei"
+msgstr "Directory file temporanei"
 
 msgid "Remove temporary files"
 msgstr "Rimuovi file temporanei"
@@ -158,7 +158,7 @@ msgid "Border for Underscan (Height)"
 msgstr "Bordo per Underscan (altezza)"
 
 msgid "Border for Underscan (Width)"
-msgstr "Bordo per Underscan (larghezza)"
+msgstr "Bordo per Underscan (largh.)"
 
 #~ msgid "no"
 #~ msgstr "no"
