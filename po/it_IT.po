@@ -71,7 +71,7 @@ msgid "Select"
 msgstr "Seleziona"
 
 msgid "Parent"
-msgstr "Principale"
+msgstr "Precedente"
 
 msgid "Error scanning directory!"
 msgstr "Errore scansione directory!"
