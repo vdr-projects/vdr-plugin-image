@@ -13,7 +13,7 @@
 #define _ENCODE_H
 
 extern "C" {
-#include <avcodec.h>
+#include <libavcodec/avcodec.h>
 }
 
 #include "../setup-image.h"

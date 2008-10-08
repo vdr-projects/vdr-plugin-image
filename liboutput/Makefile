@@ -27,11 +27,11 @@ PKG-CONFIG ?= pkg-config
 
 INCLUDES += -I$(VDRDIR)/include -I.
 ifdef FFMDIR
-INCLUDES += -I$(FFMDIR)/libavcodec -I$(FFMDIR)/libavutil
+INCLUDES += -I$(FFMDIR)
 DEFINES += -DFFMDIR
 ifndef WITHOUT_SWSCALER
   DEFINES += -DHAVE_SWSCALER
-  INCLUDES += -I$(FFMDIR)/libswscale
+  INCLUDES += -I$(FFMDIR)
 endif
 else
 
