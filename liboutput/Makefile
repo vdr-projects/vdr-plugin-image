@@ -17,7 +17,7 @@ VDRDIR = ../../../..
 ### The C++ compiler and options:
 
 CXX      ?= g++
-CXXFLAGS ?= -O0 -g -Wall -Woverloaded-virtual
+CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
 PKG-CONFIG ?= pkg-config
 
 -include $(VDRDIR)/Make.config
