@@ -20,6 +20,12 @@
 #FFMDIR = ../../../../ffmpeg
 
 
+# The official name of this plugin.
+# This name will be used in the '-P...' option of VDR to load the plugin.
+# By default the main source file also carries this name.
+#
+PLUGIN = image
+
 ### The C++ compiler and options:
 
 CXX      ?= g++
@@ -43,12 +49,6 @@ TMPDIR = /tmp
 ### Allow user defined options to overwrite defaults:
 
 -include $(VDRDIR)/Make.config
-
-# The official name of this plugin.
-# This name will be used in the '-P...' option of VDR to load the plugin.
-# By default the main source file also carries this name.
-#
-PLUGIN = image
 
 ### The version number of this plugin (taken from the main source file):
 
@@ -182,7 +182,7 @@ subdirs:
 	@for i in $(SUBDIRS) ;\
 	do \
 	    ( cd $$i;\
-              $(MAKE) all;\
+              $(MAKE) all PLUGIN=$(PLUGIN);\
        ) \
 	|| exit 1;\
 	done

@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2010-03-06
+- Fix to compile plugins with VDR >= 1.7.13 (Thomas Günther, for summit a patch)
+
 2008-12-14
 - Release Version 0.3.0
 
