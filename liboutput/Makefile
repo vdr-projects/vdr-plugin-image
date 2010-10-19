@@ -43,7 +43,7 @@ endif
   PKG-INCLUDES += libavcodec
 endif
 
-DEFINES  += -D_GNU_SOURCE
+DEFINES  += -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS
 
 ifdef PKG-INCLUDES
 INCLUDES += $(shell $(PKG-CONFIG) --cflags $(PKG-INCLUDES))

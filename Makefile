@@ -74,7 +74,7 @@ endif
 
 
 DEFINES  += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
-DEFINES  += -D_GNU_SOURCE
+DEFINES  += -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS
 LIBS += liboutput/liboutput.a libimage/libimage.a
 
 INCLUDES += -I$(VDRDIR)/include -I.
