@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2008 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is distributed under the terms and conditions of the
@@ -663,7 +663,7 @@ void cImageControl::OriginalImage(bool bCached)
   m_nZoomFactor = 0;
   m_nRotation = 2;
 #ifdef HAVE_LIBEXIF
-    cImage* pImage = theSlideShow.GetImage();
+    cImageData* pImage = theSlideShow.GetImage();
     if(pImage)
     {
         int nRot = pImage->DefaultRotate();
@@ -727,7 +727,7 @@ void cImageControl::PictureZoomInitial(void)
   FILE *f;
   char buf[80];
 
-  cImage* pImage = theSlideShow.GetImage();
+  cImageData* pImage = theSlideShow.GetImage();
   if(!pImage)
     return;
 

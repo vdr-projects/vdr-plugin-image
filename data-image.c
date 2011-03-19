@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2008 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is distributed under the terms and conditions of the
@@ -24,9 +24,9 @@
 
 cFileSources ImageSources;
 
-// --- cImage -------------------------------------------------------------
+// --- cImageData -------------------------------------------------------------
 
-cImage::cImage(const char *szName, cFileSource * pSource)
+cImageData::cImageData(const char *szName, cFileSource * pSource)
 : m_pSource(pSource)
 , m_szFileName(NULL)
 , m_szFileNamePNM(NULL)
@@ -46,13 +46,13 @@ cImage::cImage(const char *szName, cFileSource * pSource)
 
 }
 
-cImage::~cImage()
+cImageData::~cImageData()
 {
   Clear();
   m_pSource->Unblock();
 }
 
-const char *cImage::NameIndex()
+const char *cImageData::NameIndex()
 { 
   if(!m_szFileNameIndex)
   { 
@@ -76,7 +76,7 @@ const char *cImage::NameIndex()
   return m_szFileNameIndex; 
 }
 
-const char *cImage::NamePNM()
+const char *cImageData::NamePNM()
 { 
   if(!m_szFileNamePNM)
   { 
@@ -100,7 +100,7 @@ const char *cImage::NamePNM()
   return m_szFileNamePNM; 
 }
 
-const char *cImage::NameZoom()
+const char *cImageData::NameZoom()
 { 
   if(!m_szFileNameZoom)
   { 
@@ -141,7 +141,7 @@ bool UnlinkFile(const char *szFile)
     return true;
 }
 
-void cImage::Unlink(const char *szName)
+void cImageData::Unlink(const char *szName)
 {
   if(ImageSetup.m_bHousekeeping)
   {  
@@ -160,7 +160,7 @@ void cImage::Unlink(const char *szName)
 }
 
 
-void cImage::Clear(void)
+void cImageData::Clear(void)
 {
   if(m_szFileNameIndex)
   {  
@@ -190,7 +190,7 @@ void cImage::Clear(void)
   }
 }
 
-bool cImage::CompareBaseDir(const cFileSource * pSource) const
+bool cImageData::CompareBaseDir(const cFileSource * pSource) const
 {
   return 0 == strcmp(m_pSource->BaseDir(),pSource->BaseDir());
 
@@ -262,7 +262,7 @@ void cSlideShow::DoItem(cFileSource * src, const char *subdir,
   char *path = (char *)name;
   if(subdir)
     path = AddPath(subdir, name);
-  Add(new cImage(path, src));
+  Add(new cImageData(path, src));
   if(subdir)
     free(path);
 }

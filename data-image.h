@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2008 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
  * (C) 2003 Kai Tobias Burwieck <kai@burwieck.net>
  *
  * This code is distributed under the terms and conditions of the
@@ -23,7 +23,7 @@ class cFileSource;
 
 // ----------------------------------------------------------------
 
-class cImage
+class cImageData
 : public cListObject {
 
   cFileSource *m_pSource;
@@ -39,8 +39,8 @@ protected:
   void Unlink(const char *szName);
   void Clear(void);
 public:
-  cImage(const char *szName, cFileSource * pSource);
-  virtual ~cImage();
+  cImageData(const char *szName, cFileSource * pSource);
+  virtual ~cImageData();
   bool CompareBaseDir(const cFileSource * pSource) const;
 
   inline const char *Name(void) const       
@@ -61,7 +61,7 @@ public:
 
 class cSlideShow
 : public cScanDir 
-, public cList < cImage > {
+, public cList < cImageData > {
 
   char* m_szFirstImageName;
   cDirItem m_DirItem;

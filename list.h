@@ -12,7 +12,7 @@
 #define ___IMAGE_LIST_H
 
 class cSlideShow;
-class cImage;
+class cImageData;
 class cFileSource;
 
 class cActivSlideShow
@@ -24,18 +24,18 @@ class cActivSlideShow
   /** Total number of Images in slide */  
   unsigned int                m_nTotalImages;
   /** Reference to current Image of this player  */
-  cImage                      *m_pCurImage;
+  cImageData                  *m_pCurImage;
   
 public:
   cActivSlideShow();
   void Assign(cSlideShow *pCurSlideShow);
   void Shutdown(void);
   cSlideShow *SlideShow(void);
-  cImage* GetImage();
+  cImageData* GetImage();
   bool PrevImage(int nOffset);
   bool GotoImage(unsigned int nNewPictureIndex);
   bool NextImage(int nOffset);
-  int GetJumpNames(int nOffset,cImage* pImage[],const unsigned int nMAX_BILDER);
+  int GetJumpNames(int nOffset,cImageData* pImage[],const unsigned int nMAX_BILDER);
 
   void Remove(cFileSource* src);
 

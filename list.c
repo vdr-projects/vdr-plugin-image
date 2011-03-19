@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2008 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
  *  
  * This code is distributed under the terms and conditions of the
  * GNU GENERAL PUBLIC LICENSE. See the file COPYING for details.
@@ -30,21 +30,21 @@ cActivSlideShow::cActivSlideShow()
 void cActivSlideShow::Remove(cFileSource* src){
 
   if(m_pCurSlideShow) {
-    cImage* p = m_pCurSlideShow->cList < cImage >::First();
+    cImageData* p = m_pCurSlideShow->cList < cImageData >::First();
     while (p) {
     if(p->CompareBaseDir(src)) {
       bool bRemoveCurrent = (m_pCurImage == p); 
-      m_pCurSlideShow->cList < cImage >::Del(p);
-      p = m_pCurSlideShow->cList < cImage >::First();
+      m_pCurSlideShow->cList < cImageData >::Del(p);
+      p = m_pCurSlideShow->cList < cImageData >::First();
       if(bRemoveCurrent) {
         m_nCurrentImage = 1;
         m_pCurImage = p;
       }
     } else {
-      p = m_pCurSlideShow->cList < cImage >::Next(p);
+      p = m_pCurSlideShow->cList < cImageData >::Next(p);
     }
     }
-    m_nTotalImages = m_pCurSlideShow->cList < cImage >::Count();
+    m_nTotalImages = m_pCurSlideShow->cList < cImageData >::Count();
   }
 } 
 
@@ -62,7 +62,7 @@ void cActivSlideShow::Assign(cSlideShow *pCurSlideShow)
     bool bFound = false;
     if(m_pCurSlideShow->FirstImage()) {
 
-      cImage* p = m_pCurSlideShow->cList < cImage >::First();
+      cImageData* p = m_pCurSlideShow->cList < cImageData >::First();
 
         for (;p && i < m_nTotalImages; ++i) {
         // find out first image
@@ -71,14 +71,14 @@ void cActivSlideShow::Assign(cSlideShow *pCurSlideShow)
           bFound = true;
           break;
         }
-        p = m_pCurSlideShow->cList < cImage >::Next(p);
+        p = m_pCurSlideShow->cList < cImageData >::Next(p);
       }
     }
     if(bFound) {
       m_nCurrentImage = i+1;
     }
     else {
-      m_pCurImage = m_pCurSlideShow->cList < cImage >::First();
+      m_pCurImage = m_pCurSlideShow->cList < cImageData >::First();
       m_nCurrentImage = 1;
     }
   }
@@ -101,7 +101,7 @@ cSlideShow *cActivSlideShow::SlideShow(void)
 }
 
 
-cImage* cActivSlideShow::GetImage()
+cImageData* cActivSlideShow::GetImage()
 {
   return m_pCurSlideShow?m_pCurImage:NULL;
 }
@@ -110,18 +110,18 @@ cImage* cActivSlideShow::GetImage()
 bool cActivSlideShow::NextImage(int nOffset)
 {
   if(m_pCurImage && m_nCurrentImage < m_nTotalImages) {
-    cImage *pNewActiv;
+    cImageData *pNewActiv;
     for (int i = 0; (i < nOffset) && (m_nCurrentImage < m_nTotalImages); ++i) {
-      pNewActiv = m_pCurSlideShow->cList < cImage >::Next(m_pCurImage);
+      pNewActiv = m_pCurSlideShow->cList < cImageData >::Next(m_pCurImage);
       m_pCurImage = pNewActiv;
       ++m_nCurrentImage;
     }
     return m_pCurImage != NULL;
   } 
   else if(ImageSetup.m_bAutoRepeat) {
-    cImage *pNewActiv;
+    cImageData *pNewActiv;
     
-    pNewActiv = m_pCurSlideShow->cList < cImage >::First();
+    pNewActiv = m_pCurSlideShow->cList < cImageData >::First();
     m_pCurImage = pNewActiv;
     m_nCurrentImage = 1;
     
@@ -135,19 +135,19 @@ bool cActivSlideShow::NextImage(int nOffset)
 bool cActivSlideShow::PrevImage(int nOffset)
 {
   if(m_pCurImage && m_nCurrentImage > 1) {
-    cImage *pNewActiv;
+    cImageData *pNewActiv;
 
     for (int i = 0; (i < nOffset) && (m_nCurrentImage > 1); ++i) {
-        pNewActiv = m_pCurSlideShow->cList < cImage >::Prev(m_pCurImage);
+        pNewActiv = m_pCurSlideShow->cList < cImageData >::Prev(m_pCurImage);
         m_pCurImage = pNewActiv;
         --m_nCurrentImage;
     }
     return m_pCurImage != NULL;
   }
   else if(ImageSetup.m_bAutoRepeat) {
-    cImage *pNewActiv;
+    cImageData *pNewActiv;
 
-    pNewActiv = m_pCurSlideShow->cList < cImage >::Last();
+    pNewActiv = m_pCurSlideShow->cList < cImageData >::Last();
     m_pCurImage = pNewActiv;
     m_nCurrentImage = m_nTotalImages;
       return m_pCurImage != NULL;
@@ -159,12 +159,12 @@ bool cActivSlideShow::PrevImage(int nOffset)
 bool cActivSlideShow::GotoImage(unsigned int nNewPictureIndex)
 {
   if(m_pCurImage && nNewPictureIndex > 0 && nNewPictureIndex < m_nTotalImages) {
-    cImage *pNewActiv;
-    pNewActiv = m_pCurSlideShow->cList < cImage >::First();
+    cImageData *pNewActiv;
+    pNewActiv = m_pCurSlideShow->cList < cImageData >::First();
     m_pCurImage = pNewActiv;
     m_nCurrentImage = 0;
     for (unsigned int i = 0; i < nNewPictureIndex; ++i) {
-      pNewActiv = m_pCurSlideShow->cList < cImage >::Next(m_pCurImage);
+      pNewActiv = m_pCurSlideShow->cList < cImageData >::Next(m_pCurImage);
       m_pCurImage = pNewActiv;
       ++m_nCurrentImage;
     }
@@ -173,10 +173,10 @@ bool cActivSlideShow::GotoImage(unsigned int nNewPictureIndex)
   return false;
 }
 
-int cActivSlideShow::GetJumpNames(int nOffset,cImage* pImage[],const unsigned int nMAX_BILDER)
+int cActivSlideShow::GetJumpNames(int nOffset,cImageData* pImage[],const unsigned int nMAX_BILDER)
 {
   unsigned int i;
-  cImage *pNewActiv;
+  cImageData *pNewActiv;
   int nBilder = 0;
 
   if(m_pCurImage && m_nCurrentImage > 0) {
@@ -194,16 +194,16 @@ int cActivSlideShow::GetJumpNames(int nOffset,cImage* pImage[],const unsigned in
 	  if(m_nCurrentImage < 1)
 		  m_nCurrentImage = 1;
 
-    pNewActiv = m_pCurSlideShow->cList < cImage >::First();
+    pNewActiv = m_pCurSlideShow->cList < cImageData >::First();
     for (int n = 1; n < nJumpFirst && pNewActiv; ++n) 
-      pNewActiv = m_pCurSlideShow->cList < cImage >::Next(pNewActiv);
+      pNewActiv = m_pCurSlideShow->cList < cImageData >::Next(pNewActiv);
 	  for (i = 0; (i < nMAX_BILDER) && ((nJumpFirst + i) <= m_nTotalImages) && pNewActiv; ++i,++nBilder) {
 
       pImage[i] = pNewActiv;
 	    dsyslog("imageplugin: File%d: %s", i, pNewActiv->Name());
 	    if((nJumpFirst + i) == m_nCurrentImage)
 		    m_pCurImage = pNewActiv;
-	    pNewActiv = m_pCurSlideShow->cList < cImage >::Next(pNewActiv);
+	    pNewActiv = m_pCurSlideShow->cList < cImageData >::Next(pNewActiv);
 	  }
   }
   return nBilder;

@@ -19,7 +19,7 @@
 #include <vdr/player.h>
 #include <liboutput/stillimage-player.h>
 
-class cImage;
+class cImageData;
 class cSlideShow;    
 
 struct cShellWrapper {

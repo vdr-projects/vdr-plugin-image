@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold    <anbr at users.berlios.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai-at-burwieck.net>
  *
  * This code is distributed under the terms and conditions of the
@@ -99,7 +99,7 @@ bool cImagePlayer::GotoImage(unsigned int nNewPictureIndex)
 
 bool cImagePlayer::Convert(const char *szChange)
 {
-  cImage* pImage = theSlideShow.GetImage();
+  cImageData* pImage = theSlideShow.GetImage();
   if(pImage)
   {
     cShellWrapper* pCmd = new cShellWrapper;
@@ -135,7 +135,7 @@ bool cImagePlayer::ConvertJump(int nOffset)
 {
   register unsigned int w,h;
   const unsigned int MAX_BILDER = 9;
-  cImage* pImage[MAX_BILDER];
+  cImageData* pImage[MAX_BILDER];
   for (w = 0; w < MAX_BILDER; ++w)
     pImage[w] = NULL;
   int nBilder = theSlideShow.GetJumpNames(nOffset,pImage,MAX_BILDER);
@@ -185,7 +185,7 @@ bool cImagePlayer::ConvertJump(int nOffset)
 bool cImagePlayer::ConvertZoom(const char *szChange, int nZoomFaktor,
 			       int nLeftPos, int nTopPos)
 {
-  cImage* pImage = theSlideShow.GetImage();
+  cImageData* pImage = theSlideShow.GetImage();
   if(pImage)
   {
     cShellWrapper* pCmd = new cShellWrapper;
@@ -405,7 +405,7 @@ void cImagePlayer::ErrorMsg()
 
 const char* cImagePlayer::FileName(void) const
 { 
-  cImage* pImage = theSlideShow.GetImage();
+  cImageData* pImage = theSlideShow.GetImage();
   return pImage?pImage->Name():NULL;
 }
 
