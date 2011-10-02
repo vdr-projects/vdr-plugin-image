@@ -1,7 +1,7 @@
 /***************************************************************************
  * xpm.c
  *
- * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold    <vdr07 at deltab.de>
  *  Created: Thu Aug  11 2004
  *
  * This code is distributed under the terms and conditions of the

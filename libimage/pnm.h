@@ -1,6 +1,6 @@
 /***************************************************************************
  * pnm.h
- * (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold    <vdr07 at deltab.de>
  *     based on works from Fabian E. Bustamante <fabianb-at-cs.umd.edu>
  *  Created: Thu Aug  7 2004
  *

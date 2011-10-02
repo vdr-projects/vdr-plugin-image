@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2006-2008 Andreas Brachold    <anbr at users.berlios.de>
+ * (C) 2006-2011 Andreas Brachold    <vdr07 at deltab.de>
  *
  * This code is distributed under the terms and conditions of the
  * GNU GENERAL PUBLIC LICENSE. See the file COPYING for details.
@@ -103,14 +103,10 @@ cImageMenuExif::cImageMenuExif(const char *szFileName)
 
 eOSState cImageMenuExif::ProcessKey(eKeys nKey)
 {
-  switch (nKey) {
-    case kUp|k_Repeat:
+  switch (nKey & ~k_Repeat) {
     case kUp:
-    case kDown|k_Repeat:
     case kDown:
-    case kLeft|k_Repeat:
     case kLeft:
-    case kRight|k_Repeat:
     case kRight:
                   DisplayMenu()->Scroll(NORMALKEY(nKey) == kUp || NORMALKEY(nKey) == kLeft, NORMALKEY(nKey) == kLeft || NORMALKEY(nKey) == kRight);
                   return osContinue;

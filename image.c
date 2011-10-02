@@ -5,7 +5,7 @@
  * (C) 2004     "Interpohl"  <interpohl at vdr-portal.de> 
  * (C) 2004     O. Kreuzinger <Onno at Kreuzinger.biz>
  * (C) 2004     A. Holzhammer for the massive script updates
- * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <vdr07 at deltab.de>
  *  
  *  based on mp3/mplayer plugin by Stefan Hülswitt <huels at iname.com>
  *   

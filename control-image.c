@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (C) 2004-2011 Andreas Brachold <anbr at users.berlios.de>
+ * (C) 2004-2011 Andreas Brachold <vdr07 at deltab.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is distributed under the terms and conditions of the
@@ -337,9 +337,18 @@ eOSState cImageControl::ProcessKey(eKeys nKey)
 @return eOSState
 @param eKeys Key - the processed Keycode
 */
-eOSState cImageControl::ProcessKeyPlayMode(eKeys Key)
+eOSState cImageControl::ProcessKeyPlayMode(eKeys nKey)
 {
-  switch (Key)
+
+  switch (nKey & ~k_Repeat) {
+  // Change time how long image is see
+  case k4|k_Repeat:
+  case k4:    DecSlideTime();          return osContinue;
+  case k6|k_Repeat:
+  case k6:    IncSlideTime();          return osContinue;
+  }
+
+  switch (nKey)
   {
   // Mode select
   case kBack: return ProcessKeyStopped();
@@ -351,12 +360,6 @@ eOSState cImageControl::ProcessKeyPlayMode(eKeys Key)
   case k1:    LFlipImage();            break;
   case k3:    RFlipImage();            break;
       
-  // Change time how long image is see
-  case k4|k_Repeat:
-  case k4:    DecSlideTime();          break;
-  case k6|k_Repeat:
-  case k6:    IncSlideTime();          break;
-  
   // Navigate between images
   case kLeft: PrevImage(1);            break;
   case kRight:NextImage(1);            break;

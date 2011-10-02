@@ -1,7 +1,7 @@
 /*
  * Image plugin to VDR (C++)
  *
- * (c) 2004-2008 Andreas Brachold <anbr at users.berlios.de>
+ * (c) 2004-2011 Andreas Brachold <vdr07 at deltab.de>
  * based on (C) 2003 Kai Tobias Burwieck <kai -at- burwieck.net>
  *
  * This code is distributed under the terms and conditions of the

@@ -3,16 +3,11 @@ This is a "plugin" for the Video Disk Recorder (VDR).
 Originaly written by:           Kai Tobias Burwieck <kai-at-burwieck.net>
                                 "Interpohl" <interpohl-at-vdr-portal.de>
                                 Onno Kreuzinger <o.kreuzinger-at-kreuzinger.biz>
-                                Andreas Brachold <anbr at users.berlios.de>
+                                Andreas Brachold <vdr07 at deltab.de>
 
-Maintainer:                     Andreas Brachold <anbr at users.berlios.de>
+Maintainer:                     Andreas Brachold <vdr07 at deltab.de>
 
-Project homepage:               http://vdr-image.berlios.de/
-
-
-Former project's homepage:      http://www.burwieck.net/vdr (dead?)
-                                http://vdr-image.kreuzinger.biz>
-
+Project homepage:               http://projects.vdr-developer.org/projects/plg-image
 
 Some files are from the mp3/MPlayer Plugin.	Thanks to Stefan Hülswitt
 

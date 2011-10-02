@@ -1,7 +1,7 @@
 #
 # Makefile for Image plugin to VDR
 #
-# (C) 2004-2008 Andreas Brachold    <anbr at users.berlios.de>
+# (C) 2004-2011 Andreas Brachold    <vdr07 at deltab.de>
 #
 # This code is distributed under the terms and conditions of the
 # GNU GENERAL PUBLIC LICENSE. See the file COPYING for details.
@@ -155,7 +155,7 @@ I18Npot   = $(PODIR)/$(PLUGIN).pot
 	msgfmt -c -o $@ $<
 
 $(I18Npot): $(wildcard *.c)
-	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --msgid-bugs-address='Andreas Brachold <anbr at user.berlios.de>' -o $@ $^
+	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --msgid-bugs-address='Andreas Brachold <vdr07 at deltab.de>' -o $@ $^
 
 %.po: $(I18Npot)
 	msgmerge -U --no-wrap --no-location --backup=none -q $@ $<
