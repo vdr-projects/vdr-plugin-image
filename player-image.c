@@ -24,7 +24,6 @@
 #include "image.h"
 #include "list.h"
 #include <vdr/i18n.h>
-#include <vdr/status.h>
 
 #include "libimage/pnm.h"
 #include "libimage/xpm.h"
@@ -443,8 +442,6 @@ bool cImagePlayer::Worker(bool bDoIt)
     m_bConvertRunning = m_StillImage.EncodeRequired();
     return bQueueEmpty;
   }  
-
- // cStatus::MsgReplaying(this, "Image", pShell->szPNM, true );
 
   if(pShell->szCmd) {
     //dsyslog("imageplugin: executing script '%s'", pShell->szCmd);
