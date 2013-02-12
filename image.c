@@ -26,7 +26,7 @@
 #include "commands.h"
 #include "liboutput/encode.h"
 
-static const char *VERSION        = "0.3.3";
+static const char *VERSION        = "0.4.0";
 
 class cPluginImage : public cPlugin {
     cDirItem*      m_pServiceDirItem;
