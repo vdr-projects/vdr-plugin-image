@@ -36,12 +36,12 @@ class cImageData
   int          m_nDefaultRotate;
 #endif
 protected:
-  void Unlink(const char *szName);
   void Clear(void);
 public:
   cImageData(const char *szName, cFileSource * pSource);
   virtual ~cImageData();
   bool CompareBaseDir(const cFileSource * pSource) const;
+  static void Unlink(const char *szName);
 
   inline const char *Name(void) const       
   { 

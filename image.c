@@ -7,7 +7,7 @@
  * (C) 2004     A. Holzhammer for the massive script updates
  * (C) 2004-2011 Andreas Brachold <vdr07 at deltab.de>
  *  
- *  based on mp3/mplayer plugin by Stefan Hülswitt <huels at iname.com>
+ *  based on mp3/mplayer plugin by Stefan HÃ¼lswitt <huels at iname.com>
  *   
  * This code is distributed under the terms and conditions of the
  * GNU GENERAL PUBLIC LICENSE. See the file COPYING for details.
@@ -26,7 +26,7 @@
 #include "commands.h"
 #include "liboutput/encode.h"
 
-static const char *VERSION        = "0.3.1";
+static const char *VERSION        = "0.3.3";
 
 class cPluginImage : public cPlugin {
     cDirItem*      m_pServiceDirItem;

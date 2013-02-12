@@ -14,6 +14,10 @@
 
 extern "C" {
 #include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#ifdef HAVE_SWSCALE
+#  include <libswscale/swscale.h>
+#endif
 }
 
 #include "../setup-image.h"

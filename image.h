@@ -16,10 +16,11 @@
 #include <vdr/skins.h>
 #include <string.h>
 
+#ifdef APIVERSNUM
 #if APIVERSNUM < 10347
     #error "For compiled are at the least VDR Plugin-API 1.3.47 required"
 #endif
-
+#endif
 
 inline void OSD_InfoMsg(const char* sz) 
 {	

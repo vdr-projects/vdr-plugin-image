@@ -1,6 +1,15 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2013-02-11
+- Release Version 0.3.3
+- Various Makefile fixes for VDR > 1.7.36
+
+2013-02-02
+- Release Version 0.3.2
+- Support for VDR > 1.7.35
+- Compiles with recent ffmpeg
+
 2011-03-19
 - Release Version 0.3.1
 - Adjust to compile plugin with VDR >= 1.7.17

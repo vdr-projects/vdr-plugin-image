@@ -38,7 +38,8 @@ public:
   int m_bLiveAudio;
   /* Activate own house keeping system for temp. files, avoid pregenerated images */
   int m_bHousekeeping;
-
+  /* Remove temp files immediately   */
+  int m_bRemoveImmediately;
   /* Use as output DeviceStillPicture */
   int m_bUseDeviceStillPicture;
 

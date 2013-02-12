@@ -45,6 +45,7 @@ cImageSetup::cImageSetup(void)
   m_bLiveAudio = 0;
   m_bHousekeeping = 1;
   m_bUseDeviceStillPicture = 1;
+  m_bRemoveImmediately = false;
 
   m_nBorderHeight = 16;
   m_nBorderWidth = 16;
@@ -73,6 +74,7 @@ bool cImageSetup::SetupParse(const char *szName, const char *szValue)
   else ParseInteger("Housekeeping",  m_bHousekeeping,0,1)
   else ParseInteger("HideMainMenu",  m_bHideMenu,0,1)
   else ParseInteger("UseDeviceStillPicture",  m_bUseDeviceStillPicture,0,1)
+  else ParseInteger("RemoveImmediately", m_bRemoveImmediately,0,1)
   else if(!strcasecmp(szName, "TempDir")) {
         strn0cpy(m_szTempDir,szValue,sizeof(m_szTempDir));
   }
@@ -95,6 +97,7 @@ void cMenuSetupImage::Store(void)
   SetupStore("BorderWidth",             ImageSetup.m_nBorderWidth);
   SetupStore("HideMainMenu",            ImageSetup.m_bHideMenu);
   SetupStore("UseDeviceStillPicture",   ImageSetup.m_bUseDeviceStillPicture);
+  SetupStore("RemoveImmediately",       ImageSetup.m_bRemoveImmediately);
 }
 
 cMenuSetupImage::cMenuSetupImage(void)
@@ -133,6 +136,10 @@ cMenuSetupImage::cMenuSetupImage(void)
   Add(new cMenuEditStrItem (tr("Directory with temporary files"), 
         m_tmpSetup.m_szTempDir,sizeof(m_tmpSetup.m_szTempDir), 
         "abcdefghijklmopqrstuvwxyz/-"));
+
+  Add(new cMenuEditBoolItem(tr("Remove temporary files immediately"),
+          &m_tmpSetup.m_bRemoveImmediately,
+          trVDR("no"), trVDR("yes")));
 
   Add(new cMenuEditBoolItem(tr("Remove temporary files"),
         &m_tmpSetup.m_bHousekeeping,  

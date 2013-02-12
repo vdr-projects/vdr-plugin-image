@@ -342,9 +342,7 @@ eOSState cImageControl::ProcessKeyPlayMode(eKeys nKey)
 
   switch (nKey & ~k_Repeat) {
   // Change time how long image is see
-  case k4|k_Repeat:
   case k4:    DecSlideTime();          return osContinue;
-  case k6|k_Repeat:
   case k6:    IncSlideTime();          return osContinue;
   }
 

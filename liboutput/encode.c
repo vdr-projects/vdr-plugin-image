@@ -49,13 +49,8 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
 
 bool cEncode::Register()
 {
-    avcodec_init();
-#if 0 
-    // XXX to resolv: dosen't work with osdpip
-    register_avcodec(&mpeg2video_encoder);
-#else
+    av_register_all();
     avcodec_register_all();
-#endif
 
     m_pavCodec = avcodec_find_encoder(CODEC_ID_MPEG2VIDEO);
     if (!m_pavCodec) {
@@ -100,7 +95,7 @@ bool cEncode::Encode()
     AVCodecContext  *pAVCC = NULL;
     AVFrame         *pAVF = NULL;
 
-    pAVCC = avcodec_alloc_context();
+    pAVCC = avcodec_alloc_context3(m_pavCodec);
     if (! pAVCC) 
     {
         esyslog("imageplugin: Failed to alloc memory for AVCodecContext.");
@@ -116,7 +111,7 @@ bool cEncode::Encode()
         {
             SetupEncodingParameters(pAVCC);
 
-            if (avcodec_open(pAVCC, m_pavCodec) < 0) 
+            if (avcodec_open2(pAVCC, m_pavCodec, NULL) < 0)
             {
                 esyslog("imageplugin: Couldn't open Codec.");
             }
@@ -142,7 +137,7 @@ void cEncode::SetupEncodingParameters(AVCodecContext *context)
     context->height = m_nHeight;
 
     #if LIBAVCODEC_BUILD >= 4754
-        context->time_base=(AVRational){1, GetFrameRate()};
+        context->time_base=(AVRational){1, (int)GetFrameRate()};
     #else
         context->frame_rate=GetFrameRate();
         context->frame_rate_base=1;
@@ -216,6 +211,8 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 
 bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
 {
+    AVPacket outpkt;
+    int got_output;
     if(!m_pFrameSizes)
     { 
         esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.");
@@ -223,23 +220,24 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     }
 
     unsigned int i;
-    
+    av_init_packet(&outpkt);
     m_nMPEGSize = 0;
 
     // Encode m_nNumberOfFramesToEncode number of frames
     for(i=0; (i < m_nNumberOfFramesToEncode) && (m_nMPEGSize < m_nMaxMPEGSize);
       ++i)
     {
-        int nFrameSize = avcodec_encode_video(context, m_pMPEG + m_nMPEGSize,
-                                              m_nMaxMPEGSize - m_nMPEGSize, frame);
-        if(nFrameSize < 0)
+        outpkt.data = ( m_pMPEG + m_nMPEGSize);
+        outpkt.size =  m_nMaxMPEGSize - m_nMPEGSize;
+        int err = avcodec_encode_video2(context, &outpkt,frame, &got_output);
+        if(err < 0)
         {
             esyslog("imageplugin: Failed to add frame %d, insufficient memory.",
               i);
             return false;
         }
-        m_nMPEGSize += nFrameSize;
-        *(m_pFrameSizes + i) = nFrameSize;
+        m_nMPEGSize += outpkt.size;
+        *(m_pFrameSizes + i) = outpkt.size;
     }
 
     // Add four bytes MPEG end sequence

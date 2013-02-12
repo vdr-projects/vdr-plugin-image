@@ -27,16 +27,22 @@ struct cShellWrapper {
   char* szCmd;
   char* szPNM;
   char  szNumber;
-  bool bClearBackground;
   unsigned int nOffLeft;
   unsigned int nOffTop;
   unsigned int nWidth;
   unsigned int nHeight;
+  bool bClearBackground;
 
   cShellWrapper()
   : szCmd(NULL)
   , szPNM(NULL)
   , szNumber('\0')
+  , nOffLeft(0)
+  , nOffTop(0)
+  , nWidth(0)
+  , nHeight(0)
+  , bClearBackground(false)
+
   {
   }
 
