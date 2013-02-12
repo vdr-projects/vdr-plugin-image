@@ -22,7 +22,7 @@
 # *
 msgid ""
 msgstr ""
-"Project-Id-Version: vdr-image 0.3.0\n"
+"Project-Id-Version: vdr-image 0.4.0\n"
 "Report-Msgid-Bugs-To: <see README>\n"
 "POT-Creation-Date: 2013-02-12 18:44+0100\n"
 "PO-Revision-Date: 2007-08-18 08:13+0200\n"
@@ -165,8 +165,3 @@ msgstr "Frontière pour Underscan (taille)"
 msgid "Border for Underscan (Width)"
 msgstr "Frontière pour Underscan (largeur)"
 
-#~ msgid "no"
-#~ msgstr "non"
-
-#~ msgid "yes"
-#~ msgstr "oui"

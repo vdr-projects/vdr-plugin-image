@@ -164,11 +164,3 @@ msgstr ""
 msgid "Border for Underscan (Width)"
 msgstr ""
 
-#~ msgid "no"
-#~ msgstr "nem"
-
-#~ msgid "yes"
-#~ msgstr "igen"
-
-#~ msgid "Button$Play"
-#~ msgstr "Lejátszani"
