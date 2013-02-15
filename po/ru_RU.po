@@ -141,7 +141,7 @@ msgid "Show numbers on index image"
 msgstr "Показать номера в индексе"
 
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Скрыть команду в главном меню"
 
 msgid "Send encoded frame several times"
 msgstr ""

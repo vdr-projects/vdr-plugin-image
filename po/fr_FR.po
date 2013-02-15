@@ -142,7 +142,7 @@ msgid "Show numbers on index image"
 msgstr "Afficher nombre sur la page d'index"
 
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Masquer dans le menu principal"
 
 msgid "Send encoded frame several times"
 msgstr ""

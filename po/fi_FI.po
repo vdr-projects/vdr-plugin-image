@@ -30,7 +30,7 @@ msgstr ""
 "Language-Team: <vdr at linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Convert..."
@@ -142,7 +142,7 @@ msgid "Show numbers on index image"
 msgstr "N‰yt‰ numerot indeksikuvassa"
 
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Piilota valinta p‰‰valikosta"
 
 msgid "Send encoded frame several times"
 msgstr ""
