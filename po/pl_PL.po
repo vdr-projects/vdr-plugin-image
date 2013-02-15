@@ -29,138 +29,138 @@ msgstr ""
 "Language-Team: <vdr at linuxtv.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Convert..."
-msgstr ""
+msgstr "Konwertuj..."
 
 msgid "Select picture via key 1..9!"
-msgstr ""
+msgstr "Wybierz obraz za pomocą klawiszy 1..9"
 
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 msgid "Operation failed"
-msgstr ""
+msgstr "Operacja zakończona niepowodzeniem"
 
 msgid "Commands"
 msgstr "Polecenia"
 
 msgid "Show exif informations from image"
-msgstr ""
+msgstr "Pokaż informacje EXIF"
 
 msgid "Could not load exif data from image!"
-msgstr ""
+msgstr "Nie mogę oczytać informacji EXIF"
 
 msgid "Marker"
-msgstr ""
+msgstr "Zaznaczenie"
 
 msgid "Tags"
-msgstr ""
+msgstr "Znacznik"
 
 msgid "Back"
 msgstr "Wstecz"
 
 msgid "A Image Viewer plugin"
-msgstr ""
+msgstr "Plugin Przeglądarka Obrazów"
 
 msgid "Images"
-msgstr ""
+msgstr "Obrazy"
 
 msgid "Select"
-msgstr ""
+msgstr "Wybierz"
 
 msgid "Parent"
-msgstr ""
+msgstr "Nadrzędny"
 
 msgid "Error scanning directory!"
-msgstr ""
+msgstr "Błąd skanowania katalogu"
 
 msgid "Mount"
-msgstr ""
+msgstr "Zamontuj"
 
 msgid "Unmount"
-msgstr ""
+msgstr "Odmontuj"
 
 msgid "Eject"
-msgstr ""
+msgstr "Wysuń"
 
 msgid "Selected data medium is not mounted!"
-msgstr ""
+msgstr "Wybrane źródło danych nie jest zamontowane"
 
 msgid "Mount failed!"
-msgstr ""
+msgstr "Montowanie nieudane!"
 
 msgid "Mount succeeded"
-msgstr ""
+msgstr "Montowanie zakończone sukcesem"
 
 msgid "Unmount succeeded!"
-msgstr ""
+msgstr "Odmontowanie zakończone sukcesem!"
 
 msgid "Unmount failed!"
-msgstr ""
+msgstr "Odmontowanie nieudane!"
 
 msgid "Eject failed!"
-msgstr ""
+msgstr "Wysunięcie nieudane!"
 
 msgid "Execute"
-msgstr ""
+msgstr "Uruchom"
 
 msgid "Image browser"
-msgstr ""
+msgstr "Przeglądarka obrazów"
 
 msgid "Play"
-msgstr "Odtw�rz"
+msgstr "Odtwórz"
 
 msgid "Data medium"
-msgstr ""
+msgstr "Źródło danych"
 
 msgid "Image source"
-msgstr ""
+msgstr "Źródło obrazów"
 
 msgid "No files!"
-msgstr ""
+msgstr "Brak plików!"
 
 msgid "Image couldn't load"
-msgstr ""
+msgstr "Obraz nie może zostać odczytany"
 
 msgid "Script execution failed"
-msgstr ""
+msgstr "Błąd wykonania skryptu"
 
 msgid "Slide show"
-msgstr ""
+msgstr "Pokaz slajdów"
 
 msgid "Slide duration (sec)"
-msgstr ""
+msgstr "Czas trwania slajdu (sekundy)"
 
 msgid "Repeat slide show"
-msgstr ""
+msgstr "Powtórz pokaz slajdów"
 
 msgid "Show numbers on index image"
-msgstr ""
+msgstr "Pokaż numery na obrazach"
 
 msgid "Hide main menu entry"
-msgstr ""
+msgstr "Ukryj pozycje w głównym menu"
 
 msgid "Send encoded frame several times"
-msgstr ""
+msgstr "Wyślij zakodowaną ramkę kilka razy"
 
 msgid "Live Audio from primary Device"
-msgstr ""
+msgstr "Live Audio dla głównego urządzenia"
 
 msgid "Directory with temporary files"
-msgstr ""
+msgstr "Katalog na pliki tymczasowe"
 
 msgid "Remove temporary files immediately"
-msgstr ""
+msgstr "Usuń natychmiast pliki tymczasowe"
 
 msgid "Remove temporary files"
-msgstr ""
+msgstr "Usuń pliki tymczasowe"
 
 msgid "Border for Underscan (Height)"
-msgstr ""
+msgstr "Ramka dla Underscan (Wysokość)"
 
 msgid "Border for Underscan (Width)"
-msgstr ""
+msgstr "Ramka dla Underscan (Szerokość)"
 

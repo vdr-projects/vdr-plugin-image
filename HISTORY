@@ -1,7 +1,10 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
-2013-02-11
+- Add ukrainian translation (Patch summit by Yarema)
+- Update polish translation (Patch summit by Marx)
+
+2013-02-11 (Release and Patch summit by Ulrich Eckhardt)
 - Release Version 0.3.3
 - Various Makefile fixes for VDR > 1.7.36
 
