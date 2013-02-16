@@ -37,22 +37,22 @@ msgid "Convert..."
 msgstr "Konvertoi..."
 
 msgid "Select picture via key 1..9!"
-msgstr "Valitse kuva n‰pp‰imill‰ 1..9!"
+msgstr "Valitse kuva n√§pp√§imill√§ 1..9!"
 
 msgid "Zoom"
 msgstr "Suurenna"
 
 msgid "Operation failed"
-msgstr "Toiminto ep‰onnistui"
+msgstr "Toiminto ep√§onnistui"
 
 msgid "Commands"
 msgstr "Komennot"
 
 msgid "Show exif informations from image"
-msgstr "N‰yt‰ kuvien Exif-tiedot"
+msgstr "N√§yt√§ kuvien Exif-tiedot"
 
 msgid "Could not load exif data from image!"
-msgstr "Exif-tiedon lukeminen ep‰onnistui!"
+msgstr "Exif-tiedon lukeminen ep√§onnistui!"
 
 msgid "Marker"
 msgstr "Markkerit"
@@ -76,10 +76,10 @@ msgid "Parent"
 msgstr "Takaisin"
 
 msgid "Error scanning directory!"
-msgstr "Hakemiston selaus ep‰onnistui!"
+msgstr "Hakemiston selaus ep√§onnistui!"
 
 msgid "Mount"
-msgstr "Kiinnit‰"
+msgstr "Kiinnit√§"
 
 msgid "Unmount"
 msgstr "Irrota"
@@ -88,22 +88,22 @@ msgid "Eject"
 msgstr "Avaa"
 
 msgid "Selected data medium is not mounted!"
-msgstr "Valittua l‰hdett‰ ei ole kiinnitetty!"
+msgstr "Valittua l√§hdett√§ ei ole kiinnitetty!"
 
 msgid "Mount failed!"
-msgstr "Kiinnitt‰minen ep‰onnistui!"
+msgstr "Kiinnitt√§minen ep√§onnistui!"
 
 msgid "Mount succeeded"
-msgstr "Kiinnitt‰minen onnistui"
+msgstr "Kiinnitt√§minen onnistui"
 
 msgid "Unmount succeeded!"
 msgstr "Irrottaminen onnistui!"
 
 msgid "Unmount failed!"
-msgstr "Irrottaminen ep‰onnistui!"
+msgstr "Irrottaminen ep√§onnistui!"
 
 msgid "Eject failed!"
-msgstr "Avaaminen ep‰onnistui!"
+msgstr "Avaaminen ep√§onnistui!"
 
 msgid "Execute"
 msgstr "Suorita"
@@ -115,22 +115,22 @@ msgid "Play"
 msgstr "Toista"
 
 msgid "Data medium"
-msgstr "L‰hde"
+msgstr "L√§hde"
 
 msgid "Image source"
-msgstr "Kuvat - l‰hteet"
+msgstr "Kuvat - l√§hteet"
 
 msgid "No files!"
 msgstr "Ei tiedostoja!"
 
 msgid "Image couldn't load"
-msgstr "Kuvan lukeminen ep‰onnistui"
+msgstr "Kuvan lukeminen ep√§onnistui"
 
 msgid "Script execution failed"
-msgstr "Skriptin suoritus ep‰onnistui"
+msgstr "Skriptin suoritus ep√§onnistui"
 
 msgid "Slide show"
-msgstr "K‰yt‰ diaesityst‰"
+msgstr "K√§yt√§ diaesityst√§"
 
 msgid "Slide duration (sec)"
 msgstr "Dian esitysaika (s)"
@@ -139,25 +139,25 @@ msgid "Repeat slide show"
 msgstr "Diaesityksen uudelleentoisto"
 
 msgid "Show numbers on index image"
-msgstr "N‰yt‰ numerot indeksikuvassa"
+msgstr "N√§yt√§ numerot indeksikuvassa"
 
 msgid "Hide main menu entry"
-msgstr "Piilota valinta p‰‰valikosta"
+msgstr "Piilota valinta p√§√§valikosta"
 
 msgid "Send encoded frame several times"
 msgstr ""
 
 msgid "Live Audio from primary Device"
-msgstr "Live-‰‰ni ensisijaiselta sovittimelta"
+msgstr "Live-√§√§ni ensisijaiselta sovittimelta"
 
 msgid "Directory with temporary files"
-msgstr "V‰liaikaistiedostot"
+msgstr "V√§liaikaistiedostot"
 
 msgid "Remove temporary files immediately"
 msgstr ""
 
 msgid "Remove temporary files"
-msgstr "Tyhjenn‰ v‰liaikaistiedostot"
+msgstr "Tyhjenn√§ v√§liaikaistiedostot"
 
 msgid "Border for Underscan (Height)"
 msgstr "Reunuksen korkeus keskitykselle"
