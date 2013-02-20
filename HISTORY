@@ -1,10 +1,11 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
-- Add ukrainian translation (Patch summit by Yarema)
-- Update polish translation (Patch summit by Marx)
+- Update italian translation (Patch submit by Diego Pierotto)
+- Add ukrainian translation (Patch submit by Yarema)
+- Update polish translation (Patch submit by Marx)
 
-2013-02-11 (Release and Patch summit by Ulrich Eckhardt)
+2013-02-11 (Release and Patch submit by Ulrich Eckhardt)
 - Release Version 0.3.3
 - Various Makefile fixes for VDR > 1.7.36
 
@@ -18,7 +19,7 @@ VDR Plugin 'image' Revision History
 - Adjust to compile plugin with VDR >= 1.7.17
 
 2010-03-06
-- Fix to compile plugins with VDR >= 1.7.13 (Thomas Günther, for summit a patch)
+- Fix to compile plugins with VDR >= 1.7.13 (Thomas Günther, for submit a patch)
 
 2008-12-14
 - Release Version 0.3.0
@@ -41,7 +42,7 @@ VDR Plugin 'image' Revision History
 
 2007-10-08
 - Check for codec only at startup
-- Add setup option to hide main menu entry (Thanks to Alf Fahland, for summit a patch)
+- Add setup option to hide main menu entry (Thanks to Alf Fahland, for submit a patch)
 
 2007-08-22
 - begin developer series 0.3.x
@@ -49,7 +50,7 @@ VDR Plugin 'image' Revision History
 
 2007-06-10
 - for build now 'pkg-config' needed
-- Use swscale to converting image (Thanks to Holger Brunn, for summit a patch)
+- Use swscale to converting image (Thanks to Holger Brunn, for submit a patch)
 
 2007-01-02
 - Release Version 0.2.7
