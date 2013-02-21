@@ -39,7 +39,7 @@ msgid "Convert..."
 msgstr "Conversion..."
 
 msgid "Select picture via key 1..9!"
-msgstr "Séléctionner l'image (touches 1..9)!"
+msgstr "Sélectionner l'image (touches 1..9) !"
 
 msgid "Zoom"
 msgstr "Zoom"
@@ -54,7 +54,7 @@ msgid "Show exif informations from image"
 msgstr "Montre les informations exif de l'image"
 
 msgid "Could not load exif data from image!"
-msgstr "Les données exif de l'image n'ont pu être chargé !"
+msgstr "Les données exif de l'image n'ont pu être chargées !"
 
 msgid "Marker"
 msgstr "Marquer"
@@ -90,7 +90,7 @@ msgid "Eject"
 msgstr "Éjecter"
 
 msgid "Selected data medium is not mounted!"
-msgstr "La source séléctionnée n'est pas montée"
+msgstr "La source sélectionnée n'est pas montée !"
 
 msgid "Mount failed!"
 msgstr "Le montage a échoué !"
@@ -99,7 +99,7 @@ msgid "Mount succeeded"
 msgstr "Montage réussi"
 
 msgid "Unmount succeeded!"
-msgstr "Démontage réussi!"
+msgstr "Démontage réussi !"
 
 msgid "Unmount failed!"
 msgstr "Le démontage a échoué !"
