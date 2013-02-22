@@ -27,7 +27,7 @@ msgstr ""
 "Project-Id-Version: vdr-image 0.4.0\n"
 "Report-Msgid-Bugs-To: <see README>\n"
 "POT-Creation-Date: 2013-02-12 18:44+0100\n"
-"PO-Revision-Date: 2007-08-18 08:13+0200\n"
+"PO-Revision-Date: 2007-08-22 18:13+0200\n"
 "Last-Translator:  Benrard JAULIN <bernard.jaulin at gmail.com>\n"
 "Language-Team: <vdr at linuxtv.org>\n"
 "Language: \n"
@@ -78,7 +78,7 @@ msgid "Parent"
 msgstr "Parent"
 
 msgid "Error scanning directory!"
-msgstr "Erreur en scannant le répertoire !"
+msgstr "Erreur en parcourant le répertoire !"
 
 msgid "Mount"
 msgstr "Monter"
@@ -90,7 +90,7 @@ msgid "Eject"
 msgstr "Éjecter"
 
 msgid "Selected data medium is not mounted!"
-msgstr "La source sélectionnée n'est pas montée !"
+msgstr "La source séléctionnée n'est pas montée !"
 
 msgid "Mount failed!"
 msgstr "Le montage a échoué !"
@@ -135,7 +135,7 @@ msgid "Slide show"
 msgstr "Diaporama"
 
 msgid "Slide duration (sec)"
-msgstr "Durée entre les images (sec)"
+msgstr "Durée entre les images (s)"
 
 msgid "Repeat slide show"
 msgstr "Répéter le diaporama"
@@ -147,7 +147,7 @@ msgid "Hide main menu entry"
 msgstr "Masquer dans le menu principal"
 
 msgid "Send encoded frame several times"
-msgstr "Diffuse les images encodées plusieurs fois"
+msgstr "Diffuse plusieurs fois l'image encodée"
 
 msgid "Live Audio from primary Device"
 msgstr "Direct audio sur périphérique primaire"
@@ -166,4 +166,5 @@ msgstr "Bordure pour l'Underscan (Hauteur)"
 
 msgid "Border for Underscan (Width)"
 msgstr "Bordure pour l'Underscan (Largeur)"
+
 
