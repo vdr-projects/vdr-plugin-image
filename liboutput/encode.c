@@ -212,7 +212,6 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
 {
     AVPacket outpkt;
-    int got_output;
     if(!m_pFrameSizes)
     { 
         esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.");
@@ -227,18 +226,47 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     for(i=0; (i < m_nNumberOfFramesToEncode) && (m_nMPEGSize < m_nMaxMPEGSize);
       ++i)
     {
-        outpkt.data = ( m_pMPEG + m_nMPEGSize);
-        outpkt.size =  m_nMaxMPEGSize - m_nMPEGSize;
-        int err = avcodec_encode_video2(context, &outpkt,frame, &got_output);
-        if(err < 0)
-        {
-            esyslog("imageplugin: Failed to add frame %d, insufficient memory.",
-              i);
+
+        int err = avcodec_send_frame(context, frame);
+        if(err < 0) {
+            esyslog("imageplugin: failed send encoding frame %d at %d %d/%d\n",
+                   i,
+                   frame ? (int) frame->pts : -1,
+                   context->time_base.num,
+                   context->time_base.den);
+            av_packet_unref(&outpkt);
             return false;
         }
+
+        outpkt.data = ( m_pMPEG + m_nMPEGSize);
+        outpkt.size =  m_nMaxMPEGSize - m_nMPEGSize;
+
+        err = avcodec_receive_packet(context, &outpkt);
+        if (err == AVERROR(EAGAIN)) { // No more packets for now.
+            if (frame == NULL) {
+                esyslog("imageplugin: sent flush frame %d, got EAGAIN.", i);
+            }
+            break;
+        }
+        if (err == AVERROR_EOF) { // No more packets, ever.
+            if (frame != NULL) {
+                esyslog("imageplugin: sent image frame %d, got EOF.", i);
+            }
+            break;
+        }
+        if(err < 0) {
+            esyslog("imageplugin: failed receive encoded frame %d at %d %d/%d\n",
+                   i,
+                   frame ? (int) frame->pts : -1,
+                   context->time_base.num,
+                   context->time_base.den);
+            break;
+        }
+
         m_nMPEGSize += outpkt.size;
         *(m_pFrameSizes + i) = outpkt.size;
     }
+    av_packet_unref(&outpkt);
 
     // Add four bytes MPEG end sequence
     if ((m_nMaxMPEGSize - m_nMPEGSize) >= 4)
