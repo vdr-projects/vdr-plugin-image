@@ -152,21 +152,22 @@ void cStillImage::BuildPesPacket(const unsigned char *data, int len, int timesta
     int hdr;
     int type = 1;
     if (cPluginManager::GetPlugin("reelbox") != NULL) type = 2;
+    if (cPluginManager::GetPlugin("softhddevice") != NULL) type = 2;
 
     while (len > 0)
     {
         int payload_size = len; // data + PTS
 
         if (type == 2) hdr = 3;
-        else hdr = ptslen ? 0 : 1;
+        else hdr = ptslen == 5 ? 0 : 1;
 
         if (6 + ptslen + payload_size + hdr > PES_MAX_SIZE)
             payload_size = PES_MAX_SIZE - (6 + ptslen + hdr);
 
         // construct PES header:  (code from ffmpeg's libav)
         // packetsize:
-        pes_header[4] = (3+ptslen + payload_size) >> 8;
-        pes_header[5] = (3+ptslen + payload_size) & 255;
+        pes_header[4] = (hdr + ptslen + payload_size) >> 8;
+        pes_header[5] = (hdr + ptslen + payload_size) & 255;
 
         if (ptslen == 5)
         {
@@ -204,7 +205,7 @@ void cStillImage::BuildPesPacket(const unsigned char *data, int len, int timesta
 
         len -= payload_size;
         data += payload_size;
-        ptslen = 1;             // store PTS only once, at first packet!
+//        ptslen = 1;             // store PTS only once, at first packet! - not need???!
  
     }
 }

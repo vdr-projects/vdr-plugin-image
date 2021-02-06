@@ -56,7 +56,7 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
 #endif
 //    esyslog("imageplugin: width %d height %d\n",m_nWidth, m_nHeight);
     m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode];
-
+    memset (m_pFrameSizes,0,sizeof(m_pFrameSizes));
     // Just a wild guess: 3 x output image size should be enough for the MPEG
     m_nMaxMPEGSize = m_nWidth * m_nHeight * 3; 
 
