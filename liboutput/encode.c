@@ -18,6 +18,11 @@ extern "C" {
 #include <libswscale/swscale.h>
 }
 #endif
+#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51,63,100)
+extern "C" {
+#include <libavutil/imgutils.h>
+}
+#endif
 
 #include "encode.h"
 #include <vdr/device.h>
@@ -35,11 +40,22 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
 , m_pMPEG(NULL)
 , m_pImageRGB(NULL)
 {
+#if VDRVERSNUM < 20301
     m_bUsePAL = (cDevice::PrimaryDevice()->GetVideoSystem() == vsPAL);
     m_nWidth  = 720;
     m_nHeight = m_bUsePAL ? 576 : 480;
+#else
+    double aspect = 0;
 
-    m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode]; 
+    cDevice::PrimaryDevice()->GetOsdSize((int&)m_nWidth, (int&)m_nHeight, (double&)aspect);
+    if (!m_nWidth || !m_nHeight)
+    {
+        m_nWidth = 720;
+        m_nHeight = 576;
+    }
+#endif
+//    esyslog("imageplugin: width %d height %d\n",m_nWidth, m_nHeight);
+    m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode];
 
     // Just a wild guess: 3 x output image size should be enough for the MPEG
     m_nMaxMPEGSize = m_nWidth * m_nHeight * 3; 
@@ -54,7 +70,7 @@ bool cEncode::Register()
 
     m_pavCodec = avcodec_find_encoder(AV_CODEC_ID_MPEG2VIDEO);
     if (!m_pavCodec) {
-        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.");
+        esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.\n");
 	      return false;
     }
     return true;
@@ -98,22 +114,21 @@ bool cEncode::Encode()
     pAVCC = avcodec_alloc_context3(m_pavCodec);
     if (! pAVCC) 
     {
-        esyslog("imageplugin: Failed to alloc memory for AVCodecContext.");
+        esyslog("imageplugin: Failed to alloc memory for AVCodecContext.\n");
     }
     else
     {
         pAVF = av_frame_alloc();
         if (! pAVF)
         {
-            esyslog("imageplugin: Failed to alloc memory for AVFrame.");
+            esyslog("imageplugin: Failed to alloc memory for AVFrame.\n");
         }
         else
         {
             SetupEncodingParameters(pAVCC);
-
             if (avcodec_open2(pAVCC, m_pavCodec, NULL) < 0)
             {
-                esyslog("imageplugin: Couldn't open Codec.");
+                esyslog("imageplugin: Couldn't open Codec.\n");
             }
             else
             {
@@ -136,20 +151,23 @@ void cEncode::SetupEncodingParameters(AVCodecContext *context)
     context->width  = m_nWidth;
     context->height = m_nHeight;
 
-    #if LIBAVCODEC_BUILD >= 4754
+#if LIBAVCODEC_BUILD >= 4754
         context->time_base=(AVRational){1, (int)GetFrameRate()};
-    #else
+#else
         context->frame_rate=GetFrameRate();
         context->frame_rate_base=1;
-    #endif
-
+#endif
     //IPB //1 => Encode only I-Frames, bigger 
     context->gop_size=m_nNumberOfFramesToEncode-1;
     if(context->gop_size <= 1) {
       context->gop_size = 1;
     }
     context->max_b_frames=1;
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(56,56,100)
     context->flags |= CODEC_FLAG_QSCALE;
+#else
+    context->flags |= AV_CODEC_FLAG_QSCALE;
+#endif
     context->pix_fmt = AV_PIX_FMT_YUV420P;
 }
 
@@ -157,7 +175,7 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 {
     if(!m_pImageYUV || !m_pImageFilled || !m_pImageRGB || !m_pMPEG) 
     {
-        esyslog("imageplugin: Failed to convert MPEG sequence, insufficient memory.");
+        esyslog("imageplugin: Failed to convert MPEG sequence, insufficient memory.\n");
         return false;
     }
 
@@ -171,11 +189,19 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
     frame->quality = 1;
 
     // Convert RGB to YUV 
+#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(51,63,100)
     if(!avpicture_fill((AVPicture*)m_pImageFilled, 
                                     m_pImageRGB, 
                                     AV_PIX_FMT_RGB24, m_nWidth, m_nHeight))
+#else
+    if(av_image_fill_arrays(((AVPicture*)m_pImageFilled)->data,
+                         ((AVPicture*)m_pImageFilled)->linesize,
+                         m_pImageRGB,
+                         AV_PIX_FMT_RGB24, m_nWidth, m_nHeight, 1) < 0)
+#endif
+
     {
-        esyslog("imageplugin: failed avpicture_fill");
+        esyslog("imageplugin: failed avpicture_fill\n");
         return false;
     }
     else
@@ -191,7 +217,7 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
                         AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
 
 	    if(!convert_ctx) {
-            esyslog("imageplugin: failed to initialize swscaler context");
+            esyslog("imageplugin: failed to initialize swscaler context\n");
             return false;
     	}
 
@@ -202,7 +228,7 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 #endif
         if(result < 0)
         {
-            esyslog("imageplugin: failed convert RGB to YUV: %X", result);
+            esyslog("imageplugin: failed convert RGB to YUV: %X\n", result);
             return false;
         }
     }
@@ -214,7 +240,7 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     AVPacket outpkt;
     if(!m_pFrameSizes)
     { 
-        esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.");
+        esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.\n");
         return false;
     }
 
@@ -223,12 +249,11 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     m_nMPEGSize = 0;
 
     // Encode m_nNumberOfFramesToEncode number of frames
-    for(i=0; (i < m_nNumberOfFramesToEncode) && (m_nMPEGSize < m_nMaxMPEGSize);
-      ++i)
+    for(i=0; (i < m_nNumberOfFramesToEncode) && (m_nMPEGSize < m_nMaxMPEGSize); ++i)
     {
 
         int err = avcodec_send_frame(context, frame);
-        if(err < 0) {
+        if(err < 0 && err != AVERROR(EAGAIN) && err != AVERROR_EOF) {
             esyslog("imageplugin: failed send encoding frame %d at %d %d/%d\n",
                    i,
                    frame ? (int) frame->pts : -1,
@@ -237,24 +262,23 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
             av_packet_unref(&outpkt);
             return false;
         }
-
         outpkt.data = ( m_pMPEG + m_nMPEGSize);
         outpkt.size =  m_nMaxMPEGSize - m_nMPEGSize;
 
         err = avcodec_receive_packet(context, &outpkt);
         if (err == AVERROR(EAGAIN)) { // No more packets for now.
             if (frame == NULL) {
-                esyslog("imageplugin: sent flush frame %d, got EAGAIN.", i);
+                esyslog("imageplugin: sent flush frame %d, got EAGAIN.\n", i);
             }
-            break;
+            continue;
         }
-        if (err == AVERROR_EOF) { // No more packets, ever.
+        else if (err == AVERROR_EOF) { // No more packets, ever.
             if (frame != NULL) {
-                esyslog("imageplugin: sent image frame %d, got EOF.", i);
+                esyslog("imageplugin: sent image frame %d, got EOF.\n", i);
             }
-            break;
+            continue;
         }
-        if(err < 0) {
+        else if(err < 0) {
             esyslog("imageplugin: failed receive encoded frame %d at %d %d/%d\n",
                    i,
                    frame ? (int) frame->pts : -1,
@@ -263,12 +287,17 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
             break;
         }
 
+        memcpy(m_pMPEG + m_nMPEGSize,outpkt.data,outpkt.size);
+
         m_nMPEGSize += outpkt.size;
         *(m_pFrameSizes + i) = outpkt.size;
     }
     av_packet_unref(&outpkt);
 
     // Add four bytes MPEG end sequence
+
+    if (m_nMPEGSize == 0) return false;
+
     if ((m_nMaxMPEGSize - m_nMPEGSize) >= 4)
     {
          memcpy(m_pMPEG + m_nMPEGSize,"\0x00\0x00\0x01\0xb7",4);
@@ -277,8 +306,7 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     }
     else
     { 
-        esyslog("imageplugin: Failed to add MPEG end sequence, "
-          "insufficient memory.");
+        esyslog("imageplugin: Failed to add MPEG end sequence, insufficient memory.\n");
         return false;
     }
 
@@ -297,7 +325,7 @@ void cEncode::AllocateBuffers()
       || NULL == (m_pImageFilled=(uint8_t *)malloc(m_nWidth*m_nHeight*3)) //~1200kb
       || NULL == (m_pImageYUV=(uint8_t *)malloc(m_nWidth*m_nHeight*3/2))) //~600kb
     {
-        esyslog("imageplugin: Failed to alloc memory for bitmaps.");
+        esyslog("imageplugin: Failed to alloc memory for bitmaps.\n");
         return;
     }
 }

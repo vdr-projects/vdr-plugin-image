@@ -17,7 +17,7 @@
 
 #include "stillimage.h"
 #include "stillimage-player.h"
-
+#include <vdr/plugin.h>
 
 
 cStillImage::cStillImage(cStillImagePlayer *pl,bool bUseDeviceStillPicture) 
@@ -149,42 +149,58 @@ void cStillImage::BuildPesPacket(const unsigned char *data, int len, int timesta
     pes_header[0] = pes_header[1] = 0;
     pes_header[2] = 1;
     pes_header[3] = 0xe0;
+    int hdr;
+    int type = 1;
+    if (cPluginManager::GetPlugin("reelbox") != NULL) type = 2;
 
     while (len > 0)
     {
         int payload_size = len; // data + PTS
 
-        if (6 + ptslen + payload_size > PES_MAX_SIZE)
-            payload_size = PES_MAX_SIZE - (6 + ptslen);
+        if (type == 2) hdr = 3;
+        else hdr = ptslen ? 0 : 1;
+
+        if (6 + ptslen + payload_size + hdr > PES_MAX_SIZE)
+            payload_size = PES_MAX_SIZE - (6 + ptslen + hdr);
 
         // construct PES header:  (code from ffmpeg's libav)
         // packetsize:
-        pes_header[4] = (ptslen + payload_size) >> 8;
-        pes_header[5] = (ptslen + payload_size) & 255;
+        pes_header[4] = (3+ptslen + payload_size) >> 8;
+        pes_header[5] = (3+ptslen + payload_size) & 255;
 
         if (ptslen == 5)
         {
+           if (type == 2){
+                pes_header[6] = 0x81;
+                pes_header[7] = 0x80;
+                pes_header[8] = ptslen;
+            }
             int x;
 
             // presentation time stamp:
             x = (0x02 << 4) | (((timestamp >> 30) & 0x07) << 1) | 1;
-            pes_header[8] = x;
+            pes_header[6+hdr] = x;
             x = ((((timestamp >> 15) & 0x7fff) << 1) | 1);
-            pes_header[7] = x >> 8;
-            pes_header[8] = x & 255;
+            pes_header[7+hdr] = x >> 8;
+            pes_header[8+hdr] = x & 255;
             x = ((((timestamp) & 0x7fff) << 1) | 1);
-            pes_header[9] = x >> 8;
-            pes_header[10] = x & 255;
+            pes_header[9+hdr] = x >> 8;
+            pes_header[10+hdr] = x & 255;
         }
         else
         {
             // stuffing and header bits:
             pes_header[6] = 0x0f;
+            if (type == 2){
+                pes_header[6] = 0x81;
+                pes_header[7] = 0x00;
+                pes_header[8] = 0x00;
+            }
         }
 
-        memcpy (&pes_header[6 + ptslen], data, payload_size);
+        memcpy (&pes_header[6 + ptslen + hdr], data, payload_size);
         player->Wait();
-        player->Play(pes_header, 6 + ptslen + payload_size);
+        player->Play(pes_header, 6 + ptslen + hdr + payload_size);
 
         len -= payload_size;
         data += payload_size;
