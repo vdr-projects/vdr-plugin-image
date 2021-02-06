@@ -22,8 +22,14 @@ PKG-CONFIG ?= pkg-config
 
 -include $(VDRDIR)/Make.config
 
-### The directory environment:
+ifneq (exists, $(shell pkg-config libswscale && echo exists))
+  $(warning ******************************************************************)
+  $(warning 'libswscale' not detected! ')
+  $(warning ******************************************************************)
+  WITHOUT_SWSCALER = 1
+endif
 
+### The directory environment:
 
 INCLUDES += -I$(VDRDIR)/include -I.
 ifdef FFMDIR

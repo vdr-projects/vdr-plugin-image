@@ -17,6 +17,8 @@
 extern "C" {
 #include <libswscale/swscale.h>
 }
+#else
+#include "libavcodec/imgconvert.h">
 #endif
 #if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51,63,100)
 extern "C" {
@@ -56,7 +58,7 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
 #endif
 //    esyslog("imageplugin: width %d height %d\n",m_nWidth, m_nHeight);
     m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode];
-    memset (m_pFrameSizes,0,sizeof(m_pFrameSizes));
+    memset (m_pFrameSizes, 0, sizeof(int) * m_nNumberOfFramesToEncode);
     // Just a wild guess: 3 x output image size should be enough for the MPEG
     m_nMaxMPEGSize = m_nWidth * m_nHeight * 3; 
 
@@ -65,9 +67,10 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
 
 bool cEncode::Register()
 {
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58,10,100)
     av_register_all();
     avcodec_register_all();
-
+#endif
     m_pavCodec = avcodec_find_encoder(AV_CODEC_ID_MPEG2VIDEO);
     if (!m_pavCodec) {
         esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.\n");
@@ -194,12 +197,18 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
                                     m_pImageRGB, 
                                     AV_PIX_FMT_RGB24, m_nWidth, m_nHeight))
 #else
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(57,5,0)
     if(av_image_fill_arrays(((AVPicture*)m_pImageFilled)->data,
                          ((AVPicture*)m_pImageFilled)->linesize,
                          m_pImageRGB,
                          AV_PIX_FMT_RGB24, m_nWidth, m_nHeight, 1) < 0)
+#else
+    if(av_image_fill_arrays(((AVFrame*)m_pImageFilled)->data,
+                         ((AVFrame*)m_pImageFilled)->linesize,
+                         m_pImageRGB,
+                         AV_PIX_FMT_RGB24, m_nWidth, m_nHeight, 1) < 0)
 #endif
-
+#endif
     {
         esyslog("imageplugin: failed avpicture_fill\n");
         return false;
@@ -220,10 +229,15 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
             esyslog("imageplugin: failed to initialize swscaler context\n");
             return false;
     	}
-
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(57,5,0)
 	    result=sws_scale(convert_ctx, ((AVPicture*)m_pImageFilled)->data, 
                                       ((AVPicture*)m_pImageFilled)->linesize, 
                          0, m_nHeight, frame->data, frame->linesize);
+#else
+	    result=sws_scale(convert_ctx, ((AVFrame*)m_pImageFilled)->data, 
+                                      ((AVFrame*)m_pImageFilled)->linesize, 
+                         0, m_nHeight, frame->data, frame->linesize);
+#endif
 	    sws_freeContext(convert_ctx);
 #endif
         if(result < 0)
@@ -247,18 +261,22 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     unsigned int i;
     av_init_packet(&outpkt);
     m_nMPEGSize = 0;
-
+#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58,93,100)
+    frame->format = context->pix_fmt;
+    frame->width  = context->width;
+    frame->height = context->height;
+#endif
     // Encode m_nNumberOfFramesToEncode number of frames
     for(i=0; (i < m_nNumberOfFramesToEncode) && (m_nMPEGSize < m_nMaxMPEGSize); ++i)
     {
 
         int err = avcodec_send_frame(context, frame);
         if(err < 0 && err != AVERROR(EAGAIN) && err != AVERROR_EOF) {
-            esyslog("imageplugin: failed send encoding frame %d at %d %d/%d\n",
+            esyslog("imageplugin: failed send encoding frame %d at %d %d/%d err %d\n",
                    i,
                    frame ? (int) frame->pts : -1,
                    context->time_base.num,
-                   context->time_base.den);
+                   context->time_base.den, err);
             av_packet_unref(&outpkt);
             return false;
         }
