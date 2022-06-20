@@ -1,6 +1,9 @@
 VDR Plugin 'image' Revision History
 -----------------------------------
 
+2022-06-20: Version 0.5.0
+- Several fixes for later FFMPEG versions (Patches submitted by lnj@vdr-portal)
+
 2013-03-23: Version 0.4.0
 - Update french translation (Patch submit by Bernard Jaulin, Peter Münster)
 - Update italian translation (Patch submit by Diego Pierotto)
