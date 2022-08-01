@@ -59,7 +59,6 @@ void cStillImage::Action(void)
         }
         player->Worker(true);
       }
-
       if(m_bEncodeRequired 
         && bQueueEmpty)
       {        
@@ -153,6 +152,8 @@ void cStillImage::BuildPesPacket(const unsigned char *data, int len, int timesta
     int type = 1;
     if (cPluginManager::GetPlugin("reelbox") != NULL) type = 2;
     if (cPluginManager::GetPlugin("softhddevice") != NULL) type = 2;
+    if (cPluginManager::GetPlugin("softhdcuvid") != NULL) type = 2;
+    if (cPluginManager::GetPlugin("softhdvaapi") != NULL) type = 2;
 
     while (len > 0)
     {

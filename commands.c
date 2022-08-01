@@ -189,7 +189,7 @@ bool cImageCommands::Load(const char *szFileName/* = NULL*/, bool bAllowComments
       int n = 0;
       char szBuf[8192];
       bRet = true;
-      while(fgets(szBuf, sizeof(szBuf), f) > 0)
+      while(fgets(szBuf, sizeof(szBuf), f) != NULL)
       {
         ++n;
         if(m_bAllowComments)
