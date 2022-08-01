@@ -55,6 +55,13 @@ cEncode::cEncode(unsigned int nNumberOfFramesToEncode)
         m_nWidth = 720;
         m_nHeight = 576;
     }
+    //fix for small screens
+    if (m_nWidth > 720 && m_nWidth < 1920)
+    {
+        m_nWidth = 1920;
+        m_nHeight = 1080;
+    }
+
 #endif
 //    esyslog("imageplugin: width %d height %d\n",m_nWidth, m_nHeight);
     m_pFrameSizes = new unsigned int[m_nNumberOfFramesToEncode];
