@@ -71,7 +71,11 @@ bool cEncode::Register()
     av_register_all();
     avcodec_register_all();
 #endif
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59,0,100)
     m_pavCodec = avcodec_find_encoder(AV_CODEC_ID_MPEG2VIDEO);
+#else
+    m_pavCodec = (AVCodec*) avcodec_find_encoder(AV_CODEC_ID_MPEG2VIDEO);
+#endif
     if (!m_pavCodec) {
         esyslog("imageplugin: Failed to find CODEC_ID_MPEG2VIDEO.\n");
 	      return false;
@@ -186,9 +190,9 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
 
     frame->data[0]=m_pImageYUV;
     frame->data[1]=m_pImageYUV+nSize;
-    frame->data[2]=frame->data[1]+nSize/4;
-    frame->linesize[0]=m_nWidth;
-    frame->linesize[1]=frame->linesize[2]=m_nWidth/2;  
+    frame->data[2]=m_pImageYUV+nSize+nSize/4;
+    frame->linesize[0]= m_nWidth;
+    frame->linesize[1]=frame->linesize[2]=m_nWidth/2;
     frame->quality = 1;
 
     // Convert RGB to YUV 
@@ -221,9 +225,17 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
                        (AVPicture*)m_pImageFilled, AV_PIX_FMT_RGB24,
                        m_nWidth, m_nHeight);
 #else
+        ((AVFrame*)m_pImageFilled)->width = m_nWidth;
+        ((AVFrame*)m_pImageFilled)->height = m_nHeight;
+        ((AVFrame*)m_pImageFilled)->quality = 1;
+
         SwsContext* convert_ctx = sws_getContext(m_nWidth, m_nHeight, 
                         AV_PIX_FMT_RGB24, m_nWidth, m_nHeight,
-                        AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+                        AV_PIX_FMT_YUV420P,
+#if LIBSWSCALE_VERSION_INT >= AV_VERSION_INT(6,5,0)
+                        SWS_FULL_CHR_H_INT | SWS_ACCURATE_RND |
+#endif
+                        SWS_BICUBIC, NULL, NULL, NULL);
 
 	    if(!convert_ctx) {
             esyslog("imageplugin: failed to initialize swscaler context\n");
@@ -246,12 +258,30 @@ bool cEncode::ConvertImageToFrame(AVFrame *frame)
             return false;
         }
     }
+#ifdef TESTCODE
+  //example for play "mplayer -demuxer rawvideo -rawvideo w=1920:h=1080:format=iyuv conv.iyuv -loop 0"
+  if(frame->data && frame->linesize)
+  {
+    FILE * inf=fopen("/tmp/fill.rgb", "w");
+    FILE * outf=fopen("/tmp/conv.iyuv", "w");
+
+    if(inf) {
+      fwrite(((AVFrame*)m_pImageFilled)->data[0], 1, nSize*3 , inf);
+      fclose(inf);
+    }
+
+    if(outf) {
+      fwrite(frame->data[0], 1, nSize+nSize/2 , outf);
+      fclose(outf);
+    }
+  }
+#endif
     return true;
 }
 
 bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
 {
-    AVPacket outpkt;
+
     if(!m_pFrameSizes)
     { 
         esyslog("imageplugin: Failed to add MPEG sequence, insufficient memory.\n");
@@ -259,9 +289,14 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
     }
 
     unsigned int i;
-    av_init_packet(&outpkt);
     m_nMPEGSize = 0;
-#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58,93,100)
+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58,33,100)
+    AVPacket outpkt[1];
+    av_init_packet(outpkt);
+#else
+    AVPacket * outpkt;
+    outpkt = av_packet_alloc();
+
     frame->format = context->pix_fmt;
     frame->width  = context->width;
     frame->height = context->height;
@@ -277,13 +312,13 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
                    frame ? (int) frame->pts : -1,
                    context->time_base.num,
                    context->time_base.den, err);
-            av_packet_unref(&outpkt);
+            av_packet_unref(outpkt);
             return false;
         }
-        outpkt.data = ( m_pMPEG + m_nMPEGSize);
-        outpkt.size =  m_nMaxMPEGSize - m_nMPEGSize;
+        outpkt->data = ( m_pMPEG + m_nMPEGSize);
+        outpkt->size =  m_nMaxMPEGSize - m_nMPEGSize;
 
-        err = avcodec_receive_packet(context, &outpkt);
+        err = avcodec_receive_packet(context, outpkt);
         if (err == AVERROR(EAGAIN)) { // No more packets for now.
             if (frame == NULL) {
                 esyslog("imageplugin: sent flush frame %d, got EAGAIN.\n", i);
@@ -305,13 +340,15 @@ bool cEncode::EncodeFrames(AVCodecContext *context, AVFrame *frame)
             break;
         }
 
-        memcpy(m_pMPEG + m_nMPEGSize,outpkt.data,outpkt.size);
+        memcpy(m_pMPEG + m_nMPEGSize,outpkt->data,outpkt->size);
 
-        m_nMPEGSize += outpkt.size;
-        *(m_pFrameSizes + i) = outpkt.size;
+        m_nMPEGSize += outpkt->size;
+        *(m_pFrameSizes + i) = outpkt->size;
     }
-    av_packet_unref(&outpkt);
-
+    av_packet_unref(outpkt);
+#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58,33,100)
+    av_packet_free(&outpkt);
+#endif
     // Add four bytes MPEG end sequence
 
     if (m_nMPEGSize == 0) return false;
