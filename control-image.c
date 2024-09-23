@@ -35,7 +35,12 @@ char* cImageControl::m_szLastShowStatusMsg = 0;
 void cImageControl::SetSlideShow(cSlideShow * pNewSlideShow)
 {
   // Remove old session
+#if APIVERSNUM < 20402
   if(cControl::Control())
+#else
+  cMutexLock ControlMutexLock;
+  if(cControl::Control(ControlMutexLock))
+#endif
   	cControl::Shutdown();
 
   if(pNewSlideShow) {
