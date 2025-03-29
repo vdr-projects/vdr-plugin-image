@@ -150,11 +150,17 @@ bool cEncode::Encode()
                 {
                     bSuccess = EncodeFrames(pAVCC, pAVF); 
                 }
+#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(55,63,100)
                 avcodec_close(pAVCC);
+#endif
             }
             av_free(pAVF);
         }
+#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(55,63,100)
         av_free(pAVCC);
+#else
+        avcodec_free_context(&pAVCC);
+#endif
     }
     return bSuccess;
 }
